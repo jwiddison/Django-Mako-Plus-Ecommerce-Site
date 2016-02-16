@@ -10,7 +10,7 @@ import datetime
 @view_function
 def process_request(request):
     '''List the users in a table on the screen '''
-    users = amod.User.objects.all().order_by('last_name', 'first_name')
+    users = amod.User.objects.all().order_by('username')
 
 
     template_vars = {
@@ -58,7 +58,7 @@ def edit(request):
 
     template_vars = {
         'form': form,
-        'user': user,
+        # 'user': user,
     }
     return dmp_render_to_response(request, 'users.edit.html', template_vars)
 
@@ -77,6 +77,16 @@ class EditForm(forms.Form):
     phone_number = forms.CharField(label="Phone Number", required=True)
     birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ])
 
+    # Make sure that the username, if you change it, isn't already taken.
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        try:
+            user = amod.User.objects.get(username=username)
+            raise forms.ValidationError('This username is already taken')
+        except amod.User.DoesNotExist:
+            pass
+        return username
+
 ################################################
 ########### Create a New User ##################
 ################################################
@@ -91,7 +101,7 @@ def create(request):
       if form.is_valid():  # Validate said form using validations specified in form object we created
 
           # create a temporary user object
-          u = User()
+          u = amod.User()
 
           # Fill user object with the data captured from the form
           u.username = form.cleaned_data.get('username')
