@@ -1,0 +1,152 @@
+## Author: Jordan Widdison
+## IS 411/413 - Sprint 3 - Colonial Heritage Foundation
+## Create management app with CRUD functionality for users, items, locations, and events
+
+## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
+<%! from django_mako_plus.controller import static_files %>
+<%  static_renderer = static_files.StaticRenderer(self) %>
+
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8">
+  <head>
+    <title><%block name="title">Colonial Heritage Foundation</%block></title>
+    <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/flagicon.gif">
+    <!-- Bootstrap minified CSS, and custom global CSS -->
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
+    ## render the css with the same name as this page
+    ${ static_renderer.get_template_css(request, context)  }
+  </head>
+  <body>
+    ## -------- Maintainence message area ------- ##
+    <%block name="maintainence_container">
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="maintainence_message">
+                <%block name="maintainence_message">
+                </%block>
+              </div><!-- maintainence_message -->
+            </div><!-- col-md-12 -->
+          </div><!-- row -->
+        </div><!-- container -->
+      </div><!-- jumbotron -->
+    </%block>
+
+    <header>
+      <%block name = "base_header">
+        ## ---------------- Alert Message -------------->
+        <div id="alert">
+          <%block name="alert">
+          </%block>
+        </div><!-- alert -->
+        <!-- - - - - Navbar - - - - - -->
+        <nav class="navbar navbar-inverse navbar-fixed-top transparent" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/homepage/index">
+                <%block name="icon">
+                  <img src="${ STATIC_URL }homepage/media/pics/flagicon.gif"/>
+                </%block>
+              </a>
+              <a class="navbar-brand" href="/homepage/index">ColonialHeritage.org</a>
+            </div><!-- navbar-header -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <%block name="menu">
+                  ## uses if statements to check if the active page = the menu item, and then sets the page we're on as "active"
+                  <li class="${ 'active' if request.dmp_router_page == 'index' else ''}"><a href="/homepage/index">Home</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'about' else ''}"><a href="/homepage/about">About</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/homepage/terms">Terms</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/homepage/faq">FAQ</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
+                </%block>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <%block name="account_menu">
+                  %if request.user.is_authenticated():
+                    <!-- Dropdown, logout, etc -->
+                    <li class = "dropdown">
+                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ${ request.user }! <b class = "caret"></b></a>
+                      <ul class = "dropdown-menu">
+                        <li><a href="/account/index">Account Summary</a></li>
+                        <li><a href="/account/edit">Edit Account Info</a></li>
+                        <li><a href="/account/change_password">Change Password</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href='/account/logout/'>Logout</a></li>
+                      </ul>
+                    </li>
+                  %else:
+                    <button class="btn btn-danger" id="loginbutton">Login</button>
+                  %endif
+                </%block>
+              </ul>
+            </div><!-- collapse -->
+          </div><!-- container -->
+        </nav>
+      </%block>
+    </header>
+
+    <!-- Body Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <%block name="top_content_area">
+            TOP AREA!
+          </%block>
+        </div><!-- col-md-12 -->
+      </div><!-- row -->
+      <div class="row">
+        <div class="col-md-2">
+          <%block name="content_left">
+            Put Left Content Here!
+          </%block>
+        </div><!-- left -->
+        <div class="col-md-8">
+          <%block name="content">
+            Put Center Content Here!
+          </%block>
+        </div><!-- center -->
+        <div class="col-md-2">
+          <%block name="content_right">
+            Put Right Content Here!
+          </%block>
+        </div><!-- right -->
+      </div><!-- row -->
+    </div><!-- container -->
+
+    <!-- Footer Content-->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <%block name="footer">
+              ## Doing current year here to not have to declare the variable in every .py file on the site
+              <%
+                 ## Python to get current year for footer
+                 import datetime
+                 current_year = datetime.date.today().year
+              %>
+              <p>Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
+            </%block>
+          </div><!-- col-md-12 -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </footer>
+
+    <!-- Javascript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="${ STATIC_URL }homepage/media/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${ STATIC_URL }homepage/media/jquery.loadmodal.js"></script>
+    <script src="${ STATIC_URL }homepage/media/jquery.form.js"></script>
+    ## render the JS with the same name as this page
+    ${ static_renderer.get_template_js(request, context)  }
+  </body>
+</html>

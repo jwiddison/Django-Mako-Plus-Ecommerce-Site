@@ -1,0 +1,39 @@
+/* Site-wide CSS styles */
+body{
+  padding-top:64px; /* Same height as the fixed-top navbar */
+  background-color:white;
+}
+
+p{
+  font-size: 16px;
+}
+
+img{
+  padding-bottom:25px;
+}
+
+footer{
+  margin-top:50px;
+  padding-top:15px;
+  background-color:#E6272E;
+  color:white;
+  bottom:0px;
+  position:relative;
+}
+
+.transparent{
+  opacity: .95;
+}
+
+#loginbutton{
+  margin-top: 15px;
+}
+
+#main_logo{
+   margin-top:30px;
+}
+
+/* Set colors for headings -- Same colors as Info, Warning, and Primary */
+h1 {color: #0F0657}
+h2 {color: #211C5A}
+h3 {color: #A30622}

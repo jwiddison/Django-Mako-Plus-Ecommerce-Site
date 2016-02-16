@@ -1,0 +1,50 @@
+<%inherit file="app_base.htm" />
+
+<%block name="top_content_area">
+  <h1>Contact</h1>
+  <hr/>
+  <br/>
+  <p class="lead">Get in touch with someone from the colonial heritage foundation using the form below</p>
+</%block>
+
+<%block name="content">
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-10">
+      <!--Email form-->
+      <form class="form-horizontal" method="get" action="/contact" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="name">Name:</label>
+            <div class="col-xs-9">
+                <input type="text" name="yourname" class="form-control" id="inputName" placeholder="Name">
+            </div><!-- col-xs-9 -->
+        </div><!-- form-group -->
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="email">Email:</label>
+            <div class="col-xs-9">
+                <input type="text" name="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div><!-- col-xs-9 -->
+        </div><!-- form-group -->
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="phone">Phone:</label>
+            <div class="col-xs-9">
+                <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="Phone">
+            </div><!-- col-xs-9 -->
+        </div><!-- form-group -->
+        <div class="form-group">
+            <label class="control-label col-xs-3" for="message">Message:</label>
+            <div class="col-xs-9">
+                <textarea rows="3" name="message" class="form-control" id="inputMessage" placeholder="Message"></textarea>
+            </div><!-- col-xs-9 -->
+        </div><!-- form-group -->
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <input type="submit" class="btn btn-primary" value="Send">
+                <input type="reset" class="btn btn-default" value="Clear">
+            </div><!-- col-xs-offset-3 col-xs-9 -->
+        </div><!-- form-group -->
+      </form>
+    </div><!-- col-md-10 -->
+    <div class="col-md-2"></div>
+  </div><!-- row -->
+</%block>

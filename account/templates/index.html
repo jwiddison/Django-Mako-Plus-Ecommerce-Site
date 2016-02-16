@@ -1,0 +1,58 @@
+<%inherit file="app_base.htm" />
+
+<%block name="top_content_area">
+  <h3>Account Summary</h3>
+  <hr />
+  <p>Thank you for creating an account with us.  Here is a summary of your account info:</p>
+  <br />
+  <table>
+    <tr>
+      <th>Username:</th>
+      <td>${request.user.username}</td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td>${ request.user.first_name } ${request.user.last_name}</td>
+    </tr>
+    <tr>
+      <th>Address Line 1:</th>
+      <td>${request.user.address1}</td>
+    </tr>
+    <tr>
+      <th>Address Line 2:</th>
+      <td>${request.user.address2}</td>
+    </tr>
+    <tr>
+      <th>City:</th>
+      <td>${request.user.city}</td>
+    </tr>
+    <tr>
+      <th>State:</th>
+      <td>${request.user.state}</td>
+    </tr>
+    <tr>
+      <th>Zip Code:</th>
+      <td>${request.user.zip_code}</td>
+    </tr>
+    <tr>
+      <th>Phone Number:</th>
+      <td>${request.user.phone_number}</td>
+    </tr>
+  </table>
+
+  <br />
+
+  ## <ul>
+  ##   <li>Username: ${ request.user.username }</li>
+  ##   <li>Name: ${ request.user.first_name } ${request.user.last_name}</li>
+  ##   <li>Address Line 1: ${ request.user.address1 }</li>
+  ##   <li>Address Line 2: ${ request.user.address2 }</li>
+  ##   <li>City: ${ request.user.city }</li>
+  ##   <li>State: ${ request.user.state }</li>
+  ##   <li>Zip Code: ${ request.user.zip_code }</li>
+  ##   <li>Phone Number: ${ request.user.phone_number }</li>
+  ## </ul>
+  <hr />
+  <br />
+  <a href="/account/edit" class="btn btn-primary">Edit Account Info</a>
+</%block>

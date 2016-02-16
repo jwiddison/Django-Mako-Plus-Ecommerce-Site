@@ -1,0 +1,18 @@
+<%inherit file="app_base.htm" />
+
+<%block name="top_content_area">
+  <h1>Edit your Account Information:</h1>
+  <hr />
+  <br />
+  <form class="form-horizontal" method="POST" action="/account/edit">
+    <table>
+    <tr>
+      <th>Username:</th>
+      <td>${request.user.username}</td>
+    </tr>
+      ${ form.as_table() }
+    </table>
+    <br />
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+</%block>

@@ -1,0 +1,224 @@
+# -*- coding:utf-8 -*-
+from mako import runtime, filters, cache
+UNDEFINED = runtime.UNDEFINED
+STOP_RENDERING = runtime.STOP_RENDERING
+__M_dict_builtin = dict
+__M_locals_builtin = locals
+_magic_number = 10
+_modified_time = 1454786688.525561
+_enable_loop = True
+_template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm'
+_template_uri = 'app_base.htm'
+_source_encoding = 'utf-8'
+import os, os.path, re, json
+_exports = ['menu', 'alert', 'content_right', 'maintainence_message', 'content', 'maintainence_container', 'account_menu', 'top_content_area', 'content_left']
+
+
+def _mako_get_namespace(context, name):
+    try:
+        return context.namespaces[(__name__, name)]
+    except KeyError:
+        _mako_generate_namespaces(context)
+        return context.namespaces[(__name__, name)]
+def _mako_generate_namespaces(context):
+    pass
+def _mako_inherit(template, context):
+    _mako_generate_namespaces(context)
+    return runtime._inherit_from(context, '/homepage/templates/base.htm', _template_uri)
+def render_body(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def menu():
+            return render_menu(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def account_menu():
+            return render_account_menu(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
+        def content_left():
+            return render_content_left(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
+        __M_writer = context.writer()
+        __M_writer('\n\n# Leave these blocks blank\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
+            context['self'].maintainence_container(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
+            context['self'].maintainence_message(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'alert'):
+            context['self'].alert(**pageargs)
+        
+
+        __M_writer('\n\n# Menu is different in the account section of the website (only lists account information)\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'menu'):
+            context['self'].menu(**pageargs)
+        
+
+        __M_writer('\n\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'account_menu'):
+            context['self'].account_menu(**pageargs)
+        
+
+        __M_writer('\n\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
+            context['self'].top_content_area(**pageargs)
+        
+
+        __M_writer('\n\n# Leave left, center, and right blank\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_left'):
+            context['self'].content_left(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_right'):
+            context['self'].content_right(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
+            context['self'].content(**pageargs)
+        
+
+        __M_writer('\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def menu():
+            return render_menu(context)
+        request = context.get('request', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'index' else ''))
+        __M_writer('"><a href="/account/index">Account Summary</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'edit' else ''))
+        __M_writer('"><a href="/account/edit">Edit Account Info</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'change_password' else ''))
+        __M_writer('"><a href="/account/change_password">Change Password</a></li>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_alert(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def alert():
+            return render_alert(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_right(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_right():
+            return render_content_right(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_message(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content():
+            return render_content(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_account_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        request = context.get('request', UNDEFINED)
+        def account_menu():
+            return render_account_menu(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        if request.user.is_authenticated():
+            __M_writer('    <!-- Dropdown, logout, etc -->\n    <li class = "dropdown">\n      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
+            __M_writer(str( request.user ))
+            __M_writer('! <b class = "caret"></b></a>\n      <ul class = "dropdown-menu">\n        <li><a href="/account/index">Account Summary</a></li>\n        <li><a href="/account/edit">Edit Account Info</a></li>\n        <li><a href="/account/change_password">Change Password</a></li>\n        <li role="presentation" class="divider"></li>\n        <li><a href=\'/account/logout/\'>Logout</a></li>\n      </ul>\n    </li>\n')
+        else:
+            __M_writer('    <button class="btn btn-danger" id="loginbutton">Login</button>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_top_content_area(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def top_content_area():
+            return render_top_content_area(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <h1>Colonial Heritage Foundation</h1>\n  <hr/>\n  <br/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+"""
+__M_BEGIN_METADATA
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm", "uri": "app_base.htm", "line_map": {"209": 41, "67": 6, "197": 34, "134": 42, "72": 14, "57": 4, "203": 34, "77": 32, "190": 29, "145": 5, "82": 38, "220": 209, "87": 41, "156": 43, "28": 0, "185": 16, "97": 43, "187": 18, "103": 9, "92": 42, "167": 4, "178": 16, "110": 9, "111": 11, "112": 11, "113": 11, "114": 12, "115": 12, "116": 13, "117": 13, "52": 1, "186": 17, "123": 6, "188": 20, "189": 20, "62": 5, "191": 30}}
+__M_END_METADATA
+"""

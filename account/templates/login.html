@@ -1,0 +1,11 @@
+<%inherit file="/homepage/templates/base_ajax.htm" />
+
+<%block name="content">
+  <form class="text-center" id="loginform" action="/account/login/" method="POST">
+      ${ form.as_p() }
+    <input type="submit" class="btn btn-primary" value="Login">
+  </form>
+  <br />
+  <hr />
+  <p>Don't already have an account? <a href="/account/signup/">Sign Up Here</a></p>
+</%block>
