@@ -14,4 +14,8 @@ $(function() {
     // Show the modal
     $('#delete_modal').modal('show');
   });
+}); //Function to user delete modal
+
+$(function () {
+    $('#datetimepicker4').datetimepicker();
 });

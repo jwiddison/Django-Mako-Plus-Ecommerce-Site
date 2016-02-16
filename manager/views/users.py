@@ -144,7 +144,7 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False,widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetime_picker_4'}))
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetimepicker4'}))
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
