@@ -56,7 +56,9 @@
                   <img src="${ STATIC_URL }homepage/media/pics/flagicon.gif"/>
                 </%block>
               </a>
-              <a class="navbar-brand" href="/homepage/index">ColonialHeritage.org</a>
+              <%block name="navbar_title">
+                <a class="navbar-brand" href="/homepage/index">ColonialHeritage.org</a>
+              </%block>
             </div><!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455050019.012999
+_modified_time = 1455649001.350292
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html'
 _template_uri = 'index.html'
@@ -49,7 +49,7 @@ def render_content(context,**pageargs):
         def content():
             return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\n    <div class="content">\n      <h3>Congratulations -- you\'ve successfully created a new django-mako-plus app!</h3>\n      <h4>Next Up: Go through the django-mako-plus tutorial and add Javascript, CSS, and urlparams to this page.</h4>\n    </div>\n')
+        __M_writer('\n  <h1>Manager Area</h1>\n  <hr />\n  <br />\n  <h3>CRUD functionality available for each of the following areas:</h3>\n  <ul id="CRUD_list">\n    <li><a href="/manager/users">Users</a></li>\n    <li><a href="/manager/products">Products</a></li>\n  </ul>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -57,6 +57,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html", "source_encoding": "utf-8", "line_map": {"35": 1, "52": 3, "40": 8, "58": 52, "28": 0, "46": 3}}
+{"uri": "index.html", "source_encoding": "utf-8", "line_map": {"35": 1, "52": 3, "40": 12, "58": 52, "28": 0, "46": 3}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html"}
 __M_END_METADATA
 """

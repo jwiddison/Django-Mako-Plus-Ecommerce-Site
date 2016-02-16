@@ -1,8 +1,12 @@
 <%inherit file="app_base.htm" />
 
 <%block name="content">
-    <div class="content">
-      <h3>Congratulations -- you've successfully created a new django-mako-plus app!</h3>
-      <h4>Next Up: Go through the django-mako-plus tutorial and add Javascript, CSS, and urlparams to this page.</h4>
-    </div>
+  <h1>Manager Area</h1>
+  <hr />
+  <br />
+  <h3>CRUD functionality available for each of the following areas:</h3>
+  <ul id="CRUD_list">
+    <li><a href="/manager/users">Users</a></li>
+    <li><a href="/manager/products">Products</a></li>
+  </ul>
 </%block>

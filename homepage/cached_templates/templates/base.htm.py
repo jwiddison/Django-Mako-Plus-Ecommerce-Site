@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455583626.138322
+_modified_time = 1455648734.273384
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['base_header', 'maintainence_message', 'icon', 'account_menu', 'maintainence_container', 'content', 'footer', 'alert', 'content_left', 'menu', 'title', 'top_content_area', 'content_right']
+_exports = ['content_right', 'title', 'menu', 'maintainence_message', 'maintainence_container', 'navbar_title', 'footer', 'base_header', 'alert', 'content_left', 'content', 'top_content_area', 'icon', 'account_menu']
 
 
 from django_mako_plus.controller import static_files 
@@ -20,35 +20,37 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def footer():
+            return render_footer(context._locals(__M_locals))
         def base_header():
             return render_base_header(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def menu():
+            return render_menu(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
         def account_menu():
             return render_account_menu(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def footer():
-            return render_footer(context._locals(__M_locals))
-        def menu():
-            return render_menu(context._locals(__M_locals))
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        def icon():
-            return render_icon(context._locals(__M_locals))
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
+        def icon():
+            return render_icon(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -119,44 +121,49 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_base_header(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def base_header():
-            return render_base_header(context)
-        def alert():
-            return render_alert(context)
+        def content_right():
+            return render_content_right(context)
+        __M_writer = context.writer()
+        __M_writer('\n            Put Right Content Here!\n          ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('Colonial Heritage Foundation')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
         request = context.get('request', UNDEFINED)
-        def account_menu():
-            return render_account_menu(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def icon():
-            return render_icon(context)
         def menu():
             return render_menu(context)
         __M_writer = context.writer()
         __M_writer('\n')
-        __M_writer('        <div id="alert">\n          ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'alert'):
-            context['self'].alert(**pageargs)
-        
-
-        __M_writer('\n        </div><!-- alert -->\n        <!-- - - - - Navbar - - - - - -->\n        <nav class="navbar navbar-inverse navbar-fixed-top transparent" role="navigation">\n          <div class="container">\n            <div class="navbar-header">\n              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\n                <span class="sr-only">Toggle navigation</span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n              </button>\n              <a class="navbar-brand" href="/homepage/index">\n                ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'icon'):
-            context['self'].icon(**pageargs)
-        
-
-        __M_writer('\n              </a>\n              <a class="navbar-brand" href="/homepage/index">ColonialHeritage.org</a>\n            </div><!-- navbar-header -->\n            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n              <ul class="nav navbar-nav">\n                ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'menu'):
-            context['self'].menu(**pageargs)
-        
-
-        __M_writer('\n              </ul>\n              <ul class="nav navbar-nav navbar-right">\n                ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'account_menu'):
-            context['self'].account_menu(**pageargs)
-        
-
-        __M_writer('\n              </ul>\n            </div><!-- collapse -->\n          </div><!-- container -->\n        </nav>\n      ')
+        __M_writer('                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'index' else ''))
+        __M_writer('"><a href="/homepage/index">Home</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
+        __M_writer('"><a href="/homepage/about">About</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
+        __M_writer('"><a href="/homepage/terms">Terms</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
+        __M_writer('"><a href="/homepage/faq">FAQ</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
+        __M_writer('"><a href="/homepage/contact">Contact</a></li>\n                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -174,48 +181,13 @@ def render_maintainence_message(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_icon(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def icon():
-            return render_icon(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        __M_writer = context.writer()
-        __M_writer('\n                  <img src="')
-        __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/flagicon.gif"/>\n                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_account_menu(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def account_menu():
-            return render_account_menu(context)
-        request = context.get('request', UNDEFINED)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        if request.user.is_authenticated():
-            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
-            __M_writer(str( request.user ))
-            __M_writer('! <b class = "caret"></b></a>\n                      <ul class = "dropdown-menu">\n                        <li><a href="/account/index">Account Summary</a></li>\n                        <li><a href="/account/edit">Edit Account Info</a></li>\n                        <li><a href="/account/change_password">Change Password</a></li>\n                        <li role="presentation" class="divider"></li>\n                        <li><a href=\'/account/logout/\'>Logout</a></li>\n                      </ul>\n                    </li>\n')
-        else:
-            __M_writer('                    <button class="btn btn-danger" id="loginbutton">Login</button>\n')
-        __M_writer('                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def maintainence_message():
-            return render_maintainence_message(context)
         def maintainence_container():
             return render_maintainence_container(context)
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
         __M_writer('\n      <div class="jumbotron">\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              <div id="maintainence_message">\n                ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
@@ -228,13 +200,13 @@ def render_maintainence_container(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content(context,**pageargs):
+def render_navbar_title(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content():
-            return render_content(context)
+        def navbar_title():
+            return render_navbar_title(context)
         __M_writer = context.writer()
-        __M_writer('\n            Put Center Content Here!\n          ')
+        __M_writer('\n                  ColonialHeritage.org\n                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -257,6 +229,56 @@ def render_footer(context,**pageargs):
         __M_writer('\n              <p>Copyright &copy; ')
         __M_writer(str( current_year ))
         __M_writer(' Colonial Heritage Foundation</p>\n            ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_base_header(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def alert():
+            return render_alert(context)
+        def navbar_title():
+            return render_navbar_title(context)
+        def base_header():
+            return render_base_header(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def menu():
+            return render_menu(context)
+        def icon():
+            return render_icon(context)
+        request = context.get('request', UNDEFINED)
+        def account_menu():
+            return render_account_menu(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('        <div id="alert">\n          ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'alert'):
+            context['self'].alert(**pageargs)
+        
+
+        __M_writer('\n        </div><!-- alert -->\n        <!-- - - - - Navbar - - - - - -->\n        <nav class="navbar navbar-inverse navbar-fixed-top transparent" role="navigation">\n          <div class="container">\n            <div class="navbar-header">\n              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">\n                <span class="sr-only">Toggle navigation</span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n              </button>\n              <a class="navbar-brand" href="/homepage/index">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'icon'):
+            context['self'].icon(**pageargs)
+        
+
+        __M_writer('\n              </a>\n              <a class="navbar-brand" href="/homepage/index">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'navbar_title'):
+            context['self'].navbar_title(**pageargs)
+        
+
+        __M_writer('\n              </a>\n            </div><!-- navbar-header -->\n            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n              <ul class="nav navbar-nav">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'menu'):
+            context['self'].menu(**pageargs)
+        
+
+        __M_writer('\n              </ul>\n              <ul class="nav navbar-nav navbar-right">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'account_menu'):
+            context['self'].account_menu(**pageargs)
+        
+
+        __M_writer('\n              </ul>\n            </div><!-- collapse -->\n          </div><!-- container -->\n        </nav>\n      ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -286,37 +308,13 @@ def render_content_left(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_menu(context,**pageargs):
+def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def menu():
-            return render_menu(context)
-        request = context.get('request', UNDEFINED)
+        def content():
+            return render_content(context)
         __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'index' else ''))
-        __M_writer('"><a href="/homepage/index">Home</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
-        __M_writer('"><a href="/homepage/about">About</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
-        __M_writer('"><a href="/homepage/terms">Terms</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
-        __M_writer('"><a href="/homepage/faq">FAQ</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
-        __M_writer('"><a href="/homepage/contact">Contact</a></li>\n                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def title():
-            return render_title(context)
-        __M_writer = context.writer()
-        __M_writer('Colonial Heritage Foundation')
+        __M_writer('\n            Put Center Content Here!\n          ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -334,13 +332,36 @@ def render_top_content_area(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_icon(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_right():
-            return render_content_right(context)
+        def icon():
+            return render_icon(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n            Put Right Content Here!\n          ')
+        __M_writer('\n                  <img src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/pics/flagicon.gif"/>\n                ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_account_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        request = context.get('request', UNDEFINED)
+        def account_menu():
+            return render_account_menu(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        if request.user.is_authenticated():
+            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
+            __M_writer(str( request.user ))
+            __M_writer('! <b class = "caret"></b></a>\n                      <ul class = "dropdown-menu">\n                        <li><a href="/account/index">Account Summary</a></li>\n                        <li><a href="/account/edit">Edit Account Info</a></li>\n                        <li><a href="/account/change_password">Change Password</a></li>\n                        <li role="presentation" class="divider"></li>\n                        <li><a href=\'/account/logout/\'>Logout</a></li>\n                      </ul>\n                    </li>\n')
+        else:
+            __M_writer('                    <button class="btn btn-danger" id="loginbutton">Login</button>\n')
+        __M_writer('                ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -348,6 +369,6 @@ def render_content_right(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"257": 136, "258": 137, "259": 137, "265": 41, "343": 118, "271": 41, "17": 6, "19": 0, "277": 108, "283": 108, "69": 18, "289": 63, "296": 63, "297": 65, "298": 65, "299": 65, "300": 66, "301": 66, "302": 67, "303": 67, "304": 68, "305": 68, "306": 69, "307": 69, "53": 4, "54": 6, "55": 7, "313": 13, "59": 7, "319": 13, "64": 13, "65": 14, "66": 14, "67": 16, "68": 16, "325": 101, "70": 18, "71": 18, "72": 22, "331": 101, "77": 35, "337": 118, "82": 94, "87": 103, "92": 110, "349": 343, "97": 115, "102": 120, "107": 138, "108": 146, "109": 146, "110": 147, "111": 147, "112": 148, "113": 148, "114": 150, "115": 150, "116": 150, "122": 38, "138": 38, "139": 40, "144": 42, "149": 57, "154": 70, "159": 89, "165": 28, "171": 28, "177": 55, "184": 55, "185": 56, "186": 56, "192": 73, "199": 73, "200": 74, "201": 75, "202": 77, "203": 77, "204": 86, "205": 87, "206": 89, "212": 22, "220": 22, "225": 29, "231": 113, "237": 113, "243": 130, "249": 130, "250": 132, "251": 132}, "uri": "base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8"}
+{"uri": "base.htm", "source_encoding": "utf-8", "line_map": {"256": 40, "261": 42, "266": 57, "111": 150, "271": 62, "17": 6, "19": 0, "276": 74, "281": 93, "287": 41, "293": 41, "299": 112, "305": 112, "94": 114, "311": 117, "56": 6, "57": 7, "317": 117, "360": 81, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 18, "72": 18, "329": 105, "74": 22, "55": 4, "79": 35, "84": 98, "342": 55, "343": 56, "344": 56, "89": 107, "350": 77, "99": 119, "357": 77, "358": 78, "359": 79, "104": 124, "361": 81, "362": 90, "363": 91, "364": 93, "109": 142, "110": 150, "61": 7, "112": 151, "113": 151, "114": 152, "115": 152, "116": 154, "117": 154, "118": 154, "124": 122, "130": 122, "136": 13, "142": 13, "323": 105, "148": 67, "155": 67, "156": 69, "157": 69, "158": 69, "159": 70, "160": 70, "161": 71, "162": 71, "163": 72, "164": 72, "165": 73, "166": 73, "172": 28, "370": 364, "178": 28, "73": 18, "184": 22, "192": 22, "197": 29, "203": 60, "209": 60, "215": 134, "335": 55, "221": 134, "222": 136, "223": 136, "229": 140, "230": 141, "231": 141, "237": 38, "255": 38}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm"}
 __M_END_METADATA
 """
