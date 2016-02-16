@@ -33,7 +33,7 @@
         <td>
           <a href="/manager/users.edit/${ user.id }/">Edit</a>
            |
-          <a href="/manager/users.delete/${ user.id }/" id="delete_button" onclick="Javascript:">Delete</a>
+          <a href="/manager/users.delete/${ user.id }/" id="delete_button" onclick="Javascript:$('#delete_modal').modal('show')">Delete</a>
         </td>
       </tr>
     %endfor

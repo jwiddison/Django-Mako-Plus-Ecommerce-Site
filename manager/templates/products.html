@@ -8,28 +8,28 @@
     <tr>
       <th>Product Name</th>
       <th>Product Type</th>
-      <th>Last Name</th>
-      <th>Email</th>
-      <th>Address 1</th>
-      <th>Address 2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip Code</th>
-      <th>Phone Number</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Date Added</th>
+      <th>Other Info</th>
       <th>Edit | Delete</th>
     </tr>
     %for product in products:
       <tr>
-        <td>${product.productname}</td>
-        <td>${product.first_name}</td>
-        <td>${product.last_name}</td>
-        <td>${product.email}</td>
-        <td>${product.address1}</td>
-        <td>${product.address2}</td>
-        <td>${product.city}</td>
-        <td>${product.state}</td>
-        <td>${product.zip_code}</td>
-        <td>${product.phone_number}</td>
+        <td>${product.name}</td>
+        <td>Type</td>
+        <td>${product.description}</td>
+        <td>${product.image}</td>
+        <td>${product.add_date}</td>
+        <td>
+          %if type(product) = "RentalProduct"
+            ${product.status}
+          %else if type(product) = "IndividualProduct"
+            ${product.creator}
+          %else #if BulkProduct
+            ${product.quantity}
+          %endif
+        </td>
         <td>
           <a href="/manager/products.edit/${ product.id }/">Edit</a>
            |

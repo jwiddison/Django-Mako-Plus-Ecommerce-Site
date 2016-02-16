@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455596904.325308
+_modified_time = 1455646645.343199
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -51,10 +51,17 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n    </tr>\n')
         for product in products:
-            __M_writer('      <tr>\n')
-            __M_writer('        <td>\n          <a href="/manager/products.edit/')
+            __M_writer('      <tr>\n        <td>')
+            __M_writer(str(product.name))
+            __M_writer('</td>\n        <td>Type</td>\n        <td>')
+            __M_writer(str(product.description))
+            __M_writer('</td>\n        <td>')
+            __M_writer(str(product.image))
+            __M_writer('</td>\n        <td>')
+            __M_writer(str(product.add_date))
+            __M_writer('</td>\n        <td>\n          <a href="/manager/products.edit/')
             __M_writer(str( product.id ))
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
             __M_writer(str( product.id ))
@@ -67,6 +74,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"68": 62, "36": 1, "41": 43, "47": 3, "60": 36, "54": 3, "55": 21, "56": 22, "57": 33, "58": 34, "59": 34, "28": 0, "61": 36, "62": 40}, "uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "source_encoding": "utf-8"}
+{"uri": "products.html", "source_encoding": "utf-8", "line_map": {"64": 21, "65": 23, "66": 23, "67": 25, "36": 1, "69": 29, "68": 25, "41": 32, "75": 69, "47": 3, "60": 19, "54": 3, "55": 15, "56": 16, "57": 17, "58": 17, "59": 19, "28": 0, "61": 20, "62": 20, "63": 21}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html"}
 __M_END_METADATA
 """
