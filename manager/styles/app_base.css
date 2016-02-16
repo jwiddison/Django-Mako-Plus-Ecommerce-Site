@@ -1,0 +1,43 @@
+#id_username,
+#id_password,
+#id_password2,
+#id_first_name,
+#id_email,
+#id_last_name,
+#id_address1,
+#id_address2,
+#id_city,
+#id_state,
+#id_zip_code,
+#id_phone_number,
+#id_birth,
+#id_datetime_picker_4,
+#id_new_password,
+#id_new_password2,
+{
+   display: inline;
+   width: 400px;
+   margin-left: 20px;
+   height: 34px;
+   line-height: 1.42857143;
+ }
+
+input:requred:focus{
+  border:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+/*tr, th, td{
+  padding: 5px;
+  font-size: 16px;
+}
+
+td{
+  padding-left:30px;
+}*/

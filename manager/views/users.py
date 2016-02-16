@@ -79,7 +79,7 @@ class EditForm(forms.Form):
     def clean_birth(self):
         if self.cleaned_data.get('birth') > datetime.date.today():
             raise forms.ValidationError("Enter a date before today's date")
-        return self.cleaned_data('birth')
+        return self.cleaned_data
 
     # Make sure that the username, if you change it, isn't already taken.
     def clean_username(self):
@@ -144,9 +144,9 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False,widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'01/01/1980'}))
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetime_picker_4'}))
 
-    ## ----- CUSTOM VALIDATION ------ ##
+    ## ----- CUSTOM VALIDATIONS ------ ##
 
     # Make sure that the username they're signing up with is unique.
     def clean_username(self):
@@ -157,6 +157,12 @@ class CreateForm(forms.Form):
         except amod.User.DoesNotExist:
             pass
         return username
+
+    # Make sure birth date is before today
+    def clean_birth(self):
+        if self.cleaned_data.get('birth') > datetime.date.today():
+            raise forms.ValidationError("Enter a date before today's date")
+        return self.cleaned_data
 
 
 
