@@ -36,7 +36,6 @@ def process_request(request):
     return dmp_render_to_response(request, 'change_password.html', template_vars)
 
 
-# Create the form using Django's Form Class
 class ChangePasswordForm(forms.Form):
     currentpassword = forms.CharField(label='Current Password', required=True, widget=forms.PasswordInput())
     new_password = forms.CharField(label='New Password', required=True, widget=forms.PasswordInput())

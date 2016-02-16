@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455648452.997468
+_modified_time = 1455650596.830894
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html'
 _template_uri = 'users.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         users = context.get('users', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Users:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All Users:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Edit | Change Password | Delete</th>\n    </tr>\n')
         for user in users:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(user.username))
@@ -75,7 +75,9 @@ def render_top_content_area(context,**pageargs):
             __M_writer(str(user.phone_number))
             __M_writer('</td>\n        <td>\n          <a href="/manager/users.edit/')
             __M_writer(str( user.id ))
-            __M_writer('/">Edit</a>\n           |\n          <a href="/manager/users.delete/')
+            __M_writer('/">Edit</a>\n           |\n          <a href="/manager/users.password/')
+            __M_writer(str( user.id ))
+            __M_writer('/">Change Password</a>\n          |\n          <a href="/manager/users.delete/')
             __M_writer(str( user.id ))
             __M_writer('/" class="delete_button">Delete</a>\n        </td>\n      </tr>\n')
         __M_writer('  </table>\n  <br />\n  <a href="/manager/users.create/" class="btn btn-primary">Create A New User</a>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this user?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
@@ -86,6 +88,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "users.html", "source_encoding": "utf-8", "line_map": {"64": 26, "65": 27, "66": 27, "67": 28, "68": 28, "69": 29, "70": 29, "71": 30, "72": 30, "73": 31, "74": 31, "75": 32, "76": 32, "77": 34, "78": 34, "79": 36, "80": 36, "81": 40, "87": 81, "28": 0, "36": 1, "41": 62, "47": 3, "54": 3, "55": 21, "56": 22, "57": 23, "58": 23, "59": 24, "60": 24, "61": 25, "62": 25, "63": 26}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html"}
+{"uri": "users.html", "source_encoding": "utf-8", "line_map": {"64": 26, "65": 27, "66": 27, "67": 28, "68": 28, "69": 29, "70": 29, "71": 30, "72": 30, "73": 31, "74": 31, "75": 32, "76": 32, "77": 34, "78": 34, "79": 36, "80": 36, "81": 38, "82": 38, "83": 42, "89": 83, "28": 0, "36": 1, "41": 64, "47": 3, "54": 3, "55": 21, "56": 22, "57": 23, "58": 23, "59": 24, "60": 24, "61": 25, "62": 25, "63": 26}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html"}
 __M_END_METADATA
 """

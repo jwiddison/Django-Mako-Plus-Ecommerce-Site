@@ -171,3 +171,47 @@ def delete(request):
 
     # Redirect
     return HttpResponseRedirect('/manager/users/')
+
+
+################################################
+############## Change Password #################
+################################################
+
+@view_function
+def password(request):
+    '''Change a user password'''
+    try:
+        user = amod.User.objects.get(id=request.urlparams[0])
+    except amod.User.DoesNotExist:
+        raise HttpResponse('/manager/users/')
+
+    form = PasswordForm()
+    if request.method == 'POST':
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+
+            # Save the password to that user
+            user.set_password(form.cleaned_data.get('new_password'))
+            # Save changes to the user
+            user.save()
+
+            # Redirect to confirmation page (change this later)
+            return HttpResponseRedirect('/manager/users/')
+
+    # parameters from the email back to the browser just in case we need them later.
+    template_vars = {
+        'form': form,
+    }
+    return dmp_render_to_response(request, 'password.html', template_vars)
+
+
+# Create the form using Django's Form Class
+class PasswordForm(forms.Form):
+    new_password = forms.CharField(label='New Password', required=True, widget=forms.PasswordInput())
+    new_password2 = forms.CharField(label='Confirm New Password', required=True, widget=forms.PasswordInput())
+
+    # Make sure the two passwords are equal to each other
+    def clean(self):
+        if self.cleaned_data.get('new_password') != self.cleaned_data.get('new_password2'):
+            raise forms.ValidationError("Your passwords don't match")
+        return self.cleaned_data

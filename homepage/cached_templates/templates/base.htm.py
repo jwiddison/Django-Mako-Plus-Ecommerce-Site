@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455648734.273384
+_modified_time = 1455650085.493476
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -206,7 +206,7 @@ def render_navbar_title(context,**pageargs):
         def navbar_title():
             return render_navbar_title(context)
         __M_writer = context.writer()
-        __M_writer('\n                  ColonialHeritage.org\n                ')
+        __M_writer('\n                <a class="navbar-brand" href="/homepage/index">ColonialHeritage.org</a>\n              ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -263,12 +263,12 @@ def render_base_header(context,**pageargs):
             context['self'].icon(**pageargs)
         
 
-        __M_writer('\n              </a>\n              <a class="navbar-brand" href="/homepage/index">\n                ')
+        __M_writer('\n              </a>\n              ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'navbar_title'):
             context['self'].navbar_title(**pageargs)
         
 
-        __M_writer('\n              </a>\n            </div><!-- navbar-header -->\n            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n              <ul class="nav navbar-nav">\n                ')
+        __M_writer('\n            </div><!-- navbar-header -->\n            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n              <ul class="nav navbar-nav">\n                ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'menu'):
             context['self'].menu(**pageargs)
         
@@ -369,6 +369,6 @@ def render_account_menu(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "base.htm", "source_encoding": "utf-8", "line_map": {"256": 40, "261": 42, "266": 57, "111": 150, "271": 62, "17": 6, "19": 0, "276": 74, "281": 93, "287": 41, "293": 41, "299": 112, "305": 112, "94": 114, "311": 117, "56": 6, "57": 7, "317": 117, "360": 81, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 18, "72": 18, "329": 105, "74": 22, "55": 4, "79": 35, "84": 98, "342": 55, "343": 56, "344": 56, "89": 107, "350": 77, "99": 119, "357": 77, "358": 78, "359": 79, "104": 124, "361": 81, "362": 90, "363": 91, "364": 93, "109": 142, "110": 150, "61": 7, "112": 151, "113": 151, "114": 152, "115": 152, "116": 154, "117": 154, "118": 154, "124": 122, "130": 122, "136": 13, "142": 13, "323": 105, "148": 67, "155": 67, "156": 69, "157": 69, "158": 69, "159": 70, "160": 70, "161": 71, "162": 71, "163": 72, "164": 72, "165": 73, "166": 73, "172": 28, "370": 364, "178": 28, "73": 18, "184": 22, "192": 22, "197": 29, "203": 60, "209": 60, "215": 134, "335": 55, "221": 134, "222": 136, "223": 136, "229": 140, "230": 141, "231": 141, "237": 38, "255": 38}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm"}
+{"uri": "base.htm", "source_encoding": "utf-8", "line_map": {"256": 40, "261": 42, "266": 57, "111": 148, "271": 61, "17": 6, "19": 0, "276": 72, "281": 91, "287": 41, "293": 41, "299": 110, "305": 110, "94": 112, "311": 115, "56": 6, "57": 7, "317": 115, "360": 79, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 18, "72": 18, "329": 103, "74": 22, "55": 4, "79": 35, "84": 96, "342": 55, "343": 56, "344": 56, "89": 105, "350": 75, "99": 117, "357": 75, "358": 76, "359": 77, "104": 122, "361": 79, "362": 88, "363": 89, "364": 91, "109": 140, "110": 148, "61": 7, "112": 149, "113": 149, "114": 150, "115": 150, "116": 152, "117": 152, "118": 152, "124": 120, "130": 120, "136": 13, "142": 13, "323": 103, "148": 65, "155": 65, "156": 67, "157": 67, "158": 67, "159": 68, "160": 68, "161": 69, "162": 69, "163": 70, "164": 70, "165": 71, "166": 71, "172": 28, "370": 364, "178": 28, "73": 18, "184": 22, "192": 22, "197": 29, "203": 59, "209": 59, "215": 132, "335": 55, "221": 132, "222": 134, "223": 134, "229": 138, "230": 139, "231": 139, "237": 38, "255": 38}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm"}
 __M_END_METADATA
 """
