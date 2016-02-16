@@ -2,18 +2,18 @@ from django.db import models
 from django.contrib import admin
 from polymorphic.models import PolymorphicModel
 
+# Includes classes for all the types of products in the system
+
 #########################################################################################################
 ####### Base Product Class ##############################################################################
 #########################################################################################################
-class Product(models.Model):
+class Product(PolymorphicModel):
     '''Superclass for all other product types '''
-    # Attributes
     name = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     add_date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     image = models.TextField(null=True, blank=True)
 
-    # Methods
     def __str__(self):
         '''Prints for debugging purposes'''
         return 'Product (abstract): %s (%s)' % (self.name(), self.add_date)
@@ -32,10 +32,11 @@ RENTAL_STATUS_CHOICES_MAP = dict(RENTAL_STATUS_CHOICES)
 #########################################################################################################
 class RentalProduct(Product):
     status = models.TextField(null=True, blank=True, choices=RENTAL_STATUS_CHOICES)
+    # rental = models.ForeignKey('Rental', null=True)
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'RentalProduct: %s (%s): %s' % (self.name, self.add_date, self.status)
+        return 'Rental Product: %s (%s): %s' % (self.name, self.add_date, self.status)
 
 admin.site.register(RentalProduct)
 
@@ -48,7 +49,7 @@ class IndividualProduct(Product):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'IndividualProduct: %s (%s): %s' % (self.name, self.add_date, self.creator.get_full_name())
+        return 'Individual Product: %s (%s): %s' % (self.name, self.add_date, self.creator.get_full_name())
 
 admin.site.register(IndividualProduct)
 
@@ -62,6 +63,6 @@ class BulkProduct(Product):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'BulkProduct: %s (%s): %s' % (self.name, self.add_date, self.quantity)
+        return 'Bulk Product: %s (%s): %s' % (self.name, self.add_date, self.quantity)
 
 admin.site.register(BulkProduct)

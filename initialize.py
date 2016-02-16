@@ -97,3 +97,8 @@ for i in range(1, 5):
   p.quantity = random.randint(1, 100)
   p.save()
   print(p)
+
+
+print()
+for p in cmod.Product.objects.all():
+    print(type(p),p)
