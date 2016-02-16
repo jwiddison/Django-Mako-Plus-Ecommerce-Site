@@ -66,3 +66,12 @@ class BulkProduct(Product):
         return 'Bulk Product: %s (%s): %s' % (self.name, self.add_date, self.quantity)
 
 admin.site.register(BulkProduct)
+
+
+
+#########################################################################################################
+#######    Event           ##############################################################################
+#########################################################################################################
+# 
+# class Event(models.Model):
+#     name = models.TextField(null=True, blank=True)
