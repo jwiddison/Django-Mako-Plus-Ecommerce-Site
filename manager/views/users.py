@@ -75,15 +75,21 @@ class EditForm(forms.Form):
     phone_number = forms.CharField(label="Phone Number", required=True)
     birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ])
 
+    # Make sure birth date is before today
+    def clean_birth(self):
+        if self.cleaned_data.get('birth') > datetime.date.today():
+            raise forms.ValidationError("Enter a date before today's date")
+        return self.cleaned_data('birth')
+
     # Make sure that the username, if you change it, isn't already taken.
-    # def clean_username(self):
-    #     username = self.cleaned_data.get('username')
-    #     try:
-    #         user = amod.User.objects.get(username=username)
-    #         raise forms.ValidationError('This username is already taken')
-    #     except amod.User.DoesNotExist:
-    #         pass
-    #     return username
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        try:
+            user = amod.User.objects.get(username=username)
+            raise forms.ValidationError('This username is already taken')
+        except amod.User.DoesNotExist:
+            pass
+        return username
 
 ################################################
 ########### Create a New User ##################
@@ -129,16 +135,16 @@ def create(request):
 class CreateForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password'}))
-    first_name = forms.CharField(label='First Name', max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
-    last_name = forms.CharField(label='Last Name', max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    email = forms.EmailField(label='Email Address', required=True, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
-    address1 = forms.CharField(label='Address Line 1', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1'}))
+    first_name = forms.CharField(label='First Name', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(label='Last Name', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+    email = forms.EmailField(label='Email Address', required=False, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
+    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1'}))
     address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 2'}))
-    city = forms.CharField(label='City', required=True, widget=forms.TextInput(attrs={'placeholder': 'City'}))
-    state = forms.CharField(label='State', required=True, widget=forms.TextInput(attrs={'placeholder': 'State'}))
-    zip_code = forms.CharField(label='Zip Code', required=True, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
-    phone_number = forms.CharField(label="Phone Number", required=True,widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.DateInput(attrs={'placeholder':'01/01/1980'}))
+    city = forms.CharField(label='City', required=False, widget=forms.TextInput(attrs={'placeholder': 'City'}))
+    state = forms.CharField(label='State', required=False, widget=forms.TextInput(attrs={'placeholder': 'State'}))
+    zip_code = forms.CharField(label='Zip Code', required=False, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
+    phone_number = forms.CharField(label="Phone Number", required=False,widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'01/01/1980'}))
 
     ## ----- CUSTOM VALIDATION ------ ##
 
@@ -202,10 +208,9 @@ def password(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'password.html', template_vars)
+    return dmp_render_to_response(request, 'users.password.html', template_vars)
 
 
-# Create the form using Django's Form Class
 class PasswordForm(forms.Form):
     new_password = forms.CharField(label='New Password', required=True, widget=forms.PasswordInput())
     new_password2 = forms.CharField(label='Confirm New Password', required=True, widget=forms.PasswordInput())
