@@ -29,7 +29,7 @@ print()
 print('Creating users...')
 amod.User.objects.all().delete()
 users = []  # to save for use later
-for i in range(1, 20):
+for i in range(1, 10):
   u = amod.User()
   u.username = 'user%i' % i
   u.first_name = 'First%i' % i

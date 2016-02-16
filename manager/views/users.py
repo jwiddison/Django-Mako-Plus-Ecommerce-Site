@@ -34,9 +34,9 @@ def edit(request):
         return HttpResponseRedirect('/manager/users/')
 
     # Process Edit form
-    form = EditForm(request, initial=model_to_dict(user))
+    form = EditForm(initial=model_to_dict(user))
     if request.method=='POST':
-        form = EditForm(request, request.POST)
+        form = EditForm(request.POST)
         if form.is_valid():
 
             # Store captured form data to user we're editing
@@ -64,8 +64,6 @@ def edit(request):
 
 
 class EditForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100, required=True)
-    password = forms.CharField(label='Enter Password', required=True)
     first_name = forms.CharField(label='First Name', max_length=100, required=True)
     last_name = forms.CharField(label='Last Name', max_length=100, required=True)
     email = forms.EmailField(label='Email Address', required=True)
@@ -78,14 +76,14 @@ class EditForm(forms.Form):
     birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ])
 
     # Make sure that the username, if you change it, isn't already taken.
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        try:
-            user = amod.User.objects.get(username=username)
-            raise forms.ValidationError('This username is already taken')
-        except amod.User.DoesNotExist:
-            pass
-        return username
+    # def clean_username(self):
+    #     username = self.cleaned_data.get('username')
+    #     try:
+    #         user = amod.User.objects.get(username=username)
+    #         raise forms.ValidationError('This username is already taken')
+    #     except amod.User.DoesNotExist:
+    #         pass
+    #     return username
 
 ################################################
 ########### Create a New User ##################

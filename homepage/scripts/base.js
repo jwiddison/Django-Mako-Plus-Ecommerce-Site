@@ -8,14 +8,3 @@ $(function() {
     }); // LoadModal
   }); // Click
 }); // Ready
-
-$(function() {
-  $('#delete_button').click(function() {
-    $.loadmodal({
-      url: '/manager/users.delete/',
-      id: 'delete_modal',
-      title: 'Are you sure?',
-      width: '500px',
-    }); // LoadModal
-  }); // Click
-}); // Ready

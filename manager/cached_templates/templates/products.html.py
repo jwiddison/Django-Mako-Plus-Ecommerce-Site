@@ -5,10 +5,10 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455642547.168349
+_modified_time = 1455596904.325308
 _enable_loop = True
-_template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.edit.html'
-_template_uri = 'users.edit.html'
+_template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
+_template_uri = 'products.html'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
 _exports = ['top_content_area']
@@ -31,7 +31,7 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        form = context.get('form', UNDEFINED)
+        products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -49,11 +49,17 @@ def render_top_content_area(context,**pageargs):
     try:
         def top_content_area():
             return render_top_content_area(context)
-        form = context.get('form', UNDEFINED)
+        products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>Edit User:</h3>\n  <hr />\n  <br />\n  <form method="POST">\n    <table>\n      ')
-        __M_writer(str( form.as_table() ))
-        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Save Changes" />\n  </form>\n')
+        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        for product in products:
+            __M_writer('      <tr>\n')
+            __M_writer('        <td>\n          <a href="/manager/products.edit/')
+            __M_writer(str( product.id ))
+            __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
+            __M_writer(str( product.id ))
+            __M_writer('/" id="delete_button">Delete</a>\n        </td>\n      </tr>\n')
+        __M_writer('  </table>\n  <br />\n  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -61,6 +67,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.edit.html", "source_encoding": "utf-8", "uri": "users.edit.html", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 14, "28": 0, "62": 56, "47": 3}}
+{"line_map": {"68": 62, "36": 1, "41": 43, "47": 3, "60": 36, "54": 3, "55": 21, "56": 22, "57": 33, "58": 34, "59": 34, "28": 0, "61": 36, "62": 40}, "uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "source_encoding": "utf-8"}
 __M_END_METADATA
 """
