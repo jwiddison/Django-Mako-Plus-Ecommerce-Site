@@ -1,0 +1,13 @@
+<%inherit file ="app_base.htm" />
+
+<%block name="top_content_area">
+  <h3>Create a New Venue:</h3>
+  <hr />
+  <br />
+  <form method="POST">
+    <table>
+      ${ form.as_table() }
+    </table>
+    <input type="submit" class="btn btn-primary" value="Create" />
+  </form>
+</%block>
