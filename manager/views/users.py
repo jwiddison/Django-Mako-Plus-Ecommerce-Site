@@ -46,6 +46,7 @@ def create(request):
           u.state = form.cleaned_data.get('state')
           u.zip_code = form.cleaned_data.get('zip_code')
           u.phone_number = form.cleaned_data.get('phone_number')
+          u.birth = form.cleaned_data.get('birth')
 
           # Update database with user object
           u.save()
@@ -71,7 +72,7 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetimepicker4'}))
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=forms.DateInput(attrs={'placeholder':'1980-01-01'}))
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
@@ -123,6 +124,7 @@ def edit(request):
             user.state = form.cleaned_data.get('state')
             user.zip_code = form.cleaned_data.get('zip_code')
             user.phone_number = form.cleaned_data.get('phone_number')
+            user.birth = form.cleaned_data.get('birth')
 
             # Save changes
             user.save()

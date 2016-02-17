@@ -1,4 +1,5 @@
 $(function () {
-  $('#datetimepicker4').datetimepicker();
-    format: 'YYYY-MM-DD'
+   $('#id_birth').datetimepicker({
+       format: 'YYYY-MM-DD'
+   });
 });

@@ -60,9 +60,9 @@ def create(request):
 class CreateEventForm(forms.Form):
     name = forms.CharField(label='event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
     description = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    start_date = forms.DateField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
-    end_date = forms.DateField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
-    venue = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Venue'}))
+    start_date = forms.DateField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
+    end_date = forms.DateField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
+    venue = forms.CharField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'Venue'}))
 
     # Make sure that the name for the event they're signing up with is unique.
     # def clean_name(self):
@@ -89,9 +89,9 @@ def edit(request):
         return HttpResponseRedirect('/manager/events/')
 
     # Process Edit form
-    form = EditeventForm(initial=model_to_dict(event))
+    form = EditEventForm(initial=model_to_dict(event))
     if request.method=='POST':
-        form = EditeventForm(request.POST)
+        form = EditEventForm(request.POST)
         if form.is_valid():
 
             # Store captured form data to event we're editing
@@ -117,8 +117,8 @@ def edit(request):
 class EditEventForm(forms.Form):
     name = forms.CharField(label='Name', required=True, max_length=100)
     description = forms.CharField(label='Description', required=True, max_length=100)
-    start_date = forms.DateField(label='Start Date', required=True, max_length=100)
-    end_date = forms.DateField(label='End Date', required=True, max_length=100)
+    start_date = forms.DateField(label='Start Date', required=True)
+    end_date = forms.DateField(label='End Date', required=True)
     venue = forms.CharField(label='Venue', required=True, max_length=100)
 
 
