@@ -68,7 +68,7 @@ class CreateEventForm(forms.Form):
 
 
 ################################################
-################# Edit a event ##################
+################# Edit a event #################
 ################################################
 
 @view_function
@@ -79,6 +79,9 @@ def edit(request):
         event = cmod.Event.objects.get(id=request.urlparams[0])
     except cmod.Event.DoesNotExist:
         return HttpResponseRedirect('/manager/events/')
+
+    # Create a list of areas
+    areas = cmod.Area.objects.all().order_by('name')
 
     # Process Edit form
     form = EditEventForm(initial=model_to_dict(event))
@@ -101,6 +104,7 @@ def edit(request):
 
     template_vars = {
         'form': form,
+        'areas': areas,
         # 'event': event,
     }
     return dmp_render_to_response(request, 'events.edit.html', template_vars)

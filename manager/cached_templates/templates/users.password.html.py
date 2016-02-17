@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455651532.278845
+_modified_time = 1455741382.93497
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.password.html'
 _template_uri = 'users.password.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
         def top_content_area():
             return render_top_content_area(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h1>Change the user\'s Password</h1>\n  <hr />\n  <br />\n  <form class="form-horizontal" method="POST">\n    <table>\n      ')
+        __M_writer('\n  <h3>Change the User\'s Password</h3>\n  <hr />\n  <br />\n  <form class="form-horizontal" method="POST">\n    <table>\n      ')
         __M_writer(str( form.as_table() ))
         __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Submit">\n  </form>\n')
         return ''
@@ -61,6 +61,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.password.html", "source_encoding": "utf-8", "uri": "users.password.html", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 14, "28": 0, "62": 56, "47": 3}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.password.html", "source_encoding": "utf-8", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 14, "28": 0, "62": 56, "47": 3}, "uri": "users.password.html"}
 __M_END_METADATA
 """

@@ -21,37 +21,54 @@ def process_request(request):
 ########### Create a New User ##################
 ################################################
 
+PERMISSIONS_OPTIONS = (
+    ("is_staff", "Manager"),
+    ("is_superuser", "Volunteer"),
+    ("neither", "Basic User"),
+)
+
+
 @view_function
 def create(request):
     '''Create a New User'''
     # process the form
     form = CreateForm()
     if request.method == 'POST':   # if they've submitted the form
-      form = CreateForm(request.POST) # Re-create the form with data in it
-      if form.is_valid():  # Validate said form using validations specified in form object we created
+        form = CreateForm(request.POST) # Re-create the form with data in it
+        if form.is_valid():  # Validate said form using validations specified in form object we created
 
-          # create a temporary user object
-          u = amod.User()
+            # create a temporary user object
+            u = amod.User()
 
-          # Fill user object with the data captured from the form
-          u.username = form.cleaned_data.get('username')
-          u.first_name = form.cleaned_data.get('first_name')
-          u.last_name = form.cleaned_data.get('last_name')
-          u.email = form.cleaned_data.get('email')
-          u.set_password(form.cleaned_data.get('password'))
-          u.address1 = form.cleaned_data.get('address1')
-          u.address2 = form.cleaned_data.get('address2')
-          u.city = form.cleaned_data.get('city')
-          u.state = form.cleaned_data.get('state')
-          u.zip_code = form.cleaned_data.get('zip_code')
-          u.phone_number = form.cleaned_data.get('phone_number')
-          u.birth = form.cleaned_data.get('birth')
+            # Fill user object with the data captured from the form
+            u.username = form.cleaned_data.get('username')
+            u.first_name = form.cleaned_data.get('first_name')
+            u.last_name = form.cleaned_data.get('last_name')
+            u.email = form.cleaned_data.get('email')
+            u.set_password(form.cleaned_data.get('password'))
+            u.address1 = form.cleaned_data.get('address1')
+            u.address2 = form.cleaned_data.get('address2')
+            u.city = form.cleaned_data.get('city')
+            u.state = form.cleaned_data.get('state')
+            u.zip_code = form.cleaned_data.get('zip_code')
+            u.phone_number = form.cleaned_data.get('phone_number')
+            u.birth = form.cleaned_data.get('birth')
+            # Set user permissions
+            if userpermission == 'is_staff':
+                u.is_staff = True
+                u.is_superuser = True
+            if userpermission == 'is_superuser':
+                u.is_staff = False
+                u.is_superuser = True
+            if userpermission == 'neither':
+                u.is_staff = False
+                u.is_superuser = False
 
-          # Update database with user object
-          u.save()
+            # Update database with user object
+            u.save()
 
-          # Redirect to confirmation page (change once login above is working)
-          return HttpResponseRedirect('/manager/users/')
+            # Redirect to confirmation page (change once login above is working)
+            return HttpResponseRedirect('/manager/users/')
 
     # parameters from the email back to the browser just in case we need them later.
     template_vars = {
@@ -72,7 +89,8 @@ class CreateForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-    
+    permission = forms.ChoiceField(widget=forms.RadioSelect, choices=PERMISSIONS_OPTIONS)
+
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
