@@ -1,0 +1,14 @@
+<%inherit file ="app_base.htm" />
+
+<%block name="top_content_area">
+  <h3>Edit Event:</h3>
+  <hr />
+  <br />
+  <form method="POST">
+    <table>
+      ${ form.as_table() }
+    </table>
+    <br />
+    <input type="submit" class="btn btn-primary" value="Save Changes" />
+  </form>
+</%block>

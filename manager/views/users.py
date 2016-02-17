@@ -18,79 +18,6 @@ def process_request(request):
     }
     return dmp_render_to_response(request, 'users.html', template_vars)
 
-
-
-################################################
-################# Edit a User ##################
-################################################
-
-@view_function
-def edit(request):
-    '''Edits a User'''
-    # Make sure that the ID number in the URL matches a user that actually exists
-    try:
-        user = amod.User.objects.get(id=request.urlparams[0])
-    except amod.User.DoesNotExist:
-        return HttpResponseRedirect('/manager/users/')
-
-    # Process Edit form
-    form = EditForm(initial=model_to_dict(user))
-    if request.method=='POST':
-        form = EditForm(request.POST)
-        if form.is_valid():
-
-            # Store captured form data to user we're editing
-            user.first_name = form.cleaned_data.get('first_name')
-            user.last_name = form.cleaned_data.get('last_name')
-            user.email = form.cleaned_data.get('email')
-            user.address1 = form.cleaned_data.get('address1')
-            user.address2 = form.cleaned_data.get('address2')
-            user.city = form.cleaned_data.get('city')
-            user.state = form.cleaned_data.get('state')
-            user.zip_code = form.cleaned_data.get('zip_code')
-            user.phone_number = form.cleaned_data.get('phone_number')
-
-            # Save changes
-            user.save()
-
-            # Redirect to users
-            return HttpResponseRedirect('/manager/users/')
-
-    template_vars = {
-        'form': form,
-        # 'user': user,
-    }
-    return dmp_render_to_response(request, 'users.edit.html', template_vars)
-
-
-class EditForm(forms.Form):
-    first_name = forms.CharField(label='First Name', max_length=100, required=False)
-    last_name = forms.CharField(label='Last Name', max_length=100, required=False)
-    email = forms.EmailField(label='Email Address', required=False)
-    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100)
-    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100)
-    city = forms.CharField(label='City', required=False)
-    state = forms.CharField(label='State', required=False)
-    zip_code = forms.CharField(label='Zip Code', required=False)
-    phone_number = forms.CharField(label="Phone Number", required=False)
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ])
-
-    # Make sure birth date is before today
-    def clean_birth(self):
-        if self.cleaned_data.get('birth') >= datetime.date.today():
-            raise forms.ValidationError("Enter a date before today's date")
-        return self.cleaned_data
-
-    # Make sure that the username, if you change it, isn't already taken.
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        try:
-            user = amod.User.objects.get(username=username)
-            raise forms.ValidationError('This username is already taken')
-        except amod.User.DoesNotExist:
-            pass
-        return username
-
 ################################################
 ########### Create a New User ##################
 ################################################
@@ -164,6 +91,79 @@ class CreateForm(forms.Form):
             raise forms.ValidationError("Enter a date before today's date")
         return self.cleaned_data
 
+
+
+
+################################################
+################# Edit a User ##################
+################################################
+
+@view_function
+def edit(request):
+    '''Edits a User'''
+    # Make sure that the ID number in the URL matches a user that actually exists
+    try:
+        user = amod.User.objects.get(id=request.urlparams[0])
+    except amod.User.DoesNotExist:
+        return HttpResponseRedirect('/manager/users/')
+
+    # Process Edit form
+    form = EditForm(initial=model_to_dict(user))
+    if request.method=='POST':
+        form = EditForm(request.POST)
+        if form.is_valid():
+
+            # Store captured form data to user we're editing
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.email = form.cleaned_data.get('email')
+            user.address1 = form.cleaned_data.get('address1')
+            user.address2 = form.cleaned_data.get('address2')
+            user.city = form.cleaned_data.get('city')
+            user.state = form.cleaned_data.get('state')
+            user.zip_code = form.cleaned_data.get('zip_code')
+            user.phone_number = form.cleaned_data.get('phone_number')
+
+            # Save changes
+            user.save()
+
+            # Redirect to users
+            return HttpResponseRedirect('/manager/users/')
+
+    template_vars = {
+        'form': form,
+        # 'user': user,
+    }
+    return dmp_render_to_response(request, 'users.edit.html', template_vars)
+
+
+class EditForm(forms.Form):
+    first_name = forms.CharField(label='First Name', max_length=100, required=False)
+    last_name = forms.CharField(label='Last Name', max_length=100, required=False)
+    email = forms.EmailField(label='Email Address', required=False)
+    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100)
+    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100)
+    city = forms.CharField(label='City', required=False)
+    state = forms.CharField(label='State', required=False)
+    zip_code = forms.CharField(label='Zip Code', required=False)
+    phone_number = forms.CharField(label="Phone Number", required=False)
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ])
+
+    # Make sure birth date is before today
+    def clean_birth(self):
+        if self.cleaned_data.get('birth') >= datetime.date.today():
+            raise forms.ValidationError("Enter a date before today's date")
+        return self.cleaned_data
+
+    # Make sure that the username, if you change it, isn't already taken.
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        try:
+            user = amod.User.objects.get(username=username)
+            raise forms.ValidationError('This username is already taken')
+        except amod.User.DoesNotExist:
+            pass
+        return username
 
 
 ################################################

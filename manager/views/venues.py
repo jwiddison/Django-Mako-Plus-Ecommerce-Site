@@ -37,11 +37,11 @@ def create(request):
         if form.is_valid():  # Validate said form using validations specified in form object we created
 
             # create a temporary venue object
-            u = cmod.Venue()
+            v = cmod.Venue()
 
             # Fill venue object with the data captured from the form
             v.name = form.cleaned_data.get('name')
-            v.address1 = form.cleaned_data.get('address')
+            v.address = form.cleaned_data.get('address')
             v.city = form.cleaned_data.get('city')
             v.state = form.cleaned_data.get('state')
             v.zip_code = form.cleaned_data.get('zip_code')
@@ -66,14 +66,14 @@ class CreateVenueForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
 
     # Make sure that the name for the venue they're signing up with is unique.
-    def clean_name(self):
-        venue = self.cleaned_data.get('name')
-        try:
-            venue = cmod.Venue.objects.get(name=name)
-            raise forms.ValidationError('This Venue Name is already taken')
-        except cmod.Venue.DoesNotExist:
-            pass
-        return name
+    # def clean_name(self):
+    #     venue = self.cleaned_data.get('name')
+    #     try:
+    #         venue = cmod.Venue.objects.get(name=name)
+    #         raise forms.ValidationError('This Venue Name is already taken')
+    #     except cmod.Venue.DoesNotExist:
+    #         pass
+    #     return name
 
 
 ################################################
@@ -96,15 +96,11 @@ def edit(request):
         if form.is_valid():
 
             # Store captured form data to venue we're editing
-            venue.first_name = form.cleaned_data.get('first_name')
-            venue.last_name = form.cleaned_data.get('last_name')
-            venue.email = form.cleaned_data.get('email')
-            venue.address1 = form.cleaned_data.get('address1')
-            venue.address2 = form.cleaned_data.get('address2')
+            venue.name = form.cleaned_data.get('name')
+            venue.address = form.cleaned_data.get('address')
             venue.city = form.cleaned_data.get('city')
             venue.state = form.cleaned_data.get('state')
             venue.zip_code = form.cleaned_data.get('zip_code')
-            venue.phone_number = form.cleaned_data.get('phone_number')
 
             # Save changes
             venue.save()
@@ -126,12 +122,21 @@ class EditVenueForm(forms.Form):
     state = forms.CharField(label='State', required=False, max_length=100)
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100)
 
-    # Make sure that the venuename, if you change it, isn't already taken.
-    def clean_name(self):
-        name = self.cleaned_data.get('name')
-        try:
-            venue = cmod.Venue.objects.get(name=name)
-            raise forms.ValidationError('This Venue Name is already taken')
-        except cmod.Venue.DoesNotExist:
-            pass
-        return name
+
+################################################
+############### Delete a Venue #################
+################################################
+
+@view_function
+def delete(request):
+    '''Deletes a Venue'''
+    try:
+        venue = cmod.Venue.objects.get(id=request.urlparams[0])
+    except cmod.Venue.DoesNotExist:
+        return HttpResponseRedirect('/manager/venues/')
+
+    # Delete the venue
+    venue.delete()
+
+    # Redirect
+    return HttpResponseRedirect('/manager/venues/')
