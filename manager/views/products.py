@@ -21,3 +21,23 @@ def process_request(request):
       'products': products,
     }
     return dmp_render_to_response(request, 'products.html', template_vars)
+
+
+
+
+################################################
+############### Delete a event #################
+################################################
+@view_function
+def delete(request):
+    '''Deletes a Product'''
+    try:
+        product = cmod.Product.objects.get(id=request.urlparams[0])
+    except cmod.Product.DoesNotExist:
+        return HttpResponseRedirect('/manager/products/')
+
+    # Delete the event
+    product.delete()
+
+    # Redirect
+    return HttpResponseRedirect('/manager/products/')

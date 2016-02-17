@@ -72,8 +72,7 @@ class CreateForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-    # birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=DateTimePicker(attrs={'placeholder': '2000-01-01'}, options={'format': 'YYYY-MM-DD', 'pickTime': False}))
-    # the form field above doesn't work
+    
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 

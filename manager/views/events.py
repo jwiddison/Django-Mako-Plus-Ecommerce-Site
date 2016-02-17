@@ -30,9 +30,9 @@ def process_request(request):
 def create(request):
     '''Create a New event'''
     # process the form
-    form = CreateeventForm()
+    form = CreateEventForm()
     if request.method == 'POST':   # if they've submitted the form
-        form = CreateeventForm(request.POST) # Re-create the form with data in it
+        form = CreateEventForm(request.POST) # Re-create the form with data in it
         if form.is_valid():  # Validate said form using validations specified in form object we created
 
             # create a temporary event object
@@ -40,10 +40,10 @@ def create(request):
 
             # Fill event object with the data captured from the form
             e.name = form.cleaned_data.get('name')
-            e.address = form.cleaned_data.get('address')
-            e.city = form.cleaned_data.get('city')
-            e.state = form.cleaned_data.get('state')
-            e.zip_code = form.cleaned_data.get('zip_code')
+            e.description = form.cleaned_data.get('description')
+            e.start_date = form.cleaned_data.get('start_date')
+            e.end_date = form.cleaned_data.get('end_date')
+            e.venue = form.cleaned_data.get('venue')
 
             # Update database with event object
             e.save()
@@ -57,22 +57,14 @@ def create(request):
     }
     return dmp_render_to_response(request, 'events.create.html', template_vars)
 
-class CreateEventForm(forms.Form):
-    name = forms.CharField(label='event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
-    description = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    start_date = forms.DateField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
-    end_date = forms.DateField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
-    venue = forms.CharField(label='Address Line 1', required=False, widget=forms.TextInput(attrs={'placeholder': 'Venue'}))
 
-    # Make sure that the name for the event they're signing up with is unique.
-    # def clean_name(self):
-    #     event = self.cleaned_data.get('name')
-    #     try:
-    #         event = cmod.Event.objects.get(name=name)
-    #         raise forms.ValidationError('This event Name is already taken')
-    #     except cmod.Event.DoesNotExist:
-    #         pass
-    #     return name
+
+class CreateEventForm(forms.Form):
+    name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
+    description = forms.CharField(label='Desctiption', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
+    start_date = forms.DateField(label='Start Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
+    end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
+    venue = forms.ModelChoiceField(label='Venue', required=False, queryset=cmod.Venue.objects.all())
 
 
 ################################################
@@ -116,10 +108,10 @@ def edit(request):
 
 class EditEventForm(forms.Form):
     name = forms.CharField(label='Name', required=True, max_length=100)
-    description = forms.CharField(label='Description', required=True, max_length=100)
-    start_date = forms.DateField(label='Start Date', required=True)
-    end_date = forms.DateField(label='End Date', required=True)
-    venue = forms.CharField(label='Venue', required=True, max_length=100)
+    description = forms.CharField(label='Description', required=False, max_length=100)
+    start_date = forms.DateField(label='Start Date', required=False)
+    end_date = forms.DateField(label='End Date', required=False)
+    venue = forms.ModelChoiceField(label='Venue', required=False, queryset=cmod.Venue.objects.all())
 
 
 

@@ -31,6 +31,7 @@ RENTAL_STATUS_CHOICES_MAP = dict(RENTAL_STATUS_CHOICES)
 #######   Rental Product   ##############################################################################
 #########################################################################################################
 class RentalProduct(Product):
+    className = "Rental Product"
     status = models.TextField(null=True, blank=True, choices=RENTAL_STATUS_CHOICES)
     # rental = models.ForeignKey('Rental', null=True)
 
@@ -45,6 +46,7 @@ admin.site.register(RentalProduct)
 ####### Individual Product ##############################################################################
 #########################################################################################################
 class IndividualProduct(Product):
+    className = "Individual Product"
     creator = models.ForeignKey('account.User')
 
     def __str__(self):
@@ -59,6 +61,7 @@ admin.site.register(IndividualProduct)
 #######    Bulk Product    ##############################################################################
 #########################################################################################################
 class BulkProduct(Product):
+    className = "Bulk Product"
     quantity = models.IntegerField(default=0)
 
     def __str__(self):

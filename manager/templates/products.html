@@ -17,7 +17,7 @@
     %for product in products:
       <tr>
         <td>${product.name}</td>
-        <td>${ type(product) }</td>
+        <td>${ product.__class__.className }</td>
         <td>${product.description}</td>
         <td>${product.image}</td>
         <td>${product.add_date}</td>
@@ -34,11 +34,30 @@
         <td>
           <a href="/manager/products.edit/${ product.id }/">Edit</a>
            |
-          <a href="/manager/products.delete/${ product.id }/" id="delete_button">Delete</a>
+          <a href="/manager/products.delete/${ product.id }/" class="delete_product_button">Delete</a>
         </td>
       </tr>
     %endfor
   </table>
   <br />
   <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>
+       </div><!-- modal-header -->
+       <div class="modal-body">
+         Delete this event?
+       </div><!-- modal-body -->
+       <div class="modal-footer">
+         <a id="confirm_delete_product_button" href="" class="btn btn-danger">Delete</a>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       </div><!-- modal-footer -->
+     </div><!-- modal-content -->
+   </div><!-- modal-dialog -->
+ </div><!-- modal -->
 </%block>

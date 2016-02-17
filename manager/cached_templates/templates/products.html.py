@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455659643.103817
+_modified_time = 1455740152.292056
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -29,7 +29,6 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        type = context.get('type', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
         products = context.get('products', UNDEFINED)
@@ -48,7 +47,6 @@ def render_body(context,**pageargs):
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        type = context.get('type', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context)
         products = context.get('products', UNDEFINED)
@@ -58,7 +56,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(product.name))
             __M_writer('</td>\n        <td>')
-            __M_writer(str( type(product) ))
+            __M_writer(str( product.__class__.className ))
             __M_writer('</td>\n        <td>')
             __M_writer(str(product.description))
             __M_writer('</td>\n        <td>')
@@ -70,8 +68,8 @@ def render_top_content_area(context,**pageargs):
             __M_writer(str( product.id ))
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
             __M_writer(str( product.id ))
-            __M_writer('/" id="delete_button">Delete</a>\n        </td>\n      </tr>\n')
-        __M_writer('  </table>\n  <br />\n  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>\n')
+            __M_writer('/" class="delete_product_button">Delete</a>\n        </td>\n      </tr>\n')
+        __M_writer('  </table>\n  <br />\n  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this event?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_product_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -79,6 +77,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"64": 21, "65": 22, "66": 22, "67": 23, "68": 23, "69": 33, "70": 35, "71": 35, "72": 37, "73": 37, "74": 41, "80": 74, "28": 0, "37": 1, "42": 44, "48": 3, "56": 3, "57": 17, "58": 18, "59": 19, "60": 19, "61": 20, "62": 20, "63": 21}, "source_encoding": "utf-8", "uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "uri": "products.html", "line_map": {"64": 22, "65": 23, "66": 23, "67": 33, "68": 35, "69": 35, "70": 37, "71": 37, "72": 41, "78": 72, "28": 0, "36": 1, "41": 63, "47": 3, "54": 3, "55": 17, "56": 18, "57": 19, "58": 19, "59": 20, "60": 20, "61": 21, "62": 21, "63": 22}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
