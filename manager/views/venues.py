@@ -14,10 +14,10 @@ import datetime
 @view_function
 def process_request(request):
     '''List the users in a table on the screen '''
-    products = cmod.Venue.objects.all().order_by('name')
+    venues = cmod.Venue.objects.all().order_by('name')
 
 
     template_vars = {
-      'products': products,
+      'venues': venues,
     }
-    return dmp_render_to_response(request, 'products.html', template_vars)
+    return dmp_render_to_response(request, 'venues.html', template_vars)

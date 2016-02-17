@@ -8,16 +8,16 @@ from catalog import models as cmod
 import datetime
 
 #
-# Products Home Page
+# events Home Page
 #
 
 @view_function
 def process_request(request):
     '''List the users in a table on the screen '''
-    products = cmod.Product.objects.all().order_by('name')
+    events = cmod.Event.objects.all().order_by('name')
 
 
     template_vars = {
-      'products': products,
+      'events': events,
     }
-    return dmp_render_to_response(request, 'products.html', template_vars)
+    return dmp_render_to_response(request, 'events.html', template_vars)
