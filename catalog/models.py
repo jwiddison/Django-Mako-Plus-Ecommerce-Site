@@ -80,7 +80,7 @@ class Venue(models.Model):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Venue: %s (%s): %s' % (self.name)
+        return 'Venue: %s (%s)' % (self.name, self.address)
 
 admin.site.register(Venue)
 
@@ -96,7 +96,7 @@ class Event(models.Model):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Event: %s (%s): %s' % (self.name, self.description)
+        return 'Event: %s (%s)' % (self.name, self.description)
 
 admin.site.register(Event)
 
@@ -108,10 +108,10 @@ class Area(models.Model):
     name = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     place_number = models.TextField(null=True, blank=True)
-    venue = models.ForeignKey('catalog.Event')
+    event = models.ForeignKey('catalog.Event')
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Area: %s (%s): %s' % (self.name, self.description)
+        return 'Area: %s (%s)' % (self.name, self.description)
 
 admin.site.register(Area)

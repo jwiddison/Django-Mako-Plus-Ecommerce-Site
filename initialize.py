@@ -67,7 +67,7 @@ print('Creating products...')
 
 # rental items
 cmod.RentalProduct.objects.all().delete()
-for i in range(1, 5):
+for i in range(1, 6):
   p = cmod.RentalProduct()
   p.name = 'Rental%i' % i
   p.description = 'This rental, #%i, is a really cool rental beacuse it is number %i.' % (i, i)
@@ -78,7 +78,7 @@ for i in range(1, 5):
 
 # individual products
 cmod.IndividualProduct.objects.all().delete()
-for i in range(1, 5):
+for i in range(1, 6):
   p = cmod.IndividualProduct()
   p.name = 'IndividualProduct%i' % i
   p.description = 'This product, #%i, is an individual product.  It is a bit of a loner.' % i
@@ -89,7 +89,7 @@ for i in range(1, 5):
 
 # bulk products
 cmod.BulkProduct.objects.all().delete()
-for i in range(1, 5):
+for i in range(1, 6):
   p = cmod.BulkProduct()
   p.name = 'BulkProduct%i' % i
   p.description = 'This product, #%i, is an bulk product. It has lots of quantity.' % i
@@ -99,8 +99,9 @@ for i in range(1, 5):
   print(p)
 
 # Venue
-cmod.Venue.object.all().delete()
-for in in range(1,5):
+venues = []  # make list to use to create events
+cmod.Venue.objects.all().delete()
+for i in range(1,6):
     v = cmod.Venue()
     v.name = 'Venue%i' % i
     v.address = 'Address%i' % i
@@ -108,11 +109,13 @@ for in in range(1,5):
     v.state = 'State%i' %i
     v.zip_code = 'ZipCode%i' %i
     v.save()
+    venues.append(v)
     print(v)
 
 # Event
-cmod.Event.object.all().delete()
-for in in range(1,5):
+events = [] # Make list to use to create areas
+cmod.Event.objects.all().delete()
+for i in range(1,6):
     e = cmod.Event()
     e.name = 'Event%i' % i
     e.description = 'This event, #%i, is an event. It will be at a venue and will have areas.' % i
@@ -120,12 +123,13 @@ for in in range(1,5):
     e.end_date = datetime.datetime.now()
     e.venue = random.choice(venues)
     e.save()
+    events.append(e)
     print(e)
 
 
 # Area
-cmod.Area.object.all().delete()
-for in in range(1,5):
+cmod.Area.objects.all().delete()
+for i in range(1,6):
     a = cmod.Area()
     a.name = 'Area%i' % i
     a.description = 'This area, #%i, is an area.  It is at an Event.' % i
@@ -133,8 +137,3 @@ for in in range(1,5):
     a.event = random.choice(events)
     a.save()
     print(a)
-
-
-# print()
-# for p in cmod.Product.objects.all():
-#     print(type(p),p)
