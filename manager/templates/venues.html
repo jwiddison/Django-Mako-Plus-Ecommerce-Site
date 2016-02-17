@@ -1,0 +1,44 @@
+<%inherit file="app_base.htm" />
+
+<%block name="top_content_area">
+  <h3>All Products:</h3>
+  <hr />
+  <br />
+  <table class="table table-striped">
+    <tr>
+      <th>Product Name</th>
+      <th>Product Type</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Date Added</th>
+      <th>Other Info</th>
+      <th>Edit | Delete</th>
+    </tr>
+    %for product in products:
+      <tr>
+        <td>${product.name}</td>
+        <td>${ type(product) }</td>
+        <td>${product.description}</td>
+        <td>${product.image}</td>
+        <td>${product.add_date}</td>
+        <td>
+          Rental Product
+          ## %if type(product) = "RentalProduct"
+          ##   ${product.status}
+          ## %else if type(product) = "IndividualProduct"
+          ##   ${product.creator}
+          ## %else #if BulkProduct
+          ##   ${product.quantity}
+          ## %endif
+        </td>
+        <td>
+          <a href="/manager/products.edit/${ product.id }/">Edit</a>
+           |
+          <a href="/manager/products.delete/${ product.id }/" id="delete_button">Delete</a>
+        </td>
+      </tr>
+    %endfor
+  </table>
+  <br />
+  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>
+</%block>

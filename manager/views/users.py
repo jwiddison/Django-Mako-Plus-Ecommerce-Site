@@ -73,11 +73,11 @@ class EditForm(forms.Form):
     state = forms.CharField(label='State', required=False)
     zip_code = forms.CharField(label='Zip Code', required=False)
     phone_number = forms.CharField(label="Phone Number", required=False)
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ])
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ])
 
     # Make sure birth date is before today
     def clean_birth(self):
-        if self.cleaned_data.get('birth') > datetime.date.today():
+        if self.cleaned_data.get('birth') >= datetime.date.today():
             raise forms.ValidationError("Enter a date before today's date")
         return self.cleaned_data
 
@@ -144,7 +144,7 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetimepicker4'}))
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetimepicker4'}))
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
@@ -160,7 +160,7 @@ class CreateForm(forms.Form):
 
     # Make sure birth date is before today
     def clean_birth(self):
-        if self.cleaned_data.get('birth') > datetime.date.today():
+        if self.cleaned_data.get('birth') >= datetime.date.today():
             raise forms.ValidationError("Enter a date before today's date")
         return self.cleaned_data
 

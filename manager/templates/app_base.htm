@@ -9,6 +9,8 @@
 <%block name="content_right"></%block>
 <%block name="content"></%block>
 
+<%block name="icon"></%block>
+
 <%block name="top_content_area">
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
   <hr/>
@@ -16,11 +18,13 @@
 </%block>
 
 <%block name="navbar_title">
-  <a class="navbar-brand" href="/manager/index">ColonialHeritage.org - Administrator</a>
+  <a class="navbar-brand" href="/manager/index">ColonialHeritage.org - Manager</a>
 </%block>
 
 <%block name="menu">
   ## uses if statements to check if the active page = the menu item, and then sets the page we're on as "active"
   <li class="${ 'active' if request.dmp_router_page == 'users' else ''}"><a href="/manager/users">Users</a></li>
   <li class="${ 'active' if request.dmp_router_page == 'products' else ''}"><a href="/manager/products">Products</a></li>
+  <li class="${ 'active' if request.dmp_router_page == 'venues' else ''}"><a href="/manager/venues">Venues</a></li>
+  <li class="${ 'active' if request.dmp_router_page == 'events' else ''}"><a href="/manager/events">Events</a></li>
 </%block>
