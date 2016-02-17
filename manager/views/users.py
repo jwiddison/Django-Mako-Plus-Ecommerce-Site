@@ -24,7 +24,7 @@ def process_request(request):
 PERMISSIONS_OPTIONS = (
     ("is_staff", "Manager"),
     ("is_superuser", "Volunteer"),
-    ("neither", "Basic User"),
+    ("neither", "End User"),
 )
 
 

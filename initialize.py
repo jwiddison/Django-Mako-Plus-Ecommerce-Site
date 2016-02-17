@@ -21,6 +21,22 @@ import datetime, random, sys
 print()
 print('Creating permissions and groups...')
 
+# imports for permissions
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+from account import models as accmod
+
+# Delete all current groups
+Group.objects.all().delete()
+
+
+# Create 3 groups, and create permissions for each group
+manager = Group.objects.create(name="Manager")
+
+manager.permissions.add('')
+
+volunteer = Group.objects.create(name="Volunteer")
+end_user = Group.objects.create(name="End User")
 
 ######################################
 ###   Users
