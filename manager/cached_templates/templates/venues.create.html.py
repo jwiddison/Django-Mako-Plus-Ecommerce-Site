@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455724829.835968
+_modified_time = 1455733718.37244
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html'
 _template_uri = 'venues.create.html'
@@ -61,6 +61,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html", "uri": "venues.create.html", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 13, "28": 0, "62": 56, "47": 3}}
+{"source_encoding": "utf-8", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 13, "28": 0, "62": 56, "47": 3}, "uri": "venues.create.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html"}
 __M_END_METADATA
 """

@@ -72,7 +72,9 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=forms.DateInput(attrs={'placeholder':'1980-01-01'}))
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
+    # birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ], widget=DateTimePicker(attrs={'placeholder': '2000-01-01'}, options={'format': 'YYYY-MM-DD', 'pickTime': False}))
+    # the form field above doesn't work
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
@@ -87,10 +89,10 @@ class CreateForm(forms.Form):
         return username
 
     # Make sure birth date is before today
-    def clean_birth(self):
-        if self.cleaned_data.get('birth') >= datetime.date.today():
-            raise forms.ValidationError("Enter a date before today's date")
-        return self.cleaned_data
+    # def clean_birth(self):
+    #     if self.cleaned_data.get('birth') >= datetime.date.today():
+    #         raise forms.ValidationError("Enter a date before today's date")
+    #     return self.cleaned_data
 
 
 
@@ -149,13 +151,7 @@ class EditForm(forms.Form):
     state = forms.CharField(label='State', required=False)
     zip_code = forms.CharField(label='Zip Code', required=False)
     phone_number = forms.CharField(label="Phone Number", required=False)
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=[ '%Y-%m-%d' ])
-
-    # Make sure birth date is before today
-    def clean_birth(self):
-        if self.cleaned_data.get('birth') >= datetime.date.today():
-            raise forms.ValidationError("Enter a date before today's date")
-        return self.cleaned_data
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput())
 
     # Make sure that the username, if you change it, isn't already taken.
     def clean_username(self):
@@ -220,8 +216,8 @@ def password(request):
 
 
 class PasswordForm(forms.Form):
-    new_password = forms.CharField(label='New Password', required=True, widget=forms.PasswordInput())
-    new_password2 = forms.CharField(label='Confirm New Password', required=True, widget=forms.PasswordInput())
+    new_password = forms.CharField(label='New Password', required=True)
+    new_password2 = forms.CharField(label='Confirm New Password', required=True)
 
     # Make sure the two passwords are equal to each other
     def clean(self):
