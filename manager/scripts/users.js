@@ -6,8 +6,6 @@ $(function() {
     // Store url in variable
     var url = $(this).attr('href');
 
-    console.log(url);
-
     // Set href of button in modal
     $('#confirm_delete_button').attr('href', url);
 
