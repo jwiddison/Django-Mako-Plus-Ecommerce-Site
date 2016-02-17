@@ -12,7 +12,6 @@ def process_request(request):
     '''List the users in a table on the screen '''
     users = amod.User.objects.all().order_by('username')
 
-
     template_vars = {
       'users': users,
     }

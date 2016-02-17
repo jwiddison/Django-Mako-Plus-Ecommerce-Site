@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455729925.851042
+_modified_time = 1455735042.593966
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html'
 _template_uri = 'users.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
         def top_content_area():
             return render_top_content_area(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Users:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Birth Date</th>\n      <th>Edit | Change Password | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All Users:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Birth Date</th>\n      <th>Groups</th>\n      <th>Edit | Change Password | Delete</th>\n    </tr>\n')
         for user in users:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(user.username))
@@ -75,7 +75,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer(str(user.phone_number))
             __M_writer('</td>\n        <td>')
             __M_writer(str(user.birth))
-            __M_writer('</td>\n        <td>\n          <a href="/manager/users.edit/')
+            __M_writer('</td>\n        <td>Group</td>\n        <td>\n          <a href="/manager/users.edit/')
             __M_writer(str( user.id ))
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/users.password/')
             __M_writer(str( user.id ))
@@ -90,6 +90,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html", "uri": "users.html", "line_map": {"64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 30, "70": 30, "71": 31, "72": 31, "73": 32, "74": 32, "75": 33, "76": 33, "77": 34, "78": 34, "79": 36, "80": 36, "81": 38, "82": 38, "83": 40, "84": 40, "85": 44, "91": 85, "28": 0, "36": 1, "41": 66, "47": 3, "54": 3, "55": 22, "56": 23, "57": 24, "58": 24, "59": 25, "60": 25, "61": 26, "62": 26, "63": 27}, "source_encoding": "utf-8"}
+{"uri": "users.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html", "line_map": {"64": 28, "65": 29, "66": 29, "67": 30, "68": 30, "69": 31, "70": 31, "71": 32, "72": 32, "73": 33, "74": 33, "75": 34, "76": 34, "77": 35, "78": 35, "79": 38, "80": 38, "81": 40, "82": 40, "83": 42, "84": 42, "85": 46, "91": 85, "28": 0, "36": 1, "41": 68, "47": 3, "54": 3, "55": 23, "56": 24, "57": 25, "58": 25, "59": 26, "60": 26, "61": 27, "62": 27, "63": 28}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """
