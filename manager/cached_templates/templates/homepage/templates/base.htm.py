@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455677374.527257
+_modified_time = 1455681044.638188
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -67,7 +67,9 @@ def render_body(context,**pageargs):
         __M_writer(str( STATIC_URL ))
         __M_writer('homepage/media/pics/flagicon.gif">\n    <!-- Bootstrap minified CSS, and custom global CSS -->\n    <link rel="stylesheet" type="text/css" href="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/bootstrap/css/bootstrap.min.css" />\n')
+        __M_writer('homepage/media/bootstrap/css/bootstrap.min.css" />\n    <link rel="stylesheet" type="text/css" href="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/bootstrap-datetimepicker.min.css" />\n')
         __M_writer('    ')
         __M_writer(str( static_renderer.get_template_css(request, context)  ))
         __M_writer('\n  </head>\n  <body>\n')
@@ -110,13 +112,11 @@ def render_body(context,**pageargs):
         __M_writer(str( STATIC_URL ))
         __M_writer('homepage/media/bootstrap/js/bootstrap.min.js"></script>\n    <script src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/bootstrap/js/bootstrap2.js"></script>\n    <script src="')
-        __M_writer(str( STATIC_URL ))
         __M_writer('homepage/media/jquery.loadmodal.js"></script>\n    <script src="')
         __M_writer(str( STATIC_URL ))
         __M_writer('homepage/media/jquery.form.js"></script>\n    <script src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('manager/media/moment.js"></script>\n')
+        __M_writer('homepage/media/bootstrap-datetimepicker.min.js"></script>\n')
         __M_writer('    ')
         __M_writer(str( static_renderer.get_template_js(request, context)  ))
         __M_writer('\n  </body>\n</html>\n')
@@ -373,6 +373,6 @@ def render_footer(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"257": 28, "263": 28, "269": 75, "17": 6, "19": 0, "276": 75, "277": 76, "278": 77, "279": 79, "280": 79, "281": 88, "282": 89, "283": 91, "289": 55, "296": 55, "297": 56, "298": 56, "304": 59, "310": 59, "55": 4, "56": 6, "57": 7, "316": 13, "61": 7, "360": 134, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 18, "328": 65, "73": 18, "74": 22, "79": 35, "336": 67, "337": 67, "338": 67, "339": 68, "340": 68, "341": 69, "342": 69, "343": 70, "344": 70, "89": 105, "346": 71, "94": 112, "352": 132, "99": 117, "358": 132, "359": 134, "104": 122, "109": 140, "110": 148, "111": 148, "112": 149, "113": 149, "114": 150, "115": 150, "116": 151, "117": 151, "118": 152, "119": 152, "120": 154, "121": 154, "122": 154, "345": 71, "128": 41, "134": 41, "140": 120, "322": 13, "146": 120, "366": 138, "152": 110, "367": 139, "158": 110, "368": 139, "164": 38, "72": 18, "182": 38, "183": 40, "188": 42, "193": 57, "374": 368, "198": 61, "203": 72, "208": 91, "214": 103, "335": 65, "220": 103, "226": 115, "232": 115, "238": 22, "246": 22, "84": 96, "251": 29}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8"}
+{"line_map": {"257": 29, "86": 97, "263": 29, "269": 76, "17": 6, "19": 0, "276": 76, "277": 77, "278": 78, "279": 80, "280": 80, "281": 89, "282": 90, "283": 92, "289": 56, "296": 56, "297": 57, "298": 57, "304": 60, "310": 60, "55": 4, "56": 6, "57": 7, "316": 13, "61": 7, "352": 133, "322": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 17, "328": 66, "73": 19, "74": 19, "75": 19, "76": 23, "335": 66, "336": 68, "81": 36, "338": 68, "339": 69, "340": 69, "341": 70, "342": 70, "343": 71, "344": 71, "345": 72, "346": 72, "91": 106, "96": 113, "101": 118, "358": 133, "359": 135, "360": 135, "106": 123, "366": 139, "111": 141, "112": 149, "113": 149, "114": 150, "115": 150, "116": 151, "117": 151, "118": 152, "119": 152, "120": 154, "121": 154, "122": 154, "128": 42, "134": 42, "140": 121, "66": 13, "146": 121, "152": 111, "367": 140, "158": 111, "368": 140, "164": 39, "72": 17, "182": 39, "183": 41, "188": 43, "193": 58, "374": 368, "198": 62, "203": 73, "208": 92, "214": 104, "220": 104, "226": 116, "337": 68, "232": 116, "238": 23, "246": 23, "251": 30}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8"}
 __M_END_METADATA
 """

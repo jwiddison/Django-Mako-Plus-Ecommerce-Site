@@ -14,6 +14,7 @@
     <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/flagicon.gif">
     <!-- Bootstrap minified CSS, and custom global CSS -->
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.css" />
     ## render the css with the same name as this page
     ${ static_renderer.get_template_css(request, context)  }
   </head>
@@ -146,10 +147,9 @@
     <!-- Javascript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="${ STATIC_URL }homepage/media/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${ STATIC_URL }homepage/media/bootstrap/js/bootstrap2.js"></script>
     <script src="${ STATIC_URL }homepage/media/jquery.loadmodal.js"></script>
     <script src="${ STATIC_URL }homepage/media/jquery.form.js"></script>
-    <script src="${ STATIC_URL }manager/media/moment.js"></script>
+    <script src="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.js"></script>
     ## render the JS with the same name as this page
     ${ static_renderer.get_template_js(request, context)  }
   </body>

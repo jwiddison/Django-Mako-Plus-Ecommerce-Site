@@ -98,7 +98,43 @@ for i in range(1, 5):
   p.save()
   print(p)
 
+# Venue
+cmod.Venue.object.all().delete()
+for in in range(1,5):
+    v = cmod.Venue()
+    v.name = 'Venue%i' % i
+    v.address = 'Address%i' % i
+    v.city = 'City%i' % i
+    v.state = 'State%i' %i
+    v.zip_code = 'ZipCode%i' %i
+    v.save()
+    print(v)
 
-print()
-for p in cmod.Product.objects.all():
-    print(type(p),p)
+# Event
+cmod.Event.object.all().delete()
+for in in range(1,5):
+    e = cmod.Event()
+    e.name = 'Event%i' % i
+    e.description = 'This event, #%i, is an event. It will be at a venue and will have areas.' % i
+    e.start_date = datetime.datetime.now()
+    e.end_date = datetime.datetime.now()
+    e.venue = random.choice(venues)
+    e.save()
+    print(e)
+
+
+# Area
+cmod.Area.object.all().delete()
+for in in range(1,5):
+    a = cmod.Area()
+    a.name = 'Area%i' % i
+    a.description = 'This area, #%i, is an area.  It is at an Event.' % i
+    a.place_number = 'Place%i' % i
+    a.event = random.choice(events)
+    a.save()
+    print(a)
+
+
+# print()
+# for p in cmod.Product.objects.all():
+#     print(type(p),p)

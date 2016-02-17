@@ -68,10 +68,50 @@ class BulkProduct(Product):
 admin.site.register(BulkProduct)
 
 
+#########################################################################################################
+#######    Venue           ##############################################################################
+#########################################################################################################
+class Venue(models.Model):
+    name = models.TextField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    city = models.TextField(null=True, blank=True)
+    state = models.TextField(null=True, blank=True)
+    zip_code = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Venue: %s (%s): %s' % (self.name)
+
+admin.site.register(Venue)
 
 #########################################################################################################
 #######    Event           ##############################################################################
 #########################################################################################################
-# 
-# class Event(models.Model):
-#     name = models.TextField(null=True, blank=True)
+class Event(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    start_date =  models.DateField(null=True, blank=True)
+    end_date =  models.DateField(null=True, blank=True)
+    venue = models.ForeignKey('catalog.Venue')
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Event: %s (%s): %s' % (self.name, self.description)
+
+admin.site.register(Event)
+
+
+#########################################################################################################
+#######    Area            ##############################################################################
+#########################################################################################################
+class Area(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    place_number = models.TextField(null=True, blank=True)
+    venue = models.ForeignKey('catalog.Event')
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Area: %s (%s): %s' % (self.name, self.description)
+
+admin.site.register(Area)

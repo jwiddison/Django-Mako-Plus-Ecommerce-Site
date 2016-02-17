@@ -64,15 +64,15 @@ def edit(request):
 
 
 class EditForm(forms.Form):
-    first_name = forms.CharField(label='First Name', max_length=100, required=True)
-    last_name = forms.CharField(label='Last Name', max_length=100, required=True)
-    email = forms.EmailField(label='Email Address', required=True)
-    address1 = forms.CharField(label='Address Line 1', required=True, max_length=100)
+    first_name = forms.CharField(label='First Name', max_length=100, required=False)
+    last_name = forms.CharField(label='Last Name', max_length=100, required=False)
+    email = forms.EmailField(label='Email Address', required=False)
+    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100)
     address2 = forms.CharField(label='Address Line 2', required=False, max_length=100)
-    city = forms.CharField(label='City', required=True)
-    state = forms.CharField(label='State', required=True)
-    zip_code = forms.CharField(label='Zip Code', required=True)
-    phone_number = forms.CharField(label="Phone Number", required=True)
+    city = forms.CharField(label='City', required=False)
+    state = forms.CharField(label='State', required=False)
+    zip_code = forms.CharField(label='Zip Code', required=False)
+    phone_number = forms.CharField(label="Phone Number", required=False)
     birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ])
 
     # Make sure birth date is before today
@@ -133,17 +133,17 @@ def create(request):
     return dmp_render_to_response(request, 'users.create.html', template_vars)
 
 class CreateForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    username = forms.CharField(label='Username', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password'}))
-    first_name = forms.CharField(label='First Name', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
-    last_name = forms.CharField(label='Last Name', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    email = forms.EmailField(label='Email Address', required=False, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
+    first_name = forms.CharField(label='First Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
+    last_name = forms.CharField(label='Last Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+    email = forms.EmailField(label='Email Address', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1'}))
     address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 2'}))
-    city = forms.CharField(label='City', required=False, widget=forms.TextInput(attrs={'placeholder': 'City'}))
-    state = forms.CharField(label='State', required=False, widget=forms.TextInput(attrs={'placeholder': 'State'}))
-    zip_code = forms.CharField(label='Zip Code', required=False, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
-    phone_number = forms.CharField(label="Phone Number", required=False,widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
+    city = forms.CharField(label='City', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'City'}))
+    state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
+    zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
+    phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=False, input_formats=[ '%Y-%m-%d' ], widget=forms.TextInput(attrs={'placeholder':'1980-01-01', 'id': 'datetimepicker4'}))
 
     ## ----- CUSTOM VALIDATIONS ------ ##
