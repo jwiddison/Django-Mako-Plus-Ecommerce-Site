@@ -33,9 +33,16 @@ Group.objects.all().delete()
 # Create 3 groups, and create permissions for each group
 manager = Group.objects.create(name="Manager")
 
-manager.permissions.add('')
+# Make a list of all the permission in the database
+permissions = Permission.objects.all()
+
+# Add all permission in the list to the manager
+for p in permissions:
+    manager.permissions.add(p) # This is how you add permission.  Here we're adding each p in the permissions list.
 
 volunteer = Group.objects.create(name="Volunteer")
+# Volunteer should get all but permissions related to the user
+
 end_user = Group.objects.create(name="End User")
 
 ######################################
