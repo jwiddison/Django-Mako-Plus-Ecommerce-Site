@@ -3,6 +3,7 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
+from django.contrib.auth.models import Group
 from .. import dmp_render, dmp_render_to_response
 from account import models as amod
 import datetime
@@ -53,16 +54,16 @@ def create(request):
             u.zip_code = form.cleaned_data.get('zip_code')
             u.phone_number = form.cleaned_data.get('phone_number')
             u.birth = form.cleaned_data.get('birth')
-            # Set user permissions
-            # if userpermission == 'is_staff':
-            #     u.is_staff = True
-            #     u.is_superuser = True
-            # if userpermission == 'is_superuser':
-            #     u.is_staff = False
-            #     u.is_superuser = True
-            # if userpermission == 'neither':
-            #     u.is_staff = False
-            #     u.is_superuser = False
+            u.group = form.cleaned_data.get('group')
+            if u.group == 'Manager':
+                u.is_staff = True
+                u.is_superuser = True
+            if u.group == 'SalesRep':
+                u.is_staff = True
+                u.is_superuser = False
+            if u.group == 'Customer':
+                u.is_staff = False
+                u.is_superuser = False
 
             # Update database with user object
             u.save()
@@ -89,7 +90,7 @@ class CreateForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-
+    group = forms.ModelChoiceField(label='Auth Group', required=True, queryset=Group.objects.all())
 
     ## ----- CUSTOM VALIDATIONS ------ ##
 
