@@ -80,8 +80,11 @@ def edit(request):
     except cmod.Event.DoesNotExist:
         return HttpResponseRedirect('/manager/events/')
 
-    # Create a list of areas
+    # Create a list of areas to send to template
     areas = cmod.Area.objects.all().order_by('name')
+
+    # Create list of events to send to template too
+    events = cmod.Event.objects.all()
 
     # Process Edit form
     form = EditEventForm(initial=model_to_dict(event))
@@ -105,6 +108,7 @@ def edit(request):
     template_vars = {
         'form': form,
         'areas': areas,
+        'events': events,
         # 'event': event,
     }
     return dmp_render_to_response(request, 'events.edit.html', template_vars)

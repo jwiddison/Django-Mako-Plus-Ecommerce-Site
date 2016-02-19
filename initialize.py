@@ -30,20 +30,24 @@ from account import models as accmod
 Group.objects.all().delete()
 
 
-# Create 3 groups, and create permissions for each group
-manager = Group.objects.create(name="Manager")
+# manager group (managers have all permissions)
+group_manager = Group()
+group_manager.name = 'Manager'
+group_manager.save()
+for p in Permission.objects.all():
+  group_manager.permissions.add(p)
 
-# Make a list of all the permission in the database
-permissions = Permission.objects.all()
+# SalesRep group (sales reps can change only catalog items)
+group_salesrep = Group()
+group_salesrep.name = 'SalesRep'
+group_salesrep.save()
+for p in Permission.objects.filter(content_type__app_label='catalog'):
+  group_salesrep.permissions.add(p)
 
-# Add all permission in the list to the manager
-for p in permissions:
-    manager.permissions.add(p) # This is how you add permission.  Here we're adding each p in the permissions list.
-
-volunteer = Group.objects.create(name="Volunteer")
-# Volunteer should get all but permissions related to the user
-
-end_user = Group.objects.create(name="End User")
+# customer group (customers have no permissions)
+group_customer = Group()
+group_customer.name = 'Customer'
+group_customer.save()
 
 ######################################
 ###   Users
@@ -70,13 +74,18 @@ for i in range(1, 10):
   if i == 1:
     u.is_staff = True
     u.is_superuser = True
+  if i == 2:
+    u.groups.add(group_manager)
   u.save()
   print(u)
   users.append(u)
   # assign user to some groups/permissions
 print('user1, pass1 is the superuser.')
 
-
+# print the permissions of user2 so we know what to use with @permission_required().  user2 is in the Manager group, which has every permission.
+print()
+for name in sorted(users[1].get_all_permissions()):
+  print('Permission:', name)
 
 
 #####################################
@@ -124,7 +133,7 @@ for i in range(1, 6):
 # Venue
 venues = []  # make list to use to create events
 cmod.Venue.objects.all().delete()
-for i in range(1,6):
+for i in range(1,10):
     v = cmod.Venue()
     v.name = 'Venue%i' % i
     v.address = 'Address%i' % i
@@ -136,9 +145,12 @@ for i in range(1,6):
     print(v)
 
 # Event
-events = [] # Make list to use to create areas
+
+# Delete all events and areas
 cmod.Event.objects.all().delete()
-for i in range(1,6):
+cmod.Area.objects.all().delete()
+
+for i in range(1,10):
     e = cmod.Event()
     e.name = 'Event%i' % i
     e.description = 'This event, #%i, is an event. It will be at a venue and will have areas.' % i
@@ -146,17 +158,13 @@ for i in range(1,6):
     e.end_date = datetime.datetime.now()
     e.venue = random.choice(venues)
     e.save()
-    events.append(e)
+    # Add some areas to that particular event
+    for i in range(1,4):
+        a = cmod.Area()
+        a.name = 'Area%i' % i
+        a.description = 'This area, #%i, is an area.  It is at an Event.' % i
+        a.place_number = 'Place%i' % i
+        a.event = e
+        a.save()
+        print(a)
     print(e)
-
-
-# Area
-cmod.Area.objects.all().delete()
-for i in range(1,6):
-    a = cmod.Area()
-    a.name = 'Area%i' % i
-    a.description = 'This area, #%i, is an area.  It is at an Event.' % i
-    a.place_number = 'Place%i' % i
-    a.event = random.choice(events)
-    a.save()
-    print(a)

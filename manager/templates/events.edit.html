@@ -24,14 +24,17 @@
     </tr>
     %for area in areas:
       <tr>
-        <td>${area.name}</td>
-        <td>${area.description}</td>
-        <td>${area.place_number}</td>
-        <td>
-          <a href="">Edit</a>
-           |
-          <a href="" class="delete_area_button">Delete</a>
-        </td>
+        %if area.event.id == request.urlparams[0]:
+          <td>${area.name}</td>
+          <td>${area.description}</td>
+          <td>${area.place_number}</td>
+          <td>${area.event}</td>
+          <td>
+            <a href="">Edit</a>
+             |
+            <a href="" class="delete_area_button">Delete</a>
+          </td>
+        %endif
       </tr>
     %endfor
   </table>

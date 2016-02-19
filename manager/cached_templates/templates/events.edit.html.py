@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455740652.744061
+_modified_time = 1455858005.899752
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html'
 _template_uri = 'events.edit.html'
@@ -31,8 +31,9 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        areas = context.get('areas', UNDEFINED)
         form = context.get('form', UNDEFINED)
+        areas = context.get('areas', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -50,20 +51,26 @@ def render_top_content_area(context,**pageargs):
     try:
         def top_content_area():
             return render_top_content_area(context)
-        areas = context.get('areas', UNDEFINED)
         form = context.get('form', UNDEFINED)
+        areas = context.get('areas', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <h3>Edit Event:</h3>\n  <hr />\n  <br />\n  <form method="POST">\n    <table>\n      ')
         __M_writer(str( form.as_table() ))
         __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Save Changes" />\n  </form>\n  <br />\n  <h3>Areas at this Event:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Area Name</th>\n      <th>Description</th>\n      <th>Place Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for area in areas:
-            __M_writer('      <tr>\n        <td>')
-            __M_writer(str(area.name))
-            __M_writer('</td>\n        <td>')
-            __M_writer(str(area.description))
-            __M_writer('</td>\n        <td>')
-            __M_writer(str(area.place_number))
-            __M_writer('</td>\n        <td>\n          <a href="">Edit</a>\n           |\n          <a href="" class="delete_area_button">Delete</a>\n        </td>\n      </tr>\n')
+            __M_writer('      <tr>\n')
+            if area.event.id == request.urlparams[0]:
+                __M_writer('          <td>')
+                __M_writer(str(area.name))
+                __M_writer('</td>\n          <td>')
+                __M_writer(str(area.description))
+                __M_writer('</td>\n          <td>')
+                __M_writer(str(area.place_number))
+                __M_writer('</td>\n          <td>')
+                __M_writer(str(area.event))
+                __M_writer('</td>\n          <td>\n            <a href="">Edit</a>\n             |\n            <a href="" class="delete_area_button">Delete</a>\n          </td>\n')
+            __M_writer('      </tr>\n')
         __M_writer('  </table>\n')
         return ''
     finally:
@@ -72,6 +79,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"64": 28, "65": 29, "66": 29, "67": 37, "37": 1, "60": 26, "42": 38, "48": 3, "73": 67, "56": 3, "57": 9, "58": 9, "59": 25, "28": 0, "61": 27, "62": 27, "63": 28}, "uri": "events.edit.html", "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html"}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html", "uri": "events.edit.html", "line_map": {"64": 28, "65": 28, "66": 28, "67": 29, "68": 29, "69": 30, "70": 30, "71": 31, "72": 31, "73": 38, "74": 40, "80": 74, "28": 0, "38": 1, "43": 41, "49": 3, "58": 3, "59": 9, "60": 9, "61": 25, "62": 26, "63": 27}}
 __M_END_METADATA
 """
