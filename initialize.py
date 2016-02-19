@@ -24,7 +24,6 @@ print('Creating permissions and groups...')
 # imports for permissions
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
-from account import models as accmod
 
 # Delete all current groups
 Group.objects.all().delete()
@@ -74,8 +73,8 @@ for i in range(1, 10):
   if i == 1:
     u.is_staff = True
     u.is_superuser = True
-  if i == 2:
-    u.groups.add(group_manager)
+  # if i == 2:
+  #   u.groups.add(group_manager)
   u.save()
   print(u)
   users.append(u)
@@ -158,13 +157,13 @@ for i in range(1,10):
     e.end_date = datetime.datetime.now()
     e.venue = random.choice(venues)
     e.save()
+    print(e)
     # Add some areas to that particular event
-    for i in range(1,4):
+    for j in range(1,4):
         a = cmod.Area()
-        a.name = 'Area%i' % i
-        a.description = 'This area, #%i, is an area.  It is at an Event.' % i
-        a.place_number = 'Place%i' % i
+        a.name = 'Area%i' % j
+        a.description = 'Description of the area %i' % j
+        a.place_number = i*j
         a.event = e
         a.save()
         print(a)
-    print(e)
