@@ -143,7 +143,7 @@ for i in range(1,10):
     venues.append(v)
     print(v)
 
-# Event
+# Events and Areas
 
 # Delete all events and areas
 cmod.Event.objects.all().delete()
