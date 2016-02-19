@@ -54,15 +54,15 @@ def create(request):
             u.phone_number = form.cleaned_data.get('phone_number')
             u.birth = form.cleaned_data.get('birth')
             # Set user permissions
-            if userpermission == 'is_staff':
-                u.is_staff = True
-                u.is_superuser = True
-            if userpermission == 'is_superuser':
-                u.is_staff = False
-                u.is_superuser = True
-            if userpermission == 'neither':
-                u.is_staff = False
-                u.is_superuser = False
+            # if userpermission == 'is_staff':
+            #     u.is_staff = True
+            #     u.is_superuser = True
+            # if userpermission == 'is_superuser':
+            #     u.is_staff = False
+            #     u.is_superuser = True
+            # if userpermission == 'neither':
+            #     u.is_staff = False
+            #     u.is_superuser = False
 
             # Update database with user object
             u.save()
@@ -89,7 +89,6 @@ class CreateForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-    permission = forms.ChoiceField(widget=forms.RadioSelect, choices=PERMISSIONS_OPTIONS)
 
 
     ## ----- CUSTOM VALIDATIONS ------ ##
