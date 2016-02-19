@@ -33,17 +33,17 @@
         <td>${user.zip_code}</td>
         <td>${user.phone_number}</td>
         <td>${user.birth}</td>
-        <td>
-          %if user.is_staff:
-            Admin
-          %endif
-          %if not user.is_staff:
-            %if user.is_superuser == True:
-              Volunteer
-            %else:
-              Basic User
-            %endif
-          %endif
+        <td>${user.groups}
+          ## %if user.is_staff:
+          ##   Admin
+          ## %endif
+          ## %if not user.is_staff:
+          ##   %if user.is_superuser == True:
+          ##     Volunteer
+          ##   %else:
+          ##     Basic User
+          ##   %endif
+          ## %endif
         </td>
         <td>
           <a href="/manager/users.edit/${ user.id }/">Edit</a>

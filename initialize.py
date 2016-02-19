@@ -10,20 +10,20 @@ django.setup()
 # regular imports
 from account import models as amod
 from catalog import models as cmod
+# imports for permissions
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+# other useful imports
 import datetime, random, sys
 
-#print("You should not be running this.  No soup for you.")
+##UNCOMMENT these lines when finished
+#print("You should not be running this on a production system.")
 #sys.exit(0)
 
 #####################################
 ###   Create Permissions and Groups
-
 print()
 print('Creating permissions and groups...')
-
-# imports for permissions
-from django.contrib.auth.models import Group, Permission
-from django.contrib.contenttypes.models import ContentType
 
 # Delete all current groups
 Group.objects.all().delete()
@@ -74,7 +74,7 @@ for i in range(1, 10):
     u.is_staff = True
     u.is_superuser = True
   # if i == 2:
-  #   u.groups.add(group_manager)
+  #   group_manager.user_set.add(u)
   u.save()
   print(u)
   users.append(u)
