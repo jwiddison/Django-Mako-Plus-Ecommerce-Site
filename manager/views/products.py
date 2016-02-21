@@ -36,8 +36,18 @@ def create(request):
         form = CreateProductForm(request.POST) # Re-create the form with data in it
         if form.is_valid():  # Validate said form using validations specified in form object we created
 
-            # create a temporary user object
-            p = cmod.Product()
+            #Check the type of product and save attributes accordingly
+            if form.cleaned_data.get('product_type') == 'RentalProduct':
+                p = cmod.RentalProduct()
+                p.purchase_date = form.cleaned_data.get('purchase_date')
+                p.status = form.cleaned_data.get('status')
+            elif form.cleaned_data.get('product_type') == 'IndividualProduct':
+                p = cmod.IndividualProduct()
+                p.create_date = form.cleaned_data.get('create_date')
+                p.creator = form.cleaned_data.get('creator')
+            elif form.cleaned_data.get('product_type') == 'BulkProduct':
+                p = cmod.BulkProduct()
+                p.quantity = form.cleaned_data.get('quantity')
 
             # Fill user object with the data captured from the form
             p.name = form.cleaned_data.get('name')
@@ -58,10 +68,22 @@ def create(request):
     return dmp_render_to_response(request, 'products.create.html', template_vars)
 
 class CreateProductForm(forms.Form):
+    PRODUCT_CHOICE_LIST =(
+		('RentalProduct', 'RentalProduct'),
+		('IndividualProduct', 'IndividualProduct'),
+		('BulkProduct', 'BulkProduct'),
+    )
+    product_type = forms.ChoiceField(label="Product Type", required=False, choices=PRODUCT_CHOICE_LIST)
     name = forms.CharField(label='Product Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Product Name'}))
-    price = forms.CharField(label='Price', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price'}))
-    description = forms.CharField(label='Description', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    image = forms.CharField(label='Image', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Image'}))
+    price = forms.CharField(label='Price', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price'}))
+    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
+    image = forms.CharField(label='Image', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Image'}))
+    # Create form fields depending on which type of product you're working with
+    purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01'}))
+    status = forms.CharField(label='Status', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Availability Status'}))
+    create_date = forms.DateField(label='Creation Date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01'}))
+    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
+    quantity = forms.IntegerField(label='Quantity', required=False, widget=forms.TextInput(attrs={'placeholder': 0}))
 
 
 ################################################
@@ -102,19 +124,22 @@ def edit(request):
 
 
 class EditProductForm(forms.Form):
+    PRODUCT_CHOICE_LIST =(
+		('RentalProduct', 'RentalProduct'),
+		('IndividualProduct', 'IndividualProduct'),
+		('BulkProduct', 'BulkProduct'),
+    )
+    product_type = forms.ChoiceField(label="Product Type", required=True, choices=PRODUCT_CHOICE_LIST)
     name = forms.CharField(label='Name', max_length=100, required=True)
     price = forms.CharField(label='Price', max_length=100, required=False)
     description = forms.CharField(label='Description', max_length=100, required=False)
     image = forms.CharField(label='Image', max_length=100, required=False)
     # Create form fields depending on which type of product you're working with
-    if product.__class__.name == "Rental Product":
-        purchase_date = forms.DateField(label='Purchase_date', required=False)
-        status = forms.CharField(label='Status', max_length=100, required=False)
-    elif product.__class.name == "Indivdual Product":
-        create_date = forms.DateField(label='Creation Date', required=False)
-        creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
-    else:
-        quantity = forms.IntegerField(label='Quantity', required=False)
+    purchase_date = forms.DateField(label='Purchase_date', required=False)
+    status = forms.CharField(label='Status', max_length=100, required=False)
+    create_date = forms.DateField(label='Creation Date', required=False)
+    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
+    quantity = forms.IntegerField(label='Quantity', required=False)
 
 
 

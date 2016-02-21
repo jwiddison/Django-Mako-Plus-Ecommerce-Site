@@ -21,12 +21,12 @@ def process_request(request):
 ################################################
 ########### Create a New User ##################
 ################################################
-
-PERMISSIONS_OPTIONS = (
-    ("is_staff", "Manager"),
-    ("is_superuser", "Volunteer"),
-    ("neither", "End User"),
-)
+# 
+# PERMISSIONS_OPTIONS = (
+#     ("is_staff", "Manager"),
+#     ("is_superuser", "Volunteer"),
+#     ("neither", "End User"),
+# )
 
 
 @view_function

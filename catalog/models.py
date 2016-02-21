@@ -33,6 +33,7 @@ RENTAL_STATUS_CHOICES_MAP = dict(RENTAL_STATUS_CHOICES)
 class RentalProduct(Product):
     className = "Rental Product"
     status = models.TextField(null=True, blank=True, choices=RENTAL_STATUS_CHOICES)
+    purchase_date = models.DateField(null=True, blank=True, auto_now_add=True)
     # rental = models.ForeignKey('Rental', null=True)
 
     def __str__(self):

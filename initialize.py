@@ -104,6 +104,7 @@ for i in range(1, 6):
   p.description = 'This rental, #%i, is a really cool rental beacuse it is number %i.' % (i, i)
   p.image = 'rental%i.png' % i
   p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
+  p.purchase_date = datetime.datetime.now()
   p.save()
   print(p)
 

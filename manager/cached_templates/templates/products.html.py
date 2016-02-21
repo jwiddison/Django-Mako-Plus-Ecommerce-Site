@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455741387.4595
+_modified_time = 1456012354.239882
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -29,9 +29,9 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        products = context.get('products', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
+        products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -47,11 +47,11 @@ def render_body(context,**pageargs):
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        products = context.get('products', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context)
+        products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Other Info</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Availability</th>\n      <th>Purchase Date</th>\n      <th>Creation Date</th>\n      <th>Creator</th>\n      <th>Quantity</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for product in products:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(product.name))
@@ -63,7 +63,20 @@ def render_top_content_area(context,**pageargs):
             __M_writer(str(product.image))
             __M_writer('</td>\n        <td>')
             __M_writer(str(product.add_date))
-            __M_writer('</td>\n        <td>\n          Rental Product\n')
+            __M_writer('</td>\n        <td>\n')
+            if product.__class__.className == "Rental Product":
+                __M_writer('            ')
+                __M_writer(str(product.status))
+                __M_writer('\n')
+            else:
+                __M_writer('            N/A\n')
+            __M_writer('        </td>\n        <td>\n')
+            if product.__class__.className == "Rental Product":
+                __M_writer('            ')
+                __M_writer(str(product.purchase_date))
+                __M_writer('\n')
+            else:
+                __M_writer('            N/A\n')
             __M_writer('        </td>\n        <td>\n          <a href="/manager/products.edit/')
             __M_writer(str( product.id ))
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
@@ -77,6 +90,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "source_encoding": "utf-8", "line_map": {"64": 22, "65": 23, "66": 23, "67": 33, "68": 35, "69": 35, "70": 37, "71": 37, "72": 41, "78": 72, "28": 0, "36": 1, "41": 63, "47": 3, "54": 3, "55": 17, "56": 18, "57": 19, "58": 19, "59": 20, "60": 20, "61": 21, "62": 21, "63": 22}, "uri": "products.html"}
+{"uri": "products.html", "source_encoding": "utf-8", "line_map": {"64": 26, "65": 27, "66": 27, "67": 29, "68": 30, "69": 30, "70": 30, "71": 31, "72": 32, "73": 34, "74": 36, "75": 37, "76": 37, "77": 37, "78": 38, "79": 39, "80": 41, "81": 43, "82": 43, "83": 45, "84": 45, "85": 49, "91": 85, "28": 0, "36": 1, "41": 71, "47": 3, "54": 3, "55": 21, "56": 22, "57": 23, "58": 23, "59": 24, "60": 24, "61": 25, "62": 25, "63": 26}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html"}
 __M_END_METADATA
 """
