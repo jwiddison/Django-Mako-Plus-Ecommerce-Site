@@ -11,11 +11,10 @@ import datetime
 #
 # Products Home Page
 #
-
 @view_function
 def process_request(request):
     '''List the users in a table on the screen '''
-    products = cmod.Product.objects.all().order_by('name')
+    products = cmod.Product.objects.all().order_by('-name')
 
 
     template_vars = {
@@ -168,3 +167,14 @@ def delete(request):
 
     # Redirect
     return HttpResponseRedirect('/manager/products/')
+
+################################################
+############### Ajax  ##########################
+################################################
+@view_function
+def get_quantity(request):
+   try:
+       products = cmod.Product.objects.get(id=request.urlparams[0])
+   except cmod.Product.DoesNotExist:
+       return Http404()
+   return HttpResponse(products.quantity)

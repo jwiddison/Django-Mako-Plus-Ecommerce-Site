@@ -8,6 +8,10 @@ from .. import dmp_render, dmp_render_to_response
 from account import models as amod
 import datetime
 
+
+#
+# Users Home Page
+#
 @view_function
 def process_request(request):
     '''List the users in a table on the screen '''
