@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log('page load');
 	$('#id_product_type').change(function(){
 		if($(this).val() =='RentalProduct')
 		{
@@ -30,8 +29,6 @@ $(document).ready(function(){
 			$('#id_quantity').parent().parent().hide();
 		}
 	}); //Change of id field
-  $('#id_status').parent().parent().hide();
-  $('#id_purchase_date').parent().parent().hide();
   $('#id_create_date').parent().parent().hide();
   $('#id_creator').parent().parent().hide();
   $('#id_quantity').parent().parent().hide();

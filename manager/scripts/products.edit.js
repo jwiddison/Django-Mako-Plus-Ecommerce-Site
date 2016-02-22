@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log('page load');
 	$('#id_product_type').change(function(){
 		if($(this).val() =='RentalProduct')
 		{

@@ -107,8 +107,17 @@ def edit(request):
 
             # Store captured form data to product we're editing
             product.name = form.cleaned_data.get('name')
-
-
+            product.price = form.cleaned_data.get('price')
+            product.description = form.cleaned_data.get('description')
+            product.image = form.cleaned_data.get('image')
+            if form.cleaned_data.get('product_type') == 'RentalProduct':
+                product.purchase_date = form.cleaned_data.get('purchase_date')
+                product.status = form.cleaned_data.get('status')
+            elif form.cleaned_data.get('product_type') == 'IndividualProduct':
+                product.create_date = form.cleaned_data.get('create_date')
+                product.creator = form.cleaned_data.get('creator')
+            elif form.cleaned_data.get('product_type') == 'BulkProduct':
+                product.quantity = form.cleaned_data.get('quantity')
 
             # Save changes
             product.save()

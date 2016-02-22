@@ -141,6 +141,7 @@ def edit(request):
 
 
 class EditForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=100, required=True)
     first_name = forms.CharField(label='First Name', max_length=100, required=False)
     last_name = forms.CharField(label='Last Name', max_length=100, required=False)
     email = forms.EmailField(label='Email Address', required=False)
@@ -154,7 +155,9 @@ class EditForm(forms.Form):
 
     # Make sure that the username, if you change it, isn't already taken.
     def clean_username(self):
+        # temp_user = amod.User.objects.get(id=request.urlparams[0])
         username = self.cleaned_data.get('username')
+        # if temp_user.username != username:
         try:
             user = amod.User.objects.get(username=username)
             raise forms.ValidationError('This username is already taken')
