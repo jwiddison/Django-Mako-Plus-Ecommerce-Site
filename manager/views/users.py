@@ -76,6 +76,7 @@ class CreateForm(forms.Form):
     password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password'}))
     first_name = forms.CharField(label='First Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
     last_name = forms.CharField(label='Last Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
     email = forms.EmailField(label='Email Address', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
     address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1'}))
     address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 2'}))
@@ -83,7 +84,6 @@ class CreateForm(forms.Form):
     state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
     groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
     user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
     ## ----- CUSTOM VALIDATIONS ------ ##
