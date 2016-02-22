@@ -115,8 +115,8 @@ cmod.RentalProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.RentalProduct()
   p.name = 'Rental%i' % i
-  p.price = '$10.00'
-  p.description = 'This rental, #%i, is a really cool rental beacuse it is number %i.' % (i, i)
+  p.price = '$100.00'
+  p.description = 'This is rental product #%i. It has a status.' % i
   p.image = 'rental%i.png' % i
   p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
   p.purchase_date = datetime.datetime.now()
@@ -127,9 +127,9 @@ for i in range(1, 6):
 cmod.IndividualProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.IndividualProduct()
-  p.name = 'IndividualProduct%i' % i
-  p.price = '$10.00'
-  p.description = 'This product, #%i, is an individual product.  It is a bit of a loner.' % i
+  p.name = 'IndProd%i' % i
+  p.price = '$50.00'
+  p.description = 'This is individual product #%i.  It has a creator.' % i
   p.image = 'indprod%i.png' % i
   p.creator = random.choice(users)
   p.create_date = datetime.datetime.now()
@@ -140,9 +140,9 @@ for i in range(1, 6):
 cmod.BulkProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.BulkProduct()
-  p.name = 'BulkProduct%i' % i
-  p.price = '$10.00'
-  p.description = 'This product, #%i, is an bulk product. It has lots of quantity.' % i
+  p.name = 'BulkProd%i' % i
+  p.price = '$5.00'
+  p.description = 'This is bulk product, #%i. It has a quantity.' % i
   p.image = 'bulkprod%i.png' % i
   p.quantity = random.randint(1, 100)
   p.save()
@@ -167,11 +167,10 @@ for i in range(1,10):
 # Delete all events and areas
 cmod.Event.objects.all().delete()
 cmod.Area.objects.all().delete()
-
 for i in range(1,10):
     e = cmod.Event()
     e.name = 'Event%i' % i
-    e.description = 'This event, #%i, is an event. It will be at a venue and will have areas.' % i
+    e.description = 'This is event #%i. It will be at a venue and will have areas.' % i
     e.start_date = datetime.datetime.now()
     e.end_date = datetime.datetime.now()
     e.venue = random.choice(venues)
@@ -181,7 +180,7 @@ for i in range(1,10):
     for j in range(1,4):
         a = cmod.Area()
         a.name = 'Area%i' % j
-        a.description = 'Description of the area %i' % j
+        a.description = 'Description of area %i' % j
         a.place_number = i*j
         a.event = e
         a.save()

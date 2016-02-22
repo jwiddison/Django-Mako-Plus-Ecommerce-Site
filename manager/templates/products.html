@@ -57,7 +57,7 @@
         </td>
         <td>
           %if product.__class__.className == "Bulk Product":
-            <span class="quantity">10</span>
+            <p class="quantity">10</p>
             |
             <a href="/catalog/product.get_quantity/${product.id}" data-id="${product.id}" class="glyphicon glyphicon-refresh"></a>
           %else:

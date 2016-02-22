@@ -99,10 +99,11 @@ def edit(request):
     try:
         product = cmod.Product.objects.get(id=request.urlparams[0])
     except cmod.Product.DoesNotExist:
-        return HttpResponseRedirect('/manager/proudcts/')
+        return HttpResponseRedirect('/manager/products/')
 
     # Process Edit form
     form = EditProductForm(initial=model_to_dict(product))
+    form.product = product
     if request.method=='POST':
         form = EditProductForm(request.POST)
         if form.is_valid():
@@ -164,7 +165,7 @@ def delete(request):
     try:
         product = cmod.Product.objects.get(id=request.urlparams[0])
     except cmod.Product.DoesNotExist:
-        return HttpResponseRedirect('/manager/products/')
+        return Http404()
 
     # Delete the event
     product.delete()
@@ -175,10 +176,10 @@ def delete(request):
 ################################################
 ############### Ajax  ##########################
 ################################################
-@view_function
-def get_quantity(request):
-   try:
-       products = cmod.Product.objects.get(id=request.urlparams[0])
-   except cmod.Product.DoesNotExist:
-       return Http404()
-   return HttpResponse(products.quantity)
+# @view_function
+# def get_quantity(request):
+#    try:
+#        products = cmod.Product.objects.get(id=request.urlparams[0])
+#    except cmod.Product.DoesNotExist:
+#        return Http404()
+#    return HttpResponse(products.quantity)
