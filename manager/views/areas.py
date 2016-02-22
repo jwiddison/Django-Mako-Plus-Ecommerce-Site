@@ -64,7 +64,7 @@ def edit(request):
     try:
         area = cmod.Area.objects.get(id=request.urlparams[0])
     except cmod.Area.DoesNotExist:
-        return HttpResponseRedirect('/manager/areas/')
+        return HttpResponseRedirect('/manager/events/')
 
     # Process Edit form
     form = EditAreaForm(initial=model_to_dict(area))
@@ -82,7 +82,7 @@ def edit(request):
             area.save()
 
             # Redirect to areas
-            return HttpResponseRedirect('/manager/areas/')
+            return HttpResponseRedirect('/manager/events/')
 
     template_vars = {
         'form': form,
@@ -108,7 +108,7 @@ def delete(request):
     try:
         area = cmod.Area.objects.get(id=request.urlparams[0])
     except cmod.Area.DoesNotExist:
-        return HttpResponseRedirect('/manager/events/)
+        return HttpResponseRedirect('/manager/events')
 
     # Delete the area
     area.delete()

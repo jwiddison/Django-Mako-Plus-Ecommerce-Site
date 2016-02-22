@@ -142,7 +142,7 @@ class EditProductForm(forms.Form):
     image = forms.CharField(label='Image', max_length=100, required=False)
     # Create form fields depending on which type of product you're working with
     purchase_date = forms.DateField(label='Purchase_date', required=False)
-    status = forms.CharField(label='Status', max_length=100, required=False)
+    status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES)
     create_date = forms.DateField(label='Creation Date', required=False)
     creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
     quantity = forms.IntegerField(label='Quantity', required=False)

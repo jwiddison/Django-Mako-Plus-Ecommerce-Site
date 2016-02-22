@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456179470.525838
+_modified_time = 1456183416.076888
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -115,6 +115,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 22, "56": 23, "57": 24, "58": 24, "59": 25, "60": 25, "61": 26, "62": 26, "63": 27, "64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 31, "70": 32, "71": 32, "72": 32, "73": 33, "74": 34, "75": 36, "76": 38, "77": 39, "78": 39, "79": 39, "80": 40, "81": 41, "82": 43, "83": 45, "84": 46, "85": 46, "86": 46, "87": 47, "88": 48, "89": 50, "90": 52, "91": 53, "92": 53, "93": 53, "94": 54, "95": 55, "96": 57, "97": 59, "98": 60, "99": 62, "100": 62, "101": 62, "102": 62, "103": 63, "104": 64, "105": 66, "106": 68, "107": 68, "108": 70, "109": 70, "110": 74, "116": 110}, "source_encoding": "utf-8", "uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html"}
+{"uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 22, "56": 23, "57": 24, "58": 24, "59": 25, "60": 25, "61": 26, "62": 26, "63": 27, "64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 31, "70": 32, "71": 32, "72": 32, "73": 33, "74": 34, "75": 36, "76": 38, "77": 39, "78": 39, "79": 39, "80": 40, "81": 41, "82": 43, "83": 45, "84": 46, "85": 46, "86": 46, "87": 47, "88": 48, "89": 50, "90": 52, "91": 53, "92": 53, "93": 53, "94": 54, "95": 55, "96": 57, "97": 59, "98": 60, "99": 62, "100": 62, "101": 62, "102": 62, "103": 63, "104": 64, "105": 66, "106": 68, "107": 68, "108": 70, "109": 70, "110": 74, "116": 110}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """

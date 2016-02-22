@@ -109,6 +109,7 @@ def edit(request):
         'form': form,
         'areas': areas,
         'events': events,
+        'event_id': event.id,
         # 'event': event,
     }
     return dmp_render_to_response(request, 'events.edit.html', template_vars)
