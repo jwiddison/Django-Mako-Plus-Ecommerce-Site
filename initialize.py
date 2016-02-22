@@ -73,8 +73,21 @@ for i in range(1, 10):
   if i == 1:
     u.is_staff = True
     u.is_superuser = True
-  # if i == 2:
-  #   group_manager.user_set.add(u)
+  if i == 2:
+    u.save()
+    u.groups.clear()
+    u.user_permissions.clear()
+    u.groups.add(group_manager)
+  if i== 3:
+    u.save()
+    u.groups.clear()
+    u.user_permissions.clear()
+    u.groups.add(group_salesrep)
+  if i== 4:
+    u.save()
+    u.groups.clear()
+    u.user_permissions.clear()
+    u.groups.add(group_customer)
   u.save()
   print(u)
   users.append(u)
@@ -83,6 +96,7 @@ print('user1, pass1 is the superuser.')
 
 # print the permissions of user2 so we know what to use with @permission_required().  user2 is in the Manager group, which has every permission.
 print()
+print('These are all the permissions:')
 for name in sorted(users[1].get_all_permissions()):
   print('Permission:', name)
 

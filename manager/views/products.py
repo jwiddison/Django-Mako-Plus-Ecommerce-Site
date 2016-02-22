@@ -9,9 +9,9 @@ from catalog import models as cmod
 from account import models as amod
 import datetime
 
-#
-# Products Home Page
-#
+################################################
+############### Products Homepage ##############
+################################################
 @view_function
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
@@ -29,7 +29,7 @@ def process_request(request):
 ############### Create a Product ###############
 ################################################
 @view_function
-@permission_required('catalog.add_product', login_url='/homepage/index)
+@permission_required('catalog.add_product', login_url='/homepage/index')
 def create(request):
     '''Create a New Product'''
     # process the form

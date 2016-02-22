@@ -11,7 +11,6 @@ import datetime
 #
 # events Home Page
 #
-
 @view_function
 @permission_required('catalog.change_event', login_url='/homepage/index/')
 def process_request(request):
@@ -24,9 +23,9 @@ def process_request(request):
     }
     return dmp_render_to_response(request, 'events.html', template_vars)
 
-################################################
-########### Create a New event ##################
-################################################
+################################################################################################
+########### Create a New event #################################################################
+################################################################################################
 @view_function
 @permission_required('catalog.add_event', login_url='/homepage/index/')
 def create(request):
@@ -67,9 +66,9 @@ class CreateEventForm(forms.Form):
     venue = forms.ModelChoiceField(label='Venue', required=False, queryset=cmod.Venue.objects.all())
 
 
-################################################
-################# Edit a event #################
-################################################
+################################################################################################
+################# Edit a event #################################################################
+################################################################################################
 @view_function
 @permission_required('catalog.change_event', login_url='/homepage/index/')
 def edit(request):
@@ -124,9 +123,9 @@ class EditEventForm(forms.Form):
 
 
 
-################################################
-############### Delete a event #################
-################################################
+################################################################################################
+############### Delete a event #################################################################
+################################################################################################
 @view_function
 @permission_required('catalog.delete_event', login_url='/homepage/index/')
 def delete(request):
