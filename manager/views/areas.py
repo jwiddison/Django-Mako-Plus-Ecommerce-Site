@@ -3,6 +3,7 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
+from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 import datetime
@@ -13,6 +14,7 @@ import datetime
 ########### Create a New area ##################
 ################################################
 @view_function
+@permission_required('catalog.add_area', login_url='/homepage/index/')
 def create(request):
     '''Create a New area'''
     # process the form
@@ -54,8 +56,8 @@ class CreateAreaForm(forms.Form):
 ################################################
 ################# Edit a area #################
 ################################################
-
 @view_function
+@permission_required('catalog.change_area', login_url='/homepage/index/')
 def edit(request):
     '''Edits a area'''
     # Make sure that the ID number in the URL matches a area that actually exists
@@ -97,10 +99,10 @@ class EditAreaForm(forms.Form):
 
 
 ################################################
-############### Delete a area #################
+############### Delete an area #################
 ################################################
-
 @view_function
+@permission_required('catalog.delete_area', login_url='/homepage/index/')
 def delete(request):
     '''Deletes a area'''
     try:

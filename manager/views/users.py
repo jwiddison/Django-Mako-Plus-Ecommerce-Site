@@ -4,6 +4,7 @@ from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
 from django.contrib.auth.models import Permission, Group
+from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from account import models as amod
 import datetime
@@ -13,6 +14,7 @@ import datetime
 # Users Home Page
 #
 @view_function
+@permission_required('account.change_user', login_url='/homepage/index/')
 def process_request(request):
     '''List the users in a table on the screen '''
     users = amod.User.objects.all().order_by('username')
@@ -26,6 +28,7 @@ def process_request(request):
 ########### Create a New User ##################
 ################################################
 @view_function
+@permission_required('account.add_user', login_url='/homepage/index/')
 def create(request):
     '''Create a New User'''
     # process the form
@@ -107,6 +110,7 @@ class CreateForm(forms.Form):
 ################# Edit a User ##################
 ################################################
 @view_function
+@permission_required('account.change_user', login_url='/homepage/index/')
 def edit(request):
     '''Edits a User'''
     # Make sure that the ID number in the URL matches a user that actually exists
@@ -185,8 +189,8 @@ class EditForm(forms.Form):
 ################################################
 ############### Delete a User ##################
 ################################################
-
 @view_function
+@permission_required('account.delete_user', login_url='/homepage/index/')
 def delete(request):
     '''Deletes a User'''
     try:
@@ -204,8 +208,8 @@ def delete(request):
 ################################################
 ############## Change Password #################
 ################################################
-
 @view_function
+@permission_required('account.change_user', login_url='/homepage/index/')
 def password(request):
     '''Change a user password'''
     try:

@@ -3,6 +3,7 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
+from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from account import models as amod
@@ -12,6 +13,7 @@ import datetime
 # Products Home Page
 #
 @view_function
+@permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     '''List the users in a table on the screen '''
     products = cmod.Product.objects.all().order_by('-name')
@@ -27,6 +29,7 @@ def process_request(request):
 ############### Create a Product ###############
 ################################################
 @view_function
+@permission_required('catalog.add_product', login_url='/homepage/index)
 def create(request):
     '''Create a New Product'''
     # process the form
@@ -88,8 +91,8 @@ class CreateProductForm(forms.Form):
 ################################################
 ################# Edit a Product ###############
 ################################################
-
 @view_function
+@permission_required('catalog.change_product', login_url='/homepage/index/')
 def edit(request):
     '''Edits a Product'''
     # Make sure that the ID number in the URL matches a user that actually exists
@@ -155,6 +158,7 @@ class EditProductForm(forms.Form):
 ############### Delete a Product ###############
 ################################################
 @view_function
+@permission_required('catalog.delete_product', login_url='/homepage/index/')
 def delete(request):
     '''Deletes a Product'''
     try:

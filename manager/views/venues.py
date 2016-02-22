@@ -3,6 +3,7 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
+from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 import datetime
@@ -10,8 +11,8 @@ import datetime
 #
 # Venues Home Page
 #
-
 @view_function
+@permission_required('catalog.change_venue', login_url='/homepage/index/')
 def process_request(request):
     '''List the venues in a table on the screen '''
     venues = cmod.Venue.objects.all().order_by('name')
@@ -26,8 +27,8 @@ def process_request(request):
 ################################################
 ########### Create a New venue ##################
 ################################################
-
 @view_function
+@permission_required('catalog.add_venue', login_url='/homepage/index/')
 def create(request):
     '''Create a New Venue'''
     # process the form
@@ -79,8 +80,8 @@ class CreateVenueForm(forms.Form):
 ################################################
 ################# Edit a venue ##################
 ################################################
-
 @view_function
+@permission_required('catalog.change_venue', login_url='/homepage/index/')
 def edit(request):
     '''Edits a venue'''
     # Make sure that the ID number in the URL matches a venue that actually exists
@@ -126,8 +127,8 @@ class EditVenueForm(forms.Form):
 ################################################
 ############### Delete a Venue #################
 ################################################
-
 @view_function
+@permission_required('catalog.delete_venue', login_url='/homepage/index/')
 def delete(request):
     '''Deletes a Venue'''
     try:
