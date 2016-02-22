@@ -176,10 +176,11 @@ def delete(request):
 ################################################
 ############### Ajax  ##########################
 ################################################
-# @view_function
-# def get_quantity(request):
-#    try:
-#        products = cmod.Product.objects.get(id=request.urlparams[0])
-#    except cmod.Product.DoesNotExist:
-#        return Http404()
-#    return HttpResponse(products.quantity)
+@view_function
+@permission_required('catalog.change_product', login_url='/homepage/index/')
+def get_quantity(request):
+   try:
+       products = cmod.Product.objects.get(id=request.urlparams[0])
+   except cmod.Product.DoesNotExist:
+       return Http404()
+   return HttpResponse(products.quantity)

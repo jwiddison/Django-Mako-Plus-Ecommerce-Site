@@ -7,8 +7,8 @@ $(function() {
   });
 });
 
-$('.glyphicon').click(function( event ) {
-    event.preventDefault();
+$('.glyphicon').click(function(e) {
+    e.preventDefault();
     var href = $(this).attr("href");//getting id
       $(this).siblings('.quantity').load(href);
  });
