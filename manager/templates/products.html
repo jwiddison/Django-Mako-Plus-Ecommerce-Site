@@ -59,7 +59,7 @@
           %if product.__class__.className == "Bulk Product":
             <p class="quantity">10</p>
             |
-            <a href="/catalog/product.get_quantity/${product.id}" data-id="${product.id}" class="glyphicon glyphicon-refresh"></a>
+            <a href="/manager/products.get_quantity/${product.id}" data-id="${product.id}" class="glyphicon glyphicon-refresh"></a>
           %else:
             -
           %endif

@@ -103,7 +103,6 @@ def edit(request):
 
     # Process Edit form
     form = EditProductForm(initial=model_to_dict(product))
-    form.product = product
     if request.method=='POST':
         form = EditProductForm(request.POST)
         if form.is_valid():
@@ -113,13 +112,13 @@ def edit(request):
             product.price = form.cleaned_data.get('price')
             product.description = form.cleaned_data.get('description')
             product.image = form.cleaned_data.get('image')
-            if form.cleaned_data.get('product_type') == 'RentalProduct':
+            if product.__class__.className == 'Rental Product':
                 product.purchase_date = form.cleaned_data.get('purchase_date')
                 product.status = form.cleaned_data.get('status')
-            elif form.cleaned_data.get('product_type') == 'IndividualProduct':
+            elif product.__class__.className == 'Individual Product':
                 product.create_date = form.cleaned_data.get('create_date')
                 product.creator = form.cleaned_data.get('creator')
-            elif form.cleaned_data.get('product_type') == 'BulkProduct':
+            elif product.__class__.className == 'Bulk Product':
                 product.quantity = form.cleaned_data.get('quantity')
 
             # Save changes
@@ -130,18 +129,13 @@ def edit(request):
 
     template_vars = {
         'form': form,
-        # 'user': user,
+        'product_type': product.__class__.className
+
     }
     return dmp_render_to_response(request, 'products.edit.html', template_vars)
 
 
 class EditProductForm(forms.Form):
-    PRODUCT_CHOICE_LIST =(
-		('RentalProduct', 'RentalProduct'),
-		('IndividualProduct', 'IndividualProduct'),
-		('BulkProduct', 'BulkProduct'),
-    )
-    product_type = forms.ChoiceField(label="Product Type", required=True, choices=PRODUCT_CHOICE_LIST)
     name = forms.CharField(label='Name', max_length=100, required=True)
     price = forms.CharField(label='Price', max_length=100, required=False)
     description = forms.CharField(label='Description', max_length=100, required=False)
