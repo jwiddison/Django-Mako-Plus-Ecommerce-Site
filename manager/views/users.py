@@ -3,7 +3,7 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Permission, Group
 from .. import dmp_render, dmp_render_to_response
 from account import models as amod
 import datetime
@@ -46,18 +46,20 @@ def create(request):
             u.zip_code = form.cleaned_data.get('zip_code')
             u.phone_number = form.cleaned_data.get('phone_number')
             u.birth = form.cleaned_data.get('birth')
-            u.group = form.cleaned_data.get('group')
-            if u.group == 'Manager':
-                u.is_staff = True
-                u.is_superuser = True
-            if u.group == 'SalesRep':
-                u.is_staff = True
-                u.is_superuser = False
-            if u.group == 'Customer':
-                u.is_staff = False
-                u.is_superuser = False
 
-            # Update database with user object
+            # required to save twice, so this saves the above form fields.
+            u.save()
+
+            u.groups.clear()
+            u.user_permissions.clear()
+            # print('Group name:', form.cleaned_data['groups'])
+            for group in form.cleaned_data['groups']:
+                print(group)  # Prints to your console for debugging
+                u.groups.add(group)
+            for permission in form.cleaned_data['user_permissions']:
+                print(permission)  # Prints to your console for debugging
+                u.user_permissions.add(permission)
+            # This saves the groups and permissions
             u.save()
 
             # Redirect to confirmation page (change once login above is working)
@@ -82,8 +84,8 @@ class CreateForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
     phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-    group = forms.ModelChoiceField(label='Auth Group', required=True, queryset=Group.objects.all())
-
+    groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
+    user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
     ## ----- CUSTOM VALIDATIONS ------ ##
 
     # Make sure that the username they're signing up with is unique.
@@ -127,15 +129,27 @@ def edit(request):
             user.phone_number = form.cleaned_data.get('phone_number')
             user.birth = form.cleaned_data.get('birth')
 
-            # Save changes
+            # Save changes first time
             user.save()
+
+            # Make changes to groups/permissions
+            u.groups.clear()
+            u.user_permissions.clear()
+            # print('Group name:', form.cleaned_data['groups'])
+            for group in form.cleaned_data['groups']:
+                print(group)  # Prints to your console for debugging
+                u.groups.add(group)
+            for permission in form.cleaned_data['user_permissions']:
+                print(permission)  # Prints to your console for debugging
+                u.user_permissions.add(permission)
+            # This saves the groups and permissions
+            u.save()
 
             # Redirect to users
             return HttpResponseRedirect('/manager/users/')
 
     template_vars = {
         'form': form,
-        # 'user': user,
     }
     return dmp_render_to_response(request, 'users.edit.html', template_vars)
 
@@ -152,6 +166,8 @@ class EditForm(forms.Form):
     zip_code = forms.CharField(label='Zip Code', required=False)
     phone_number = forms.CharField(label="Phone Number", required=False)
     birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput())
+    groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
+    user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
 
     # Make sure that the username, if you change it, isn't already taken.
     def clean_username(self):
