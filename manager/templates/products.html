@@ -1,17 +1,18 @@
 <%inherit file="app_base.htm" />
 
 <%block name="top_content_area">
-  <h3>All Products:</h3>
+  <h3>Product Catalog:</h3>
   <hr />
   <br />
   <table class="table table-striped">
     <tr>
       <th>Product Name</th>
       <th>Product Type</th>
+      <th>Price</th>
       <th>Description</th>
       <th>Image</th>
       <th>Date Added</th>
-      <th>Availability</th>
+      <th>Status</th>
       <th>Purchase Date</th>
       <th>Creation Date</th>
       <th>Creator</th>
@@ -22,6 +23,7 @@
       <tr>
         <td>${product.name}</td>
         <td>${ product.__class__.className }</td>
+        <td>${ product.price }</td>
         <td>${product.description}</td>
         <td>${product.image}</td>
         <td>${product.add_date}</td>
@@ -29,14 +31,35 @@
           %if product.__class__.className == "Rental Product":
             ${product.status}
           %else:
-            N/A
+            -
           %endif
         </td>
         <td>
           %if product.__class__.className == "Rental Product":
             ${product.purchase_date}
           %else:
-            N/A
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Individual Product":
+            ${product.create_date}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Individual Product":
+            ${product.creator}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Bulk Product":
+            ${product.quantity}
+          %else:
+            -
           %endif
         </td>
         <td>

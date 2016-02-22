@@ -100,7 +100,7 @@ def edit(request):
         return HttpResponseRedirect('/manager/proudcts/')
 
     # Process Edit form
-    form = EditPrductForm(initial=model_to_dict(product))
+    form = EditProductForm(initial=model_to_dict(product))
     if request.method=='POST':
         form = EditProductForm(request.POST)
         if form.is_valid():

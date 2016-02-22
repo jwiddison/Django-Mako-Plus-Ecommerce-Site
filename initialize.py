@@ -101,6 +101,7 @@ cmod.RentalProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.RentalProduct()
   p.name = 'Rental%i' % i
+  p.price = '$10.00'
   p.description = 'This rental, #%i, is a really cool rental beacuse it is number %i.' % (i, i)
   p.image = 'rental%i.png' % i
   p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
@@ -113,9 +114,11 @@ cmod.IndividualProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.IndividualProduct()
   p.name = 'IndividualProduct%i' % i
+  p.price = '$10.00'
   p.description = 'This product, #%i, is an individual product.  It is a bit of a loner.' % i
   p.image = 'indprod%i.png' % i
   p.creator = random.choice(users)
+  p.create_date = datetime.datetime.now()
   p.save()
   print(p)
 
@@ -124,6 +127,7 @@ cmod.BulkProduct.objects.all().delete()
 for i in range(1, 6):
   p = cmod.BulkProduct()
   p.name = 'BulkProduct%i' % i
+  p.price = '$10.00'
   p.description = 'This product, #%i, is an bulk product. It has lots of quantity.' % i
   p.image = 'bulkprod%i.png' % i
   p.quantity = random.randint(1, 100)

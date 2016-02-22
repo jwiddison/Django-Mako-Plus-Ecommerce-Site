@@ -10,8 +10,9 @@ from polymorphic.models import PolymorphicModel
 class Product(PolymorphicModel):
     '''Superclass for all other product types '''
     name = models.TextField(null=True, blank=True)
+    price = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    add_date = models.DateTimeField(null=True, blank=True, auto_now_add=True)
+    add_date = models.DateField(null=True, blank=True, auto_now_add=True)
     image = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -49,6 +50,7 @@ admin.site.register(RentalProduct)
 class IndividualProduct(Product):
     className = "Individual Product"
     creator = models.ForeignKey('account.User')
+    create_date = models.DateField(null=True, blank=True, auto_now_add=True)
 
     def __str__(self):
         '''Prints for debugging purposes'''

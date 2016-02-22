@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456012354.239882
+_modified_time = 1456153278.598668
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -51,12 +51,14 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Products:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Availability</th>\n      <th>Purchase Date</th>\n      <th>Creation Date</th>\n      <th>Creator</th>\n      <th>Quantity</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>Product Catalog:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Price</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Status</th>\n      <th>Purchase Date</th>\n      <th>Creation Date</th>\n      <th>Creator</th>\n      <th>Quantity</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for product in products:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(product.name))
             __M_writer('</td>\n        <td>')
             __M_writer(str( product.__class__.className ))
+            __M_writer('</td>\n        <td>')
+            __M_writer(str( product.price ))
             __M_writer('</td>\n        <td>')
             __M_writer(str(product.description))
             __M_writer('</td>\n        <td>')
@@ -69,14 +71,35 @@ def render_top_content_area(context,**pageargs):
                 __M_writer(str(product.status))
                 __M_writer('\n')
             else:
-                __M_writer('            N/A\n')
+                __M_writer('            -\n')
             __M_writer('        </td>\n        <td>\n')
             if product.__class__.className == "Rental Product":
                 __M_writer('            ')
                 __M_writer(str(product.purchase_date))
                 __M_writer('\n')
             else:
-                __M_writer('            N/A\n')
+                __M_writer('            -\n')
+            __M_writer('        </td>\n        <td>\n')
+            if product.__class__.className == "Individual Product":
+                __M_writer('            ')
+                __M_writer(str(product.create_date))
+                __M_writer('\n')
+            else:
+                __M_writer('            -\n')
+            __M_writer('        </td>\n        <td>\n')
+            if product.__class__.className == "Individual Product":
+                __M_writer('            ')
+                __M_writer(str(product.creator))
+                __M_writer('\n')
+            else:
+                __M_writer('            -\n')
+            __M_writer('        </td>\n        <td>\n')
+            if product.__class__.className == "Bulk Product":
+                __M_writer('            ')
+                __M_writer(str(product.quantity))
+                __M_writer('\n')
+            else:
+                __M_writer('            -\n')
             __M_writer('        </td>\n        <td>\n          <a href="/manager/products.edit/')
             __M_writer(str( product.id ))
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
@@ -90,6 +113,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "products.html", "source_encoding": "utf-8", "line_map": {"64": 26, "65": 27, "66": 27, "67": 29, "68": 30, "69": 30, "70": 30, "71": 31, "72": 32, "73": 34, "74": 36, "75": 37, "76": 37, "77": 37, "78": 38, "79": 39, "80": 41, "81": 43, "82": 43, "83": 45, "84": 45, "85": 49, "91": 85, "28": 0, "36": 1, "41": 71, "47": 3, "54": 3, "55": 21, "56": 22, "57": 23, "58": 23, "59": 24, "60": 24, "61": 25, "62": 25, "63": 26}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html"}
+{"source_encoding": "utf-8", "line_map": {"28": 0, "36": 1, "41": 94, "47": 3, "54": 3, "55": 22, "56": 23, "57": 24, "58": 24, "59": 25, "60": 25, "61": 26, "62": 26, "63": 27, "64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 31, "70": 32, "71": 32, "72": 32, "73": 33, "74": 34, "75": 36, "76": 38, "77": 39, "78": 39, "79": 39, "80": 40, "81": 41, "82": 43, "83": 45, "84": 46, "85": 46, "86": 46, "87": 47, "88": 48, "89": 50, "90": 52, "91": 53, "92": 53, "93": 53, "94": 54, "95": 55, "96": 57, "97": 59, "98": 60, "99": 60, "100": 60, "101": 61, "102": 62, "103": 64, "104": 66, "105": 66, "106": 68, "107": 68, "108": 72, "114": 108}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "uri": "products.html"}
 __M_END_METADATA
 """
