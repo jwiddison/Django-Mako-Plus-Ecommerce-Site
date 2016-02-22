@@ -25,7 +25,6 @@ def process_request(request):
 ################################################
 ########### Create a New event ##################
 ################################################
-
 @view_function
 def create(request):
     '''Create a New event'''
@@ -57,8 +56,6 @@ def create(request):
     }
     return dmp_render_to_response(request, 'events.create.html', template_vars)
 
-
-
 class CreateEventForm(forms.Form):
     name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
     description = forms.CharField(label='Desctiption', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
@@ -70,7 +67,6 @@ class CreateEventForm(forms.Form):
 ################################################
 ################# Edit a event #################
 ################################################
-
 @view_function
 def edit(request):
     '''Edits a event'''
@@ -81,7 +77,8 @@ def edit(request):
         return HttpResponseRedirect('/manager/events/')
 
     # Create a list of areas to send to template
-    areas = cmod.Area.objects.all().order_by('name')
+    # areas = cmod.Area.objects.all().order_by('name')
+    areas = cmod.Area.objects.all().filter(event=request.urlparams[0])
 
     # Create list of events to send to template too
     events = cmod.Event.objects.all()

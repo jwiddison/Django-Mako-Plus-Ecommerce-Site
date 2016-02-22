@@ -21,14 +21,6 @@ def process_request(request):
 ################################################
 ########### Create a New User ##################
 ################################################
-# 
-# PERMISSIONS_OPTIONS = (
-#     ("is_staff", "Manager"),
-#     ("is_superuser", "Volunteer"),
-#     ("neither", "End User"),
-# )
-
-
 @view_function
 def create(request):
     '''Create a New User'''
@@ -104,19 +96,10 @@ class CreateForm(forms.Form):
             pass
         return username
 
-    # Make sure birth date is before today
-    # def clean_birth(self):
-    #     if self.cleaned_data.get('birth') >= datetime.date.today():
-    #         raise forms.ValidationError("Enter a date before today's date")
-    #     return self.cleaned_data
-
-
-
 
 ################################################
 ################# Edit a User ##################
 ################################################
-
 @view_function
 def edit(request):
     '''Edits a User'''
