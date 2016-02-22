@@ -115,6 +115,7 @@ def edit(request):
     form = EditForm(initial=model_to_dict(user))
     if request.method=='POST':
         form = EditForm(request.POST)
+        form.user = user
         if form.is_valid():
 
             # Store captured form data to user we're editing
@@ -133,17 +134,17 @@ def edit(request):
             user.save()
 
             # Make changes to groups/permissions
-            u.groups.clear()
-            u.user_permissions.clear()
+            user.groups.clear()
+            user.user_permissions.clear()
             # print('Group name:', form.cleaned_data['groups'])
             for group in form.cleaned_data['groups']:
                 print(group)  # Prints to your console for debugging
-                u.groups.add(group)
+                user.groups.add(group)
             for permission in form.cleaned_data['user_permissions']:
                 print(permission)  # Prints to your console for debugging
-                u.user_permissions.add(permission)
+                user.user_permissions.add(permission)
             # This saves the groups and permissions
-            u.save()
+            user.save()
 
             # Redirect to users
             return HttpResponseRedirect('/manager/users/')
@@ -158,6 +159,7 @@ class EditForm(forms.Form):
     username = forms.CharField(label='Username', max_length=100, required=True)
     first_name = forms.CharField(label='First Name', max_length=100, required=False)
     last_name = forms.CharField(label='Last Name', max_length=100, required=False)
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput())
     email = forms.EmailField(label='Email Address', required=False)
     address1 = forms.CharField(label='Address Line 1', required=False, max_length=100)
     address2 = forms.CharField(label='Address Line 2', required=False, max_length=100)
@@ -165,20 +167,14 @@ class EditForm(forms.Form):
     state = forms.CharField(label='State', required=False)
     zip_code = forms.CharField(label='Zip Code', required=False)
     phone_number = forms.CharField(label="Phone Number", required=False)
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput())
     groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
     user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
 
     # Make sure that the username, if you change it, isn't already taken.
     def clean_username(self):
-        # temp_user = amod.User.objects.get(id=request.urlparams[0])
         username = self.cleaned_data.get('username')
-        # if temp_user.username != username:
-        try:
-            user = amod.User.objects.get(username=username)
+        if amod.User.objects.filter(username=username).exclude(id=self.user.id).count() > 0:
             raise forms.ValidationError('This username is already taken')
-        except amod.User.DoesNotExist:
-            pass
         return username
 
 
