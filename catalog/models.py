@@ -24,7 +24,7 @@ admin.site.register(Product)
 RENTAL_STATUS_CHOICES = (
     ('current', 'Rentable'),
     ('damaged', 'Damaged'),
-    ('retired', 'No Long Rentable'),
+    ('retired', 'No Longer Rentable'),
 )
 RENTAL_STATUS_CHOICES_MAP = dict(RENTAL_STATUS_CHOICES)
 

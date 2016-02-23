@@ -140,4 +140,4 @@ def delete(request):
     event.delete()
 
     # Redirect
-    return HttpResponseRedirect('/manager/events/')
+    return HttpResponseRedirect('/manager/events/' + event.id)

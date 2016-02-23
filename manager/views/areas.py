@@ -108,10 +108,10 @@ def delete(request):
     try:
         area = cmod.Area.objects.get(id=request.urlparams[0])
     except cmod.Area.DoesNotExist:
-        return HttpResponseRedirect('/manager/events')
+        return HttpResponseRedirect('/')
 
     # Delete the area
     area.delete()
 
     # Redirect
-    return HttpResponseRedirect('/manager/events.edit/' + id)
+    return HttpResponseRedirect
