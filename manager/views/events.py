@@ -62,7 +62,7 @@ class CreateEventForm(forms.Form):
     description = forms.CharField(label='Desctiption', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
     start_date = forms.DateField(label='Start Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
     end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
-    venue = forms.ModelChoiceField(label='Venue', required=False, queryset=cmod.Venue.objects.all())
+    venue = forms.ModelChoiceField(label='Venue', required=True, queryset=cmod.Venue.objects.all())
 
 ################################################################################################
 ################# Edit a event #################################################################
@@ -132,8 +132,9 @@ def delete(request):
     except cmod.Event.DoesNotExist:
         return HttpResponseRedirect('/manager/events/')
 
+    url = '/manager/events/' + str(event.id)
     # Delete the event
     event.delete()
 
     # Redirect
-    return HttpResponseRedirect('/manager/events/' + event.id)
+    return HttpResponseRedirect(url)

@@ -25,6 +25,15 @@ $(document).ready(function(){
 		}
 		else
 		{
-			$('#id_quantity').parent().parent().hide();
+			$('#id_quantity').closest('tr').hide();
 		}
 }); //Document Ready
+
+//
+// $(document).ready(function(){
+//   $('#id_status').closest('tr').toggle(('#pType_saved').attr('data-pType') == "Rental Product")
+//   $('#id_availability').closest('tr').toggle(('#pType_saved').attr('data-pType') == "Rental Product")
+//   $('#id_create_date').closest('tr').toggle(('#pType_saved').attr('data-pType') == "Individual Product")
+//   $('#id_creator').closest('tr').toggle(('#pType_saved').attr('data-pType') == "Individual Product")
+//   $('#id_quantity').closest('tr').toggle(('#pType_saved').attr('data-pType') == "Bulk Product")
+// });//Document Ready

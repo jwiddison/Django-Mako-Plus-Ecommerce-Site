@@ -174,7 +174,7 @@ def delete(request):
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def get_quantity(request):
    try:
-       products = cmod.Product.objects.get(id=request.urlparams[0])
+       product = cmod.Product.objects.get(id=request.urlparams[0])
    except cmod.Product.DoesNotExist:
        return Http404()
-   return HttpResponse(products.quantity)
+   return HttpResponse(product.quantity)
