@@ -37,20 +37,20 @@ $(function() {
 
 
 // CREATE A NEW AREA //
-$(function() {
-  $('#new_area_button').click(function(event) {
-    event.preventDefault();
-    $.loadmodal({
-      url: '/manager/areas.create/',
-      id: 'create_area_modal',
-      title: 'Create A New Area at this Event:',
-    });
-  });
-});
-
-$(function() {
-  $('#create_area_form').ajaxForm({
-    // Replace form in its immediate parent.
-    target: '#jquery-loadmodal-js-body',
-  }); //ajaxform
-});
+// $(function() {
+//   $('#new_area_button').click(function(event) {
+//     event.preventDefault();
+//     $.loadmodal({
+//       url: '/manager/areas.create/',
+//       id: 'create_area_modal',
+//       title: 'Create A New Area at this Event:',
+//     });
+//   });
+// });
+//
+// $(function() {
+//   $('#create_area_form').ajaxForm({
+//     // Replace form in its immediate parent.
+//     target: '#jquery-loadmodal-js-body',
+//   }); //ajaxform
+// });

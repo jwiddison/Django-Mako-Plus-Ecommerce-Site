@@ -19,8 +19,9 @@ def create(request):
     '''Create a New area'''
 
     # Create temporary event
-    temp_event = cmod.Event.objects.get(id=request.urlparams[0])
-    url = '/manager/events.edit/' + str(event.id)
+    # area = cmod.Area.objects.get(id=request.urlparams[0])
+    # event = area.event
+    #url = '/manager/events.edit/' + str(event.id)
 
     form = CreateAreaForm()
     if request.method == 'POST':
@@ -30,8 +31,9 @@ def create(request):
             a.name = form.cleaned_data.get('name')
             a.description = form.cleaned_data.get('description')
             a.place_number = form.cleaned_data.get('place_number')
-            a.event = temp_event
+            a.event = form.cleaned_data.get('event')
             a.save()
+            url = '/manager/events.edit/' + str(a.event.id)
             return HttpResponseRedirect(url)
 
     template_vars = {
@@ -43,7 +45,7 @@ class CreateAreaForm(forms.Form):
     name = forms.CharField(label='area Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'area Name'}))
     description = forms.CharField(label='Desctiption', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
     place_number = forms.IntegerField(label='Place Number', required=False, widget=forms.TextInput(attrs={'placeholder': '10'}))
-
+    event = forms.ModelChoiceField(label='Event', required=True, queryset=cmod.Event.objects.all())
 ################################################################################################
 ################# Edit an area #################################################################
 ################################################################################################
