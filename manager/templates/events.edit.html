@@ -28,7 +28,7 @@
         <td>${area.description}</td>
         <td>${area.place_number}</td>
         <td>
-          <a href="/manager/areas.edit/${ area.id }" class="edit_area_button">Edit</a>
+          <a href="" class="edit_area_button" data-areaID="${ area.id }">Edit</a>
            |
           <a href="/manager/areas.delete/${ area.id }/" class="delete_area_button">Delete</a>
         </td>
@@ -36,7 +36,7 @@
       </tr>
     %endfor
   </table>
-  <a href="/manager/areas.create/" class="btn btn-primary">Create New Area</a>
+  <a href="" class="btn btn-primary" id="new_area_button" data-eventID="${ event_id }">Create New Area</a>
 
   <!-- Modal -->
   <div class="modal fade" id="delete_area_modal" tabindex="-1" role="dialog" >
