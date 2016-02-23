@@ -1,11 +1,12 @@
-/*input
+/*input, select
 {
-   display: inline;
-   width: 400px;
-   margin-left: 20px;
    height: 34px;
-   line-height: 1.42857143;
+   width:auto;
  }*/
+
+input[type=checkbox]{
+
+}
 
 input:requred:focus{
   border:none;

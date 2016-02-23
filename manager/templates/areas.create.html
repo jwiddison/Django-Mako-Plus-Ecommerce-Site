@@ -1,6 +1,9 @@
-<%inherit file ="/homepage/templates/base_ajax.htm" />
+<%inherit file ="app_base.htm" />
 
-<%block name="content">
+<%block name="top_content_area">
+  <h3>Create a New Area:</h3>
+  <hr />
+  <br />
   <form id="create_area_form" method="POST">
     <table>
       ${ form.as_table() }

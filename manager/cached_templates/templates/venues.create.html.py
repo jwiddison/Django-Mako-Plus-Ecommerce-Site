@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455733718.37244
+_modified_time = 1456206163.245854
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html'
 _template_uri = 'venues.create.html'
@@ -53,7 +53,7 @@ def render_top_content_area(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\n  <h3>Create a New Venue:</h3>\n  <hr />\n  <br />\n  <form method="POST">\n    <table>\n      ')
         __M_writer(str( form.as_table() ))
-        __M_writer('\n    </table>\n    <input type="submit" class="btn btn-primary" value="Create" />\n  </form>\n')
+        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Create" />\n  </form>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -61,6 +61,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 13, "28": 0, "62": 56, "47": 3}, "uri": "venues.create.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html"}
+{"uri": "venues.create.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/venues.create.html", "source_encoding": "utf-8", "line_map": {"36": 1, "54": 3, "55": 9, "56": 9, "41": 14, "28": 0, "62": 56, "47": 3}}
 __M_END_METADATA
 """

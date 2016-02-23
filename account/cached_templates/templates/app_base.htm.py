@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455759970.396269
+_modified_time = 1456205116.270162
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['top_content_area', 'alert', 'maintainence_container', 'content_left', 'maintainence_message', 'content_right', 'content', 'menu']
+_exports = ['content_right', 'menu', 'alert', 'content_left', 'maintainence_message', 'maintainence_container', 'content', 'top_content_area']
 
 
 def _mako_get_namespace(context, name):
@@ -31,19 +31,19 @@ def render_body(context,**pageargs):
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         def menu():
             return render_menu(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
         def maintainence_container():
             return render_maintainence_container(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -93,13 +93,32 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_top_content_area(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def top_content_area():
-            return render_top_content_area(context)
+        def content_right():
+            return render_content_right(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h1>Colonial Heritage Foundation</h1>\n  <hr/>\n  <br/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def menu():
+            return render_menu(context)
+        request = context.get('request', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'index' else ''))
+        __M_writer('"><a href="/account/index">Account Summary</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'edit' else ''))
+        __M_writer('"><a href="/account/edit">Edit Account Info</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'change_password' else ''))
+        __M_writer('"><a href="/account/change_password">Change Password</a></li>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -110,17 +129,6 @@ def render_alert(context,**pageargs):
     try:
         def alert():
             return render_alert(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -149,11 +157,11 @@ def render_maintainence_message(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_right():
-            return render_content_right(context)
+        def maintainence_container():
+            return render_maintainence_container(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -171,21 +179,13 @@ def render_content(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_menu(context,**pageargs):
+def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def menu():
-            return render_menu(context)
-        request = context.get('request', UNDEFINED)
+        def top_content_area():
+            return render_top_content_area(context)
         __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'index' else ''))
-        __M_writer('"><a href="/account/index">Account Summary</a></li>\n  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'edit' else ''))
-        __M_writer('"><a href="/account/edit">Edit Account Info</a></li>\n  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'change_password' else ''))
-        __M_writer('"><a href="/account/change_password">Change Password</a></li>\n')
+        __M_writer('\n  <h1>Colonial Heritage Foundation</h1>\n  <hr/>\n  <br/>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -193,6 +193,6 @@ def render_menu(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm", "line_map": {"65": 6, "130": 23, "70": 14, "194": 188, "187": 13, "75": 20, "141": 5, "80": 23, "85": 24, "152": 24, "90": 25, "28": 0, "96": 16, "163": 25, "102": 16, "188": 13, "108": 6, "174": 9, "50": 1, "181": 9, "182": 11, "55": 4, "184": 11, "185": 12, "186": 12, "119": 4, "60": 5, "183": 11}}
+{"source_encoding": "utf-8", "uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm", "line_map": {"149": 5, "65": 6, "194": 188, "171": 25, "182": 16, "70": 14, "138": 23, "75": 20, "80": 23, "85": 24, "160": 4, "90": 25, "28": 0, "96": 24, "188": 16, "107": 9, "50": 1, "114": 9, "115": 11, "116": 11, "117": 11, "118": 12, "55": 4, "120": 13, "121": 13, "119": 12, "60": 5, "127": 6}}
 __M_END_METADATA
 """
