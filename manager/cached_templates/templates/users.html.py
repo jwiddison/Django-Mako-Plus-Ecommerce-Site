@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456204566.254531
+_modified_time = 1456209876.129586
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html'
 _template_uri = 'users.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         users = context.get('users', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All Current Users:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Birth Date</th>\n      <th>Groups</th>\n      <th>Edit | Change Password | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All Current Users:</h3>\n  <hr />\n  <br />\n  <a href="/manager/users.create/" class="btn btn-primary">Create A New User</a>\n  <br />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Username</th>\n      <th>First Name</th>\n      <th>Last Name</th>\n      <th>Email</th>\n      <th>Address 1</th>\n      <th>Address 2</th>\n      <th>City</th>\n      <th>State</th>\n      <th>Zip Code</th>\n      <th>Phone Number</th>\n      <th>Birth Date</th>\n      <th>Groups</th>\n      <th>Edit | Change Password | Delete</th>\n    </tr>\n')
         for user in users:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(user.username))
@@ -84,7 +84,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer('/">Change Password</a>\n          |\n          <a href="/manager/users.delete/')
             __M_writer(str( user.id ))
             __M_writer('/" class="delete_button">Delete</a>\n        </td>\n      </tr>\n')
-        __M_writer('  </table>\n  <br />\n  <a href="/manager/users.create/" class="btn btn-primary">Create A New User</a>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this user?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
+        __M_writer('  </table>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this user?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -92,6 +92,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "users.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html", "line_map": {"64": 28, "65": 29, "66": 29, "67": 30, "68": 30, "69": 31, "70": 31, "71": 32, "72": 32, "73": 33, "74": 33, "75": 34, "76": 34, "77": 35, "78": 35, "79": 36, "80": 36, "81": 38, "82": 38, "83": 40, "84": 40, "85": 42, "86": 42, "87": 46, "28": 0, "93": 87, "36": 1, "41": 68, "47": 3, "54": 3, "55": 23, "56": 24, "57": 25, "58": 25, "59": 26, "60": 26, "61": 27, "62": 27, "63": 28}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/users.html", "uri": "users.html", "source_encoding": "utf-8", "line_map": {"64": 31, "65": 32, "66": 32, "67": 33, "68": 33, "69": 34, "70": 34, "71": 35, "72": 35, "73": 36, "74": 36, "75": 37, "76": 37, "77": 38, "78": 38, "79": 39, "80": 39, "81": 41, "82": 41, "83": 43, "84": 43, "85": 45, "86": 45, "87": 49, "28": 0, "93": 87, "36": 1, "41": 69, "47": 3, "54": 3, "55": 26, "56": 27, "57": 28, "58": 28, "59": 29, "60": 29, "61": 30, "62": 30, "63": 31}}
 __M_END_METADATA
 """

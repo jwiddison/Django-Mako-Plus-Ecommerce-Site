@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456183416.076888
+_modified_time = 1456209842.998287
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         products = context.get('products', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>Product Catalog:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Price</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Status</th>\n      <th>Purchase Date</th>\n      <th>Creation Date</th>\n      <th>Creator</th>\n      <th>Quantity</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>Product Catalog:</h3>\n  <hr />\n  <br />\n  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>\n  <br />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Product Name</th>\n      <th>Product Type</th>\n      <th>Price</th>\n      <th>Description</th>\n      <th>Image</th>\n      <th>Date Added</th>\n      <th>Status</th>\n      <th>Purchase Date</th>\n      <th>Creation Date</th>\n      <th>Creator</th>\n      <th>Quantity</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for product in products:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(product.name))
@@ -95,7 +95,7 @@ def render_top_content_area(context,**pageargs):
                 __M_writer('            -\n')
             __M_writer('        </td>\n        <td>\n')
             if product.__class__.className == "Bulk Product":
-                __M_writer('            <p class="quantity">10</p>\n            |\n            <a href="/manager/products.get_quantity/')
+                __M_writer('            <span class="quantity">10</span>\n            |\n            <a href="/manager/products.get_quantity/')
                 __M_writer(str(product.id))
                 __M_writer('" data-id="')
                 __M_writer(str(product.id))
@@ -107,7 +107,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/products.delete/')
             __M_writer(str( product.id ))
             __M_writer('/" class="delete_product_button">Delete</a>\n        </td>\n      </tr>\n')
-        __M_writer('  </table>\n  <br />\n  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this event?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_product_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
+        __M_writer('  </table>\n  <!-- Modal -->\n  <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this event?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_product_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -115,6 +115,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "products.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 22, "56": 23, "57": 24, "58": 24, "59": 25, "60": 25, "61": 26, "62": 26, "63": 27, "64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 31, "70": 32, "71": 32, "72": 32, "73": 33, "74": 34, "75": 36, "76": 38, "77": 39, "78": 39, "79": 39, "80": 40, "81": 41, "82": 43, "83": 45, "84": 46, "85": 46, "86": 46, "87": 47, "88": 48, "89": 50, "90": 52, "91": 53, "92": 53, "93": 53, "94": 54, "95": 55, "96": 57, "97": 59, "98": 60, "99": 62, "100": 62, "101": 62, "102": 62, "103": 63, "104": 64, "105": 66, "106": 68, "107": 68, "108": 70, "109": 70, "110": 74, "116": 110}, "source_encoding": "utf-8"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "uri": "products.html", "source_encoding": "utf-8", "line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 25, "56": 26, "57": 27, "58": 27, "59": 28, "60": 28, "61": 29, "62": 29, "63": 30, "64": 30, "65": 31, "66": 31, "67": 32, "68": 32, "69": 34, "70": 35, "71": 35, "72": 35, "73": 36, "74": 37, "75": 39, "76": 41, "77": 42, "78": 42, "79": 42, "80": 43, "81": 44, "82": 46, "83": 48, "84": 49, "85": 49, "86": 49, "87": 50, "88": 51, "89": 53, "90": 55, "91": 56, "92": 56, "93": 56, "94": 57, "95": 58, "96": 60, "97": 62, "98": 63, "99": 65, "100": 65, "101": 65, "102": 65, "103": 66, "104": 67, "105": 69, "106": 71, "107": 71, "108": 73, "109": 73, "110": 77, "116": 110}}
 __M_END_METADATA
 """

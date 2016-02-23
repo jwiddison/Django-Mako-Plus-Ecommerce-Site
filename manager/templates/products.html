@@ -4,6 +4,9 @@
   <h3>Product Catalog:</h3>
   <hr />
   <br />
+  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>
+  <br />
+  <br />
   <table class="table table-striped">
     <tr>
       <th>Product Name</th>
@@ -57,7 +60,7 @@
         </td>
         <td>
           %if product.__class__.className == "Bulk Product":
-            <p class="quantity">10</p>
+            <span class="quantity">10</span>
             |
             <a href="/manager/products.get_quantity/${product.id}" data-id="${product.id}" class="glyphicon glyphicon-refresh"></a>
           %else:
@@ -72,9 +75,6 @@
       </tr>
     %endfor
   </table>
-  <br />
-  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>
-
   <!-- Modal -->
   <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >
    <div class="modal-dialog" role="document">

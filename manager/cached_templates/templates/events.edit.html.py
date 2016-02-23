@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456202914.902256
+_modified_time = 1456209970.154894
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html'
 _template_uri = 'events.edit.html'
@@ -57,7 +57,9 @@ def render_top_content_area(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\n  <h3>Edit Event:</h3>\n  <hr />\n  <br />\n  <form method="POST">\n    <table>\n      ')
         __M_writer(str( form.as_table() ))
-        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Save Changes" />\n  </form>\n  <br />\n  <h3>Areas at this Event:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Area Name</th>\n      <th>Description</th>\n      <th>Place Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Save Changes" />\n  </form>\n  <br />\n  <h3>Areas at this Event:</h3>\n  <hr />\n  <br />\n  <a href="/manager/areas.create/" class="btn btn-primary" id="new_area_button" data-eventID="')
+        __M_writer(str( event_id ))
+        __M_writer('">Create New Area</a>\n  <br />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Area Name</th>\n      <th>Description</th>\n      <th>Place Number</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for area in areas:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(area.name))
@@ -73,9 +75,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer(str( area.id ))
             __M_writer('/" class="delete_area_button">Delete</a>\n        </td>\n')
             __M_writer('      </tr>\n')
-        __M_writer('  </table>\n  <a href="/manager/areas.create/" class="btn btn-primary" id="new_area_button" data-eventID="')
-        __M_writer(str( event_id ))
-        __M_writer('">Create New Area</a>\n\n  <!-- Delete Modal -->\n  <div class="modal fade" id="delete_area_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this area?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_area_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
+        __M_writer('  </table>\n\n  <!-- Delete Modal -->\n  <div class="modal fade" id="delete_area_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this area?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_area_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -83,6 +83,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "events.edit.html", "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html", "line_map": {"64": 27, "65": 28, "66": 28, "67": 29, "68": 29, "69": 31, "70": 31, "71": 31, "72": 31, "73": 33, "74": 33, "75": 36, "76": 38, "77": 39, "78": 39, "84": 78, "28": 0, "38": 1, "43": 59, "49": 3, "58": 3, "59": 9, "60": 9, "61": 25, "62": 26, "63": 27}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.edit.html", "uri": "events.edit.html", "source_encoding": "utf-8", "line_map": {"64": 29, "65": 30, "66": 30, "67": 31, "68": 31, "69": 32, "70": 32, "71": 34, "72": 34, "73": 34, "74": 34, "75": 36, "76": 36, "77": 39, "78": 41, "84": 78, "28": 0, "38": 1, "43": 61, "49": 3, "58": 3, "59": 9, "60": 9, "61": 18, "62": 18, "63": 28}}
 __M_END_METADATA
 """

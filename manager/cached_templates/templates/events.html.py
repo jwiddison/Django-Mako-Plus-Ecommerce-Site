@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455742711.350557
+_modified_time = 1456209937.817151
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.html'
 _template_uri = 'events.html'
@@ -51,7 +51,7 @@ def render_top_content_area(context,**pageargs):
             return render_top_content_area(context)
         events = context.get('events', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>All events:</h3>\n  <hr />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Event Name</th>\n      <th>Description</th>\n      <th>Start Date</th>\n      <th>End Date</th>\n      <th>Venue</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
+        __M_writer('\n  <h3>All events:</h3>\n  <hr />\n  <br />\n  <a href="/manager/events.create/" class="btn btn-primary">Create A New event</a>\n  <br />\n  <br />\n  <table class="table table-striped">\n    <tr>\n      <th>Event Name</th>\n      <th>Description</th>\n      <th>Start Date</th>\n      <th>End Date</th>\n      <th>Venue</th>\n      <th>Edit | Delete</th>\n    </tr>\n')
         for event in events:
             __M_writer('      <tr>\n        <td>')
             __M_writer(str(event.name))
@@ -68,7 +68,7 @@ def render_top_content_area(context,**pageargs):
             __M_writer('/">Edit</a>\n           |\n          <a href="/manager/events.delete/')
             __M_writer(str( event.id ))
             __M_writer('/" class="delete_event_button">Delete</a>\n        </td>\n      </tr>\n')
-        __M_writer('  </table>\n  <br />\n  <a href="/manager/events.create/" class="btn btn-primary">Create A New event</a>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_event_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this event?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_event_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
+        __M_writer('  </table>\n\n  <!-- Modal -->\n  <div class="modal fade" id="delete_event_modal" tabindex="-1" role="dialog" >\n   <div class="modal-dialog" role="document">\n     <div class="modal-content">\n       <div class="modal-header">\n         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>\n       </div><!-- modal-header -->\n       <div class="modal-body">\n         Delete this event?\n       </div><!-- modal-body -->\n       <div class="modal-footer">\n         <a id="confirm_delete_event_button" href="" class="btn btn-danger">Delete</a>\n         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\n       </div><!-- modal-footer -->\n     </div><!-- modal-content -->\n   </div><!-- modal-dialog -->\n </div><!-- modal -->\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -76,6 +76,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.html", "line_map": {"64": 21, "65": 22, "66": 22, "67": 24, "68": 24, "69": 26, "70": 26, "71": 30, "77": 71, "28": 0, "36": 1, "41": 52, "47": 3, "54": 3, "55": 16, "56": 17, "57": 18, "58": 18, "59": 19, "60": 19, "61": 20, "62": 20, "63": 21}, "uri": "events.html", "source_encoding": "utf-8"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/events.html", "uri": "events.html", "source_encoding": "utf-8", "line_map": {"64": 24, "65": 25, "66": 25, "67": 27, "68": 27, "69": 29, "70": 29, "71": 33, "77": 71, "28": 0, "36": 1, "41": 53, "47": 3, "54": 3, "55": 19, "56": 20, "57": 21, "58": 21, "59": 22, "60": 22, "61": 23, "62": 23, "63": 24}}
 __M_END_METADATA
 """

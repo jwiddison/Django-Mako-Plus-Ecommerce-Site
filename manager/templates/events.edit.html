@@ -15,6 +15,9 @@
   <h3>Areas at this Event:</h3>
   <hr />
   <br />
+  <a href="/manager/areas.create/" class="btn btn-primary" id="new_area_button" data-eventID="${ event_id }">Create New Area</a>
+  <br />
+  <br />
   <table class="table table-striped">
     <tr>
       <th>Area Name</th>
@@ -36,7 +39,6 @@
       </tr>
     %endfor
   </table>
-  <a href="/manager/areas.create/" class="btn btn-primary" id="new_area_button" data-eventID="${ event_id }">Create New Area</a>
 
   <!-- Delete Modal -->
   <div class="modal fade" id="delete_area_modal" tabindex="-1" role="dialog" >
