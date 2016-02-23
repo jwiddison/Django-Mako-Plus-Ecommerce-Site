@@ -8,15 +8,14 @@ from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 import datetime
 
-#
-# events Home Page
-#
+################################################################################################
+########### Events Homepage ####################################################################
+################################################################################################
 @view_function
 @permission_required('catalog.change_event', login_url='/homepage/index/')
 def process_request(request):
     '''List the users in a table on the screen '''
     events = cmod.Event.objects.all().order_by('name')
-
 
     template_vars = {
       'events': events,
@@ -32,9 +31,9 @@ def create(request):
     '''Create a New event'''
     # process the form
     form = CreateEventForm()
-    if request.method == 'POST':   # if they've submitted the form
-        form = CreateEventForm(request.POST) # Re-create the form with data in it
-        if form.is_valid():  # Validate said form using validations specified in form object we created
+    if request.method == 'POST':
+        form = CreateEventForm(request.POST)
+        if form.is_valid():
 
             # create a temporary event object
             e = cmod.Event()
@@ -65,7 +64,6 @@ class CreateEventForm(forms.Form):
     end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
     venue = forms.ModelChoiceField(label='Venue', required=False, queryset=cmod.Venue.objects.all())
 
-
 ################################################################################################
 ################# Edit a event #################################################################
 ################################################################################################
@@ -80,9 +78,7 @@ def edit(request):
         return HttpResponseRedirect('/manager/events/')
 
     # Create a list of areas to send to template
-    # areas = cmod.Area.objects.all().order_by('name')
-    areas = cmod.Area.objects.all().filter(event=request.urlparams[0])
-
+    areas = cmod.Area.objects.all().filter(event=request.urlparams[0]).order_by('name')
     # Create list of events to send to template too
     events = cmod.Event.objects.all()
 

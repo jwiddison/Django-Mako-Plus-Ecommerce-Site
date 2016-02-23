@@ -1,10 +1,10 @@
-<%inherit file ="/homepage/templates/base_ajax.htm" />
+<%inherit file ="app_base.htm" />
 
-<%block name="content">
-  <h3>Edit Area:</h3>
-  <hr />
-  <br />
+<%block name="top_content_area">
   <form id="edit_area_form" method="POST">
+    <h3>Edit Area Information:</h3>
+    <hr />
+    <br />
     <table>
       ${ form.as_table() }
     </table>

@@ -28,7 +28,7 @@
         <td>${area.description}</td>
         <td>${area.place_number}</td>
         <td>
-          <a href="" class="edit_area_button" data-areaID="${ area.id }">Edit</a>
+          <a href="/manager/areas.edit/${ area.id }" class="edit_area_button" data-areaID="${ area.id }">Edit</a>
            |
           <a href="/manager/areas.delete/${ area.id }/" class="delete_area_button">Delete</a>
         </td>
@@ -38,7 +38,7 @@
   </table>
   <a href="" class="btn btn-primary" id="new_area_button" data-eventID="${ event_id }">Create New Area</a>
 
-  <!-- Modal -->
+  <!-- Delete Modal -->
   <div class="modal fade" id="delete_area_modal" tabindex="-1" role="dialog" >
    <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -56,4 +56,22 @@
      </div><!-- modal-content -->
    </div><!-- modal-dialog -->
  </div><!-- modal -->
+
+##  <!-- Edit Modal -->
+##  <div class="modal fade" id="edit_area_modal" tabindex="-1" role="dialog" >
+##   <div class="modal-dialog" role="document">
+##     <div class="modal-content">
+##       <div class="modal-header">
+##         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+##         <h4 class="modal-title" id="myModalLabel">Edit Area Information:</h4>
+##       </div><!-- modal-header -->
+##
+##       </div><!-- modal-body -->
+##       <div class="modal-footer">
+##         <a id="confirm_edit_area_button" href="" class="btn btn-danger">Save Changes</a>
+##         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+##       </div><!-- modal-footer -->
+##     </div><!-- modal-content -->
+##   </div><!-- modal-dialog -->
+## </div><!-- modal -->
 </%block>
