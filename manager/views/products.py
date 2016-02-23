@@ -136,16 +136,16 @@ def edit(request):
 
 
 class EditProductForm(forms.Form):
-    name = forms.CharField(label='Name', max_length=100, required=True)
-    price = forms.CharField(label='Price', max_length=100, required=False)
-    description = forms.CharField(label='Description', max_length=100, required=False)
-    image = forms.CharField(label='Image', max_length=100, required=False)
+    name = forms.CharField(label='Name', max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    price = forms.CharField(label='Price', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    description = forms.CharField(label='Description', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    image = forms.CharField(label='Image', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     # Create form fields depending on which type of product you're working with
-    purchase_date = forms.DateField(label='Purchase_date', required=False)
-    status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES)
-    create_date = forms.DateField(label='Creation Date', required=False)
-    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
-    quantity = forms.IntegerField(label='Quantity', required=False)
+    purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    create_date = forms.DateField(label='Creation Date', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all(), widget=forms.TextInput(attrs={'class': 'form-control'}))
+    quantity = forms.IntegerField(label='Quantity', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
 

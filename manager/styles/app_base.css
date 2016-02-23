@@ -1,27 +1,11 @@
-#id_username,
-#id_password,
-#id_password2,
-#id_first_name,
-#id_email,
-#id_last_name,
-#id_address1,
-#id_address2,
-#id_city,
-#id_state,
-#id_zip_code,
-#id_phone_number,
-#id_birth,
-#datetimepicker4,
-#id_new_password,
-#id_new_password2,
-#id_venue,
+/*input
 {
    display: inline;
    width: 400px;
    margin-left: 20px;
    height: 34px;
    line-height: 1.42857143;
- }
+ }*/
 
 input:requred:focus{
   border:none;
@@ -34,11 +18,8 @@ button:focus {
     outline: none;
 }
 
-/*tr, th, td{
-  padding: 5px;
+label{
+  font-weight:bold;
   font-size: 16px;
+  padding-right:25px;
 }
-
-td{
-  padding-left:30px;
-}*/

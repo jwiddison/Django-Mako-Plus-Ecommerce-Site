@@ -79,19 +79,19 @@ def create(request):
     return dmp_render_to_response(request, 'users.create.html', template_vars)
 
 class CreateForm(forms.Form):
-    username = forms.CharField(label='Username', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password'}))
-    first_name = forms.CharField(label='First Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
-    last_name = forms.CharField(label='Last Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01'}))
-    email = forms.EmailField(label='Email Address', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
-    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1'}))
-    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 2'}))
-    city = forms.CharField(label='City', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'City'}))
-    state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
-    zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
-    phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number'}))
-    groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
+    username = forms.CharField(label='Username', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
+    password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password', 'class': 'form-control'}))
+    first_name = forms.CharField(label='First Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
+    last_name = forms.CharField(label='Last Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}))
+    birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01', 'class': 'form-control'}))
+    email = forms.EmailField(label='Email Address', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Email Address', 'class': 'form-control'}))
+    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 1', 'class': 'form-control'}))
+    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address Line 2', 'class': 'form-control'}))
+    city = forms.CharField(label='City', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'City', 'class': 'form-control'}))
+    state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State', 'class': 'form-control'}))
+    zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code', 'class': 'form-control'}))
+    phone_number = forms.CharField(label="Phone Number", required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Phone Number', 'class': 'form-control'}))
+    groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple())
     user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
     ## ----- CUSTOM VALIDATIONS ------ ##
 
@@ -164,17 +164,17 @@ def edit(request):
 
 
 class EditForm(forms.Form):
-    username = forms.CharField(label='Username', max_length=100, required=True)
-    first_name = forms.CharField(label='First Name', max_length=100, required=False)
-    last_name = forms.CharField(label='Last Name', max_length=100, required=False)
-    birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput())
-    email = forms.EmailField(label='Email Address', required=False)
-    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100)
-    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100)
-    city = forms.CharField(label='City', required=False)
-    state = forms.CharField(label='State', required=False)
-    zip_code = forms.CharField(label='Zip Code', required=False)
-    phone_number = forms.CharField(label="Phone Number", required=False)
+    username = forms.CharField(label='Username', max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(label='First Name', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label='Last Name', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    birth = forms.DateField(label='Birth Date', required=False, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label='Email Address', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address1 = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    address2 = forms.CharField(label='Address Line 2', required=False, max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    city = forms.CharField(label='City', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    state = forms.CharField(label='State', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    zip_code = forms.CharField(label='Zip Code', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone_number = forms.CharField(label="Phone Number", required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     groups = forms.ModelMultipleChoiceField(label='Groups', required=False, queryset=Group.objects.all(), widget=forms.CheckboxSelectMultiple)
     user_permissions = forms.ModelMultipleChoiceField(label='Permissions', required=False, queryset=Permission.objects.all(), widget=forms.CheckboxSelectMultiple)
 
@@ -238,8 +238,8 @@ def password(request):
 
 
 class PasswordForm(forms.Form):
-    new_password = forms.CharField(label='New Password', required=True)
-    new_password2 = forms.CharField(label='Confirm New Password', required=True)
+    new_password = forms.CharField(label='New Password', required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    new_password2 = forms.CharField(label='Confirm New Password', required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     # Make sure the two passwords are equal to each other
     def clean(self):
