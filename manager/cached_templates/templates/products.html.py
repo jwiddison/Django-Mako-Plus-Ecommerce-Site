@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456209842.998287
+_modified_time = 1456422632.840532
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html'
 _template_uri = 'products.html'
@@ -115,6 +115,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "uri": "products.html", "source_encoding": "utf-8", "line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 25, "56": 26, "57": 27, "58": 27, "59": 28, "60": 28, "61": 29, "62": 29, "63": 30, "64": 30, "65": 31, "66": 31, "67": 32, "68": 32, "69": 34, "70": 35, "71": 35, "72": 35, "73": 36, "74": 37, "75": 39, "76": 41, "77": 42, "78": 42, "79": 42, "80": 43, "81": 44, "82": 46, "83": 48, "84": 49, "85": 49, "86": 49, "87": 50, "88": 51, "89": 53, "90": 55, "91": 56, "92": 56, "93": 56, "94": 57, "95": 58, "96": 60, "97": 62, "98": 63, "99": 65, "100": 65, "101": 65, "102": 65, "103": 66, "104": 67, "105": 69, "106": 71, "107": 71, "108": 73, "109": 73, "110": 77, "116": 110}}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/products.html", "line_map": {"28": 0, "36": 1, "41": 96, "47": 3, "54": 3, "55": 25, "56": 26, "57": 27, "58": 27, "59": 28, "60": 28, "61": 29, "62": 29, "63": 30, "64": 30, "65": 31, "66": 31, "67": 32, "68": 32, "69": 34, "70": 35, "71": 35, "72": 35, "73": 36, "74": 37, "75": 39, "76": 41, "77": 42, "78": 42, "79": 42, "80": 43, "81": 44, "82": 46, "83": 48, "84": 49, "85": 49, "86": 49, "87": 50, "88": 51, "89": 53, "90": 55, "91": 56, "92": 56, "93": 56, "94": 57, "95": 58, "96": 60, "97": 62, "98": 63, "99": 65, "100": 65, "101": 65, "102": 65, "103": 66, "104": 67, "105": 69, "106": 71, "107": 71, "108": 73, "109": 73, "110": 77, "116": 110}, "uri": "products.html"}
 __M_END_METADATA
 """

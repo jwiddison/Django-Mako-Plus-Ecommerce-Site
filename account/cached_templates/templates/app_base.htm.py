@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456205116.270162
+_modified_time = 1456422727.135491
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['content_right', 'menu', 'alert', 'content_left', 'maintainence_message', 'maintainence_container', 'content', 'top_content_area']
+_exports = ['navbar_title', 'top_content_area', 'maintainence_message', 'content_left', 'alert', 'content', 'maintainence_container', 'content_right', 'menu']
 
 
 def _mako_get_namespace(context, name):
@@ -29,23 +29,25 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def menu():
-            return render_menu(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
         def maintainence_message():
             return render_maintainence_message(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
+        def menu():
+            return render_menu(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n# Leave these blocks blank\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
@@ -72,6 +74,11 @@ def render_body(context,**pageargs):
             context['self'].top_content_area(**pageargs)
         
 
+        __M_writer('\n\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'navbar_title'):
+            context['self'].navbar_title(**pageargs)
+        
+
         __M_writer('\n\n# Leave left, center, and right blank\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_left'):
             context['self'].content_left(**pageargs)
@@ -88,6 +95,85 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_navbar_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def navbar_title():
+            return render_navbar_title(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <a class="navbar-brand" href="/homepage/index">Colonial Herigate Foundation - Account</a>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_top_content_area(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def top_content_area():
+            return render_top_content_area(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <h1>Colonial Heritage Foundation</h1>\n  <hr/>\n  <br/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_message(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_alert(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def alert():
+            return render_alert(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content():
+            return render_content(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -124,75 +210,8 @@ def render_menu(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def alert():
-            return render_alert(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_left():
-            return render_content_left(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_message(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content():
-            return render_content(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_top_content_area(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def top_content_area():
-            return render_top_content_area(context)
-        __M_writer = context.writer()
-        __M_writer('\n  <h1>Colonial Heritage Foundation</h1>\n  <hr/>\n  <br/>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm", "line_map": {"149": 5, "65": 6, "194": 188, "171": 25, "182": 16, "70": 14, "138": 23, "75": 20, "80": 23, "85": 24, "160": 4, "90": 25, "28": 0, "96": 24, "188": 16, "107": 9, "50": 1, "114": 9, "115": 11, "116": 11, "117": 11, "118": 12, "55": 4, "120": 13, "121": 13, "119": 12, "60": 5, "127": 6}}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/app_base.htm", "line_map": {"193": 9, "213": 207, "67": 6, "72": 14, "201": 11, "138": 27, "203": 11, "204": 12, "77": 20, "206": 13, "205": 12, "82": 24, "149": 6, "87": 27, "207": 13, "28": 0, "160": 29, "97": 29, "103": 22, "92": 28, "171": 4, "109": 22, "200": 9, "115": 16, "52": 1, "57": 4, "182": 28, "121": 16, "202": 11, "62": 5, "127": 5}, "uri": "app_base.htm"}
 __M_END_METADATA
 """
