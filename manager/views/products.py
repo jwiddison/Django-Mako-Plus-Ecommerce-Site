@@ -71,9 +71,9 @@ def create(request):
 
 class CreateProductForm(forms.Form):
     PRODUCT_CHOICE_LIST =(
-		('RentalProduct', 'RentalProduct'),
-		('IndividualProduct', 'IndividualProduct'),
-		('BulkProduct', 'BulkProduct'),
+		('RentalProduct', 'Rental Product'),
+		('IndividualProduct', 'Individual Product'),
+		('BulkProduct', 'Bulk Product'),
     )
     product_type = forms.ChoiceField(label="Product Type", required=False, choices=PRODUCT_CHOICE_LIST)
     name = forms.CharField(label='Product Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Product Name'}))
