@@ -15,6 +15,6 @@ class User(AbstractUser):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'User: %s (%s)' % (self.get_full_name(), self.username)
+        return '%s (%s)' % (self.get_full_name(), self.username)
 
 admin.site.register(User)
