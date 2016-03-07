@@ -1,0 +1,6 @@
+migrations/
+__pycache__
+*.pyc
+cached_templates/
+*.log
+.DS_Store
