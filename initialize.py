@@ -7,6 +7,8 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Colonial_Heritage_Foundation.settings")
 django.setup()
 
+print('hi')
+
 # regular imports
 from account import models as amod
 from catalog import models as cmod
