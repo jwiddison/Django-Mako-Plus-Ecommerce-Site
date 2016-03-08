@@ -1,9 +1,17 @@
 <%inherit file="app_base.htm" />
 
-<%block name="top_content_area">
-  <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
-  <hr/>
-  <br/>
+<%block name="content-left">
+  <h3>Category:</h3>
+  <hr />
+  <ul>
+    %for category in categories:
+      <li>${category.name}</li>
+    %endfor
+  </ul>
+
+</%block>
+
+<%block name="content">
   %for product in products:
     <p>${ product.image }</p>
     <p>${ product.name }</p>

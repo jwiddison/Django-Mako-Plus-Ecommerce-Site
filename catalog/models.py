@@ -121,3 +121,17 @@ class Area(models.Model):
         return 'Area: %s (%s)' % (self.name, self.description)
 
 admin.site.register(Area)
+
+
+#########################################################################################################
+#######    Category        ##############################################################################
+#########################################################################################################
+class Category(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Category: %s (%s)' % (self.name, self.description)
+
+admin.site.register(Category)

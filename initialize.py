@@ -108,12 +108,13 @@ for name in sorted(users[1].get_all_permissions()):
 print()
 print('Creating products...')
 
-### NO!  Products cannot be created because they don't really exist.  Never do this:
-#p = cmod.Product()
+#####################################
+###   Getting pictures ready to randomly load up products
+
 
 # rental items
 cmod.RentalProduct.objects.all().delete()
-for i in range(1, 6):
+for i in range(1, 10):
   p = cmod.RentalProduct()
   p.name = 'Rental%i' % i
   p.price = '$100.00'
@@ -126,7 +127,7 @@ for i in range(1, 6):
 
 # individual products
 cmod.IndividualProduct.objects.all().delete()
-for i in range(1, 6):
+for i in range(1, 10):
   p = cmod.IndividualProduct()
   p.name = 'IndProd%i' % i
   p.price = '$50.00'
@@ -139,7 +140,7 @@ for i in range(1, 6):
 
 # bulk products
 cmod.BulkProduct.objects.all().delete()
-for i in range(1, 6):
+for i in range(1, 10):
   p = cmod.BulkProduct()
   p.name = 'BulkProd%i' % i
   p.price = '$5.00'
