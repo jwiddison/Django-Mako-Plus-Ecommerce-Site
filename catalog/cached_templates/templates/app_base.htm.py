@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1455083698.521785
+_modified_time = 1457410652.419767
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['maintainence_message', 'alert', 'content_left', 'content_right', 'content', 'top_content_area', 'maintainence_container']
+_exports = ['content_left', 'maintainence_container', 'top_content_area', 'maintainence_message', 'content', 'alert', 'content_right']
 
 
 def _mako_get_namespace(context, name):
@@ -29,21 +29,21 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def content_left():
-            return render_content_left(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def content_left():
+            return render_content_left(context._locals(__M_locals))
         def maintainence_container():
             return render_maintainence_container(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n# Leave these blocks blank\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
@@ -86,28 +86,6 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_maintainence_message(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_alert(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def alert():
-            return render_alert(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_content_left(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -119,11 +97,37 @@ def render_content_left(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_right():
-            return render_content_right(context)
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_top_content_area(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def top_content_area():
+            return render_top_content_area(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <img src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_message(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -141,26 +145,22 @@ def render_content(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_top_content_area(context,**pageargs):
+def render_alert(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def top_content_area():
-            return render_top_content_area(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def alert():
+            return render_alert(context)
         __M_writer = context.writer()
-        __M_writer('\n  <img src="')
-        __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_maintainence_container(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def maintainence_container():
-            return render_maintainence_container(context)
+        def content_right():
+            return render_content_right(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -169,6 +169,6 @@ def render_maintainence_container(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"144": 12, "100": 6, "133": 10, "73": 9, "170": 159, "151": 12, "78": 10, "111": 8, "48": 1, "83": 16, "53": 4, "89": 5, "152": 13, "68": 8, "58": 5, "159": 4, "28": 0, "122": 9, "153": 13, "63": 6}, "source_encoding": "utf-8", "uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm"}
+{"source_encoding": "utf-8", "line_map": {"148": 6, "100": 4, "73": 9, "170": 159, "119": 13, "78": 10, "111": 12, "48": 1, "83": 16, "137": 10, "53": 4, "118": 12, "89": 8, "120": 13, "68": 8, "58": 5, "159": 9, "28": 0, "126": 5, "63": 6}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "uri": "app_base.htm"}
 __M_END_METADATA
 """

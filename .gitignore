@@ -4,3 +4,4 @@ __pycache__
 cached_templates/
 *.log
 .DS_Store
+*.jpg
