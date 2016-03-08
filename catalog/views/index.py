@@ -16,8 +16,13 @@ from catalog import models as cmod
 def process_request(request):
     '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
+    categories = cmod.Category.objects.all().order_by('name')
 
     template_vars = {
       'products': products,
+      'categories': categories,
     }
     return dmp_render_to_response(request, 'index.html', template_vars)
+
+
+# Need to create a method to search and filter here.

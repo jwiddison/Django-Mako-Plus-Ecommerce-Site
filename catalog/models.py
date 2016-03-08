@@ -13,7 +13,7 @@ class Category(models.Model):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Category: %s (%s)' % (self.name, self.description)
+        return 'Category: %s' % (self.name)
 
 admin.site.register(Category)
 
