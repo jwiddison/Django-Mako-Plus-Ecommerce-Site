@@ -3,7 +3,7 @@
 <%block name="content_left">
   <a class="btn btn-primary" href="/catalog/index/">View All Products</a>
   <br />
-  <h5>Search</h5> # This needs to be a form! Use method="GET"
+  <h5>Search</h5> ## This needs to be a form! Use method="GET"
   <hr />
   <p>Text Box will go here.</p>
   <br />
@@ -11,20 +11,14 @@
   <hr />
   <a href="">View All</a>
   <br />
-  %for category in categories:
-    <a href="">${category.name}</a></li>
-    <br />
-  %endfor
+  ## %for category in categories:
+  ##   <a href="">${category.name}</a></li>
+  ##   <br />
+  ## %endfor
 </%block>
 
 <%block name="content">
-  %for product in products:
-    <p>${ product.image }</p>
-    <p>${ product.name }</p>
-    <p>${ product.price }</p>
-    <p>${ product.category }</p>
-    <p>${ product.__class__.className }</p>
-  %endfor
+  <h4 class="text-center">NUM products matched 'Query'</h4>
 </%block>
 
 <%block name="content_right">

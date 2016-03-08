@@ -22,7 +22,7 @@ def process_request(request):
       'products': products,
       'categories': categories,
     }
-    return dmp_render_to_response(request, 'index.html', template_vars)
+    return dmp_render_to_response(request, 'detail.html', template_vars)
 
 
 # Need to create a method to search and filter here.
