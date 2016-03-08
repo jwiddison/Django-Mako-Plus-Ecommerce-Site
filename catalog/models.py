@@ -5,6 +5,19 @@ from polymorphic.models import PolymorphicModel
 # Includes classes for all the types of products in the system
 
 #########################################################################################################
+#######    Category        ##############################################################################
+#########################################################################################################
+class Category(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Category: %s (%s)' % (self.name, self.description)
+
+admin.site.register(Category)
+
+#########################################################################################################
 ####### Base Product Class ##############################################################################
 #########################################################################################################
 class Product(PolymorphicModel):
@@ -14,6 +27,7 @@ class Product(PolymorphicModel):
     description = models.TextField(null=True, blank=True)
     add_date = models.DateField(null=True, blank=True, auto_now_add=True)
     image = models.TextField(null=True, blank=True)
+    category = models.ForeignKey('catalog.Category')
 
     def __str__(self):
         '''Prints for debugging purposes'''
@@ -121,17 +135,3 @@ class Area(models.Model):
         return 'Area: %s (%s)' % (self.name, self.description)
 
 admin.site.register(Area)
-
-
-#########################################################################################################
-#######    Category        ##############################################################################
-#########################################################################################################
-class Category(models.Model):
-    name = models.TextField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        '''Prints for debugging purposes'''
-        return 'Category: %s (%s)' % (self.name, self.description)
-
-admin.site.register(Category)

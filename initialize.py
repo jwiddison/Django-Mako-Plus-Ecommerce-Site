@@ -99,7 +99,24 @@ print('user1, pass1 is the superuser.')
 print()
 print('These are all the permissions:')
 for name in sorted(users[1].get_all_permissions()):
-  print('Permission:', name)
+    print('Permission:', name)
+
+
+#####################################
+###   Categories
+
+print()
+print('Creating Categories...')
+
+cmod.Category.objects.all().delete()
+categories=[]
+for i in range(1,4):
+    c = cmod.Category()
+    c.name = 'Category%i' % i
+    c.description = 'This is category %i.' % i
+    c.save()
+    print(c)
+    categories.append(c)
 
 
 #####################################
@@ -115,40 +132,43 @@ print('Creating products...')
 # rental items
 cmod.RentalProduct.objects.all().delete()
 for i in range(1, 10):
-  p = cmod.RentalProduct()
-  p.name = 'Rental%i' % i
-  p.price = '$100.00'
-  p.description = 'This is rental product #%i. It has a status.' % i
-  p.image = 'rental%i.png' % i
-  p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
-  p.purchase_date = datetime.datetime.now()
-  p.save()
-  print(p)
+    p = cmod.RentalProduct()
+    p.name = 'Rental%i' % i
+    p.price = '$100.00'
+    p.description = 'This is rental product #%i. It has a status.' % i
+    p.image = 'rental%i.png' % i
+    p.category = random.choice(categories)
+    p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
+    p.purchase_date = datetime.datetime.now()
+    p.save()
+    print(p)
 
 # individual products
 cmod.IndividualProduct.objects.all().delete()
 for i in range(1, 10):
-  p = cmod.IndividualProduct()
-  p.name = 'IndProd%i' % i
-  p.price = '$50.00'
-  p.description = 'This is individual product #%i.  It has a creator.' % i
-  p.image = 'indprod%i.png' % i
-  p.creator = random.choice(users)
-  p.create_date = datetime.datetime.now()
-  p.save()
-  print(p)
+    p = cmod.IndividualProduct()
+    p.name = 'IndProd%i' % i
+    p.price = '$50.00'
+    p.description = 'This is individual product #%i.  It has a creator.' % i
+    p.image = 'indprod%i.png' % i
+    p.category = random.choice(categories)
+    p.creator = random.choice(users)
+    p.create_date = datetime.datetime.now()
+    p.save()
+    print(p)
 
 # bulk products
 cmod.BulkProduct.objects.all().delete()
 for i in range(1, 10):
-  p = cmod.BulkProduct()
-  p.name = 'BulkProd%i' % i
-  p.price = '$5.00'
-  p.description = 'This is bulk product, #%i. It has a quantity.' % i
-  p.image = 'bulkprod%i.png' % i
-  p.quantity = random.randint(1, 100)
-  p.save()
-  print(p)
+    p = cmod.BulkProduct()
+    p.name = 'BulkProd%i' % i
+    p.price = '$5.00'
+    p.description = 'This is bulk product, #%i. It has a quantity.' % i
+    p.image = 'bulkprod%i.png' % i
+    p.category = random.choice(categories)
+    p.quantity = random.randint(1, 100)
+    p.save()
+    print(p)
 
 # Venue
 venues = []  # make list to use to create events
