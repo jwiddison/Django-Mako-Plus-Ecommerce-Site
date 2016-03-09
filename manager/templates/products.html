@@ -28,7 +28,14 @@
         <td>${product.__class__.className}</td>
         <td>${product.price}</td>
         <td>${product.description}</td>
-        <td>${product.image}</td>
+        <td>
+        %for image in images:
+          %if image.product == product:
+            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive"/>
+            <% break %>
+          %endif
+        %endfor
+        </td>
         <td>${product.add_date}</td>
         <td>
           %if product.__class__.className == "Rental Product":
