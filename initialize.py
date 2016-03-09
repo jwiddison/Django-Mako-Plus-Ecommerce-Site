@@ -128,6 +128,12 @@ print('Creating products...')
 #####################################
 ###   Getting pictures ready to randomly load up products
 
+# get the possible items from the images directory
+item_names = [ ( os.path.splitext(os.path.split(name)[1])[0].replace('_', ' ').title(), os.path.split(name)[1] ) for name in glob.glob(os.path.join(mydir, 'catalog/media/pics/*.jpg')) ]
+random.shuffle(item_names)
+item_iterator = itertools.cycle(item_names)
+lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
 
 # rental items
 cmod.RentalProduct.objects.all().delete()
