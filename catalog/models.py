@@ -29,7 +29,7 @@ class ProductImage(models.Model):
         '''Prints for debugging purposes'''
         return 'Product Image: %s' % (self.name)
 
-admin.site.register(Produ
+admin.site.register(ProductImage)
 #########################################################################################################
 ####### Base Product Class ##############################################################################
 #########################################################################################################

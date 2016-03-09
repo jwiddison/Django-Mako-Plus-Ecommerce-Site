@@ -16,7 +16,7 @@ import datetime
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     '''List the users in a table on the screen '''
-    products = cmod.Product.objects.all().order_by('-name')
+    products = cmod.Product.objects.all().order_by('name')
 
 
     template_vars = {

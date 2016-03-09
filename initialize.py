@@ -14,7 +14,8 @@ from catalog import models as cmod
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 # other useful imports
-import datetime, random, sys
+import datetime, random, sys, itertools, glob
+
 
 
 ##UNCOMMENT these lines when finished
@@ -108,16 +109,17 @@ for name in sorted(users[1].get_all_permissions()):
 print()
 print('Creating Categories...')
 
-cmod.Category.objects.all().delete()
-categories=[]
-for i in range(1,4):
-    c = cmod.Category()
-    c.name = 'Category%i' % i
-    c.description = 'This is category %i.' % i
-    c.save()
-    print(c)
-    categories.append(c)
+# cmod.Category.objects.all().delete()
+# categories=[]
+# for i in range(1,4):
+#     c = cmod.Category()
+#     c.name = 'Category%i' % i
+#     c.description = 'This is category %i.' % i
+#     c.save()
+#     print(c)
+#     categories.append(c)
 
+categories = cmod.Category.objects.all()
 
 #####################################
 ###   Products
@@ -127,7 +129,6 @@ print('Creating products...')
 
 #####################################
 ###   Getting pictures ready to randomly load up products
-
 # get the possible items from the images directory
 item_names = [ ( os.path.splitext(os.path.split(name)[1])[0].replace('_', ' ').title(), os.path.split(name)[1] ) for name in glob.glob(os.path.join(mydir, 'catalog/media/pics/*.jpg')) ]
 random.shuffle(item_names)
@@ -139,23 +140,36 @@ lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
 cmod.RentalProduct.objects.all().delete()
 for i in range(1, 10):
     p = cmod.RentalProduct()
-    p.name = 'Rental%i' % i
-    p.price = '$100.00'
-    p.description = 'This is rental product #%i. It has a status.' % i
-    p.image = 'rental%i.png' % i
+    item = next(item_iterator)
+    p.name = item[0]
+    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.description = 'This is a rental product named %s. %s' % (item[0], lorem_ipsum)
     p.category = random.choice(categories)
     p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
     p.purchase_date = datetime.datetime.now()
     p.save()
-    print(p)
+    # add images
+    # image_numbers = list(range(1, 13))
+    # random.shuffle(image_numbers)
+    # for i in range(1, 5):
+    #     img = cmod.ProductImage()
+    #     if item:
+    #         img.filename = item[1]
+    #         item = None
+    #     else:
+    #         img.filename = next(item_iterator)[1]
+    #     img.product = p
+    #     img.save()
+    # print(p)
 
 # individual products
 cmod.IndividualProduct.objects.all().delete()
 for i in range(1, 10):
     p = cmod.IndividualProduct()
-    p.name = 'IndProd%i' % i
-    p.price = '$50.00'
-    p.description = 'This is individual product #%i.  It has a creator.' % i
+    item = next(item_iterator)
+    p.name = item[0]
+    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.description = 'This is an individual product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'indprod%i.png' % i
     p.category = random.choice(categories)
     p.creator = random.choice(users)
@@ -167,9 +181,10 @@ for i in range(1, 10):
 cmod.BulkProduct.objects.all().delete()
 for i in range(1, 10):
     p = cmod.BulkProduct()
-    p.name = 'BulkProd%i' % i
-    p.price = '$5.00'
-    p.description = 'This is bulk product, #%i. It has a quantity.' % i
+    item = next(item_iterator)
+    p.name = item[0]
+    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.description = 'This is a bulk product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'bulkprod%i.png' % i
     p.category = random.choice(categories)
     p.quantity = random.randint(1, 100)

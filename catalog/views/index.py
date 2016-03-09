@@ -12,7 +12,7 @@ from catalog import models as cmod
 ############### products Homepage #################################################################
 ################################################################################################
 @view_function
-@permission_required('catalog.change_product', login_url='/homepage/index/')
+# @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')

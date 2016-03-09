@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1457540303.239594
+_modified_time = 1457543808.01634
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html'
 _template_uri = 'index.html'
@@ -77,6 +77,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"64": 6, "65": 8, "66": 8, "67": 10, "68": 10, "69": 12, "70": 12, "71": 14, "72": 14, "78": 72, "28": 0, "37": 1, "42": 17, "48": 3, "56": 3, "57": 4, "58": 5, "59": 6, "60": 6, "61": 6, "62": 6, "63": 6}, "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "uri": "index.html"}
+{"source_encoding": "utf-8", "line_map": {"64": 6, "65": 8, "66": 8, "67": 10, "68": 10, "69": 12, "70": 12, "71": 14, "72": 14, "78": 72, "28": 0, "37": 1, "42": 17, "48": 3, "56": 3, "57": 4, "58": 5, "59": 6, "60": 6, "61": 6, "62": 6, "63": 6}, "uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html"}
 __M_END_METADATA
 """

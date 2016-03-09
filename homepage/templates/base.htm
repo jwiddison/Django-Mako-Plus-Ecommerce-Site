@@ -44,7 +44,7 @@
         </div><!-- alert -->
         <!-- - - - - Navbar - - - - - -->
         <nav class="navbar navbar-inverse navbar-fixed-top transparent" role="navigation">
-          <div class="container">
+          <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -70,7 +70,7 @@
                   <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/homepage/terms">Terms</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/homepage/faq">FAQ</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'admin' else ''}"><a href="/manager/index">Admin</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'catalog' else ''}"><a href="/catalog/index">Catalog</a></li>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -83,6 +83,7 @@
                         <li><a href="/account/index">Account Summary</a></li>
                         <li><a href="/account/edit">Edit Account Info</a></li>
                         <li><a href="/account/change_password">Change Password</a></li>
+                        <li><a href="/manager/index">Admin</a></li>
                         <li role="presentation" class="divider"></li>
                         <li><a href='/account/logout/'>Logout</a></li>
                       </ul>

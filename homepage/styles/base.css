@@ -15,9 +15,11 @@ img{
 
 footer{
   margin-top:50px;
-  padding-top:15px;
   background-color:#E6272E;
+  padding-top:18px;
   color:white;
+  opacity:.9;
+  max-height:60px;
 }
 
 .transparent{
@@ -26,6 +28,7 @@ footer{
 
 #loginbutton{
   margin-top: 15px;
+  margin-right: 20px;
 }
 
 #main_logo{
