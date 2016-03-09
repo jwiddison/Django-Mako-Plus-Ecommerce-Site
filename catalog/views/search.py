@@ -17,14 +17,15 @@ def process_request(request):
     '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
     categories = cmod.Category.objects.all().order_by('name')
+    images = cmod.ProductImage.objects.all().get();
 
     template_vars = {
       'products': products,
       'categories': categories,
+      'images': images,
     }
     return dmp_render_to_response(request, 'search.html', template_vars)
 
 
-# Need to create a method to search and filter here.
-# Basically, it's going to take the URL param ID number, take the list of products, and filter it by that id, and return the list of products back to the index template.
+
 # ONLY Search by product name
