@@ -6,7 +6,7 @@ from django_mako_plus.controller import view_function
 from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
-
+import random
 
 ################################################################################################
 ############### products Homepage #################################################################
@@ -23,10 +23,7 @@ def process_request(request):
         except cmod.Category.DoesNotExist:
             return HttpResponseRedirect('/catalog/index/')
 
-
-    '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
-
     # Filter for the id number of the category in the URL if someone has selected one.
     print(category_id)
     if str(category_id) == '':
@@ -35,7 +32,10 @@ def process_request(request):
         products = products.filter(category = category_id)
 
     categories = cmod.Category.objects.all().order_by('name')
-    images = cmod.Category.objects.all()
+    images = cmod.ProductImage.objects.all()
+
+    # for product in products:
+    #     product.image = random.choice(images)
 
     template_vars = {
       'products': products,

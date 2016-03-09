@@ -27,7 +27,7 @@ class ProductImage(models.Model):
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Product Image: %s' % (self.filename)
+        return self.filename
 
 admin.site.register(ProductImage)
 #########################################################################################################
