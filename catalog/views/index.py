@@ -1,12 +1,9 @@
 from django.conf import settings
-from django import forms
-from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
 from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
-import random
 
 
 @view_function
@@ -22,6 +19,11 @@ def process_request(request):
             return HttpResponseRedirect('/catalog/index/')
 
     products = cmod.Product.objects.all().order_by('name')
+
+    # Filter out rental products
+    # for p in products:
+    #     if p.__class__.className == 'Rental Product':
+    #         products.remove(p)
 
     # Filter for the id number of the category in the URL if someone has selected one.
     print(category_id)
