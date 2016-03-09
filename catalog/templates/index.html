@@ -1,5 +1,17 @@
 <%inherit file="app_base.htm" />
 
 <%block name="content">
-    <h1>catalog app!</h1>
+  %for product in products:
+    <div class="tile text-center">
+      <img src="${ STATIC_URL }catalog/media/${ product.image }.jpg" alt="${product.name}" class="img-responsive center-block prod_img"/>
+      <br />
+      <p>${ product.name }</p>
+      <br />
+      <p>${ product.price }</p>
+      <br />
+      <p>${ product.category }</p>
+      <br />
+      <p>${ product.__class__.className }</p>
+    </div>
+  %endfor
 </%block>

@@ -5,6 +5,32 @@ from polymorphic.models import PolymorphicModel
 # Includes classes for all the types of products in the system
 
 #########################################################################################################
+#######    Category        ##############################################################################
+#########################################################################################################
+class Category(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Category: %s' % (self.name)
+
+admin.site.register(Category)
+
+
+#########################################################################################################
+#######    Product Image        #########################################################################
+#########################################################################################################
+class ProductImage(models.Model):
+    name = models.TextField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Product Image: %s' % (self.name)
+
+admin.site.register(Produ
+#########################################################################################################
 ####### Base Product Class ##############################################################################
 #########################################################################################################
 class Product(PolymorphicModel):
@@ -14,6 +40,7 @@ class Product(PolymorphicModel):
     description = models.TextField(null=True, blank=True)
     add_date = models.DateField(null=True, blank=True, auto_now_add=True)
     image = models.TextField(null=True, blank=True)
+    category = models.ForeignKey('catalog.Category')
 
     def __str__(self):
         '''Prints for debugging purposes'''
