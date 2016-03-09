@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1457488374.295254
+_modified_time = 1457492027.946344
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
@@ -99,7 +99,8 @@ def render_content_left(context,**pageargs):
             return render_content_left(context)
         categories = context.get('categories', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <h5>Search</h5> # This needs to be a form! Use method="GET"\n  <hr />\n  <p>Text Box will go here.</p>\n  <br />\n  <h5>Category</h5>\n  <hr />\n  <a href="">View All</a>\n  <br />\n')
+        __M_writer('\n  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <h5>Search</h5>\n')
+        __M_writer('  <hr />\n  <p>Text Box will go here.</p>\n  <br />\n  <h5>Category</h5>\n  <hr />\n  <a href="">View All</a>\n  <br />\n')
         for category in categories:
             __M_writer('    <a href="">')
             __M_writer(str(category.name))
@@ -159,6 +160,6 @@ def render_maintainence_container(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "line_map": {"130": 8, "67": 12, "132": 9, "72": 29, "138": 6, "77": 35, "131": 9, "149": 4, "89": 31, "28": 0, "95": 14, "160": 149, "102": 14, "103": 25, "104": 26, "105": 26, "106": 26, "47": 1, "112": 5, "83": 31, "52": 4, "57": 5, "123": 8, "62": 6}, "uri": "app_base.htm", "source_encoding": "utf-8"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "line_map": {"67": 12, "132": 9, "133": 9, "72": 30, "139": 6, "77": 36, "83": 32, "150": 4, "89": 32, "28": 0, "95": 14, "161": 150, "131": 8, "102": 14, "103": 19, "104": 26, "105": 27, "106": 27, "107": 27, "47": 1, "113": 5, "52": 4, "57": 5, "124": 8, "62": 6}, "uri": "app_base.htm", "source_encoding": "utf-8"}
 __M_END_METADATA
 """
