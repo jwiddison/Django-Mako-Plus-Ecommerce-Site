@@ -10,14 +10,17 @@ from catalog import models as cmod
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
 
-    # Get lists to send over
-    products = cmod.Product.objects.all().order_by('name')
+    # Get other lists to send over
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all().order_by('name')
 
-    # Get query off of URL
+    # Get query string off of URL
     q = request.GET.get('q','')
 
+    # Get list of products that match the query
+    products = cmod.Product.objects.all().order_by('name').filter(name__iexact = q)
+
+    # Get count of products.
     count = products.count()
 
     template_vars = {
