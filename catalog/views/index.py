@@ -14,10 +14,25 @@ from catalog import models as cmod
 @view_function
 # @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
+    category_id = request.urlparams[0]
+    if str(category_id) == '':
+        pass
+    else:
+        try:
+            category = cmod.Category.objects.get(id=request.urlparams[0])
+        except cmod.Category.DoesNotExist:
+            return HttpResponseRedirect('/catalog/index/')
+
+
     '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
 
-    # Filter for the id number of the category in the URL
+    # Filter for the id number of the category in the URL if someone has selected one.
+    print(category_id)
+    if str(category_id) == '':
+        pass
+    else:
+        products = products.filter(category = category_id)
 
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.Category.objects.all()
