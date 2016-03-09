@@ -4,13 +4,32 @@
 <%block name="maintainence_container"></%block>
 <%block name="maintainence_message"></%block>
 <%block name="alert"></%block>
-# Leave left, center, and right blank
-<%block name="content_left"></%block>
-<%block name="content_right"></%block>
-<%block name="content"></%block>
 
 <%block name="top_content_area">
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
   <hr/>
   <br/>
+</%block>
+
+<%block name="content_left">
+  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>
+  <br />
+  <h5>Search</h5> # This needs to be a form! Use method="GET"
+  <hr />
+  <p>Text Box will go here.</p>
+  <br />
+  <h5>Category</h5>
+  <hr />
+  <a href="">View All</a>
+  <br />
+  %for category in categories:
+    <a href="">${category.name}</a></li>
+    <br />
+  %endfor
+</%block>
+
+<%block name="content_right">
+  <h5>Recently Viewed</h5>
+  <hr />
+  <p>Probably have to store it in the session</p>
 </%block>
