@@ -22,12 +22,12 @@ admin.site.register(Category)
 #######    Product Image        #########################################################################
 #########################################################################################################
 class ProductImage(models.Model):
-    name = models.TextField(null=True, blank=True)
-    description = models.TextField(null=True, blank=True)
+    filename = models.TextField(null=True, blank=True)
+    product = models.ForeignKey('catalog.Product')
 
     def __str__(self):
         '''Prints for debugging purposes'''
-        return 'Product Image: %s' % (self.name)
+        return 'Product Image: %s' % (self.filename)
 
 admin.site.register(ProductImage)
 #########################################################################################################

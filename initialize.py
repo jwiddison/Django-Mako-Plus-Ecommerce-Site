@@ -103,23 +103,29 @@ for name in sorted(users[1].get_all_permissions()):
     print('Permission:', name)
 
 
+# delete existing categories and products
+cmod.ProductImage.objects.all().delete()
+cmod.IndividualProduct.objects.all().delete()
+cmod.RentalProduct.objects.all().delete()
+cmod.BulkProduct.objects.all().delete()
+cmod.Category.objects.all().delete()
+
+
 #####################################
 ###   Categories
 
 print()
 print('Creating Categories...')
 
-# cmod.Category.objects.all().delete()
-# categories=[]
-# for i in range(1,4):
-#     c = cmod.Category()
-#     c.name = 'Category%i' % i
-#     c.description = 'This is category %i.' % i
-#     c.save()
-#     print(c)
-#     categories.append(c)
-
-categories = cmod.Category.objects.all()
+cmod.Category.objects.all().delete()
+categories=[]
+for i in range(1,4):
+    c = cmod.Category()
+    c.name = 'Category%i' % i
+    c.description = 'This is category %i.' % i
+    c.save()
+    print(c)
+    categories.append(c)
 
 #####################################
 ###   Products
@@ -137,8 +143,7 @@ lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
 
 
 # rental items
-cmod.RentalProduct.objects.all().delete()
-for i in range(1, 10):
+for i in range(1, 25):
     p = cmod.RentalProduct()
     item = next(item_iterator)
     p.name = item[0]
@@ -149,22 +154,22 @@ for i in range(1, 10):
     p.purchase_date = datetime.datetime.now()
     p.save()
     # add images
-    # image_numbers = list(range(1, 13))
-    # random.shuffle(image_numbers)
-    # for i in range(1, 5):
-    #     img = cmod.ProductImage()
-    #     if item:
-    #         img.filename = item[1]
-    #         item = None
-    #     else:
-    #         img.filename = next(item_iterator)[1]
-    #     img.product = p
-    #     img.save()
-    # print(p)
+    image_numbers = list(range(1, 13))
+    random.shuffle(image_numbers)
+    for i in range(1, 5):
+        img = cmod.ProductImage()
+        if item:
+            img.filename = item[1]
+            item = None
+        else:
+            img.filename = next(item_iterator)[1]
+        img.product = p
+        img.save()
+        print(img)
+    print(p)
 
 # individual products
-cmod.IndividualProduct.objects.all().delete()
-for i in range(1, 10):
+for i in range(1, 25):
     p = cmod.IndividualProduct()
     item = next(item_iterator)
     p.name = item[0]
@@ -175,11 +180,23 @@ for i in range(1, 10):
     p.creator = random.choice(users)
     p.create_date = datetime.datetime.now()
     p.save()
+    # Add images
+    image_numbers = list(range(1, 13))
+    random.shuffle(image_numbers)
+    for i in range(1, 5):
+        img = cmod.ProductImage()
+        if item:
+              img.filename = item[1]
+              item = None
+        else:
+              img.filename = next(item_iterator)[1]
+        img.product = p
+        img.save()
+        print(img)
     print(p)
 
 # bulk products
-cmod.BulkProduct.objects.all().delete()
-for i in range(1, 10):
+for i in range(1, 25):
     p = cmod.BulkProduct()
     item = next(item_iterator)
     p.name = item[0]
@@ -189,6 +206,19 @@ for i in range(1, 10):
     p.category = random.choice(categories)
     p.quantity = random.randint(1, 100)
     p.save()
+    # Add images
+    image_numbers = list(range(1, 13))
+    random.shuffle(image_numbers)
+    for i in range(1, 5):
+        img = cmod.ProductImage()
+        if item:
+              img.filename = item[1]
+              item = None
+        else:
+              img.filename = next(item_iterator)[1]
+        img.product = p
+        img.save()
+        print(img)
     print(p)
 
 # Venue

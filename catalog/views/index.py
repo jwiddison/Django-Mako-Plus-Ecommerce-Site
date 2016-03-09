@@ -16,11 +16,16 @@ from catalog import models as cmod
 def process_request(request):
     '''List the products in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
+
+    # Filter for the id number of the category in the URL
+
     categories = cmod.Category.objects.all().order_by('name')
+    images = cmod.Category.objects.all()
 
     template_vars = {
       'products': products,
       'categories': categories,
+      'images': images,
     }
     return dmp_render_to_response(request, 'index.html', template_vars)
 
