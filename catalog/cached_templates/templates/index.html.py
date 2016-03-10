@@ -5,11 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-<<<<<<< HEAD
-_modified_time = 1457585504.890545
-=======
-_modified_time = 1457553145.274646
->>>>>>> search
+_modified_time = 1457587220.390891
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html'
 _template_uri = 'index.html'
@@ -33,17 +29,11 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        images = context.get('images', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
+        products = context.get('products', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-<<<<<<< HEAD
-        products = context.get('products', UNDEFINED)
-        def content():
-            return render_content(context._locals(__M_locals))
-=======
-        def content():
-            return render_content(context._locals(__M_locals))
-        products = context.get('products', UNDEFINED)
->>>>>>> search
+        images = context.get('images', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
@@ -59,17 +49,11 @@ def render_body(context,**pageargs):
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        images = context.get('images', UNDEFINED)
+        def content():
+            return render_content(context)
+        products = context.get('products', UNDEFINED)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-<<<<<<< HEAD
-        products = context.get('products', UNDEFINED)
-        def content():
-            return render_content(context)
-=======
-        def content():
-            return render_content(context)
-        products = context.get('products', UNDEFINED)
->>>>>>> search
+        images = context.get('images', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         for product in products:
@@ -102,10 +86,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-<<<<<<< HEAD
-{"uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "source_encoding": "utf-8", "line_map": {"64": 8, "65": 8, "66": 8, "67": 8, "68": 8, "69": 8, "70": 9, "72": 9, "73": 12, "74": 13, "75": 13, "76": 15, "77": 15, "78": 17, "79": 17, "80": 19, "81": 19, "87": 81, "28": 0, "38": 1, "43": 22, "49": 3, "58": 3, "59": 4, "60": 5, "61": 6, "62": 7, "63": 8}}
-=======
-{"line_map": {"64": 8, "65": 8, "66": 8, "67": 8, "68": 8, "69": 8, "70": 9, "72": 9, "73": 12, "74": 13, "75": 13, "76": 15, "77": 15, "78": 17, "79": 17, "80": 19, "81": 19, "87": 81, "28": 0, "38": 1, "43": 22, "49": 3, "58": 3, "59": 4, "60": 5, "61": 6, "62": 7, "63": 8}, "source_encoding": "utf-8", "uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html"}
->>>>>>> search
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "uri": "index.html", "line_map": {"64": 8, "65": 8, "66": 8, "67": 8, "68": 8, "69": 8, "70": 9, "72": 9, "73": 12, "74": 13, "75": 13, "76": 15, "77": 15, "78": 17, "79": 17, "80": 19, "81": 19, "87": 81, "28": 0, "38": 1, "43": 22, "49": 3, "58": 3, "59": 4, "60": 5, "61": 6, "62": 7, "63": 8}}
 __M_END_METADATA
 """
