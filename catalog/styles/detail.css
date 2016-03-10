@@ -1,0 +1,13 @@
+.detail > img{
+  position:absolute;
+  height:200px;
+  width: 200px;
+}
+
+.detail > p, h3{
+  margin-left:240px;
+}
+
+.detail > h4{
+  float:right;
+}

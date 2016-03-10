@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1457587220.390891
+_modified_time = 1457587953.673328
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html'
 _template_uri = 'index.html'
@@ -57,28 +57,30 @@ def render_content(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\n')
         for product in products:
-            __M_writer('    <div class="tile text-center">\n')
+            __M_writer('    <a href="/catalog/detail/')
+            __M_writer(str(product.id))
+            __M_writer('">\n      <div class="tile text-center">\n')
             for image in images:
                 if image.product == product:
-                    __M_writer('          <img src="')
+                    __M_writer('            <img src="')
                     __M_writer(str( STATIC_URL ))
                     __M_writer('catalog/media/pics/')
                     __M_writer(str( image.filename ))
                     __M_writer('" alt="')
                     __M_writer(str(product.name))
-                    __M_writer('" class="img-responsive center-block prod_img"/>\n          ')
+                    __M_writer('" class="img-responsive center-block prod_img"/>\n            ')
                     break 
                     
                     __M_writer('\n')
-            __M_writer('      <br />\n      <p><b>')
+            __M_writer('        <br />\n        <p><b>')
             __M_writer(str( product.name ))
-            __M_writer('</b></p>\n      <br />\n      <p>')
+            __M_writer('</b></p>\n        <br />\n        <p>')
             __M_writer(str( product.price ))
-            __M_writer('</p>\n      <br />\n      <p>')
+            __M_writer('</p>\n        <br />\n        <p>')
             __M_writer(str( product.category ))
-            __M_writer('</p>\n      <br />\n      <p>')
+            __M_writer('</p>\n        <br />\n        <p>')
             __M_writer(str( product.__class__.className ))
-            __M_writer('</p>\n    </div>\n')
+            __M_writer('</p>\n      </div><!-- tile -->\n    </a>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -86,6 +88,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "uri": "index.html", "line_map": {"64": 8, "65": 8, "66": 8, "67": 8, "68": 8, "69": 8, "70": 9, "72": 9, "73": 12, "74": 13, "75": 13, "76": 15, "77": 15, "78": 17, "79": 17, "80": 19, "81": 19, "87": 81, "28": 0, "38": 1, "43": 22, "49": 3, "58": 3, "59": 4, "60": 5, "61": 6, "62": 7, "63": 8}}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "uri": "index.html", "line_map": {"64": 8, "65": 9, "66": 9, "67": 9, "68": 9, "69": 9, "70": 9, "71": 9, "72": 10, "74": 10, "75": 13, "76": 14, "77": 14, "78": 16, "79": 16, "80": 18, "81": 18, "82": 20, "83": 20, "89": 83, "28": 0, "38": 1, "43": 24, "49": 3, "58": 3, "59": 4, "60": 5, "61": 5, "62": 5, "63": 7}}
 __M_END_METADATA
 """

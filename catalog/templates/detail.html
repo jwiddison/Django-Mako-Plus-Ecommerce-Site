@@ -1,0 +1,19 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+  <div class="detail">
+    %for image in images:
+      %if image.product == p:
+        <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}"/>
+        <% break %>
+      %endif
+    %endfor
+    <h3>${p.name}</h3>
+    <p>${p.__class__.className}</p>
+    <p>${p.description}</p>
+    %if p.__class__.className == 'Bulk Product':
+      <h4>Only ${p.quantity} left!</h4>
+    %endif
+    <a class="btn btn-primary" href="#">Purchase</a>
+  </div>
+</%block>

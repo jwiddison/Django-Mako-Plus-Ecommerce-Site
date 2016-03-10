@@ -2,21 +2,23 @@
 
 <%block name="content">
   %for product in products:
-    <div class="tile text-center">
-      %for image in images:
-        %if image.product == product:
-          <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-          <% break %>
-        %endif
-      %endfor
-      <br />
-      <p><b>${ product.name }</b></p>
-      <br />
-      <p>${ product.price }</p>
-      <br />
-      <p>${ product.category }</p>
-      <br />
-      <p>${ product.__class__.className }</p>
-    </div>
+    <a href="/catalog/detail/${product.id}">
+      <div class="tile text-center">
+        %for image in images:
+          %if image.product == product:
+            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
+            <% break %>
+          %endif
+        %endfor
+        <br />
+        <p><b>${ product.name }</b></p>
+        <br />
+        <p>${ product.price }</p>
+        <br />
+        <p>${ product.category }</p>
+        <br />
+        <p>${ product.__class__.className }</p>
+      </div><!-- tile -->
+    </a>
   %endfor
 </%block>
