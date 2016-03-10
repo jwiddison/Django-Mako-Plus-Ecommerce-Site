@@ -1,28 +1,28 @@
 <%inherit file="app_base.htm" />
 
-<%block name="content_left">
-  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>
-  <br />
-  <h5>Search</h5> ## This needs to be a form! Use method="GET"
-  <hr />
-  <p>Text Box will go here.</p>
-  <br />
-  <h5>Category</h5>
-  <hr />
-  <a href="">View All</a>
-  <br />
-  ## %for category in categories:
-  ##   <a href="">${category.name}</a></li>
-  ##   <br />
-  ## %endfor
-</%block>
 
 <%block name="content">
-  <h4 class="text-center">NUM products matched 'Query'</h4>
-</%block>
-
-<%block name="content_right">
-  <h5>Recently Viewed</h5>
+  <h5 class="text-center">${count} products matched '${q}'</h5>
   <hr />
-  <p>Probably have to store it in the session</p>
+  <br />
+  ## Show matching products
+  %for product in products:
+    <div class="tile text-center">
+      %for image in images:
+        %if image.product == product:
+          <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
+          <% break %>
+        %endif
+      %endfor
+      <br />
+      <p><b>${ product.name }</b></p>
+      <br />
+      <p>${ product.price }</p>
+      <br />
+      <p>${ product.category }</p>
+      <br />
+      <p>${ product.__class__.className }</p>
+    </div>
+  %endfor
+
 </%block>
