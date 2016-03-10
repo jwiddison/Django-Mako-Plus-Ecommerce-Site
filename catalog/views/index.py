@@ -18,13 +18,7 @@ def process_request(request):
         except cmod.Category.DoesNotExist:
             return HttpResponseRedirect('/catalog/index/')
 
-    products = cmod.Product.objects.all().order_by('name')
-
-    # Filter out rental products
-    for p in products:
-        if p.__class__.className == 'Rental Product':
-            products.remove(p)
-
+    products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
 
     # Filter for the id number of the category in the URL if someone has selected one.
     print(category_id)

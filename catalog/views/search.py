@@ -19,7 +19,7 @@ def process_request(request):
 
     # Get list of products that match the query
     # products = cmod.Product.objects.all().order_by('name').filter(name__iexact = q) # Don't need this when using icontains
-    products = cmod.Product.objects.all().order_by('name').filter(name__icontains = q)
+    products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name').filter(name__icontains = q)
 
     # Get count of products.
     count = products.count()
