@@ -2,17 +2,18 @@
 
 
 <%block name="content">
-  <h4 class="text-center">${count} products matched '${q}'</h4>
-
+  <h5 class="text-center">${count} products matched '${q}'</h5>
+  <hr />
+  <br />
   ## Show matching products
   %for product in products:
     <div class="tile text-center">
-      ## %for image in images:
-      ##   %if image.product == product:
-      ##     <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-      ##     <% break %>
-      ##   %endif
-      ## %endfor
+      %for image in images:
+        %if image.product == product:
+          <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
+          <% break %>
+        %endif
+      %endfor
       <br />
       <p><b>${ product.name }</b></p>
       <br />
