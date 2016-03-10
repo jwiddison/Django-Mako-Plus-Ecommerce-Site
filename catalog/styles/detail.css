@@ -1,7 +1,7 @@
 .detail > img{
   position:absolute;
-  height:200px;
-  width: 200px;
+  height:220px;
+  width: 220px;
 }
 
 .detail > p, .detail > h3, .detail > h5, .detail > h4{
@@ -11,6 +11,8 @@
 
 .detail > form{
   max-width: 100px;
-  float: right;
-  display: inline;
+  margin-left:240px;
+
+  /*float: right;
+  display: inline;*/
 }

@@ -21,9 +21,10 @@ def process_request(request):
     products = cmod.Product.objects.all().order_by('name')
 
     # Filter out rental products
-    # for p in products:
-    #     if p.__class__.className == 'Rental Product':
-    #         products.remove(p)
+    for p in products:
+        if p.__class__.className == 'Rental Product':
+            products.remove(p)
+
 
     # Filter for the id number of the category in the URL if someone has selected one.
     print(category_id)
