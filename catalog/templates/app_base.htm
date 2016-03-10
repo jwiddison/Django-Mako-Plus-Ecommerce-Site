@@ -36,7 +36,9 @@
 <%block name="content_right">
   <h5>Recently Viewed</h5>
   <hr />
-  <p>Probably have to store it in the session</p>
+  %for product in recent_products_list:
+    <p>${product.name}</p>
+  %endfor
 </%block>
 
 <%block name="menu">
