@@ -4,16 +4,24 @@
   <div class="detail">
     %for image in images:
       %if image.product == p:
-        <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}"/>
+        <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive"/>
         <% break %>
       %endif
     %endfor
     <h3>${p.name}</h3>
-    <p>${p.__class__.className}</p>
+    <h4>${p.price}</h4>
+    <p>Product Type: ${p.__class__.className}</p>
     <p>${p.description}</p>
     %if p.__class__.className == 'Bulk Product':
-      <h4>Only ${p.quantity} left!</h4>
+      <h5>Only ${p.quantity} left!</h5>
     %endif
-    <a class="btn btn-primary" href="#">Purchase</a>
+    <div class="clearfix"></div>
+    <form class="form-inline" action="">
+      <label for="quantity">Quantity:</label>
+      <input name ="quantity" type="number" class="" value="1"/>
+      <div class="clearfix"></div>
+      <br />
+      <input type="submit" class="btn btn-primary" value="Purchase" />
+    </form>
   </div>
 </%block>

@@ -4,10 +4,13 @@
   width: 200px;
 }
 
-.detail > p, h3{
+.detail > p, .detail > h3, .detail > h5, .detail > h4{
   margin-left:240px;
 }
 
-.detail > h4{
-  float:right;
+
+.detail > form{
+  max-width: 100px;
+  float: right;
+  display: inline;
 }
