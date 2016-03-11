@@ -1,0 +1,12 @@
+.recent > img{
+  width:70px;
+  height: auto;
+  float: left;
+}
+
+.recent > p{
+  position:absolute;
+  left:100px;
+  margin-top:20px;
+  font-size:120%;
+}
