@@ -9,4 +9,6 @@ def translate_product(request):
     for p_id in request.session['recently_viewed']:
         pList.append(Product.objects.get(id=p_id))
 
+    pList.reverse()
+
     return pList

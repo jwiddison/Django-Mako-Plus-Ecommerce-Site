@@ -14,30 +14,43 @@ from catalog.views import translate_product
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     # Get lists to return to the template_vars
-    products = cmod.Product.objects.all().order_by('name')
+    # products = cmod.Product.objects.all().order_by('name')
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
+
+    if str(request.urlparams[0]) == '':
+        pass
+    else:
+        try:
+            p = cmod.Product.objects.get(id=request.urlparams[0])
+        except cmod.Product.DoesNotExist:
+            return HttpResponseRedirect('/catalog/details/')
 
     # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
-
+    # Create a list in the session dictionary.  Get's the list if its already there, or an empty list if there isn't one yet.
     rv = request.session.get('recently_viewed', [])
+    # If the id of our product is already in the recently_viewed list, remove it
     if p.id in rv:
         rv.remove(p.id)
     # else:
+    # if the list is more than five long, remove the oldest one.
     if rv.__len__() >= 5:
         rv.pop(0)
 
+    #Add our product to the list.
     rv.append(p.id)
 
+    # Save our list into the session dictionary with the key "recently_viewed"
     request.session['recently_viewed'] = rv
+
 
     # Translate p.id list into list of objects
     recent_products_list = translate_product(request)
 
     template_vars = {
-      'products': products,
+    #   'products': products,
       'categories': categories,
       'images': images,
       'p': p,

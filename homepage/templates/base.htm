@@ -65,12 +65,12 @@
               <ul class="nav navbar-nav">
                 <%block name="menu">
                   ## uses if statements to check if the active page = the menu item, and then sets the page we're on as "active"
-                  <li class="${ 'active' if request.dmp_router_page == 'index' else ''}"><a href="/homepage/index">Home</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''}"><a href="/homepage/index">Home</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'about' else ''}"><a href="/homepage/about">About</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/homepage/terms">Terms</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/homepage/faq">FAQ</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'catalog' else ''}"><a href="/catalog/index">Catalog</a></li>
+                  <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Catalog</a></li>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">

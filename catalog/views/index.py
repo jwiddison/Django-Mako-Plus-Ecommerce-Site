@@ -4,10 +4,11 @@ from django_mako_plus.controller import view_function
 from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
+from catalog.views import translate_product
 
 
 @view_function
-@permission_required('catalog.change_product', login_url='/homepage/index/')
+@permission_required('catalog.change_product', login_url='/account/login/')
 def process_request(request):
     category_id = request.urlparams[0]
     if str(category_id) == '':
@@ -32,9 +33,14 @@ def process_request(request):
     images = cmod.ProductImage.objects.all()
 
 
+    # Translate p.id list into list of objects
+    recent_products_list = translate_product(request)
+
     template_vars = {
       'products': products,
       'categories': categories,
       'images': images,
+      'recent_products_list': recent_products_list,
+
     }
     return dmp_render_to_response(request, 'index.html', template_vars)
