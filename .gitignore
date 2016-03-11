@@ -2,6 +2,7 @@ migrations/
 __pycache__
 *.pyc
 cached_templates/
+/cached_templates/
 */cached_templates/
 *.log
 .DS_Store
