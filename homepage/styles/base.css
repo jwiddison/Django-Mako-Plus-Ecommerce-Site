@@ -2,7 +2,6 @@
 body{
   padding-top:64px; /* Same height as the fixed-top navbar */
   background-color:white;
-  margin-bottom:100px;
 }
 
 p{
@@ -14,13 +13,13 @@ img{
 }
 
 footer{
-  margin-top:50px;
+  margin-top:100px;
   background-color:#E6272E;
   padding-top:18px;
+  padding-bottom:18px;
   color:white;
-  opacity:.9;
-  max-height:60px;
 }
+
 
 .transparent{
   opacity: .95;

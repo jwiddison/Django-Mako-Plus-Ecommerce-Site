@@ -3,7 +3,7 @@
 <%block name="content">
   %for product in products:
     <a href="/catalog/detail/${product.id}">
-      <div class="tile text-center">
+      <div class="tile text-center center-block">
         %for image in images:
           %if image.product == product:
             <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>

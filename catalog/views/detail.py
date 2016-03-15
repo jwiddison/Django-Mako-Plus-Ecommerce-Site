@@ -18,7 +18,7 @@ def process_request(request):
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
 
-    
+
 
     # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
