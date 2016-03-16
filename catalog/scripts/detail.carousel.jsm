@@ -1,7 +1,7 @@
-// <%! import json %>
+<%! import json %>
 $(function() {
 
-  // var filenames = ${ json.dumps(images) };
+  var filenames = ${ json.dumps(images) };
 
   // var filenames = [
   //   %for pi in images:
@@ -13,6 +13,13 @@ $(function() {
 
   console.log('test1');
 
+  $('#previous_button').click(function() {
+    index -= 1;
+    // if index < 0{
+    //   index = 3;
+    // }
+    $('#product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
+  });
 
   $('#next_button').click(function() {
     index += 1;
@@ -23,13 +30,6 @@ $(function() {
     $('#product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
   });
 
-  $('#previous_button').click(function() {
-    index -= 1;
-    // if index < 0{
-    //   index = 3;
-    // }
-    $('#product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
-  });
 
 
   // $('.product_image').first().removeClass('hide');
