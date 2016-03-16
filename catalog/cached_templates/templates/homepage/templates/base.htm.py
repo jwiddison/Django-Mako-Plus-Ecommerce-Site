@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1458053538.003462
+_modified_time = 1458148237.399025
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['footer', 'alert', 'base_header', 'icon', 'navbar_title', 'top_content_area', 'maintainence_message', 'content', 'menu', 'maintainence_container', 'content_right', 'title', 'account_menu', 'content_left']
+_exports = ['account_menu', 'top_content_area', 'icon', 'title', 'menu', 'content_right', 'footer', 'navbar_title', 'maintainence_container', 'content_left', 'base_header', 'maintainence_message', 'content', 'alert']
 
 
 from django_mako_plus.controller import static_files 
@@ -20,37 +20,37 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def base_header():
-            return render_base_header(context._locals(__M_locals))
-        def navbar_title():
-            return render_navbar_title(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
         def title():
             return render_title(context._locals(__M_locals))
         def menu():
             return render_menu(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
+        def footer():
+            return render_footer(context._locals(__M_locals))
+        def base_header():
+            return render_base_header(context._locals(__M_locals))
+        def content_left():
+            return render_content_left(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def account_menu():
+            return render_account_menu(context._locals(__M_locals))
         def icon():
             return render_icon(context._locals(__M_locals))
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
         def maintainence_message():
             return render_maintainence_message(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        def footer():
-            return render_footer(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        def account_menu():
-            return render_account_menu(context._locals(__M_locals))
-        def content_left():
-            return render_content_left(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -127,6 +127,103 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_account_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def account_menu():
+            return render_account_menu(context)
+        request = context.get('request', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        if request.user.is_authenticated():
+            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
+            __M_writer(str( request.user ))
+            __M_writer('! <b class = "caret"></b></a>\n                      <ul class = "dropdown-menu">\n                        <li><a href="/account/index">Account Summary</a></li>\n                        <li><a href="/account/edit">Edit Account Info</a></li>\n                        <li><a href="/account/change_password">Change Password</a></li>\n                        <li><a href="/manager/index">Admin</a></li>\n                        <li role="presentation" class="divider"></li>\n                        <li><a href=\'/account/logout/\'>Logout</a></li>\n                      </ul>\n                    </li>\n')
+        else:
+            __M_writer('                    <button class="btn btn-danger" id="loginbutton">Login</button>\n')
+        __M_writer('                ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_top_content_area(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def top_content_area():
+            return render_top_content_area(context)
+        __M_writer = context.writer()
+        __M_writer('\n            TOP AREA!\n          ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_icon(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def icon():
+            return render_icon(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n                  <img src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/pics/flagicon.gif"/>\n                ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('Colonial Heritage Foundation')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        request = context.get('request', UNDEFINED)
+        def menu():
+            return render_menu(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''))
+        __M_writer('"><a href="/homepage/index">Home</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
+        __M_writer('"><a href="/homepage/about">About</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
+        __M_writer('"><a href="/homepage/terms">Terms</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
+        __M_writer('"><a href="/homepage/faq">FAQ</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
+        __M_writer('"><a href="/homepage/contact">Contact</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_app == 'catalog' else ''))
+        __M_writer('"><a href="/catalog/index">Catalog</a></li>\n                ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_right(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_right():
+            return render_content_right(context)
+        __M_writer = context.writer()
+        __M_writer('\n            Put Right Content Here!\n          ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_footer(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -149,13 +246,44 @@ def render_footer(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
+def render_navbar_title(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def alert():
-            return render_alert(context)
+        def navbar_title():
+            return render_navbar_title(context)
         __M_writer = context.writer()
-        __M_writer('\n          ')
+        __M_writer('\n                <a class="navbar-brand" href="/homepage/index">Colonial Herigate Foundation</a>\n              ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_container():
+            return render_maintainence_container(context)
+        def maintainence_message():
+            return render_maintainence_message(context)
+        __M_writer = context.writer()
+        __M_writer('\n      <div class="jumbotron">\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              <div id="maintainence_message">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
+            context['self'].maintainence_message(**pageargs)
+        
+
+        __M_writer('\n              </div><!-- maintainence_message -->\n            </div><!-- col-md-12 -->\n          </div><!-- row -->\n        </div><!-- container -->\n      </div><!-- jumbotron -->\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        __M_writer = context.writer()
+        __M_writer('\n            Put Left Content Here!\n          ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -164,20 +292,20 @@ def render_alert(context,**pageargs):
 def render_base_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def alert():
-            return render_alert(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def base_header():
-            return render_base_header(context)
-        def icon():
-            return render_icon(context)
-        request = context.get('request', UNDEFINED)
-        def navbar_title():
-            return render_navbar_title(context)
-        def menu():
-            return render_menu(context)
         def account_menu():
             return render_account_menu(context)
+        def alert():
+            return render_alert(context)
+        def icon():
+            return render_icon(context)
+        def menu():
+            return render_menu(context)
+        request = context.get('request', UNDEFINED)
+        def base_header():
+            return render_base_header(context)
+        def navbar_title():
+            return render_navbar_title(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('        <div id="alert">\n          ')
@@ -211,45 +339,6 @@ def render_base_header(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_icon(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def icon():
-            return render_icon(context)
-        __M_writer = context.writer()
-        __M_writer('\n                  <img src="')
-        __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/flagicon.gif"/>\n                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_navbar_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def navbar_title():
-            return render_navbar_title(context)
-        __M_writer = context.writer()
-        __M_writer('\n                <a class="navbar-brand" href="/homepage/index">Colonial Herigate Foundation</a>\n              ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_top_content_area(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def top_content_area():
-            return render_top_content_area(context)
-        __M_writer = context.writer()
-        __M_writer('\n            TOP AREA!\n          ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_maintainence_message(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -274,102 +363,13 @@ def render_content(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_menu(context,**pageargs):
+def render_alert(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        request = context.get('request', UNDEFINED)
-        def menu():
-            return render_menu(context)
+        def alert():
+            return render_alert(context)
         __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''))
-        __M_writer('"><a href="/homepage/index">Home</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
-        __M_writer('"><a href="/homepage/about">About</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
-        __M_writer('"><a href="/homepage/terms">Terms</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
-        __M_writer('"><a href="/homepage/faq">FAQ</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
-        __M_writer('"><a href="/homepage/contact">Contact</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_app == 'catalog' else ''))
-        __M_writer('"><a href="/catalog/index">Catalog</a></li>\n                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        __M_writer('\n      <div class="jumbotron">\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              <div id="maintainence_message">\n                ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
-            context['self'].maintainence_message(**pageargs)
-        
-
-        __M_writer('\n              </div><!-- maintainence_message -->\n            </div><!-- col-md-12 -->\n          </div><!-- row -->\n        </div><!-- container -->\n      </div><!-- jumbotron -->\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_right(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_right():
-            return render_content_right(context)
-        __M_writer = context.writer()
-        __M_writer('\n            Put Right Content Here!\n          ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def title():
-            return render_title(context)
-        __M_writer = context.writer()
-        __M_writer('Colonial Heritage Foundation')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_account_menu(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def account_menu():
-            return render_account_menu(context)
-        request = context.get('request', UNDEFINED)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        if request.user.is_authenticated():
-            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
-            __M_writer(str( request.user ))
-            __M_writer('! <b class = "caret"></b></a>\n                      <ul class = "dropdown-menu">\n                        <li><a href="/account/index">Account Summary</a></li>\n                        <li><a href="/account/edit">Edit Account Info</a></li>\n                        <li><a href="/account/change_password">Change Password</a></li>\n                        <li><a href="/manager/index">Admin</a></li>\n                        <li role="presentation" class="divider"></li>\n                        <li><a href=\'/account/logout/\'>Logout</a></li>\n                      </ul>\n                    </li>\n')
-        else:
-            __M_writer('                    <button class="btn btn-danger" id="loginbutton">Login</button>\n')
-        __M_writer('                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_left():
-            return render_content_left(context)
-        __M_writer = context.writer()
-        __M_writer('\n            Put Left Content Here!\n          ')
+        __M_writer('\n          ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -377,6 +377,6 @@ def render_content_left(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "line_map": {"259": 30, "265": 119, "271": 119, "17": 6, "19": 0, "277": 67, "284": 67, "285": 69, "286": 69, "287": 69, "288": 70, "289": 70, "290": 71, "291": 71, "292": 72, "293": 72, "294": 73, "295": 73, "296": 74, "297": 74, "303": 24, "311": 24, "56": 6, "57": 7, "316": 31, "61": 7, "322": 124, "67": 14, "68": 14, "69": 16, "70": 16, "71": 17, "72": 17, "73": 20, "74": 20, "55": 4, "76": 24, "334": 13, "81": 37, "340": 13, "86": 100, "346": 78, "91": 109, "378": 372, "357": 82, "96": 116, "353": 78, "354": 79, "355": 80, "356": 82, "101": 121, "358": 92, "359": 93, "360": 95, "106": 126, "366": 114, "111": 148, "112": 156, "113": 156, "114": 157, "115": 157, "116": 158, "117": 158, "118": 159, "119": 159, "120": 160, "121": 160, "122": 162, "123": 162, "124": 162, "130": 137, "136": 137, "137": 139, "138": 139, "66": 13, "144": 143, "145": 144, "146": 144, "152": 43, "158": 43, "164": 40, "328": 124, "182": 40, "183": 42, "372": 114, "188": 44, "193": 59, "75": 20, "198": 63, "203": 75, "208": 95, "214": 57, "221": 57, "222": 58, "223": 58, "229": 61, "235": 61, "241": 107, "247": 107, "253": 30}, "uri": "/homepage/templates/base.htm", "source_encoding": "utf-8"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "line_map": {"261": 24, "269": 24, "17": 6, "274": 31, "19": 0, "280": 114, "286": 114, "292": 40, "310": 40, "55": 4, "56": 6, "57": 7, "316": 44, "61": 7, "321": 59, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 17, "72": 17, "73": 20, "74": 20, "75": 20, "76": 24, "336": 95, "81": 37, "86": 100, "91": 109, "348": 30, "378": 372, "96": 116, "354": 119, "101": 121, "360": 119, "106": 126, "366": 43, "111": 148, "112": 156, "113": 156, "114": 157, "115": 157, "116": 158, "117": 158, "118": 159, "119": 159, "120": 160, "121": 160, "122": 162, "123": 162, "124": 162, "311": 42, "130": 78, "137": 78, "138": 79, "139": 80, "140": 82, "141": 82, "142": 92, "143": 93, "144": 95, "150": 107, "156": 107, "162": 57, "326": 63, "169": 57, "170": 58, "171": 58, "177": 13, "342": 30, "183": 13, "372": 43, "189": 67, "331": 75, "196": 67, "197": 69, "198": 69, "199": 69, "200": 70, "201": 70, "202": 71, "203": 71, "204": 72, "205": 72, "206": 73, "207": 73, "208": 74, "209": 74, "215": 124, "221": 124, "227": 137, "233": 137, "234": 139, "235": 139, "241": 143, "242": 144, "243": 144, "249": 61, "255": 61}, "source_encoding": "utf-8", "uri": "/homepage/templates/base.htm"}
 __M_END_METADATA
 """

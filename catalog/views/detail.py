@@ -3,7 +3,6 @@ from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
-from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from catalog.views import translate_product
@@ -11,7 +10,6 @@ from catalog.views import translate_product
 
 
 @view_function
-@permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     # Get lists to return to the template_vars
     categories = cmod.Category.objects.all().order_by('name')
@@ -55,13 +53,9 @@ def process_request(request):
 @view_function
 def carousel(request):
 
-    # Get product from url
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
-    # Get all of the images for that product.
-    images = p.images
-
     template_vars = {
-      'images': images,
+        'images': cmod.ProductImage.objects.all().filter(product=p),
     }
     return dmp_render_to_response(request, 'detail.carousel.html', template_vars)
