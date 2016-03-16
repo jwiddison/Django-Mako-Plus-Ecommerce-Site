@@ -1,10 +1,8 @@
-<%inherit file="/homepage/templates/base_ajax.htm" />
+## <%inherit file="/homepage/templates/base_ajax.htm" />
 
 <%block name="content">
-  <h3>All images for ${p.name}</h3>
-  <hr />
   <img id="pimage" src="${ STATIC_URL }catalog/media/pics/${ images[0] }"/>
   <br />
-  <a id="previous_button" class="glyphicon glyphicon-arrow-left"></a>
-  <a id="next_button" class="glyphicon glyphicon-arrow-right"></a>
+  <a id="previous_button" class="glyphicon glyphicon-menu-left"></a>
+  <a id="next_button" class="glyphicon glyphicon-menu-right"></a>
 </%block>

@@ -1,4 +1,4 @@
-.detail > img, #modal_trigger_image{
+.detail > img, #load_carousel{
   position:absolute;
   height:220px;
   width: 220px;
@@ -15,4 +15,18 @@
 .detail > form{
   max-width: 100px;
   margin-left:240px;
+}
+
+.modal-content{
+  text-align:center;
+}
+
+.modal-header{
+  color: #A30622
+}
+
+#previous_button, #next_button{
+  font-size:300%;
+  margin-left:20px;
+  margin-right:20px;
 }

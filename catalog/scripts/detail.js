@@ -1,14 +1,16 @@
-$(function(){
-  $('#modal_trigger_image').click(function(event) {
+$(function() {
+  $('#load_carousel').click(function(event) {
     event.preventDefault();
     var detail_url = $(this).attr('href');
+    var pname = $(this).attr('data-pname');
     console.log(detail_url);
-    // Load url into modal
-    $.loadmodal('/catalog/detail.carousel/');
-
-    // $.loadmodal({
-    //   url: detail_url,
-    //   id: 'product_images_modal',
-    // }); // LoadModal
+    // // Load url into modal
+    // $.loadmodal(String(detail_url));
+    $.loadmodal({
+      url: detail_url,
+      title: 'All images for ' + pname + ':',
+      id: 'product_image_carousel',
+      width: '650px',
+    }); // LoadModal
   }); // click
 }); // ready

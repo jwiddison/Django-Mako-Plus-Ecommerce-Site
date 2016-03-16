@@ -1,13 +1,13 @@
-<%! import json %>
+// <%! import json %>
 $(function() {
 
-  var filenames = ${ json.dumps(images) };
+  // var filenames = ${ json.dumps(images) };
 
-  // var filenames = [
-  //   %for pi in images:
-  //     '${ pi.filename }'
-  //   %endfor
-  // ]
+  var filenames = [
+    %for pi in images:
+      '${ pi.filename }'
+    %endfor
+  ]
 
   var index = 0;
 
@@ -18,7 +18,7 @@ $(function() {
     // if index < 0{
     //   index = 3;
     // }
-    $('#product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
+    $('#pimage').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
   });
 
   $('#next_button').click(function() {
@@ -27,7 +27,7 @@ $(function() {
     //   index = 0;
     // }
     console.log('test2');
-    $('#product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
+    $('#pimage').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filenames[index]);
   });
 
 
