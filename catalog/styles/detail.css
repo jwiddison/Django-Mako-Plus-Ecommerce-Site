@@ -1,4 +1,4 @@
-.detail > img, #modal_trigger_image, .product_image_text{
+.detail > img, #modal_trigger_image{
   position:absolute;
   height:220px;
   width: 220px;
@@ -6,6 +6,10 @@
 
 .detail > p, .detail > h3, .detail > h5, .detail > h4{
   margin-left:240px;
+}
+
+.product_image_text, .detail > p{
+  font-size:14px;
 }
 
 .detail > form{

@@ -52,7 +52,16 @@ def process_request(request):
     return dmp_render_to_response(request, 'detail.html', template_vars)
 
 
-
+@view_function
 def carousel(request):
 
-    
+    # Get product from url
+    p = cmod.Product.objects.get(id=request.urlparams[0])
+
+    # Get all of the images for that product.
+    images = p.images
+
+    template_vars = {
+      'images': images,
+    }
+    return dmp_render_to_response(request, 'detail.carousel.html', template_vars)

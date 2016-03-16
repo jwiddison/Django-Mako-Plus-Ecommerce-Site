@@ -7,12 +7,18 @@ $(function() {
 
   $('.next_button').click(function() {
     index += 1;
-    $('.product_image').attr('src', '/catalog/media/pics/' + filename[index]);
+    if index >= 3{
+      index = 0;
+    }
+    $('.product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filename[index]);
   });
 
   $('.previous_button').click(function() {
     index -= 1;
-    $('.product_image').attr('src', '/catalog/media/pics/' + filename[index]);
+    if index < 0{
+      index = 3;
+    }
+    $('.product_image').attr('src', '${ STATIC_URL }/catalog/media/pics/' + filename[index]);
   });
 
 
