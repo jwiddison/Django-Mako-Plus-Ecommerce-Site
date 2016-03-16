@@ -14,7 +14,6 @@ from catalog.views import translate_product
 @permission_required('catalog.change_product', login_url='/homepage/index/')
 def process_request(request):
     # Get lists to return to the template_vars
-    # products = cmod.Product.objects.all().order_by('name')
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
 
@@ -51,3 +50,9 @@ def process_request(request):
       'recent_products_list': recent_products_list,
     }
     return dmp_render_to_response(request, 'detail.html', template_vars)
+
+
+
+def carousel(request):
+
+    
