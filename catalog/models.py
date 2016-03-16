@@ -23,7 +23,7 @@ admin.site.register(Category)
 #########################################################################################################
 class ProductImage(models.Model):
     filename = models.TextField(null=True, blank=True)
-    product = models.ForeignKey('catalog.Product')
+    product = models.ForeignKey('catalog.Product', related_name='images')
 
     def __str__(self):
         '''Prints for debugging purposes'''
@@ -39,7 +39,8 @@ class Product(PolymorphicModel):
     price = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     add_date = models.DateField(null=True, blank=True, auto_now_add=True)
-    image = models.TextField(null=True, blank=True)
+    # Removed for Sprint 4
+    # image = models.TextField(null=True, blank=True)
     category = models.ForeignKey('catalog.Category')
 
     def __str__(self):
