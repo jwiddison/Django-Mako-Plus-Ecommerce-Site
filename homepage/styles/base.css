@@ -1,4 +1,3 @@
-/* Site-wide CSS styles */
 body{
   padding-top:64px; /* Same height as the fixed-top navbar */
   background-color:white;
@@ -16,10 +15,17 @@ footer{
   margin-top:100px;
   background-color:#E6272E;
   padding-top:18px;
-  padding-bottom:18px;
   color:white;
 }
 
+.white{
+  color:white;
+}
+
+i{
+  margin-top:20px;
+  padding-right:10px;
+}
 
 .transparent{
   opacity: .95;

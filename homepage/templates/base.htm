@@ -75,6 +75,9 @@
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">
+              <li><i class="fa fa-facebook fa-2x white"></i></li>
+              <li><i class="fa fa-instagram fa-2x white"></i></li>
+              <li><i class="fa fa-twitter fa-2x white"></i></li>
                 <%block name="account_menu">
                   %if request.user.is_authenticated():
                     <!-- Dropdown, logout, etc -->
@@ -142,9 +145,6 @@
                  current_year = datetime.date.today().year
               %>
               <p>Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
-              <i class="fa fa-instagram fa-2x pull-right"></i>
-              <i class="fa fa-twitter fa-2x pull-right"></i>
-              <i class="fa fa-facebook fa-2x pull-right"></i>
             </%block>
           </div><!-- col-md-12 -->
         </div><!-- row -->
