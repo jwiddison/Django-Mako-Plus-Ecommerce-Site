@@ -5,7 +5,6 @@
 ## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
 <%! from django_mako_plus.controller import static_files %>
 <%  static_renderer = static_files.StaticRenderer(self) %>
-<!-- <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" /> -->
 
 ## render the CSS for this template
 ${ static_renderer.get_template_css(request, context)  }
@@ -17,5 +16,3 @@ ${ static_renderer.get_template_css(request, context)  }
 
 ## render the JS for this template (placed here at the end because browsers apparently load faster when JS is at the end)
 ${ static_renderer.get_template_js(request, context)  }
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="${ STATIC_URL }catalog/scripts/detail.carousel.jsm"></script> -->

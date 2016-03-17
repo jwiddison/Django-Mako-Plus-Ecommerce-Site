@@ -5,7 +5,7 @@
     %for image in images:
       %if image.product == p:
         <a href="/catalog/detail.carousel/${p.id}" id="load_carousel" data-pname="${p.name}">
-          <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive"/>
+          <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive img-thumbnail"/>
           <div class="product_image_text">
             <p>Click for additional images</p>
           </div>
@@ -22,7 +22,7 @@
     %endif
     <div class="clearfix"></div>
     <form class="form-inline" action="">
-      <label for="quantity">Quantity:</label>
+      <label for="quantity"><b>Quantity:</b></label>
       <input name ="quantity" type="number" class="form-control" value="1"/>
       <div class="clearfix"></div>
       <br />

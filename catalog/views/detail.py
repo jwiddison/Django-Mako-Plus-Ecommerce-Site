@@ -37,13 +37,14 @@ def process_request(request):
     request.session['recently_viewed'] = rv
 
 
-    # Translate p.id list into list of objects
+    # Translate p.id list into list of objects (calling function written in __init__.py)
     recent_products_list = translate_product(request)
 
     template_vars = {
     #   'products': products,
       'categories': categories,
       'images': images,
+      'p_images': cmod.ProductImage.objects.all().filter(product=p),
       'p': p,
       'recent_products_list': recent_products_list,
     }
