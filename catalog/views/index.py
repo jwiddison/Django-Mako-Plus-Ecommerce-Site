@@ -1,14 +1,12 @@
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
-from django.contrib.auth.decorators import permission_required
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from catalog.views import translate_product
 
 
 @view_function
-@permission_required('catalog.change_product', login_url='/account/login/')
 def process_request(request):
     category_id = request.urlparams[0]
     if str(category_id) == '':

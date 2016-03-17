@@ -4,12 +4,36 @@
   width: 220px;
 }
 
-.detail > p, .detail > h3, .detail > h5, .detail > h4{
-  margin-left:240px;
+.launch_modal_button{
+  position: absolute;
+  top:240px;
+  display:inline;
+  margin-top:20px;
 }
 
+.detail > p, .detail > h3, .detail > h5, .detail > h4{
+  margin-left:260px;
+}
+
+.product_image_text, .detail > p{
+  font-size:14px;
+}
 
 .detail > form{
   max-width: 100px;
-  margin-left:240px;
+  margin-left:260px;
+}
+
+.modal-content{
+  text-align:center;
+}
+
+.modal-header{
+  color: #A30622
+}
+
+#previous_button, #next_button{
+  font-size:300%;
+  margin-left:20px;
+  margin-right:20px;
 }

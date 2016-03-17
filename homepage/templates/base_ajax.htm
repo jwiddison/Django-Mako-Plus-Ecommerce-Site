@@ -12,7 +12,7 @@ ${ static_renderer.get_template_css(request, context)  }
 ## render the ajax content
 <%block name="content">
   Sub-templates should place their ajax content here.
-</%block>  
+</%block>
 
 ## render the JS for this template (placed here at the end because browsers apparently load faster when JS is at the end)
 ${ static_renderer.get_template_js(request, context)  }
