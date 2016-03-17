@@ -1,11 +1,18 @@
-.detail > img, #load_carousel{
+.detail > img{
   position:absolute;
   height:220px;
   width: 220px;
 }
 
+.launch_modal_button{
+  position: absolute;
+  top:240px;
+  display:inline;
+  margin-top:20px;
+}
+
 .detail > p, .detail > h3, .detail > h5, .detail > h4{
-  margin-left:240px;
+  margin-left:260px;
 }
 
 .product_image_text, .detail > p{
@@ -14,7 +21,7 @@
 
 .detail > form{
   max-width: 100px;
-  margin-left:240px;
+  margin-left:260px;
 }
 
 .modal-content{

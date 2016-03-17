@@ -58,6 +58,6 @@ def carousel(request):
 
     template_vars = {
         'p': p,
-        'images': cmod.ProductImage.objects.all().filter(product=p),
+        'p_images': cmod.ProductImage.objects.all().filter(product=p),
     }
     return dmp_render_to_response(request, 'detail.carousel.html', template_vars)

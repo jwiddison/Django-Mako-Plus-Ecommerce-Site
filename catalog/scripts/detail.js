@@ -1,16 +1,15 @@
 $(function() {
 
-  $('#load_carousel').click(function(event) {
+  $('.detail > a').click(function(event) {
     event.preventDefault();
 
-    var detail_url = $(this).attr('href');
+    // var detail_url = $(this).attr('href');
     //console.log(detail_url); // Just to check and make sure we're pulling the right URL
 
-    var product_name = $(this).attr('data-pname');
-
     $.loadmodal({
-      url: detail_url,
-      title: 'All Images For ' + product_name + ':',
+      // url: detail_ul,
+      url: '/catalog/detail.carousel/' + $(this).attr('data-pid'),
+      title: 'All Images For ' + $(this).attr('data-pname') + ':',
       id: 'product_image_carousel',
       width: '600px',
     }); // LoadModal
