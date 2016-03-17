@@ -5,7 +5,7 @@
     %for image in images:
       %if image.product == p:
         <a href="/catalog/detail.carousel/${p.id}" id="load_carousel" data-pname="${p.name}">
-          <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive img-thumbnail"/>
+          <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive"/>
           <div class="product_image_text">
             <p>Click for additional images</p>
           </div>
@@ -28,7 +28,5 @@
       <br />
       <input type="submit" class="btn btn-primary" value="Purchase" />
     </form>
-  </div>
-
-  <!-- Image carousel modal -->
+  </div><!-- detail -->
 </%block>

@@ -4,7 +4,7 @@ $(function() {
     event.preventDefault();
 
     var detail_url = $(this).attr('href');
-    console.log(detail_url); // Just to check and make sure we're pulling the right URL
+    //console.log(detail_url); // Just to check and make sure we're pulling the right URL
 
     var product_name = $(this).attr('data-pname');
 

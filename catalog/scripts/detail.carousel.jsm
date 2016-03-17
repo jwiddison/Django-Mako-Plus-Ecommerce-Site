@@ -3,6 +3,8 @@ $(function() {
 
   // var filenames = ${ json.dumps(images) };
 
+  var index = 0;
+
   var filenames = [
     %for pi in p_images:
       '${ pi.filename }'
@@ -10,8 +12,6 @@ $(function() {
   ]
 
   console.log(filenames);
-
-  var index = 0;
 
   $('#previous_button').click(function() {
     index -= 1;
