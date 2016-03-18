@@ -1,0 +1,839 @@
+* commit 47e0c50acf533a31cb500d298313ec966ae26b35
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Mar 17 23:38:18 2016 -0600
+|
+|     Social Media changes (again) after 2nd fix of corrupted master branch.
+|
+*   commit 052cb0584ff05092b8089c51c76909b423375a8f
+|\  Merge: 09b48cd 48dd6c0
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 17 23:34:52 2016 -0600
+| |
+| |     cached template changes.
+| |
+| * commit 48dd6c0dfb724829c1bb6de6f14186399d169d99
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 17 23:07:15 2016 -0600
+| |
+| |     DID I FIX IT?  I DID AN 'OURS' MERGE, AND I THINK IT MIGHT HAVE FINALLY FIXED ITgit add .
+| |
+| *   commit 3f5afd005f58a3788d8a0521a407a9a8d6188b72
+| |\  Merge: 3c5bcee 4f375bf
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Thu Mar 17 23:05:04 2016 -0600
+| | |
+| | |     Maybe this will fix it?
+| | |
+* | | commit 09b48cd25f8936b67b4649757da0ed913ee07536
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Thu Mar 17 23:31:52 2016 -0600
+| | |
+| | |     Fixing master for what is hopefully the last time.
+| | |
+* | |   commit 9fd1a97d5f70eb51c971816fbc15067da7e2edd8
+|\ \ \  Merge: 3c5bcee 4f375bf
+| |/ /  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|/| /   Date:   Thu Mar 17 23:30:22 2016 -0600
+| |/
+| |         Merging master into image_carousel again to try and fix things AGAIN.
+| |
+| *   commit 4f375bf0e25ee7c205fdab81edcd861ae7c3e518
+| |\  Merge: 13eca9a 7d6265b
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Thu Mar 17 18:08:04 2016 -0600
+| | |
+| | |     Why is master broken?  Everything is broken
+| | |
+| * |   commit 13eca9a2f810b0659cedf7e7f41c845e22661fbd
+| |\ \  Merge: 2501ddf e31eec8
+| | | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | | Date:   Thu Mar 17 17:54:57 2016 -0600
+| | | |
+| | | |     one more commit to make merge work
+| | | |
+| * | | commit 2501ddf38cb70012feeee5d96a862f591956a133
+| | | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | | Date:   Thu Mar 17 17:54:08 2016 -0600
+| | | |
+| | | |     Commit to push to merge in image_carousel branch.
+| | | |
+| * | | commit f669d02515523571e6213d0dd33154f987710e76
+| | | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | | Date:   Tue Mar 15 20:58:33 2016 -0600
+| | | |
+| | | |     small changes to social media buttons in navbar on top.
+| | | |
+* | | | commit 3c5bcee0e08ee0d4b505328fe03e7817ff4dbf54
+| | | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | | Date:   Thu Mar 17 22:54:56 2016 -0600
+| | | |
+| | | |     Just some pycache changes.  Trying to resolve problem of everything being wrong with master branch.
+| | | |
+* | | | commit 70ed01c666061e8b9b64df0c785de500a998fedd
+| |_|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|/| |   Date:   Thu Mar 17 22:05:03 2016 -0600
+| | |
+| | |       Trying again to merge image_carousel into master.
+| | |
+* | | commit 7d6265baeb323ff6f4c087c2a652b860f142ac1c
+| |/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|/|   Date:   Thu Mar 17 18:06:52 2016 -0600
+| |
+| |       Some crazy problems are happening with the master branch and everything being broken.  Trying to fix it.
+| |
+* | commit e31eec8475f0c10373e2bfee5de10b321a0e7015
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 17 17:53:12 2016 -0600
+| |
+| |     Finished working on carousel.  Everything is fixed and that portion of the project is done.
+| |
+* | commit b088a141f0807d72976b6e1e812654a6398251b4
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 17 16:15:41 2016 -0600
+| |
+| |     Still working on carousel, cleaned up some aspects of detail.js and detail.carousel.jsm files.
+| |
+* | commit ca72c9c712ca53122890ef3d5527b440f49fbfb0
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 16 19:16:34 2016 -0600
+| |
+| |     Some various css changes, and a few other things.  Still trying to get image carousel to work.
+| |
+* | commit cdd5ae5a0700ee43725895ae0ac1f381a9b01e53
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 16 13:16:15 2016 -0600
+| |
+| |     Got modal working, but only by deleting inheritance from base_ajax.  Applied styles to modal, but now trying to get things to work with the ajax.
+| |
+* | commit 292b551905b285b456eb6894378897383f4e1bd2
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 16 12:53:05 2016 -0600
+| |
+| |     Still working on getting carousel to load.  I'm at least dropping into both .js functions.  Just having trouble getting the modal to show up.
+| |
+* | commit 58b2561cdb414198413e36f8f342ca5c9b00eacb
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 16 11:41:27 2016 -0600
+| |
+| |     Still trying to get carousel to work.  Can now successfully load correct product image in the detail.carousel/product.id page, but javascript isn't working, and modal isn't working yet.
+| |
+* | commit 2efe8fea5b598ab04c526d9434fa81d0403992a8
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 16 00:33:49 2016 -0600
+| |
+| |     Last small changes for the night.
+| |
+* | commit 0fba9b7911cd308139300287b561d8a3cf72d161
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 15 23:17:53 2016 -0600
+| |
+| |     Got all the errors surrounding the detail.carousel fixed.  Now it'll render content and inherit from base.ajax.  Something is still wrong with the javascript, and it won't load the pictures, or load anything in a modal, but that is okay.  We'll get that soon too.
+| |
+* | commit aa5c98e478b261775652d2e44b0e3b52792c9e45
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 15 22:56:06 2016 -0600
+| |
+| |     Added detail.carousel html and js files, detail.js to show the modal with the images, and tried to get that all working (isn't yet)
+| |
+* | commit fc76bba00d0c044a074f03525c1f282323c040b9
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 15 22:25:12 2016 -0600
+| |
+| |     Commiting some changes to models.py (fixing images field on product model, etc) before migrating the database in case everything explodes.
+| |
+* | commit f30dd89894da55e16b37b2943cc857b3b0dd72ae
+|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|   Date:   Tue Mar 15 20:59:47 2016 -0600
+|
+|       Initial commit on image_carousel branch to push to origin
+|
+* commit a06487fc593356d5001c5f2e51d69c0bed8bb492
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Tue Mar 15 09:25:36 2016 -0600
+|
+|     Small visual tweaks, nothing major.  Added social media buttons to footer and made footer not fixed anymore.
+|
+* commit 111d5ee88ebb2f23fe02c7ad498a361478a807fb
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Mar 14 14:46:00 2016 -0600
+|
+|     Changes to chached_templates and stuff.
+|
+* commit 2f24d9887ad44aaab0bd16ce9b9efb87dd401876
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Mar 10 21:29:42 2016 -0700
+|
+|     Small changes, committing getting ready to start a new branch.
+|
+*   commit d9aecc771fbd5130e87b7cf401e2530c3c89bf6f
+|\  Merge: 2446dc8 8964400
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 17:53:30 2016 -0700
+| |
+| |     Commit to merve recently_viewed
+| |
+| * commit 8964400becc6835875d4c95f41c307eb9beb217e
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 17:51:44 2016 -0700
+| |
+| |     Fixed issue with session starting by adding default empty list to .__init__.py file.
+| |
+| * commit ca918b632ec2382ffb2a17ae5d86eaeea7770eb8
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 17:37:24 2016 -0700
+| |
+| |     Made TONS of changes.  Finished recently viewed section (or so I thought).  Applied lots of CSS styles to things, made changes to functionality, cleaned up and commented code.  Discovered a problem where the list of product IDs in the session throws an error when a user first starts their session.  Committing so I don't break things while I'm working on that.
+| |
+| * commit 2c2819d521284ec79baa4d8e8ceb4f3bde3e1841
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 10:33:04 2016 -0700
+| |
+| |     Added list of recent product IDs to session, translated it to objects in .__init__.py and called that method on details page.
+| |
+| * commit d761a7d911505498c5005d253f88b6e59beb8c15
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 09:27:07 2016 -0700
+| |
+| |     Doesn't technically have anything to do with the recently_viewed part, but filtered results of search and index.html to not show rental products.
+| |
+* | commit 2446dc80e9096677fa22f386f25b4452b5b77692
+|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|   Date:   Thu Mar 10 17:52:23 2016 -0700
+|
+|       Small change to pycache to be able to merge in recently viewed.
+|
+* commit 2052e25dda4e2168e2d3c9cecd860475c126cf71
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Mar 10 00:24:26 2016 -0700
+|
+|     A handful of small changes.  Layout on detail page.  Still trying to filter out rental products.
+|
+*   commit 860842cb131a49145f9c86573b97e77f08aaadbe
+|\  Merge: 0d01168 a832883
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 23:26:01 2016 -0700
+| |
+| |     Commiting to finish merge of details branch?
+| |
+| * commit a8328835605248b8135345f746eab3b055e44bb2
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Thu Mar 10 05:55:41 2016 +0000
+| |
+| |     README.md edited online with Bitbucket
+| |
+* | commit 0d011688d02c413529d5b7778b423ed27b89abf4
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 23:23:44 2016 -0700
+| |
+| |     Finished styling/positioning of all parts of detail page for each type of product.  Going to merge back into master branch.
+| |
+* | commit 94463316232c11864c794ce383a5f5887a1e3ee5
+|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|   Date:   Wed Mar 9 22:51:00 2016 -0700
+|
+|       Pulled ID off of URL.  Showing all basic info about product.  Shows quantity if its a bulk product.  Has purchase button that doesn't point to anything.  Applied CSS posision absolute stuff to the image for the product.
+|
+* commit 2f4c1d7261a19d3fb46938f6462aa95d51d3255b
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 22:21:39 2016 -0700
+|
+|     Search branch finally merged back in.  I think all is well now?
+|
+*   commit c42e8db3fff7b6ec24c30dfef26c401b69adbf98
+|\  Merge: 5c94d78 12c6260
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 22:19:21 2016 -0700
+| |
+| |     Updated gitignore to hopefully finally be able to merge with search branch.
+| |
+| * commit 12c6260bba43bac4459fda54ef6c925a20768695
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 22:09:29 2016 -0700
+| |
+| |     Added cached_templates to git ignore file.
+| |
+* |   commit 5c94d78d310305fe505d8ecb2867a0a460139236
+|\ \  Merge: 33b3125 b703fa1
+| |/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+| |   Date:   Wed Mar 9 22:04:54 2016 -0700
+| |
+| |       still trying.
+| |
+| * commit b703fa1171e4e472b6dc4072e08f8043f9b2bee2
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 22:02:12 2016 -0700
+| |
+| |     I will eventually figure out how to merge branches.
+| |
+* |   commit 33b3125857803a6675444771cc1f44ce9442e305
+|\ \  Merge: 90712e5 f96790e
+| |/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+| |   Date:   Wed Mar 9 21:58:50 2016 -0700
+| |
+| |       why is this still happening...
+| |
+| * commit f96790e8710d711182bb5cc3d9a7b8a9bdc2dfef
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 21:55:07 2016 -0700
+| |
+| |     still trying to merge back into master.
+| |
+| * commit d240852662c50b23f0e7987bcdc20bf64e2ba2d8
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 21:46:11 2016 -0700
+| |
+| |     Search function working 100%.
+| |
+| * commit c1af8e6c476e8df52141800781fa7849c3c419f5
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 13:56:39 2016 -0700
+| |
+| |     got search working not case sensitive.  Still won't do partial strings.
+| |
+| * commit d2336f5f00dfedd43cf58c42967a9e05703c285c
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 13:37:32 2016 -0700
+| |
+| |     Pulled form input in from the URL, got count and Search query displaying properly on search.html.  Trying to fix a problem and only send over the bulk and individual products, because now it sends the rental products as well.
+| |
+| * commit 75c7abd58e1099bc9a597e4e96f37ab2a226b3be
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 13:00:10 2016 -0700
+| |
+| |     Added form (method=GET) in left sidebar to enter search queries
+| |
+* | commit 90712e5458cee2b240e7bb143d5a4a5d06da06f1
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 21:52:55 2016 -0700
+| |
+| |     still have to commit again before being able to merge?  I guess I still don't get this branches thing very well.
+| |
+* | commit 4e79e9798e8f945caa54a88ea67a4af2d9b4accc
+|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|   Date:   Wed Mar 9 21:51:29 2016 -0700
+|
+|       small commit to bring master branch up to date to merge search back into it.
+|
+* commit 820702e949c2b80b017509a71ca996afe241d393
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 12:46:41 2016 -0700
+|
+|     Added product images to product table in manager app.
+|
+* commit 7c66a94dd7778671799087d90e6d8215751f0375
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 12:37:38 2016 -0700
+|
+|     Images for tiles now working.  Tiles are finished, gonna close out and merge tiles branch
+|
+* commit e206b16d8708274999bd7bc370c6748b9ff0ebd1
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 12:19:06 2016 -0700
+|
+|     Fixed tile sorting by category and added feature where it won't try and filter by an id in the url that doesn't exist.
+|
+* commit 991e744c2187486e04b401af25625dedd5f451d7
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 11:31:53 2016 -0700
+|
+|     More changes to initialize, still trying to get photos to work.  ProductImage table is working and adding products to the images. Also changed category links on index page.  Trying to get filtering by category to work.
+|
+* commit 17d5e774e75cdd0e5021cd77326138bbf09d0d62
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 9 11:05:07 2016 -0700
+|
+|     lots of changes to initialize.py, getting names, prices, and descriptions to work for all prodcuts based on random image choice.  Various small css changes and layout changes too.  Still trying to get the images to work for all products.
+|
+*   commit 32ca6911a2d820fe90bea02fdf7403a7518555f0
+|\  Merge: ec90282 7717b06
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 09:35:34 2016 -0700
+| |
+| |     Still trying to get merge to work.
+| |
+| * commit 7717b06da1b4ff84420b0604b9e5a9723832da8e
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 09:31:13 2016 -0700
+| |
+| |     small changes to models.py to update ProductImage class
+| |
+| * commit 2721102ea29f885433a60286b5999547c46089fb
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Wed Mar 9 09:27:44 2016 -0700
+| |
+| |     Added styles to tiles (border, shadow, etc.), added product image to models.py, added init stuff for images to initialize script.
+| |
+| * commit 945f0e4f999dbdb5fd6a364f967973e9bd786d49
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 8 22:15:24 2016 -0700
+| |
+| |     added 'tile' div to index page.
+| |
+| * commit d05779f8edd837db6b11f51f5e14ae38da5453be
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 8 18:54:36 2016 -0700
+| |
+| |     Added left and right column content to app base, so I didn't have to write it in each individual page.  Just make sure to still send the list of products and categories in the template vars to each template that needs them, because I couldn't send them to app_base.
+| |
+| * commit bb9e66b47cee24c77b5f5f12fcbf439073cff34d
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Tue Mar 8 00:07:39 2016 -0700
+| |
+| |     Added .html/.py files for search and detail.  Included some instructions for filter/search stuff in the index.py file for later.
+| |
+| * commit 19607e9c9e5c183c54e9759f31ced0d32747b724
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Mon Mar 7 23:46:17 2016 -0700
+| |
+| |     added left and right area menus bars on catalog/index.  Also finished creating category, dropped db, re-created, an reinitialized with all products having a category. Passed list of categories to catalog/index to create list for filtering.
+| |
+| * commit a04a478d738af3555a1dfc64e8f6506fc48ef511
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Mon Mar 7 21:48:43 2016 -0700
+| |
+| |     Added category to initialize, and added random category to each type of product.
+| |
+| * commit b1a4837ea699e3335adb35f35baed6bf83c58a58
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Mon Mar 7 21:41:49 2016 -0700
+| |
+| |     Created Category in catalog/models.py.  Updated initialize script to create more products of each type.  Next going to migrate database and write init script for categories.
+| |
+| *   commit 36fee6605f8c4db4aba0c9939c8766d3d4ff6bcc
+| |\  Merge: f256003 4965699
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Mon Mar 7 21:29:29 2016 -0700
+| | |
+| | |     merging bit bucket's tiles branch with my local tiles branch.
+| | |
+| * | commit f2560035291d4b6a8aed3606e3e60a024c24f39a
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Mon Mar 7 21:22:23 2016 -0700
+| | |
+| | |     Added test images, on catalog/index.html, passed list of products from .py file, and accessed all information we're gonna need for tiles.  Also added *.jpg to .gitignore file so I don't have to commit all the .jpgs I just added.
+| | |
+* | | commit ec90282c210e0130f9762668fa002cf9c82e1459
+| | | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | | Date:   Wed Mar 9 09:32:15 2016 -0700
+| | |
+| | |     Commiting changes to practice merging branches back together.
+| | |
+* | | commit 84e6e85922b6ecea3cd350963ad98b5d733df5fe
+| |/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|/|   Date:   Tue Mar 8 22:18:06 2016 -0700
+| |
+| |       Just some pycache changes that I have to commit before switching braches.
+| |
+* | commit 4965699c20c8767d9d0c72f3aa160e3f2a81a24c
+| | Author: Jordan Widdison <jordan.widdison@gmail.com>
+| | Date:   Mon Mar 7 21:07:41 2016 -0700
+| |
+| |     small changes to initialize script, to test differences between branches.
+| |
+* | commit 8d8090653c0cbbc487df55628aa3e6426a715027
+|/  Author: Jordan Widdison <jordan.widdison@gmail.com>
+|   Date:   Mon Mar 7 09:26:48 2016 -0700
+|
+|       Testing changes
+|
+* commit c0ae43bb618d868fd6c5cced2b41684e33e9c09e
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Mar 7 09:06:19 2016 -0700
+|
+|     New commit with .gitignore file, created in class on March 7th.
+|
+* commit cbfe8133ea5bc5279c5d2c41af6307bac943ce45
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Mar 3 21:56:55 2016 -0700
+|
+|     Changed __str__ method for users to drop 'User: ' off of the beginning.
+|
+* commit 717ca2d33bbd260a3d8ad6c3480fb8feec861e8f
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Wed Mar 2 11:15:09 2016 -0700
+|
+|     Small changes to .js files (using 3 === instead of 2 ==)
+|
+* commit d0428fe0a6ba811f0698a75b6065e2eda89fb99b
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Fri Feb 26 21:31:34 2016 -0700
+|
+|     I have no idea why these cached_templates change, but that's okay.
+|
+* commit b8ce45ed57dc8be696b11e01ad434bc82519f37f
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Feb 25 16:16:25 2016 -0700
+|
+|     some small ui changes
+|
+* commit a0b390b67527cfd03454da3d194ea7d311936bcf
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Feb 25 14:38:30 2016 -0700
+|
+|     made a few small changes to the title in the menu bars for the various apps.
+|
+* commit 897bc4dba297d83c1fe6ecff1a767edee83d7207
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Tue Feb 23 14:25:43 2016 -0700
+|
+|     final version that was turned in for grading and validated.  Everything works, and project got 100 percent.
+|
+* commit fb3753a9b75844f53489881eb615c7fbc047e21f
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Tue Feb 23 14:25:29 2016 -0700
+|
+|     final version that was turned in for grading and validated.  Everything works, and project got 100 percent.
+|
+* commit deb158fb5174b628a155e7cca5333f29171b4861
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 23:48:52 2016 -0700
+|
+|     Changed create buttons to top of tables, made table font sizes smalles (from 13px to 10px) to get all information on one table row and make the tables show all information on one row for each record.
+|
+* commit 59b4b08692bf19e43f5d9741494c11a2b425285d
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 23:10:06 2016 -0700
+|
+|     fixed 1 small problem with products.edit.  Just something I left in earlier and forgot to delete.  NOW everything is working.
+|
+* commit 68031512e47ecadd1faf517944165720423b39c0
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 22:52:50 2016 -0700
+|
+|     Last commit for night, with last round of changes.  Some CSS styles, everything is still functional and finished for sprint 3
+|
+* commit 4fde3c8eff9ce27dcbe6926878f6a8af6bb7af8a
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 22:16:23 2016 -0700
+|
+|     Some minor changes, new, clean database.
+|
+* commit ecc2d3af3c62d6f651b9e5bfdf04067c97174b11
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 22:12:55 2016 -0700
+|
+|     commit just before dropping and re-creating database.  Applying CSS to forms.
+|
+* commit ecb52592520206aafd7f4b0a239ab628d8b1d019
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 21:55:04 2016 -0700
+|
+|     everything for sprint 3 working like it should.  Everything is done.
+|
+* commit 26f5be99edfc6b4a88448134a0da4f580a75670d
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 21:42:02 2016 -0700
+|
+|     for some reason the last commit didn't get all the changes, so this one has them all.
+|
+* commit 6d4400ffd4fd2ac5a8a31140eae1bb26b6027ddf
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 21:41:23 2016 -0700
+|
+|     Edit and Delete area working now. Delete with modal, edit without.  Create area now not working, but trying to fix it.
+|
+* commit 3479027106f4d40dcd6bcbcce786f8361ce4d854
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 17:27:06 2016 -0700
+|
+|     Working on modals, .js files for creating areas and editing areas
+|
+* commit d120122d0e56898fd2aa231c3d864b5177dda152
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 17:02:29 2016 -0700
+|
+|     Added .js files to try and get modals to work on area edit and delete functions.
+|
+* commit 69266070e55bfbdfe9fbf111d2fe97aa2bf45d73
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 16:33:55 2016 -0700
+|
+|     made drop down for rental status choices
+|
+* commit 94bcb50b9059316c0899884083afd9a0ba892f38
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 15:45:02 2016 -0700
+|
+|     Fixed AJAX, and finished the products.edit so that only the right form fieldds show up.  Only have areas left.
+|
+* commit 26489efe2a1af87ea8298b7efa7ff894ddae4a69
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 13:40:18 2016 -0700
+|
+|     Small changes to products to try and fix AJAX quantity call.
+|
+* commit 8d4595d6c3c60487207aba20b7c8c82ab321386d
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 13:34:52 2016 -0700
+|
+|     Made several changes to products.edit.js, trying to fix the dynamic form functionality.  Also made changes to several other files, to clean up code, etc.
+|
+* commit 34c6bacb0caddd2617c54ef17411ec0bdc6c890b
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 12:47:10 2016 -0700
+|
+|     finalized all groups/permissions/permission on view pages.
+|
+* commit 738849c0da55767d98d2819fea4fc3729cfdf801
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 12:22:33 2016 -0700
+|
+|     Added permissions to all the methods for all 5 classes (Users, Products, Events, Venues, and Areas).  Permissions now working, and starting to work on the area in an event part.
+|
+* commit 3e80f3058021e8df5f33fd4db93f8cb4a6bd7252
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 10:57:05 2016 -0700
+|
+|     Tried to add all the AJAX call for quantity, but isn't working 100% yet.
+|
+* commit 17f0e3fc1e7bfc6a4f9c253c94bc35dc69857899
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 09:49:21 2016 -0700
+|
+|     Made more changes to users, permissions, changed order of form fields to make sure datetime picker doesn't bind to the incorrect place.
+|
+* commit b83d7659bdfe1cd600572b62d30ee841add8c831
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 09:29:23 2016 -0700
+|
+|     fixed users.edit so that it won't throw an error with the current username
+|
+* commit 35baf06795f380d80e2789b5d3970e00f589e307
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 09:23:13 2016 -0700
+|
+|     Added functionality to add users to groups and specific permissions to users.
+|
+* commit ee901d2380ea5188e8099ff19d02b128b382cc77
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 08:58:31 2016 -0700
+|
+|     Lots of small changes.  Trying to fix javascript to show and hide right form fields depending on type of product that you're editing.
+|
+* commit 033ef1358c1b460d056118b7dde4ed1d4b9a6c48
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 08:38:34 2016 -0700
+|
+|     Fixed areas filtering by event, fixed area table.
+|
+* commit 08e6e103a7c2ea7e18cd92f814cb008c4cabd0ed
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Mon Feb 22 08:05:03 2016 -0700
+|
+|     Fixed javascript to hide/show form fields for different product types, made several changes to catalog models.py to add fields shown in Dr. Albrecht's stuff.  Also finished products.html page so that it shows all the correct fields and attributes for each product.  Finished with almost everything but permissions, the ajax call, and event areas.
+|
+* commit d7360e5622b3c23bbd401a8ea796a187cd3e58dc
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Sat Feb 20 17:03:35 2016 -0700
+|
+|     products
+|
+* commit bd70aac09d880ecd906b896cd1cbfb577e07cd03
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Fri Feb 19 10:49:47 2016 -0700
+|
+|     More changes to users.py.  Trying to get adding users to groups and assigning them permissions when they are created to work. Hasn't worked so far, but at least have the logical structure for it in place.  Need to check my if logic in users.create.
+|
+* commit dd9c72cc62aec1f5581b2505b8de4458e38bcdd9
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Fri Feb 19 10:24:33 2016 -0700
+|
+|     Added create/edit functions for products.  Tried to get form fields to show conditionally based on type of product.  Also made some changes to users.py (removed old style permissions field from form, but still need to add new one.
+|
+* commit 5cd464366dd3572605c9eaf341267a73e00876c7
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Feb 18 23:30:07 2016 -0700
+|
+|     Last changes to initialize.py for the night, trying to get adding users to groups to work.
+|
+* commit dc2e3c660c2c6a7d01020c09406deebe93da5111
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Thu Feb 18 22:43:43 2016 -0700
+|
+|     made one small change to initalize.py file.
+|
+* commit 80f9d52e7644c3b457cdfcd7c40231cdde067b52
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Thu Feb 18 22:40:47 2016 -0700
+|
+|     made a few last changes to the initialize.py file to make events and areas initialize correctly.
+|
+* commit a390b602379bbdee839f9a2cc01be249995014f2
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Thu Feb 18 22:33:50 2016 -0700
+|
+|     Added creating of groups from Dr. Albrecht's script to the initialize file.  Also created more events and venues, and added several areas to each specific event.
+|
+* commit 8e4f7256af278528d31cf65bce89957f6791dbe9
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Wed Feb 17 18:50:13 2016 -0700
+|
+|     Removed account menu stuff from account app_base.htm file that was broken
+|
+* commit 928c488f6a571d9442b6a0a85a17afbd865be145
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Wed Feb 17 18:31:56 2016 -0700
+|
+|     misc changes to groups/permissions
+|
+* commit a822f71e1b1d1debb0494bfc3efe6b3949fc7f94
+| Author: Jordan Widdison <Jordan@byu779929wks.app.byu.edu>
+| Date:   Wed Feb 17 13:55:37 2016 -0700
+|
+|     Created groups in initialize.py
+|
+* commit 79034c2f065bf596f32ce636caef4fb391f8fc32
+| Author: Jordan Widdison <Jordan@byu779929wks.app.byu.edu>
+| Date:   Wed Feb 17 13:39:41 2016 -0700
+|
+|     Added user groups to users.html table, and added form field to create user to assign group (permissions are inherited from the group that you're a member of).  Also added a tuple list of options for permissions (if youre a superuser and isStaff, you are a manager.  Just staff is volunteer, and neither, is an end user
+|
+* commit 231b49dbcd56a862dc3c96f33941efd4ff36c650
+| Author: Jordan Widdison <Jordan@byu779929wks.app.byu.edu>
+| Date:   Wed Feb 17 13:17:24 2016 -0700
+|
+|     Finished CRUD for Events, fixed table with className for products, etc.
+|
+* commit 37b7231fcfe2786a95f8685e51e3b4c773d3fa74
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 11:56:59 2016 -0700
+|
+|     Finished all CRUD functions for Venues.
+|
+* commit bb7901af70561ece1c890f731f9a30ac4755d288
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 11:32:39 2016 -0700
+|
+|     Fixed problems with datetime picker.  Now works and saves changes to users.
+|
+* commit 31354037c30e17f1ae01d4a2f71068b57f25cbc9
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 10:41:48 2016 -0700
+|
+|     finished fixing datetime picker, encountered problem with saving birthdate info to database.
+|
+* commit 1a63ea9b12133d2736e3d38467a7d7f0c4adb836
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 09:48:28 2016 -0700
+|
+|     Added all methods from venues.py into events.py, created events.create and events.edit html pages.
+|
+* commit d4dcb83ab7716c5286872257eb2469f694bdc344
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 09:15:11 2016 -0700
+|
+|     Added edit function for venues, deleted users.delete.html (not necessary)
+|
+* commit ffc9e2d88fc70c38d0ea32104ad96c271c8b3a8b
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Wed Feb 17 08:54:36 2016 -0700
+|
+|     Added 'index' pages for Event, venue, got data to populate tables correctly.
+|
+* commit 53f7312776d99451756f4024eda5c3a03081399d
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 22:25:58 2016 -0700
+|
+|     Added menu items, created .py files, and landing pages (READ out of CRUD) for both venues and events.
+|
+* commit e261b47a22c014dbfa45c007ef6e8fd9e18c74b4
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 22:14:22 2016 -0700
+|
+|     Successfully created and migrated to new database, got models created and working for venue, event, and area, and updated and ran initialize.py file to create dummy data.  Now have all models required for sprint 3
+|
+* commit 9ed2226d8af2aed7335714872beb6e974b6b8e44
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 21:58:31 2016 -0700
+|
+|     added models for event, venue, and area, and updated initialize.py file to create dummy data for each.  About to migrate and recreate databse.
+|
+* commit c21652c5bc7f7354672c14ce9cacaf30204462f4
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 19:54:36 2016 -0700
+|
+|     adds second bootstrap.js with all plugins, also to show Mari.
+|
+* commit 45f5365ea49c21b258edd8a16d9876125160498d
+| Author: Jordan Widdison <Jordan@BrandonsiPhone2-010010178223.app.byu.edu>
+| Date:   Tue Feb 16 14:54:59 2016 -0700
+|
+|     Created new Event class
+|
+* commit 85b2ded4734d65b7aa20df75ecf6173df013d44a
+| Author: Jordan Widdison <Jordan@byu767293wks.app.byu.edu>
+| Date:   Tue Feb 16 14:13:57 2016 -0700
+|
+|     started including stuff for datetime picker extension.
+|
+* commit b4cf2d01136e67763531a2c22105f89799875fce
+| Author: Jordan Widdison <Jordan@byu767293wks.app.byu.edu>
+| Date:   Tue Feb 16 14:00:11 2016 -0700
+|
+|     added styles to form fields in manager app, and created app_base.css file.
+|
+* commit a7210190fb8a5286edb74e545d2e8dda2bffad30
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Tue Feb 16 13:43:15 2016 -0700
+|
+|     Added clean methods to birthdate when creating new users, various other fixes
+|
+* commit ca73e810dd9e5ae759d6d214263f83806de03d68
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 12:30:05 2016 -0700
+|
+|     FIXED DELETE MODAL for deleting users, created .password file to change user's password
+|
+* commit 951639d90541541d7b3b5e618cd5487917cd3102
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 12:00:52 2016 -0700
+|
+|     Trying to fix delete function.  Modified jQuery stuff for users.js file
+|
+* commit d41ce532b29bbe5900effd7b2ae5919e6fcbb4c3
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Tue Feb 16 11:27:27 2016 -0700
+|
+|     Tried to fix problems with products.html page.  Added correct field names with table.  Trying to implement conditional logic for type of product.
+|
+* commit 5753ba944eb672c2aba34b8225798b194a5c0ecf
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Tue Feb 16 10:49:20 2016 -0700
+|
+|     Test changes for using bitbucket
+|
+* commit f1cb398148fc5c30111dd7f4fa322df9eba7daa6
+| Author: Jordan Widdison <Jordan@JKW-MBA.app.byu.edu>
+| Date:   Tue Feb 16 10:40:12 2016 -0700
+|
+|     Fixed edit function for users.  Still working on delete modal.
+|
+* commit 78205b335cd7cbbc8d9fc6a8a8a504811b6d6cf2
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Mon Feb 15 21:23:28 2016 -0700
+|
+|     Created new database with polymorphic models.  Initialized everything and added data and whatnot
+|
+* commit d299684f5279f3d26794b6286efb85fbeca2b35b
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Mon Feb 15 20:54:57 2016 -0700
+|
+|     Fixed deleted product classes, updated to match Dr. Albrecht's
+|
+* commit a07a044ffefbe817c01d53790803ab836d32d91b
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Mon Feb 15 20:13:44 2016 -0700
+|
+|     Added catalog models, fixed create users
+|
+* commit 3d175f6ca28610904fbdfaea83c6bc6a7afae1d9
+| Author: Jordan Widdison <Jordan@JKW-MBA.local>
+| Date:   Mon Feb 15 19:24:07 2016 -0700
+|
+|     Testing out how git works
+|
+* commit f9e975b2aa6bf0c031048442f16bde3612e10627
+  Author: Jordan Widdison <Jordan@JKW-MBA.local>
+  Date:   Mon Feb 15 19:22:05 2016 -0700
+
+      Initial Commit with all the stuff through the start of sprint3
