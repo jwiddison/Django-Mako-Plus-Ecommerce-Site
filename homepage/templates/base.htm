@@ -76,11 +76,11 @@
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <%block name="account_menu">
+                  <li><i class="fa fa-facebook fa-2x pull-right"></i></li>
+                  <li><i class="fa fa-instagram fa-2x pull-right"></i></li>
+                  <li><i class="fa fa-twitter fa-2x pull-right"></i></li>
                   %if request.user.is_authenticated():
                     <!-- Dropdown, logout, etc -->
-                    <li><i class="fa fa-facebook fa-2x pull-right"></i></li>
-                    <li><i class="fa fa-instagram fa-2x pull-right"></i></li>
-                    <li><i class="fa fa-twitter fa-2x pull-right"></i></li>
                     <li class = "dropdown">
                       <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ${ request.user }! <b class = "caret"></b></a>
                       <ul class = "dropdown-menu">

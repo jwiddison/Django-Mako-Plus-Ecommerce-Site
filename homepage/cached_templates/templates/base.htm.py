@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1458279350.278079
+_modified_time = 1458281446.33719
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -197,9 +197,9 @@ def render_account_menu(context,**pageargs):
         def account_menu():
             return render_account_menu(context)
         __M_writer = context.writer()
-        __M_writer('\n')
+        __M_writer('\n                  <li><i class="fa fa-facebook fa-2x pull-right"></i></li>\n                  <li><i class="fa fa-instagram fa-2x pull-right"></i></li>\n                  <li><i class="fa fa-twitter fa-2x pull-right"></i></li>\n')
         if request.user.is_authenticated():
-            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li><i class="fa fa-facebook fa-2x pull-right"></i></li>\n                    <li><i class="fa fa-instagram fa-2x pull-right"></i></li>\n                    <li><i class="fa fa-twitter fa-2x pull-right"></i></li>\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
+            __M_writer('                    <!-- Dropdown, logout, etc -->\n                    <li class = "dropdown">\n                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
             __M_writer(str( request.user ))
             __M_writer('! <b class = "caret"></b></a>\n                      <ul class = "dropdown-menu">\n                        <li><a href="/account/index">Account Summary</a></li>\n                        <li><a href="/account/edit">Edit Account Info</a></li>\n                        <li><a href="/account/change_password">Change Password</a></li>\n                        <li><a href="/manager/index">Admin</a></li>\n                        <li role="presentation" class="divider"></li>\n                        <li><a href=\'/account/logout/\'>Logout</a></li>\n                      </ul>\n                    </li>\n')
         else:
@@ -377,6 +377,6 @@ def render_content_right(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "base.htm", "line_map": {"256": 13, "262": 13, "268": 140, "17": 6, "274": 140, "19": 0, "276": 142, "282": 146, "283": 147, "284": 147, "290": 67, "297": 67, "298": 69, "299": 69, "300": 69, "301": 70, "302": 70, "303": 71, "304": 71, "305": 72, "306": 72, "307": 73, "308": 73, "309": 74, "310": 74, "55": 4, "56": 6, "57": 7, "316": 40, "61": 7, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 17, "72": 17, "73": 20, "74": 20, "75": 20, "76": 24, "334": 40, "335": 42, "81": 37, "340": 44, "86": 103, "345": 59, "91": 112, "350": 63, "96": 119, "355": 75, "101": 124, "360": 98, "106": 129, "366": 127, "111": 148, "112": 156, "113": 156, "114": 157, "275": 142, "116": 158, "117": 158, "118": 159, "119": 159, "120": 160, "121": 160, "122": 162, "123": 162, "124": 162, "130": 122, "136": 122, "142": 43, "148": 43, "154": 110, "160": 110, "166": 61, "372": 127, "172": 61, "178": 57, "115": 157, "185": 57, "186": 58, "187": 58, "193": 78, "200": 78, "201": 79, "202": 80, "203": 85, "204": 85, "205": 95, "206": 96, "207": 98, "213": 117, "219": 117, "378": 372, "225": 24, "233": 24, "238": 31, "244": 30, "250": 30}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8"}
+{"uri": "base.htm", "line_map": {"256": 13, "262": 13, "268": 140, "17": 6, "274": 140, "19": 0, "276": 142, "282": 146, "283": 147, "284": 147, "290": 67, "297": 67, "298": 69, "299": 69, "300": 69, "301": 70, "302": 70, "303": 71, "304": 71, "305": 72, "306": 72, "307": 73, "308": 73, "309": 74, "310": 74, "55": 4, "56": 6, "57": 7, "316": 40, "61": 7, "66": 13, "67": 14, "68": 14, "69": 16, "70": 16, "71": 17, "72": 17, "73": 20, "74": 20, "75": 20, "76": 24, "334": 40, "335": 42, "81": 37, "340": 44, "86": 103, "345": 59, "91": 112, "350": 63, "96": 119, "355": 75, "101": 124, "360": 98, "106": 129, "366": 127, "111": 148, "112": 156, "113": 156, "114": 157, "275": 142, "116": 158, "117": 158, "118": 159, "119": 159, "120": 160, "121": 160, "122": 162, "123": 162, "124": 162, "130": 122, "136": 122, "142": 43, "148": 43, "154": 110, "160": 110, "166": 61, "372": 127, "172": 61, "178": 57, "115": 157, "185": 57, "186": 58, "187": 58, "193": 78, "200": 78, "201": 82, "202": 83, "203": 85, "204": 85, "205": 95, "206": 96, "207": 98, "213": 117, "219": 117, "378": 372, "225": 24, "233": 24, "238": 31, "244": 30, "250": 30}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8"}
 __M_END_METADATA
 """
