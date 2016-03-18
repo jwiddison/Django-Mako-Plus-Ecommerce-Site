@@ -20,6 +20,13 @@ footer{
   color:white;
 }
 
+i{
+  color:white;
+  margin-top:19px;
+  margin-right:10px;
+  display:inline;
+}
+
 
 .transparent{
   opacity: .95;
