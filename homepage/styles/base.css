@@ -32,13 +32,17 @@ i{
   opacity: .95;
 }
 
-#loginbutton{
+#loginbutton, #cartbutton{
   margin-top: 15px;
   margin-right: 20px;
 }
 
 #main_logo{
    margin-top:30px;
+}
+
+.navbar, .navbar-default{
+  border:none;
 }
 
 /* Set colors for headings -- Same colors as Info, Warning, and Primary */

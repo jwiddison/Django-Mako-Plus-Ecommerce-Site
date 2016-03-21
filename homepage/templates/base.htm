@@ -95,6 +95,9 @@
                   %else:
                     <button class="btn btn-danger" id="loginbutton">Login</button>
                   %endif
+                  <%block name="cart">
+                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span>: <span id="cart_quantity">0</span></button>
+                  </%block>
                 </%block>
               </ul>
             </div><!-- collapse -->
