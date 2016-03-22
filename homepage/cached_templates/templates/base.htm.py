@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1458674416.635451
+_modified_time = 1458674873.206381
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = 'base.htm'
@@ -423,7 +423,7 @@ def render_cart(context,**pageargs):
         def cart():
             return render_cart(context)
         __M_writer = context.writer()
-        __M_writer('\n                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;:&nbsp;<span id="cart_quantity">0</span></button>\n                  ')
+        __M_writer('\n                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></button>\n                  ')
         return ''
     finally:
         context.caller_stack._pop_frame()

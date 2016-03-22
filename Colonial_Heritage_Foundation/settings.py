@@ -27,7 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# Stuff for Sprint 5.
+STRIPE_SECRET_KEY = ''
+STRIPE_PUBLIC_KEY = ''
+GOOGLE_SERVER_KEY = 'AIzaSyB8qHh_EPpeKI3eTfR0DoMcbLHUha0JcyE'
 
 # Application definition
 
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_mako_plus.controller',
     'account',
+    'api',
     'catalog',
     'homepage',
     'manager',
