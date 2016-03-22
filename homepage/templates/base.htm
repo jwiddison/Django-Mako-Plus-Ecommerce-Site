@@ -44,7 +44,7 @@
           </%block>
         </div><!-- alert -->
         <!-- - - - - Navbar - - - - - -->
-        <nav class="navbar navbar-inverse navbar-fixed-top transparent" role="navigation">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -96,7 +96,7 @@
                     <button class="btn btn-danger" id="loginbutton">Login</button>
                   %endif
                   <%block name="cart">
-                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span>: <span id="cart_quantity">0</span></button>
+                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;:&nbsp;<span id="cart_quantity">0</span></button>
                   </%block>
                 </%block>
               </ul>
@@ -107,35 +107,53 @@
     </header>
 
     <!-- Body Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <%block name="top_content_area">
-            TOP AREA!
-          </%block>
-        </div><!-- col-md-12 -->
-      </div><!-- row -->
-      <div class="row">
-        <div class="col-md-2">
-          <%block name="content_left">
-            Put Left Content Here!
-          </%block>
-        </div><!-- left -->
-        <div class="col-md-8">
-          <%block name="content">
-            Put Center Content Here!
-          </%block>
-        </div><!-- center -->
-        <div class="col-md-2">
-          <%block name="content_right">
-            Put Right Content Here!
-          </%block>
-        </div><!-- right -->
-      </div><!-- row -->
-    </div><!-- container -->
+    <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG"></div> -->
+
+    <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="transbox">
+              <%block name="top_content_area">
+                <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" />
+                <hr/>
+                <br/>
+                <%block name="top_content_text">
+                  <h3 class="text-center">Welcome to ColonialHeritage.org</h3>
+                </%block>
+              </%block>
+            </div><!-- transbox -->
+          </div><!-- col-md-12 -->
+        </div><!-- row -->
+      </div><!-- container -->
+    </div><!-- top_cover -->
+
+
+    <%block name="column_layout">
+      <div class="column_layout">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <%block name="content_left">
+                Put Left Content Here!
+              </%block>
+            </div><!-- left -->
+            <div class="col-md-8">
+              <%block name="content">
+                Put Center Content Here!
+              </%block>
+            </div><!-- center -->
+            <div class="col-md-2">
+              <%block name="content_right">
+                Put Right Content Here!
+              </%block>
+            </div><!-- right -->
+          </div><!-- row -->
+        </div><!-- container -->
+      </div><!-- column_layout -->
+    </%block>
 
     <!-- Footer Content-->
-    <!-- <footer class="navbar navbar-fixed-bottom"> -->
     <footer>
       <div class="container">
         <div class="row">
@@ -161,6 +179,7 @@
     <script src="${ STATIC_URL }homepage/media/jquery.form.js"></script>
     <script src="${ STATIC_URL }homepage/media/moment.js"></script>
     <script src="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.js"></script>
+    <script src="${ STATIC_URL }homepage/media/parallax.min.js"></script>
     ## render the JS with the same name as this page
     ${ static_renderer.get_template_js(request, context)  }
   </body>

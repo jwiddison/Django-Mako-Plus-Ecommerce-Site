@@ -1,6 +1,5 @@
-/* Site-wide CSS styles */
 body{
-  padding-top:64px; /* Same height as the fixed-top navbar */
+  /*padding-top:64px; /* Same height as the fixed-top navbar */
   background-color:white;
 }
 
@@ -13,10 +12,9 @@ img{
 }
 
 footer{
-  margin-top:100px;
+  /*margin-top:100px;*/
   background-color:#E6272E;
   padding-top:18px;
-  padding-bottom:18px;
   color:white;
 }
 
@@ -27,22 +25,42 @@ i{
   display:inline;
 }
 
+.top_cover{
+  background-attachment:fixed;
+  background-size:cover;
+  background-image:url(http://2.bp.blogspot.com/-kwfswk9D2kI/VYC0yWxy84I/AAAAAAAADYo/F1Q3cpPj0kA/s1600/canon.JPG);
+  /*margin-bottom:50px;*/
+}
+
+.transbox{
+  margin-top: 264px;
+  margin-bottom: 200px;
+  /*margin-left:-40px;
+  margin-right:-40px;*/
+  padding:40px;
+  background-color: white;
+  color: black;
+  opacity: 0.85;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
 
 .transparent{
   opacity: .95;
 }
 
+.parallax-window {
+    min-height: 600px;
+    background: transparent;
+}
+
+.column_layout{
+  min-height:0px;
+}
+
 #loginbutton, #cartbutton{
   margin-top: 15px;
   margin-right: 20px;
-}
-
-#main_logo{
-   margin-top:30px;
-}
-
-.navbar, .navbar-default{
-  border:none;
 }
 
 /* Set colors for headings -- Same colors as Info, Warning, and Primary */
