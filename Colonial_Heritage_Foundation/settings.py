@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 STRIPE_SECRET_KEY = ''
 STRIPE_PUBLIC_KEY = ''
 GOOGLE_SERVER_KEY = 'AIzaSyB8qHh_EPpeKI3eTfR0DoMcbLHUha0JcyE'
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 # Application definition
 
@@ -54,12 +55,13 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-#    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-#    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_mako_plus.controller.router.RequestInitMiddleware',
+    'Colonial_Heritage_Foundation.shopping_cart.ShoppingCartMiddleware',
 ]
 
 ROOT_URLCONF = 'Colonial_Heritage_Foundation.urls'

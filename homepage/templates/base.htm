@@ -71,7 +71,10 @@
                   <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/homepage/terms">Terms</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/homepage/faq">FAQ</a></li>
                   <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
-                  <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Catalog</a></li>
+                  <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
+                </%block>
+                <%block name="cart">
+                  <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></button>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -95,9 +98,6 @@
                   %else:
                     <button class="btn btn-danger" id="loginbutton">Login</button>
                   %endif
-                  <%block name="cart">
-                    <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></button>
-                  </%block>
                 </%block>
               </ul>
             </div><!-- collapse -->

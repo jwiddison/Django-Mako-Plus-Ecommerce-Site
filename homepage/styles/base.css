@@ -61,7 +61,8 @@ i{
 
 #loginbutton, #cartbutton{
   margin-top: 15px;
-  margin-right: 20px;
+  margin-right: 15px;
+  margin-left:15px;
 }
 
 #cart_quantity{
