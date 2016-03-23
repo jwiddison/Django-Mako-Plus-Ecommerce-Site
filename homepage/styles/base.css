@@ -52,6 +52,7 @@ i{
 .parallax-window {
     min-height: 600px;
     background: transparent;
+    margin-bottom:75px;
 }
 
 .column_layout{
