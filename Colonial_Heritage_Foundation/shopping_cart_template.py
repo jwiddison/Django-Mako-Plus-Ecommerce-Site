@@ -64,9 +64,9 @@ class ShoppingCart(object):
     def __init__(self, session):
         '''Constructor.  This is called from process_request() above.'''
         # load the cart from the session
-
+        self.last5ids = session.get...
         # load the last 5 items
-
+        self.cart = session.get...
 
     def save(self, session):
         '''Saves the current shopping cart to the session.

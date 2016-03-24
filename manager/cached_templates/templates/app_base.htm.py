@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456422629.490398
+_modified_time = 1458797236.879686
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['top_content_area', 'maintainence_message', 'content_left', 'menu', 'alert', 'content', 'maintainence_container', 'content_right', 'navbar_title']
+_exports = ['maintainence_container', 'top_content_area', 'navbar_title', 'content', 'content_left', 'content_right', 'menu', 'alert', 'maintainence_message']
 
 
 def _mako_get_namespace(context, name):
@@ -29,26 +29,26 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
-        def navbar_title():
-            return render_navbar_title(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def content_left():
+            return render_content_left(context._locals(__M_locals))
         def menu():
             return render_menu(context._locals(__M_locals))
         def alert():
             return render_alert(context._locals(__M_locals))
-        def content_left():
-            return render_content_left(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n# Leave these blocks blank\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
@@ -101,12 +101,23 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <img src="')
         __M_writer(str( STATIC_URL ))
@@ -116,11 +127,23 @@ def render_top_content_area(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_maintainence_message(context,**pageargs):
+def render_navbar_title(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def maintainence_message():
-            return render_maintainence_message(context)
+        def navbar_title():
+            return render_navbar_title(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <a class="navbar-brand" href="/manager/index">CHF - Admin</a>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content():
+            return render_content(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -132,6 +155,17 @@ def render_content_left(context,**pageargs):
     try:
         def content_left():
             return render_content_left(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_right(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_right():
+            return render_content_right(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -171,46 +205,12 @@ def render_alert(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content(context,**pageargs):
+def render_maintainence_message(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content():
-            return render_content(context)
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_right(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_right():
-            return render_content_right(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_navbar_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def navbar_title():
-            return render_navbar_title(context)
-        __M_writer = context.writer()
-        __M_writer('\n  <a class="navbar-brand" href="/manager/index">Colonial Heritage Foundation - Admin</a>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -218,6 +218,6 @@ def render_navbar_title(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "line_map": {"130": 8, "68": 6, "73": 8, "213": 18, "219": 213, "141": 22, "78": 9, "207": 18, "152": 25, "83": 10, "148": 22, "149": 24, "150": 24, "151": 24, "88": 16, "153": 25, "154": 26, "155": 26, "28": 0, "93": 20, "98": 28, "163": 6, "104": 12, "156": 27, "196": 9, "174": 10, "111": 12, "112": 13, "113": 13, "53": 1, "157": 27, "119": 5, "185": 4, "58": 4, "63": 5}, "uri": "app_base.htm"}
+{"uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "line_map": {"130": 18, "68": 6, "197": 6, "136": 18, "73": 8, "142": 10, "219": 208, "208": 5, "83": 10, "78": 9, "186": 25, "88": 16, "153": 8, "175": 22, "28": 0, "58": 4, "98": 28, "187": 25, "164": 9, "104": 4, "188": 26, "191": 27, "93": 20, "115": 12, "53": 1, "182": 22, "183": 24, "184": 24, "185": 24, "122": 12, "123": 13, "124": 13, "189": 26, "190": 27, "63": 5}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """

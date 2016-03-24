@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <head>
     <title><%block name="title">Colonial Heritage Foundation</%block></title>
-    <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/flagicon.gif">
+    <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/eagle.png">
     <!-- Bootstrap minified CSS, and custom global CSS -->
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.css" />
@@ -55,7 +55,7 @@
               </button>
               <a class="navbar-brand" href="/homepage/index">
                 <%block name="icon">
-                  <img src="${ STATIC_URL }homepage/media/pics/flagicon.gif"/>
+                  <img src="${ STATIC_URL }homepage/media/pics/eagle.png" id="navbar_icon"/>
                 </%block>
               </a>
               <%block name="navbar_title">
@@ -74,7 +74,7 @@
                   <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
                 </%block>
                 <%block name="cart">
-                  <button class="btn btn-danger" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></button>
+                  <button class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></button>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">

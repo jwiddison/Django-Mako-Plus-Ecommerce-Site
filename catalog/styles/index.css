@@ -3,7 +3,8 @@
   width:220px;
   border:1px solid;
   border-radius: 4px;
-  box-shadow: 5px 5px 2px #D3D3D3;
+  /*box-shadow: 5px 5px 2px #D3D3D3;*/
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
   margin-left:10px;
   margin-right:10px;
   margin-bottom:20px;

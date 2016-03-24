@@ -7,4 +7,8 @@ $(function() {
       width: '500px',
     }); // LoadModal
   }); // Click
+
+  // windowHeight = $(window).height();
+  // $('.parallax-window').css('min-height', windowHeight).refresh();
+
 }); // Ready
