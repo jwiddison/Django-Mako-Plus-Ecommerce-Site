@@ -24,8 +24,4 @@ def process_request(request):
       'recent_products_list': recent_products_list,
 
     }
-    return dmp_render_to_response(request, 'cart.html', template_vars)
-
-
-def remove(request):
-    pass
+    return dmp_render_to_response(request, 'receipt.html', template_vars)

@@ -13,7 +13,6 @@ def process_request(request):
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
 
-
     # Translate p.id list into list of objects
     recent_products_list = translate_product(request)
 
@@ -24,8 +23,4 @@ def process_request(request):
       'recent_products_list': recent_products_list,
 
     }
-    return dmp_render_to_response(request, 'cart.html', template_vars)
-
-
-def remove(request):
-    pass
+    return dmp_render_to_response(request, 'empty_cart.html', template_vars)

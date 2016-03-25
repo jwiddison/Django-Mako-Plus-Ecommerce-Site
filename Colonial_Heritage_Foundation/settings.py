@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Stuff for Sprint 5.
-STRIPE_SECRET_KEY = ''
-STRIPE_PUBLIC_KEY = ''
+STRIPE_SECRET_KEY = 'sk_test_kw7mgQceM2YnfMC4Zrsur8sb'
+STRIPE_PUBLIC_KEY = 'pk_test_MHyCTSEPuZxOaIsMh4RIFcbB'
 GOOGLE_SERVER_KEY = 'AIzaSyB8qHh_EPpeKI3eTfR0DoMcbLHUha0JcyE'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
