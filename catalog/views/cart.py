@@ -9,7 +9,7 @@ from catalog.views import translate_product
 @view_function
 def process_request(request):
 
-    products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
+    # products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
 
@@ -18,7 +18,7 @@ def process_request(request):
     recent_products_list = translate_product(request)
 
     template_vars = {
-      'products': products,
+    #   'products': products,
       'categories': categories,
       'images': images,
       'recent_products_list': recent_products_list,
