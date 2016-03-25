@@ -77,6 +77,11 @@ class Product(PolymorphicModel):
         '''Prints for debugging purposes'''
         return 'Product (abstract): %s (%s)' % (self.name(), self.add_date)
 
+    def get_image_filename(self):
+        '''Returns the filename of the first image, or the unavailable image if no images have been added.'''
+        first_image = self.images.first()
+        return first_image.filename if first_image != None else 'image_unavailable.gif'
+
 admin.site.register(Product)
 
 RENTAL_STATUS_CHOICES = (
@@ -93,7 +98,6 @@ class RentalProduct(Product):
     className = "Rental Product"
     status = models.TextField(null=True, blank=True, choices=RENTAL_STATUS_CHOICES)
     purchase_date = models.DateField(null=True, blank=True, auto_now_add=True)
-    # rental = models.ForeignKey('Rental', null=True)
 
     def __str__(self):
         '''Prints for debugging purposes'''

@@ -26,19 +26,13 @@ def process_request(request):
     else:
         products = products.filter(category = category_id)
 
-    # Get other lists to send to template
-    categories = cmod.Category.objects.all().order_by('name')
-    images = cmod.ProductImage.objects.all()
-
 
     # Translate p.id list into list of objects
     recent_products_list = translate_product(request)
 
     template_vars = {
       'products': products,
-      'categories': categories,
-      'images': images,
+      'categories': cmod.Category.objects.all().order_by('name'),
       'recent_products_list': recent_products_list,
-
     }
     return dmp_render_to_response(request, 'index.html', template_vars)

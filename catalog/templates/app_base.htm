@@ -39,12 +39,7 @@
   %for product in recent_products_list:
     <a href="/catalog/detail/${product.id}">
       <div class="recent">
-        %for image in images:
-          %if image.product == product:
-            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-            <% break %>
-          %endif
-        %endfor
+        <img src="${ STATIC_URL }catalog/media/pics/${ product.get_image_filename() }" alt="${product.name}" class="img-responsive center-block prod_img"/>
         <p>${product.name}</p>
         <div class="clearfix"></div>
       </div><!-- recent -->

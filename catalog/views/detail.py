@@ -11,21 +11,17 @@ from catalog.views import translate_product
 
 @view_function
 def process_request(request):
-    # Get lists to return to the template_vars
-    categories = cmod.Category.objects.all().order_by('name')
-    images = cmod.ProductImage.objects.all()
-
-
 
     # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
     # Create a list in the session dictionary.  Get's the list if its already there, or an empty list if there isn't one yet.
     rv = request.session.get('recently_viewed', [])
+
     # If the id of our product is already in the recently_viewed list, remove it
     if p.id in rv:
         rv.remove(p.id)
-    # else:
+
     # if the list is more than five long, remove the oldest one.
     if rv.__len__() >= 5:
         rv.pop(0)
@@ -41,9 +37,7 @@ def process_request(request):
     recent_products_list = translate_product(request)
 
     template_vars = {
-    #   'products': products,
-      'categories': categories,
-      'images': images,
+      'categories': cmod.Category.objects.all().order_by('name'),
       'p_images': cmod.ProductImage.objects.all().filter(product=p),
       'p': p,
       'recent_products_list': recent_products_list,
@@ -54,6 +48,7 @@ def process_request(request):
 @view_function
 def carousel(request):
 
+    # I'm sending p so I have access to the name for the modal title.
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
     template_vars = {

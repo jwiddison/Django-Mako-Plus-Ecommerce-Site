@@ -1,20 +1,13 @@
 <%inherit file="app_base.htm" />
 
-
 <%block name="content">
-  <h5 class="text-center">${count} products matched '${q}'</h5>
+  <h3 class="text-center">${count} products matched '${q}'</h3>
   <hr />
   <br />
-  ## Show matching products
   %for product in products:
     <a href="/catalog/detail/${product.id}">
       <div class="tile text-center">
-        %for image in images:
-          %if image.product == product:
-            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-            <% break %>
-          %endif
-        %endfor
+        <img src="${ STATIC_URL }catalog/media/pics/${ product.get_image_filename() }" alt="${product.name}" class="img-responsive center-block prod_img"/>
         <br />
         <p><b>${ product.name }</b></p>
         <br />
@@ -26,5 +19,4 @@
       </div><!-- tile -->
     </a>
   %endfor
-
 </%block>
