@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1458873565.669667
+_modified_time = 1458933262.25427
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['maintainence_container', 'top_content_area', 'content', 'alert', 'transbox_start', 'menu', 'maintainence_message', 'content_left', 'parallax_end', 'navbar_title', 'content_right', 'parallax_start', 'transbox_end']
+_exports = ['top_content_area', 'transbox_end', 'content_right', 'maintainence_container', 'menu', 'content', 'parallax_end', 'alert', 'parallax_start', 'navbar_title', 'transbox_start', 'content_left', 'maintainence_message']
 
 
 def _mako_get_namespace(context, name):
@@ -29,31 +29,31 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def parallax_start():
-            return render_parallax_start(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        def transbox_start():
-            return render_transbox_start(context._locals(__M_locals))
         def transbox_end():
             return render_transbox_end(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
-        def menu():
-            return render_menu(context._locals(__M_locals))
-        def parallax_end():
-            return render_parallax_end(context._locals(__M_locals))
-        def navbar_title():
-            return render_navbar_title(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
+        def menu():
+            return render_menu(context._locals(__M_locals))
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def parallax_end():
+            return render_parallax_end(context._locals(__M_locals))
+        def transbox_start():
+            return render_transbox_start(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def parallax_start():
+            return render_parallax_start(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
@@ -103,7 +103,7 @@ def render_body(context,**pageargs):
             context['self'].menu(**pageargs)
         
 
-        __M_writer('\n\n')
+        __M_writer('\n\n# Include to remove parallax window\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'parallax_start'):
             context['self'].parallax_start(**pageargs)
         
@@ -129,17 +129,6 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -155,33 +144,33 @@ def render_top_content_area(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content(context,**pageargs):
+def render_transbox_end(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content():
-            return render_content(context)
+        def transbox_end():
+            return render_transbox_end(context)
         __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def alert():
-            return render_alert(context)
+        def content_right():
+            return render_content_right(context)
         __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_transbox_start(context,**pageargs):
+def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def transbox_start():
-            return render_transbox_start(context)
+        def maintainence_container():
+            return render_maintainence_container(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -210,22 +199,11 @@ def render_menu(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_maintainence_message(context,**pageargs):
+def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_left():
-            return render_content_left(context)
+        def content():
+            return render_content(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -237,6 +215,28 @@ def render_parallax_end(context,**pageargs):
     try:
         def parallax_end():
             return render_parallax_end(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_alert(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def alert():
+            return render_alert(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_parallax_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def parallax_start():
+            return render_parallax_start(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -255,33 +255,33 @@ def render_navbar_title(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_transbox_start(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_right():
-            return render_content_right(context)
+        def transbox_start():
+            return render_transbox_start(context)
         __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_parallax_start(context,**pageargs):
+def render_content_left(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def parallax_start():
-            return render_parallax_start(context)
+        def content_left():
+            return render_content_left(context)
         __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_transbox_end(context,**pageargs):
+def render_maintainence_message(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def transbox_end():
-            return render_transbox_end(context)
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -290,6 +290,6 @@ def render_transbox_end(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "uri": "app_base.htm", "source_encoding": "utf-8", "line_map": {"224": 8, "66": 4, "235": 31, "132": 4, "150": 12, "198": 22, "71": 5, "200": 24, "201": 24, "202": 25, "203": 25, "76": 6, "205": 26, "206": 27, "143": 12, "280": 33, "81": 8, "291": 280, "269": 30, "213": 5, "86": 9, "151": 13, "152": 13, "204": 26, "91": 10, "28": 0, "158": 10, "96": 16, "180": 32, "207": 27, "101": 20, "169": 6, "106": 28, "199": 24, "111": 30, "258": 9, "116": 31, "246": 18, "121": 32, "252": 18, "61": 1, "126": 33, "191": 22}}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "line_map": {"192": 25, "193": 26, "66": 4, "195": 27, "132": 12, "71": 5, "194": 26, "76": 6, "202": 10, "139": 12, "140": 13, "141": 13, "291": 280, "269": 8, "81": 8, "147": 34, "213": 32, "86": 9, "280": 5, "196": 27, "91": 10, "28": 0, "158": 9, "96": 16, "252": 18, "180": 22, "101": 20, "169": 4, "106": 28, "235": 31, "111": 31, "189": 24, "258": 33, "116": 32, "190": 24, "246": 18, "224": 6, "121": 33, "187": 22, "188": 24, "61": 1, "126": 34, "191": 25}, "uri": "app_base.htm"}
 __M_END_METADATA
 """

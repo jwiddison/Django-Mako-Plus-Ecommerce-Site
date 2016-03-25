@@ -1,0 +1,27 @@
+<%inherit file="app_base.htm" />
+
+
+<%block name="content">
+  <h3>Shopping Cart</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Extended</th>
+      <th>Remove</th>
+    </tr>
+    ## Make this work later
+    ## %for p in request.session.shoppingcart:
+    ## <tr>
+    ##   <td>${p.name}</td>
+    ##   <td>${p.image}</td>
+    ##   <td>${p.price}</td>
+    ##   <td>${p.quantity}</td>
+    ##   <td>${p.extended}</td>
+    ##   <td><a href="/catalog/cart.remove/${p.id}">Remove</a></td>
+    ## </tr>
+    ## %endfor
+  </table>
+  <a href="/catalog/checkout" class="btn btn-default pull-right">Checkout</a>
+</%block>

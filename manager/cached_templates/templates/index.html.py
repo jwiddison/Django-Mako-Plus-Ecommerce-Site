@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1457546268.405116
+_modified_time = 1458933330.393933
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html'
 _template_uri = 'index.html'
@@ -49,7 +49,8 @@ def render_top_content_area(context,**pageargs):
         def top_content_area():
             return render_top_content_area(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h3>Colonial Heritage Foundation Administrator Area</h3>\n  <hr />\n  <br />\n  <h4>CRUD functionality available for each of the following areas:</h4>\n  <ul id="CRUD_list">\n    <li><a href="/manager/users">Users</a></li>\n    <li><a href="/manager/products">Products</a></li>\n    <li><a href="/manager/venues">Venues</a></li>\n    <li><a href="/manager/events">Events</a></li>\n  </ul>\n')
+        __M_writer('\n  <h3>Colonial Heritage Foundation Administrator Area</h3>\n  <hr />\n  <br />\n')
+        __M_writer('  <p>Welcome to the admin area of chfsales.com.</p>\n  <ul id="CRUD_list">\n    <li><a href="/manager/users">Users</a></li>\n    <li><a href="/manager/products">Products</a></li>\n    <li><a href="/manager/venues">Venues</a></li>\n    <li><a href="/manager/events">Events</a></li>\n  </ul>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -57,6 +58,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"35": 1, "52": 3, "40": 14, "58": 52, "28": 0, "46": 3}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html", "source_encoding": "utf-8", "uri": "index.html"}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/index.html", "line_map": {"35": 1, "52": 3, "53": 8, "40": 15, "59": 53, "28": 0, "46": 3}, "uri": "index.html"}
 __M_END_METADATA
 """
