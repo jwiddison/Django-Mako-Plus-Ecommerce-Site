@@ -9,9 +9,17 @@ from django import forms
 
 @view_function
 def process_request(request):
+    # Make sure user is logged in
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/catalog/login')
+
+    #TODO: Fix this once shopping cart exists.
+    # Make sure cart isn't empty
+    # if not request.shopping_cart:
+    #     return HttpResponseRedirect('/catalog/empty_cart')
+
 
     # Get lists to send to template
-
     products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
     categories = cmod.Category.objects.all().order_by('name')
     images = cmod.ProductImage.objects.all()
