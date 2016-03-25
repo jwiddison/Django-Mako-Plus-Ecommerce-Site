@@ -1,5 +1,5 @@
 ## Author: Jordan Widdison
-## IS 411/413 - Sprint 3 - Colonial Heritage Foundation
+## IS 411/413 - Sprint 5 - Colonial Heritage Foundation
 ## Create management app with CRUD functionality for users, items, locations, and events
 
 ## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <head>
     <title><%block name="title">Colonial Heritage Foundation</%block></title>
-    <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/eagle.png">
+    <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/flagicon.gif">
     <!-- Bootstrap minified CSS, and custom global CSS -->
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.css" />
@@ -108,25 +108,32 @@
 
     <!-- Body Content -->
     <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG"></div> -->
-
-    <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="transbox">
-              <%block name="top_content_area">
-                <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" />
-                <hr/>
-                <br/>
-                <%block name="top_content_text">
-                  <h3 class="text-center">Welcome to ColonialHeritage.org</h3>
+    <%block name="parallax_start">
+      <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG">
+    </%block>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+            <%block name="transbox_start">
+              <div class="transbox">
+            </%block>
+                <%block name="top_content_area">
+                  <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="top_image"/>
+                  <hr/>
+                  <br/>
+                  <%block name="top_content_text">
+                    <h3 class="text-center">Welcome to ColonialHeritage.org</h3>
+                  </%block>
                 </%block>
+              <%block name="transbox_end">
+                </div><!-- transbox -->
               </%block>
-            </div><!-- transbox -->
-          </div><!-- col-md-12 -->
-        </div><!-- row -->
-      </div><!-- container -->
-    </div><!-- top_cover -->
+            </div><!-- col-md-12 -->
+          </div><!-- row -->
+        </div><!-- container -->
+      <%block name="parallax_end">
+        </div><!-- parallax-window -->
+      </%block>
 
 
     <%block name="column_layout">
