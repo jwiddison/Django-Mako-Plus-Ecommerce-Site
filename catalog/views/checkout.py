@@ -18,21 +18,16 @@ def process_request(request):
     # if not request.shopping_cart:
     #     return HttpResponseRedirect('/catalog/empty_cart')
 
-
     # Get lists to send to template
     products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
-    categories = cmod.Category.objects.all().order_by('name')
-    images = cmod.ProductImage.objects.all()
     form = CheckoutForm()
-
 
     # Translate p.id list into list of objects (for last 5)
     recent_products_list = translate_product(request)
 
     template_vars = {
       'products': products,
-      'categories': categories,
-      'images': images,
+      'categories': cmod.Category.objects.all().order_by('name'),
       'recent_products_list': recent_products_list,
       'form': form,
 

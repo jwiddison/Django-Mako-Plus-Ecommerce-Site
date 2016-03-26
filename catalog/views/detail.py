@@ -7,8 +7,6 @@ from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from catalog.views import translate_product
 
-
-
 @view_function
 def process_request(request):
 
@@ -32,13 +30,11 @@ def process_request(request):
     # Save our list into the session dictionary with the key "recently_viewed"
     request.session['recently_viewed'] = rv
 
-
     # Translate p.id list into list of objects (calling function written in __init__.py)
     recent_products_list = translate_product(request)
 
     template_vars = {
       'categories': cmod.Category.objects.all().order_by('name'),
-      'p_images': cmod.ProductImage.objects.all().filter(product=p),
       'p': p,
       'recent_products_list': recent_products_list,
     }
