@@ -175,3 +175,4 @@ class ShoppingItem(object):
 
     def calc_extended(self):
         return self.price * self.quantity
+        # When called, returns the extended price, so you need to store it in a varible.
