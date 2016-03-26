@@ -75,7 +75,7 @@ class ShoppingCart(object):
         # sort the cart by name
 
         # set the cart in the session (this saves it to disk so we can access it again next request)
-
+        session.shopping_cart = self
         # set the shopping_last_viewed in the session
 
 
@@ -90,9 +90,9 @@ class ShoppingCart(object):
         # get the available per the database for Individual or Bulk
         quantity = product.quantity
         # decrease the available amount by any in our cart
-
+        quantity -= 1
         # check the available amount and raise ValueError if not enough
-
+        
 
 
     def add_item(self, product, quantity=1):
