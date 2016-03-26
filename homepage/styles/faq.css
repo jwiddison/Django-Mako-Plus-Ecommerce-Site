@@ -1,4 +1,4 @@
-#big_left{
+/*#big_left{
   font-size:5em;
 }
 
@@ -9,4 +9,12 @@
 .q_a{
   color:black;
   font-style:italic;
+}*/
+
+footer{
+  margin-top:0px;
+}
+
+.parallax-window {
+    margin-bottom:0px;
 }

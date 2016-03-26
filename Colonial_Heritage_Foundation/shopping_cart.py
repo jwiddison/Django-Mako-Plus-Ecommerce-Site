@@ -92,7 +92,7 @@ class ShoppingCart(object):
         # decrease the available amount by any in our cart
         quantity -= 1
         # check the available amount and raise ValueError if not enough
-        
+
 
 
     def add_item(self, product, quantity=1):
