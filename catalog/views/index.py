@@ -8,23 +8,13 @@ from catalog.views import translate_product
 
 @view_function
 def process_request(request):
-    category_id = request.urlparams[0]
-    if str(category_id) == '':
-        pass
-    else:
-        try:
-            category = cmod.Category.objects.get(id=request.urlparams[0])
-        except cmod.Category.DoesNotExist:
-            return HttpResponseRedirect('/catalog/index/')
 
+    # Get list of products
     products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
 
-    # Filter for the id number of the category in the URL if someone has selected one.
-    print(category_id)
-    if str(category_id) == '':
-        pass
-    else:
-        products = products.filter(category = category_id)
+    # filter to current category, if there is one
+    if request.urlparams[0]:
+        products = products.filter(category=request.urlparams[0])
 
 
     # Translate p.id list into list of objects

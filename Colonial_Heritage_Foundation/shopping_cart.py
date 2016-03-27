@@ -144,17 +144,33 @@ class ShoppingCart(object):
     def item_viewed(self, product):
         '''Adds an item to the last-viewed items'''
         # delete from the list if currently there (so it isn't listed twice)
+        try:
+            self.remove(product.id)
+        except ValueError:
+            pass
 
         # add the id to the last viewed list
+        self.insert(0, product.id)
 
         # ensure the list isn't too long - right now we do 5 items max
+        self = self[:5]
 
 
     def get_viewed_items(self):
         '''Returns a Django query object of the last items viewed'''
         # create the list of products from the ids in our last 5 viewed
-
-
+        
+        # LAST_FIVE_KEY = 'lastfiveproductsviewed'
+        #
+        # template_vars = {}
+        #
+        # if LAST_FIVE_KEY not in request.session:
+        #     request.session[LAST_FIVE_KEY]= []
+        #
+        # last5 = request.session[LAST_FIVE_KEY]
+        # last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
+        #
+        # template_vars['last5products'] = last5products
 
 
 class ShoppingItem(object):
