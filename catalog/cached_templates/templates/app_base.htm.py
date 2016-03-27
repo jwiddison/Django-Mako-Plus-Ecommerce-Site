@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459064199.626627
+_modified_time = 1459064677.735999
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
@@ -223,8 +223,7 @@ def render_content_left(context,**pageargs):
             return render_content_left(context)
         categories = context.get('categories', UNDEFINED)
         __M_writer = context.writer()
-        __M_writer('\n  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <br />\n  <h5>Search For a Product:</h5>\n')
-        __M_writer('  <form method="GET" action="/catalog/search/">\n    <input type="text" name="q" class="form-control"/>\n    <br />\n    <input type="submit" value="Search" class="btn btn-primary"/>\n  </form>\n\n  <br />\n  <h5>Filter By Category:</h5>\n  <a href="/catalog/index">View All</a>\n  <br />\n')
+        __M_writer('\n  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <br />\n  <h5>Search For a Product:</h5>\n  <form method="GET" action="/catalog/search/">\n    <input type="text" name="q" class="form-control"/>\n    <br />\n    <input type="submit" value="Search" class="btn btn-primary"/>\n  </form>\n\n  <br />\n  <h5>Filter By Category:</h5>\n  <a href="/catalog/index">View All</a>\n  <br />\n')
         for category in categories:
             __M_writer('    <a href="/catalog/index/')
             __M_writer(str(category.id))
@@ -249,6 +248,6 @@ def render_maintainence_container(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "source_encoding": "utf-8", "uri": "app_base.htm", "line_map": {"171": 52, "134": 6, "194": 40, "145": 51, "156": 8, "91": 51, "164": 9, "165": 9, "28": 0, "199": 42, "182": 36, "56": 1, "61": 4, "190": 36, "191": 39, "192": 40, "193": 40, "66": 5, "195": 42, "196": 42, "197": 42, "198": 42, "71": 6, "200": 42, "201": 43, "202": 43, "76": 12, "208": 5, "81": 34, "163": 8, "86": 48, "219": 14, "229": 31, "96": 52, "226": 14, "227": 20, "228": 30, "101": 53, "230": 31, "231": 31, "232": 31, "233": 31, "106": 54, "239": 4, "112": 53, "250": 239, "123": 54}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "source_encoding": "utf-8", "uri": "app_base.htm", "line_map": {"171": 51, "134": 6, "194": 39, "145": 50, "156": 8, "91": 50, "164": 9, "165": 9, "28": 0, "199": 41, "182": 35, "56": 1, "61": 4, "190": 35, "191": 38, "192": 39, "193": 39, "66": 5, "195": 41, "196": 41, "197": 41, "198": 41, "71": 6, "200": 41, "201": 42, "202": 42, "76": 12, "208": 5, "81": 33, "163": 8, "86": 47, "219": 14, "229": 30, "96": 51, "226": 14, "227": 29, "228": 30, "101": 52, "230": 30, "231": 30, "232": 30, "106": 53, "238": 4, "112": 52, "249": 238, "123": 53}}
 __M_END_METADATA
 """

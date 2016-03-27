@@ -10,6 +10,9 @@ from catalog.views import translate_product
 @view_function
 def process_request(request):
 
+    # Create form
+    form = OrderForm()
+
     # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
@@ -36,6 +39,7 @@ def process_request(request):
     template_vars = {
       'categories': cmod.Category.objects.all().order_by('name'),
       'p': p,
+      'form': form,
       'recent_products_list': recent_products_list,
     }
     return dmp_render_to_response(request, 'detail.html', template_vars)
@@ -52,3 +56,8 @@ def carousel(request):
         'p_images': cmod.ProductImage.objects.all().filter(product=p),
     }
     return dmp_render_to_response(request, 'detail.carousel.html', template_vars)
+
+
+# Form for submitting quantity to cart
+class OrderForm(forms.Form):
+    quantity = forms.IntegerField(label='Quantity', widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control'}))

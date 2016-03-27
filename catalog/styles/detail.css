@@ -24,6 +24,11 @@
   margin-left:260px;
 }
 
+label{
+  font-weight:bold;
+  margin-right:10px;
+}
+
 .modal-content{
   text-align:center;
 }
