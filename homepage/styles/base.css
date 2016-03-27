@@ -54,10 +54,6 @@ i{
     margin-bottom:75px;
 }
 
-.column_layout{
-  min-height:0px;
-}
-
 #loginbutton, #cartbutton{
   margin-top: 15px;
   margin-right: 15px;

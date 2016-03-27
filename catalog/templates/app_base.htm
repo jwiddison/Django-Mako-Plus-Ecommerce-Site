@@ -12,11 +12,10 @@
 </%block>
 
 <%block name="content_left">
-  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>
+  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>
   <br />
   <br />
   <h5>Search For a Product:</h5>
-  ## This needs to be a form! Use method="GET"
   <form method="GET" action="/catalog/search/">
     <input type="text" name="q" class="form-control"/>
     <br />
