@@ -12,15 +12,15 @@
       <th>Remove</th>
     </tr>
     ## Make this work later
-    ## %for p in request.session.shoppingcart:
-    ## <tr>
-    ##   <td>${p.name} ${p.image}</td>
-    ##   <td>${p.price}</td>
-    ##   <td>${p.quantity}</td>
-    ##   <td>${p.extended}</td>
-    ##   <td><a href="/catalog/cart.remove/${p.id}">Remove</a></td>
-    ## </tr>
-    ## %endfor
+    %for p in request.shopping_cart.get_items():
+    <tr>
+      <td>${p.name} ${p.image}</td>
+      <td>${p.price}</td>
+      <td>${p.quantity}</td>
+      <td>${p.extended}</td>
+      <td><a href="/catalog/cart.remove/${p.id}">Remove</a></td>
+    </tr>
+    %endfor
   </table>
   <a href="/catalog/checkout" class="btn btn-primary">Checkout</a>
 </%block>

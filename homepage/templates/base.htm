@@ -74,7 +74,7 @@
                   <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
                 </%block>
                 <%block name="cart">
-                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></a>
+                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">${len(request.shopping_cart.cart)}</span></a>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">

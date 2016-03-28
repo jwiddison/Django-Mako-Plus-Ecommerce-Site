@@ -76,9 +76,10 @@ class ShoppingCart(object):
            This is called from the middleware above.
         '''
         # sort the cart by name
+        self.cart.sort()
 
         # set the cart in the session (this saves it to disk so we can access it again next request)
-        session.shopping_cart = self
+        session[SHOPPING_CART_KEY] = self.cart
 
         # set the shopping_last_viewed in the session
         session[LAST_VIEWED_ID_KEY] = self.last_5_ids
@@ -86,7 +87,18 @@ class ShoppingCart(object):
     ###  SHOPPING CART
 
     def get_items(self):
-        '''Returns the items in the shopping cart'''
+        '''Returns the items in the shopping cart
+           Works basically the same way as what you're doing with the last 5.
+        '''
+
+        # Create local list of cart ids.
+        cart_ids = self.cart
+
+        # Create a new local list of product objects by iterating through list of ids
+        cart_prods = [cmod.Product.objects.get(id=pid) for pid in cart_ids]
+
+        # Return the list of product objects
+        return cart_prods
 
 
     def check_availability(self, product, desired_quantity=1):
@@ -118,17 +130,21 @@ class ShoppingCart(object):
 
     def clear_items(self):
         '''Clears all items from the shopping cart'''
+        self.cart = []
 
 
     def get_item_count(self):
         '''Returns the item count'''
-
+        return self.cart.count()
 
     ###   FINANCIAL METHODS
 
     def calc_subtotal(self):
         '''Returns the subtotal (sum of product) cost'''
-
+        subtotal = 0
+        for p in self.cart:
+            subtotal += p.price
+        return subtotal
 
     def calc_tax(self):
         '''Returns the tax on the current cart'''
@@ -162,10 +178,10 @@ class ShoppingCart(object):
         local_last5.insert(0, product.id)
 
         # ensure the list isn't too long - right now we do 5 items max
-        local_last5 = local_last5[:5]
+        local_last5 = local_last5[:LAST_VIEWED_COUNT]
 
         # Save list back into shopping cart's last_viewed_ids list.
-        self.last_viewed_ids = local_last5
+        self.last_5_ids = local_last5
 
 
     def get_viewed_items(self):
