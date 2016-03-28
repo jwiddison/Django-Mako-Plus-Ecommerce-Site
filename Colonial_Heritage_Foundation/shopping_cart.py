@@ -28,7 +28,8 @@ SHOPPING_CART_KEY = 'shopping_cart'
 
 ### STUDENTS ###
 # the key we use for the last viewed items
-LAST_VIEWED_KEY = 'shopping_cart_last_viewed'
+LAST_VIEWED_PROD_KEY = 'last_viewed_products'
+LAST_VIEWED_ID_KEY = 'last_viewed_ids'
 LAST_VIEWED_COUNT = 5  # keep only the last 5
 
 TAX_RATE = decimal.Decimal(0.0725)  # just using a default rate
@@ -64,9 +65,11 @@ class ShoppingCart(object):
     def __init__(self, session):
         '''Constructor.  This is called from process_request() above.'''
         # load the cart from the session
-        # self.last5ids = session.get...
-        # load the last 5 items
-        # self.cart = session.get...
+        self.cart = session.get(LAST_VIEWED_PROD_KEY, [])
+
+        # load the last 5 ids list from the session, into a list attribute of the shopping cart.
+        self.last_5_ids = session.get(LAST_VIEWED_ID_KEY, [])
+
 
     def save(self, session):
         '''Saves the current shopping cart to the session.
@@ -76,10 +79,11 @@ class ShoppingCart(object):
 
         # set the cart in the session (this saves it to disk so we can access it again next request)
         session.shopping_cart = self
+
         # set the shopping_last_viewed in the session
+        session[LAST_VIEWED_ID_KEY] = self.last_5_ids
 
-
-    ###  SHOPPING CART  (self in this context = shopping_cart)
+    ###  SHOPPING CART
 
     def get_items(self):
         '''Returns the items in the shopping cart'''
@@ -141,36 +145,43 @@ class ShoppingCart(object):
 
     ###   LAST VIEWED PRODUCT METHODS
 
+    # Called by detail.py
     def item_viewed(self, product):
         '''Adds an item to the last-viewed items'''
+
+        # Create local list from list of IDs in shopping cart
+        local_last5 = self.last_5_ids
+
         # delete from the list if currently there (so it isn't listed twice)
         try:
-            self.remove(product.id)
+            local_last5.remove(product.id)
         except ValueError:
             pass
 
         # add the id to the last viewed list
-        self.insert(0, product.id)
+        local_last5.insert(0, product.id)
 
         # ensure the list isn't too long - right now we do 5 items max
-        self = self[:5]
+        local_last5 = local_last5[:5]
+
+        # Save list back into shopping cart's last_viewed_ids list.
+        self.last_viewed_ids = local_last5
 
 
     def get_viewed_items(self):
         '''Returns a Django query object of the last items viewed'''
         # create the list of products from the ids in our last 5 viewed
-        
-        # LAST_FIVE_KEY = 'lastfiveproductsviewed'
-        #
-        # template_vars = {}
-        #
-        # if LAST_FIVE_KEY not in request.session:
-        #     request.session[LAST_FIVE_KEY]= []
-        #
-        # last5 = request.session[LAST_FIVE_KEY]
-        # last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
-        #
-        # template_vars['last5products'] = last5products
+
+        # Store list of IDs in a local list
+        last5 = self.last_5_ids
+
+        # Create a new local list of products by iterating through list of ids
+        last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
+
+        # Return the list of product objects (this method is called in app_base)
+        return last5products
+
+
 
 
 class ShoppingItem(object):

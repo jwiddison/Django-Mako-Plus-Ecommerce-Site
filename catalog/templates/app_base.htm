@@ -35,7 +35,7 @@
 <%block name="content_right">
   <h5>Recently Viewed Products:</h5>
   <hr />
-  %for product in recent_products_list:
+  %for product in request.shopping_cart.get_viewed_items():
     <a href="/catalog/detail/${product.id}">
       <div class="recent">
         <img src="${ STATIC_URL }catalog/media/pics/${ product.get_image_filename() }" alt="${product.name}" class="img-responsive center-block prod_img"/>
