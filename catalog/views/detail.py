@@ -5,10 +5,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
-from catalog.views import translate_product
+from . import initialize_template_vars
 
 @view_function
 def process_request(request):
+    # Initialize Template vars
+    template_vars = initialize_template_vars(request)
 
     # Create form
     form = OrderForm()
@@ -18,11 +20,8 @@ def process_request(request):
 
     request.shopping_cart.item_viewed(p)
 
-    template_vars = {
-      'categories': cmod.Category.objects.all().order_by('name'),
-      'p': p,
-      'form': form,
-    }
+    template_vars['p'] = p
+    template_vars['form'] = form
     return dmp_render_to_response(request, 'detail.html', template_vars)
 
 
