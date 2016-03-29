@@ -131,6 +131,7 @@ class ShoppingCart(object):
         '''Removes the given item id from the cart
            The product can be a real product instance or a product id.
         '''
+        self.cart.remove(product)
 
 
     def clear_items(self):
@@ -153,9 +154,8 @@ class ShoppingCart(object):
 
     def calc_tax(self):
         '''Returns the tax on the current cart'''
-        # tax = self.calc_subtotal * TAX_RATE
-        # return tax
-        return 2
+        # TAX_RATE = decimal.Decimal('0.0725')
+        return (self.calc_subtotal() * TAX_RATE).quantize(decimal.Decimal('.01'), rounding=decimal.ROUND_UP)
 
     def calc_shipping(self):
         '''Returns the shipping cost on the current cart'''
