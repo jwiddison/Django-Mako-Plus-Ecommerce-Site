@@ -95,7 +95,6 @@ class ShoppingCart(object):
         '''Returns the items in the shopping cart
            Works basically the same way as what you're doing with the last 5.
         '''
-
         # Create local list of cart ids.
         cart_ids = self.cart
 
@@ -111,13 +110,15 @@ class ShoppingCart(object):
         # get the available per the database for Individual or Bulk
         if isinstance(product, cmod.BulkProduct):
             if product.quantity < desired_quantity:
-                raise ValidationError('Please decrease the quantity desired.  Desired quantity not available')
+                raise ValidationError('Desired quantity not available. Please decrease the quantity desired.')
         elif isinstance(product, cmod.IndividualProduct):
             if product.status != 'current':
                 raise ValidationError('The current product is either sold or no longer for sale')
 
         # decrease the available amount by any in our cart
-
+        for p in self.cart:
+            if p.product_id == product.id:
+                product.quantity -= desired_quantity
 
         # check the available amount and raise ValueError if not enough
 
@@ -203,14 +204,13 @@ class ShoppingCart(object):
 
     def get_viewed_items(self):
         '''Returns a Django query object of the last items viewed'''
-        # create the list of products from the ids in our last 5 viewed
-
         # Store list of IDs in a local list
         last5 = self.last_5_ids
 
         # Create a new local list of products by iterating through list of ids
         last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
-        # # last5products = list(cmod.Product.objects.get(id=pid) for pid in last5)
+
+        # This is how Dr. Albrecht did it.  I don't like it as much.
         # last5products = list(cmod.Product.objects.filter(id__in=self.last_5_ids))
         # last5products.sort(key=lambda p: self.last_5_ids.index(p.id))
 
