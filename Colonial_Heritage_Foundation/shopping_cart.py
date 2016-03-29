@@ -72,9 +72,10 @@ class ShoppingCart(object):
             self.cart = []
 
         # load the last 5 ids list from the session, into a list attribute of the shopping cart.
-        self.last_5_ids = self.session.get(LAST_VIEWED_ID_KEY, [])
+        self.last_5_ids = session.get(LAST_VIEWED_ID_KEY, [])
         if not isinstance(self.last_5_ids, list):
             self.last_5_ids = []
+
 
     def save(self, session):
         '''Saves the current shopping cart to the session.

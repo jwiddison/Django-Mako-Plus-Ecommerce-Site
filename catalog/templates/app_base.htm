@@ -7,6 +7,12 @@
 
 <%block name="top_content_area">
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
+
+</%block>
+
+<%block name="fluid">
+  ## Makes container for columns section fluid
+  <div class="container-fluid">
   <hr/>
   <br/>
 </%block>
@@ -17,11 +23,10 @@
   <br />
   <h5>Search For a Product:</h5>
   <form method="GET" action="/catalog/search/">
-    <input type="text" name="q" class="form-control"/>
+    <input type="text" name="q" class="form-control" placeholder="Search"/>
     <br />
     <input type="submit" value="Search" class="btn btn-primary"/>
   </form>
-
   <br />
   <h5>Filter By Category:</h5>
   <a href="/catalog/index">View All</a>
