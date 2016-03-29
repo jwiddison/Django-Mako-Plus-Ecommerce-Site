@@ -109,9 +109,16 @@ class ShoppingCart(object):
     def check_availability(self, product, desired_quantity=1):
         '''Checks that the product is available at the given quantity.  Raises a ValueError if we don't have enough.'''
         # get the available per the database for Individual or Bulk
-        quantity = product.quantity
+        if isinstance(product, cmod.BulkProduct):
+            if product.quantity < desired_quantity:
+                raise ValidationError('Please decrease the quantity desired.  Desired quantity not available')
+        elif isinstance(product, cmod.IndividualProduct):
+            if product.status != 'current':
+                raise ValidationError('The current product is either sold or no longer for sale')
+
         # decrease the available amount by any in our cart
-        quantity -= 1
+
+
         # check the available amount and raise ValueError if not enough
 
 
@@ -121,11 +128,15 @@ class ShoppingCart(object):
            cart, it adds to the quantity of the item.
         '''
         # check the availability
+        self.check_availability(product, quantity)
 
         # ensure it is in our cart
 
         # update the quantity
-
+        if isinstance(product, cmod.BulkProduct):
+            pass
+        if isinstance(product, cmod.IndividualProduct):
+            pass
 
     def remove_item(self, product):
         '''Removes the given item id from the cart
@@ -141,7 +152,7 @@ class ShoppingCart(object):
 
     def get_item_count(self):
         '''Returns the item count'''
-        return self.cart.count()
+        return len(self.cart)
 
     ###   FINANCIAL METHODS
 

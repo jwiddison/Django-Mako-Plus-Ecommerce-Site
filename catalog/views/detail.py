@@ -12,19 +12,22 @@ def process_request(request):
     # Initialize Template vars
     template_vars = initialize_template_vars(request)
 
-    # Create form
-    form = OrderForm()
-
     # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
     request.shopping_cart.item_viewed(p)
 
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            request.shopping_cart.add_item(p, forms.cleaned_data.get('quantity'))
+
     template_vars['p'] = p
     template_vars['form'] = form
     return dmp_render_to_response(request, 'detail.html', template_vars)
 
-
+### Carousel Method
 @view_function
 def carousel(request):
 
@@ -37,7 +40,10 @@ def carousel(request):
     }
     return dmp_render_to_response(request, 'detail.carousel.html', template_vars)
 
-
 # Form for submitting quantity to cart
 class OrderForm(forms.Form):
     quantity = forms.IntegerField(label='Quantity', widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control'}))
+
+    def clean_quantity(self):
+        if self.cleaned_data.get('quantity') < 0:
+            raise forms.ValidationError('Please enter a positive number for quantity')
