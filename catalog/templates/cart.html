@@ -21,6 +21,22 @@
       <td><a href="/catalog/cart.remove/${p.id}">Remove</a></td>
     </tr>
     %endfor
+    <tr> <!--Subtotal -->
+      <td><b>Subtotal</b></td>
+      <td>$${request.shopping_cart.calc_subtotal()}</td>
+    </tr>
+    <tr> <!-- Tax -->
+      <td><b>Tax</b></td>
+      <td>$${request.shopping_cart.calc_tax()}</td>
+    </tr>
+    <tr> <!-- Shipping -->
+      <td><b>Shipping</b></td>
+      <td>$${request.shopping_cart.calc_shipping()}</td>
+    </tr>
+    <tr> <!-- Total Price -->
+      <td><b>Total</b></td>
+      <td>$${request.shopping_cart.calc_total()}</td>
+    </tr>
   </table>
   <a href="/catalog/checkout" class="btn btn-primary">Checkout</a>
 </%block>

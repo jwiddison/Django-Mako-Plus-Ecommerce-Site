@@ -35,11 +35,11 @@
 <%block name="content_right">
   <h5>Recently Viewed Products:</h5>
   <hr />
-  %for product in request.shopping_cart.get_viewed_items():
-    <a href="/catalog/detail/${product.id}">
+  %for p in request.shopping_cart.get_viewed_items():
+    <a href="/catalog/detail/${p.id}">
       <div class="recent">
-        <img src="${ STATIC_URL }catalog/media/pics/${ product.get_image_filename() }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-        <p>${product.name}</p>
+        <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive center-block prod_img"/>
+        <p>${ p.name }</p>
         <div class="clearfix"></div>
       </div><!-- recent -->
     </a>

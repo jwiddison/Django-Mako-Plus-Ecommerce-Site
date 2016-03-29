@@ -179,6 +179,7 @@ for i in range(1, 25):
     p.category = random.choice(categories)
     p.creator = random.choice(users)
     p.create_date = datetime.datetime.now()
+    p.status = cmod.INDIVIDUAL_STATUS_CHOICES[0][0]
     p.save()
     # Add images
     image_numbers = list(range(1, 13))

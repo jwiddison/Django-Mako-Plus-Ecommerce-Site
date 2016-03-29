@@ -109,10 +109,18 @@ admin.site.register(RentalProduct)
 #########################################################################################################
 ####### Individual Product ##############################################################################
 #########################################################################################################
+INDIVIDUAL_STATUS_CHOICES = (
+  ( 'current', 'For Sale'),
+  ( 'sold', 'Sold'),
+  ( 'retired', 'No Long For Sale'),
+)
+INDIVIDUAL_STATUS_CHOICES_MAP = dict(INDIVIDUAL_STATUS_CHOICES)
+
 class IndividualProduct(Product):
     className = "Individual Product"
     creator = models.ForeignKey('account.User')
     create_date = models.DateField(null=True, blank=True, auto_now_add=True)
+    status = models.TextField(null=True, blank=True, choices=INDIVIDUAL_STATUS_CHOICES)
 
     def __str__(self):
         '''Prints for debugging purposes'''

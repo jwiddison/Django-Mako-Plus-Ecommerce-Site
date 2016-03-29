@@ -14,7 +14,7 @@ def process_request(request):
         return HttpResponseRedirect('/catalog/login')
 
     # Make sure cart isn't empty
-    if request.shopping_cart == []:
+    if request.shopping_cart.cart == []:
         return HttpResponseRedirect('/catalog/empty_cart')
 
     # Initialize Template Vars

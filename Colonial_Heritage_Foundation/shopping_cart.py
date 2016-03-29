@@ -1,5 +1,5 @@
 from catalog import models as cmod
-import datetime, decimal
+import datetime, decimal, operator
 
 ########################################################################
 ###   Shopping Cart middleware that adds a shopping cart to the
@@ -28,7 +28,7 @@ SHOPPING_CART_KEY = 'shopping_cart'
 
 ### STUDENTS ###
 # the key we use for the last viewed items
-LAST_VIEWED_PROD_KEY = 'last_viewed_products'
+# LAST_VIEWED_PROD_KEY = 'last_viewed_products'
 LAST_VIEWED_ID_KEY = 'last_viewed_ids'
 LAST_VIEWED_COUNT = 5  # keep only the last 5
 
@@ -64,25 +64,30 @@ class ShoppingCart(object):
 
     def __init__(self, session):
         '''Constructor.  This is called from process_request() above.'''
+        self.session = session
+
         # load the cart from the session
-        self.cart = session.get(LAST_VIEWED_PROD_KEY, [])
+        self.cart = self.session.get(SHOPPING_CART_KEY, [])
+        if not isinstance(self.cart, list):
+            self.cart = []
 
         # load the last 5 ids list from the session, into a list attribute of the shopping cart.
-        self.last_5_ids = session.get(LAST_VIEWED_ID_KEY, [])
-
+        self.last_5_ids = self.session.get(LAST_VIEWED_ID_KEY, [])
+        if not isinstance(self.last_5_ids, list):
+            self.last_5_ids = []
 
     def save(self, session):
         '''Saves the current shopping cart to the session.
            This is called from the middleware above.
         '''
         # sort the cart by name
-        self.cart.sort()
+        self.cart.sort(key=operator.attrgetter('name'))
 
         # set the cart in the session (this saves it to disk so we can access it again next request)
-        session[SHOPPING_CART_KEY] = self.cart
+        self.session[SHOPPING_CART_KEY] = self.cart
 
         # set the shopping_last_viewed in the session
-        session[LAST_VIEWED_ID_KEY] = self.last_5_ids
+        self.session[LAST_VIEWED_ID_KEY] = self.last_5_ids
 
     ###  SHOPPING CART
 
@@ -148,11 +153,13 @@ class ShoppingCart(object):
 
     def calc_tax(self):
         '''Returns the tax on the current cart'''
-
+        # tax = self.calc_subtotal * TAX_RATE
+        # return tax
+        return 2
 
     def calc_shipping(self):
         '''Returns the shipping cost on the current cart'''
-
+        return SHIPPING_AMOUNT
 
     def calc_total(self):
         '''Returns the total cost on the current cart'''
@@ -183,7 +190,6 @@ class ShoppingCart(object):
         # Save list back into shopping cart's last_viewed_ids list.
         self.last_5_ids = local_last5
 
-
     def get_viewed_items(self):
         '''Returns a Django query object of the last items viewed'''
         # create the list of products from the ids in our last 5 viewed
@@ -193,6 +199,9 @@ class ShoppingCart(object):
 
         # Create a new local list of products by iterating through list of ids
         last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
+        # # last5products = list(cmod.Product.objects.get(id=pid) for pid in last5)
+        # last5products = list(cmod.Product.objects.filter(id__in=self.last_5_ids))
+        # last5products.sort(key=lambda p: self.last_5_ids.index(p.id))
 
         # Return the list of product objects (this method is called in app_base)
         return last5products
