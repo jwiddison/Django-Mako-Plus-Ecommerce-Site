@@ -11,10 +11,13 @@
     <p>Product Type: ${p.__class__.className}</p>
     <p>${p.description}</p>
     %if p.__class__.className == 'Bulk Product':
-      <h5>Only ${p.quantity} left!</h5>
+      <h5>Only ${p.quantity} left in stock</h5>
     %endif
     <div class="clearfix"></div>
     <form class="form-inline" method="POST">
+    ## %if isinstance(p, cmod.IndivdualProduct):
+    ##   
+    ## %endif
       <div class="form-group">
         <table>
           ${ form.as_table() }
