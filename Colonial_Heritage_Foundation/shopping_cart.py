@@ -189,7 +189,7 @@ class ShoppingCart(object):
 
     def calc_subtotal(self):
         '''Returns the subtotal (sum of product) cost'''
-        subtotal = 0
+        subtotal = decimal.Decimal(0)
         for shopping_item in self.cart:
             subtotal += shopping_item.price
         return subtotal
