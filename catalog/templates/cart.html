@@ -1,6 +1,5 @@
 <%inherit file="app_base.htm" />
 
-
 <%block name="content">
   <h3>Shopping Cart</h3>
   %if request.shopping_cart.get_items() == []:
@@ -19,7 +18,7 @@
       <td>${p.name} <img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
       <td>${p.price}</td>
       <td>${p.quantity}</td>
-      <td>${p.calc_extended()}</td>
+      ## <td>${p.calc_extended()}</td>
       <td><a href="/catalog/cart.remove/${p.product_id}">Remove</a></td>
     </tr>
     %endfor

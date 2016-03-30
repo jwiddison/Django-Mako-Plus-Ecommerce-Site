@@ -19,8 +19,11 @@ def process_request(request):
 
     form = OrderForm()
     if request.method == 'POST':
-        form = OrderForm(request.POST)
+        form = OrderForm()
+        form.product = p
         if form.is_valid():
+            print('>>>>>>>>>>>>>>>>>')
+
             request.shopping_cart.add_item(p, form.cleaned_data.get('quantity'))
             print(request.shopping_cart.cart)
             return HttpResponseRedirect('/catalog/cart/')
@@ -45,8 +48,12 @@ def carousel(request):
 
 # Form for submitting quantity to cart
 class OrderForm(forms.Form):
-    quantity = forms.IntegerField(label='Quantity', widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control'}))
+    quantity = forms.IntegerField(label='Quantity', widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control', 'min': '1'}))
 
-    def clean_quantity(self):
-        if self.cleaned_data.get('quantity') < 0:
-            raise forms.ValidationError('Please enter a positive number for quantity')
+    def clean(self):
+        qty = self.cleaned_data.get('quantity')
+        try:
+            self.request.shopping_cart.check_availability(self.product, qty)
+        except ValueError:
+            raise forms.ValidationError('Desired quantity not available.  Please decrease the quantity requested')
+        return self.cleaned_data

@@ -94,16 +94,8 @@ class ShoppingCart(object):
 
     def get_items(self):
         '''Returns the items in the shopping cart
-           Works basically the same way as what you're doing with the last 5.
         '''
-        # Create local list of cart ids.
-        cart_ids = self.cart
-
-        # Create a new local list of product objects by iterating through list of ids
-        cart_prods = [cmod.Product.objects.get(id=pid) for pid in cart_ids]
-
-        # Return the list of product objects
-        return cart_prods
+        return self.cart
 
 
     def check_availability(self, product, desired_quantity=1):
@@ -111,28 +103,25 @@ class ShoppingCart(object):
         # get the available per the database for Individual or Bulk
         if isinstance(product, cmod.BulkProduct):
             quantity_available = product.quantity
-        elif isinstance(product, cmod.IndividualProduct):
-            if product.status != 'current':
-                raise ValidationError('The current product is either sold or no longer for sale')
+        else:
+            quantity_available = 1
+            # if product.status != 'current':
+            #     raise ValidationError('The current product is either sold or no longer for sale')
                 # is_available = True
 
 
         # decrease the available amount by any in our cart
         for cart_item in self.cart:
-            if product.id in self.cart:
+            if product.id == cart_item.product_id:
                 quantity_available -= cart_item.quantity
-        # for p in self.cart:
-        #     if p.product_id == product.id:
-        #         product.quantity -= desired_quantity
 
         # check the available amount and raise ValueError if not enough
-        if isinstance(product, cmod.BulkProduct):
-            if desired_quantity > quantity_available:
-                raise ValueError('Desired quantity not available.  Please decrease the quantity requested')
+        # if isinstance(product, cmod.BulkProduct):
+        if desired_quantity > quantity_available:
+            raise ValueError
         # elif isinstance(product, cmod.IndividualProduct):
         #     if is_available != True:
         #         raise ValueError('The current product is either sold or no longer for sale')
-        #
 
 
     def add_item(self, product, quantity=1):
@@ -142,11 +131,17 @@ class ShoppingCart(object):
         # check the availability
         self.check_availability(product, quantity)
 
+        # Create a boolean for whether the product is found
+        found = False
+
+        print('>>>>>>>>>>>>>>> Getting to here' + found)
+
         # ensure it is in our cart
         for cart_item in self.cart:
             if product.id == cart_item.product_id:
                 cart_item.quantity += quantity
-        else:
+                found == True
+        if found == False:
             newItem = ShoppingItem(product)
             # if isinstance(product, cmod.BulkProduct):
             newItem.quantity = quantity
@@ -170,33 +165,29 @@ class ShoppingCart(object):
         except ValueError:
             pass
 
-
     def clear_items(self):
         '''Clears all items from the shopping cart'''
         self.cart = []
 
-
     def get_item_count(self):
         '''Returns the item count'''
-        count = 0
-        for shopping_item in self.cart:
-            print(shopping_item)
-            # count += int(shopping_item.quantity)
-        # return len(self.cart)
-        return count
+        return len(self.cart)
+
+    def get_quantity(self, shoppingitem):
+        '''Returns quantity for a single item'''
+        return shoppingitem.quantity
 
     ###   FINANCIAL METHODS
 
     def calc_subtotal(self):
         '''Returns the subtotal (sum of product) cost'''
-        subtotal = decimal.Decimal(0)
-        for shopping_item in self.cart:
-            subtotal += shopping_item.price
-        return subtotal
+        subtotal = 0
+        for p in self.cart:
+        	subtotal += p.calc_extended()
+        return subtotal.quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_UP)
 
     def calc_tax(self):
         '''Returns the tax on the current cart'''
-        # TAX_RATE = decimal.Decimal('0.0725')
         return (self.calc_subtotal() * TAX_RATE).quantize(decimal.Decimal('.01'), rounding=decimal.ROUND_UP)
 
     def calc_shipping(self):
@@ -239,10 +230,7 @@ class ShoppingCart(object):
         # last5products = list(cmod.Product.objects.filter(id__in=self.last_5_ids))
         # last5products.sort(key=lambda p: self.last_5_ids.index(p.id))
 
-        # Return the list of product objects (this method is called in app_base)
         return last5products
-
-
 
 
 class ShoppingItem(object):
@@ -258,14 +246,11 @@ class ShoppingItem(object):
         self.filename = product.get_image_filename()
         self.name = product.name
         self.price = product.price
-        self.quantity = decimal.Decimal(0)
-
+        # self.quantity = decimal.Decimal(0)
+        self.quantity = 5
 
     def calc_extended(self):
         return self.price * self.quantity
-        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-        print(self.price*self.quantity)
-        # When called, returns the extended price, so you need to store it in a varible.
 
     def __str__(self):
         '''Prints for debugging purposes'''
