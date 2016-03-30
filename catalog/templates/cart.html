@@ -3,6 +3,9 @@
 
 <%block name="content">
   <h3>Shopping Cart</h3>
+  %if request.shopping_cart.get_items() == []:
+  <p>Your cart is empty!  Please add some items.</p>
+  %else:
   <table class="table table-striped">
     <tr>
       <th>Item</th>
@@ -11,14 +14,13 @@
       <th>Extended</th>
       <th>Remove</th>
     </tr>
-    ## Make this work later
     %for p in request.shopping_cart.get_items():
     <tr>
-      <td>${p.name} ${p.image}</td>
+      <td>${p.name} <img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
       <td>${p.price}</td>
       <td>${p.quantity}</td>
-      <td>${p.extended}</td>
-      <td><a href="/catalog/cart.remove/${p.id}">Remove</a></td>
+      <td>${p.calc_extended()}</td>
+      <td><a href="/catalog/cart.remove/${p.product_id}">Remove</a></td>
     </tr>
     %endfor
     <tr> <!--Subtotal -->
@@ -51,4 +53,6 @@
     </tr>
   </table>
   <a href="/catalog/checkout" class="btn btn-primary">Checkout</a>
+  <a href="/catalog/cart.clear" class="btn btn-warning">Empty Cart</a>
+  %endif
 </%block>

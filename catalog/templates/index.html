@@ -3,7 +3,7 @@
 <%block name="content">
   %for product in products:
     <a href="/catalog/detail/${product.id}">
-      <div class="tile text-center center-block">
+      <div class="tile text-center center-block animated slideUpIn">
         <img src="${ STATIC_URL }catalog/media/pics/${ product.get_image_filename() }" alt="${product.name}" class="img-responsive center-block prod_img"/>
         <br />
         <p><b>${ product.name }</b></p>

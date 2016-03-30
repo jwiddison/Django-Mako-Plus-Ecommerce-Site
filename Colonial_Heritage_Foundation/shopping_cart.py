@@ -110,19 +110,29 @@ class ShoppingCart(object):
         '''Checks that the product is available at the given quantity.  Raises a ValueError if we don't have enough.'''
         # get the available per the database for Individual or Bulk
         if isinstance(product, cmod.BulkProduct):
-            if product.quantity < desired_quantity:
-                raise ValidationError('Desired quantity not available. Please decrease the quantity desired.')
+            quantity_available = product.quantity
         elif isinstance(product, cmod.IndividualProduct):
             if product.status != 'current':
                 raise ValidationError('The current product is either sold or no longer for sale')
+                # is_available = True
+
 
         # decrease the available amount by any in our cart
-        for p in self.cart:
-            if p.product_id == product.id:
-                product.quantity -= desired_quantity
+        for cart_item in self.cart:
+            if product.id in self.cart:
+                quantity_available -= cart_item.quantity
+        # for p in self.cart:
+        #     if p.product_id == product.id:
+        #         product.quantity -= desired_quantity
 
         # check the available amount and raise ValueError if not enough
-
+        if isinstance(product, cmod.BulkProduct):
+            if desired_quantity > quantity_available:
+                raise ValueError('Desired quantity not available.  Please decrease the quantity requested')
+        # elif isinstance(product, cmod.IndividualProduct):
+        #     if is_available != True:
+        #         raise ValueError('The current product is either sold or no longer for sale')
+        #
 
 
     def add_item(self, product, quantity=1):
@@ -133,18 +143,32 @@ class ShoppingCart(object):
         self.check_availability(product, quantity)
 
         # ensure it is in our cart
+        for cart_item in self.cart:
+            if product.id == cart_item.product_id:
+                cart_item.quantity += quantity
+        else:
+            newItem = ShoppingItem(product)
+            # if isinstance(product, cmod.BulkProduct):
+            newItem.quantity = quantity
+            self.cart.append(newItem)
 
-        # update the quantity
+
+        # update the quantity or status
         if isinstance(product, cmod.BulkProduct):
-            pass
+            product.quantity -= quantity
         if isinstance(product, cmod.IndividualProduct):
-            pass
+            product.status = 'sold'
+
 
     def remove_item(self, product):
         '''Removes the given item id from the cart
            The product can be a real product instance or a product id.
         '''
-        self.cart.remove(product)
+        # self.cart.remove(product.id)
+        try:
+            self.cart.remove(product.id)
+        except ValueError:
+            pass
 
 
     def clear_items(self):
@@ -154,15 +178,20 @@ class ShoppingCart(object):
 
     def get_item_count(self):
         '''Returns the item count'''
-        return len(self.cart)
+        count = 0
+        for shopping_item in self.cart:
+            print(shopping_item)
+            # count += int(shopping_item.quantity)
+        # return len(self.cart)
+        return count
 
     ###   FINANCIAL METHODS
 
     def calc_subtotal(self):
         '''Returns the subtotal (sum of product) cost'''
         subtotal = 0
-        for p in self.cart:
-            subtotal += p.price
+        for shopping_item in self.cart:
+            subtotal += shopping_item.price
         return subtotal
 
     def calc_tax(self):
@@ -184,22 +213,17 @@ class ShoppingCart(object):
     # Called by detail.py
     def item_viewed(self, product):
         '''Adds an item to the last-viewed items'''
-
         # Create local list from list of IDs in shopping cart
         local_last5 = self.last_5_ids
-
         # delete from the list if currently there (so it isn't listed twice)
         try:
             local_last5.remove(product.id)
         except ValueError:
             pass
-
         # add the id to the last viewed list
         local_last5.insert(0, product.id)
-
-        # ensure the list isn't too long - right now we do 5 items max
+        # Prune the list to length
         local_last5 = local_last5[:LAST_VIEWED_COUNT]
-
         # Save list back into shopping cart's last_viewed_ids list.
         self.last_5_ids = local_last5
 
@@ -239,4 +263,10 @@ class ShoppingItem(object):
 
     def calc_extended(self):
         return self.price * self.quantity
+        print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+        print(self.price*self.quantity)
         # When called, returns the extended price, so you need to store it in a varible.
+
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'ShoppingItem: %s Quantity: %s ' % (self.name, self.quantity)

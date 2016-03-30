@@ -9,9 +9,17 @@ from . import initialize_template_vars
 def process_request(request):
     # Initialize Template Vars
     template_vars = initialize_template_vars(request)
-
+    print(request.shopping_cart.cart)
+    print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
     return dmp_render_to_response(request, 'cart.html', template_vars)
 
+@view_function
+def clear(request):
+    request.shopping_cart.clear_items()
+    return HttpResponseRedirect('/catalog/cart/')
 
+@view_function
 def remove(request):
-    pass
+    p = cmod.Product.objects.get(id=request.urlparams[0])
+    request.shopping_cart.remove_item(p)
+    return HttpResponseRedirect('/catalog/cart/')

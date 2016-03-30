@@ -21,7 +21,10 @@ def process_request(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            request.shopping_cart.add_item(p, forms.cleaned_data.get('quantity'))
+            request.shopping_cart.add_item(p, form.cleaned_data.get('quantity'))
+            print(request.shopping_cart.cart)
+            return HttpResponseRedirect('/catalog/cart/')
+
 
     template_vars['p'] = p
     template_vars['form'] = form
