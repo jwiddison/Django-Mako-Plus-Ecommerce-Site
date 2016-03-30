@@ -147,7 +147,7 @@ for i in range(1, 25):
     p = cmod.RentalProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.price = random.uniform(1, 1000)
     p.description = 'This is a rental product named %s. %s' % (item[0], lorem_ipsum)
     p.category = random.choice(categories)
     p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
@@ -173,7 +173,7 @@ for i in range(1, 25):
     p = cmod.IndividualProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.price = random.uniform(1, 1000)
     p.description = 'This is an individual product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'indprod%i.png' % i
     p.category = random.choice(categories)
@@ -201,7 +201,7 @@ for i in range(1, 25):
     p = cmod.BulkProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = '$' + str(round(random.uniform(1, 1000),2))
+    p.price = random.uniform(1, 1000)
     p.description = 'This is a bulk product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'bulkprod%i.png' % i
     p.category = random.choice(categories)

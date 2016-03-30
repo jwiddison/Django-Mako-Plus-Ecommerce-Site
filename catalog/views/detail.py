@@ -12,22 +12,21 @@ def process_request(request):
     # Initialize Template vars
     template_vars = initialize_template_vars(request)
 
-    # Get the product that we're working with and send it to template
     p = cmod.Product.objects.get(id=request.urlparams[0])
 
+    # Add to Last5 Viewed
     request.shopping_cart.item_viewed(p)
 
     form = OrderForm()
+    form.product = p
     if request.method == 'POST':
-        form = OrderForm()
+        form = OrderForm(request.POST)
+        form.request = request
         form.product = p
         if form.is_valid():
-            print('>>>>>>>>>>>>>>>>>')
-
             request.shopping_cart.add_item(p, form.cleaned_data.get('quantity'))
             print(request.shopping_cart.cart)
             return HttpResponseRedirect('/catalog/cart/')
-
 
     template_vars['p'] = p
     template_vars['form'] = form
@@ -36,10 +35,8 @@ def process_request(request):
 ### Carousel Method
 @view_function
 def carousel(request):
-
     # I'm sending p so I have access to the name for the modal title.
     p = cmod.Product.objects.get(id=request.urlparams[0])
-
     template_vars = {
         'p': p,
         'p_images': cmod.ProductImage.objects.all().filter(product=p),
@@ -48,7 +45,7 @@ def carousel(request):
 
 # Form for submitting quantity to cart
 class OrderForm(forms.Form):
-    quantity = forms.IntegerField(label='Quantity', widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control', 'min': '1'}))
+    quantity = forms.IntegerField(label='Quantity', required=True, widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control', 'min': '1'}))
 
     def clean(self):
         qty = self.cleaned_data.get('quantity')

@@ -66,7 +66,7 @@ admin.site.register(ProductImage)
 class Product(PolymorphicModel):
     '''Superclass for all other product types '''
     name = models.TextField(null=True, blank=True)
-    price = models.TextField(null=True, blank=True)
+    price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     description = models.TextField(null=True, blank=True)
     add_date = models.DateField(null=True, blank=True, auto_now_add=True)
     # Removed for Sprint 4

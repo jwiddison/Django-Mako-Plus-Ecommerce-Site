@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459290218.088657
+_modified_time = 1459361372.738325
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html'
 _template_uri = 'index.html'
@@ -65,7 +65,7 @@ def render_content(context,**pageargs):
             __M_writer(str(product.name))
             __M_writer('" class="img-responsive center-block prod_img"/>\n        <br />\n        <p><b>')
             __M_writer(str( product.name ))
-            __M_writer('</b></p>\n        <br />\n        <p>')
+            __M_writer('</b></p>\n        <br />\n        <p>$')
             __M_writer(str( product.price ))
             __M_writer('</p>\n        <br />\n        <p>')
             __M_writer(str( product.category ))
@@ -79,6 +79,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"64": 7, "65": 7, "66": 7, "67": 9, "68": 9, "69": 11, "70": 11, "71": 13, "72": 13, "73": 15, "74": 15, "80": 74, "28": 0, "37": 1, "42": 19, "48": 3, "56": 3, "57": 4, "58": 5, "59": 5, "60": 5, "61": 7, "62": 7, "63": 7}, "uri": "index.html", "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/index.html", "uri": "index.html", "source_encoding": "utf-8", "line_map": {"64": 7, "65": 7, "66": 7, "67": 9, "68": 9, "69": 11, "70": 11, "71": 13, "72": 13, "73": 15, "74": 15, "80": 74, "28": 0, "37": 1, "42": 19, "48": 3, "56": 3, "57": 4, "58": 5, "59": 5, "60": 5, "61": 7, "62": 7, "63": 7}}
 __M_END_METADATA
 """

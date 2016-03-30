@@ -33,7 +33,7 @@ LAST_VIEWED_ID_KEY = 'last_viewed_ids'
 LAST_VIEWED_COUNT = 5  # keep only the last 5
 
 TAX_RATE = decimal.Decimal(0.0725)  # just using a default rate
-SHIPPING_AMOUNT = decimal.Decimal(10)
+SHIPPING_AMOUNT = decimal.Decimal(10.00)
 
 
 class ShoppingCartMiddleware:
@@ -97,6 +97,12 @@ class ShoppingCart(object):
         '''
         return self.cart
 
+    def get_full_cart(self):
+        '''Returns full-on product objects for all items in cart'''
+        cart_items = self.cart
+        cart_products = [cmod.Product.objects.get(id=pid) for pid in cart_items]
+        return cart_products
+
 
     def check_availability(self, product, desired_quantity=1):
         '''Checks that the product is available at the given quantity.  Raises a ValueError if we don't have enough.'''
@@ -134,7 +140,7 @@ class ShoppingCart(object):
         # Create a boolean for whether the product is found
         found = False
 
-        print('>>>>>>>>>>>>>>> Getting to here' + found)
+        print('>>>>>>>>>>>>>>> Getting to here' + str(found))
 
         # ensure it is in our cart
         for cart_item in self.cart:
@@ -159,11 +165,9 @@ class ShoppingCart(object):
         '''Removes the given item id from the cart
            The product can be a real product instance or a product id.
         '''
-        # self.cart.remove(product.id)
-        try:
-            self.cart.remove(product.id)
-        except ValueError:
-            pass
+        for item in self.cart:
+            if item.product_id == product.id:
+                self.cart.remove(item)
 
     def clear_items(self):
         '''Clears all items from the shopping cart'''
@@ -173,15 +177,11 @@ class ShoppingCart(object):
         '''Returns the item count'''
         return len(self.cart)
 
-    def get_quantity(self, shoppingitem):
-        '''Returns quantity for a single item'''
-        return shoppingitem.quantity
-
     ###   FINANCIAL METHODS
 
     def calc_subtotal(self):
         '''Returns the subtotal (sum of product) cost'''
-        subtotal = 0
+        subtotal = decimal.Decimal(0)
         for p in self.cart:
         	subtotal += p.calc_extended()
         return subtotal.quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_UP)
@@ -192,7 +192,7 @@ class ShoppingCart(object):
 
     def calc_shipping(self):
         '''Returns the shipping cost on the current cart'''
-        return SHIPPING_AMOUNT
+        return SHIPPING_AMOUNT.quantize(decimal.Decimal('.01'), rounding = decimal.ROUND_UP)
 
     def calc_total(self):
         '''Returns the total cost on the current cart'''
@@ -232,6 +232,10 @@ class ShoppingCart(object):
 
         return last5products
 
+    def get_last5_ids(self):
+        '''Just returns a list of the id numbers of items in the cart'''
+        return self.last_5_ids
+
 
 class ShoppingItem(object):
     '''A shopping cart item. Each of these objects represents a product in the shopping cart.  In
@@ -246,8 +250,7 @@ class ShoppingItem(object):
         self.filename = product.get_image_filename()
         self.name = product.name
         self.price = product.price
-        # self.quantity = decimal.Decimal(0)
-        self.quantity = 5
+        self.quantity = decimal.Decimal(0)
 
     def calc_extended(self):
         return self.price * self.quantity
