@@ -10,5 +10,9 @@ from account.models import User
 def process_request(request):
     # Logout the user
     logout(request)
+
+    # Clear last 5 from session
+    request.shopping_cart.last_5_ids = []
+
     # Redirect to the login page
     return HttpResponseRedirect('/homepage/index/')

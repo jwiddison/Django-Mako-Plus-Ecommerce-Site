@@ -15,10 +15,38 @@
   margin-top:100px;
 }
 
+#all_products_button{
+  margin-top:12px;
+}
+
 .launch_modal_button{
   margin-left:30px;
 }
 
 h3{
   margin-top:0px;
+}
+
+.tile{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #CCCCCC;
+  border-radius: 1px;
+  padding: 12px 0;
+  margin: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+  min-width: 205px;
+  min-height:210px;
+}
+
+.tile > p{
+  display:inline;
+}
+
+.prod_img{
+  margin-top:10px;
+  height:120px;
+  width:120px;
+  margin-bottom:0px;
 }

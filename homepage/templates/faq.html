@@ -1,24 +1,12 @@
 <%inherit file="app_base.htm" />
 
 <%block name="top_content_area">
+  <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
+  <hr/>
+  <br/>
   <h1>Frequently Asked Questions</h1>
   <hr/>
   <br/>
-</%block>
-
-<%block name="content_left">
-  <div id="big_left">
-    <h1 class="q_a">Q:</h1>
-  </div>
-</%block>
-
-<%block name="content_right">
-  <div id="big_right">
-    <h1 class="q_a">A:</h1>
-  </div>
-</%block>
-
-<%block name="content">
   <h3>Question:</h3>
   <p><b>What is the Colonial Heritage Foundation?</b></p>
   <h3>Answer:</h3>
@@ -32,5 +20,38 @@
   <h3>Question:</h3>
   <p><b>Why would I want to be involved with the Colonial Heritage Foundation?</b></p>
   <h3>Answer:</h3>
-  <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe taht knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>
+  <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe that knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>
 </%block>
+
+<%block name="content_left"></%block>
+<%block name="content_right"></%block>
+<%block name="content"></%block>
+
+## <%block name="content_left">
+##   <div id="big_left">
+##     <h1 class="q_a">Q:</h1>
+##   </div>
+## </%block>
+##
+## <%block name="content_right">
+##   <div id="big_right">
+##     <h1 class="q_a">A:</h1>
+##   </div>
+## </%block>
+
+## <%block name="content">
+##   <h3>Question:</h3>
+##   <p><b>What is the Colonial Heritage Foundation?</b></p>
+##   <h3>Answer:</h3>
+##   <p>The Colonial Heritage Foundation (the Foundation) is a 501(c)(3) corporation dedicated to the preservation of the values, culture, skills and history of America's founding. To accomplish this mission, the Foundation engages in a broad array of activities. Among these are the development and presentation of educational exhibits, the coordination of reading and discussion groups to encourage the study of America's historical writings, the presentation of lectures and seminars regarding America's founding era, the coordination of historical reenactments and skill demonstrations, and the coordination of internships and apprenticeships that teach the occupational skills of early America.</p>
+##   <hr/>
+##   <h3>Question:</h3>
+##   <p><b>Why "colonial heritage"?</b></p>
+##   <h3>Answer:</h3>
+##   <p>At the Colonial Heritage Foundation, we believe that the core virtues present at our Nation's founding that make the United States of America the great nation that it is have slowly began to erode over time.  The purpose of the foundation is to help American find their "colonial heritage" and learn about those virtues that used to define what it meant to be an American.</p>
+##   <hr/>
+##   <h3>Question:</h3>
+##   <p><b>Why would I want to be involved with the Colonial Heritage Foundation?</b></p>
+##   <h3>Answer:</h3>
+##   <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe that knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>
+## </%block>

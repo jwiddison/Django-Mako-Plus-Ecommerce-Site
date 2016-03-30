@@ -66,7 +66,7 @@ admin.site.register(ProductImage)
 class Product(PolymorphicModel):
     '''Superclass for all other product types '''
     name = models.TextField(null=True, blank=True)
-    price = models.TextField(null=True, blank=True)
+    price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     description = models.TextField(null=True, blank=True)
     add_date = models.DateField(null=True, blank=True, auto_now_add=True)
     # Removed for Sprint 4
@@ -76,6 +76,11 @@ class Product(PolymorphicModel):
     def __str__(self):
         '''Prints for debugging purposes'''
         return 'Product (abstract): %s (%s)' % (self.name(), self.add_date)
+
+    def get_image_filename(self):
+        '''Returns the filename of the first image, or the unavailable image if no images have been added.'''
+        first_image = self.images.first()
+        return first_image.filename if first_image != None else 'image_unavailable.gif'
 
 admin.site.register(Product)
 
@@ -93,7 +98,6 @@ class RentalProduct(Product):
     className = "Rental Product"
     status = models.TextField(null=True, blank=True, choices=RENTAL_STATUS_CHOICES)
     purchase_date = models.DateField(null=True, blank=True, auto_now_add=True)
-    # rental = models.ForeignKey('Rental', null=True)
 
     def __str__(self):
         '''Prints for debugging purposes'''
@@ -105,10 +109,18 @@ admin.site.register(RentalProduct)
 #########################################################################################################
 ####### Individual Product ##############################################################################
 #########################################################################################################
+INDIVIDUAL_STATUS_CHOICES = (
+  ( 'current', 'For Sale'),
+  ( 'sold', 'Sold'),
+  ( 'retired', 'No Long For Sale'),
+)
+INDIVIDUAL_STATUS_CHOICES_MAP = dict(INDIVIDUAL_STATUS_CHOICES)
+
 class IndividualProduct(Product):
     className = "Individual Product"
     creator = models.ForeignKey('account.User')
     create_date = models.DateField(null=True, blank=True, auto_now_add=True)
+    status = models.TextField(null=True, blank=True, choices=INDIVIDUAL_STATUS_CHOICES)
 
     def __str__(self):
         '''Prints for debugging purposes'''

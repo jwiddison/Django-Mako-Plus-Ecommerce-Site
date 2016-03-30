@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/animate.css">
     ## render the css with the same name as this page
     ${ static_renderer.get_template_css(request, context)  }
   </head>
@@ -74,7 +75,7 @@
                   <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
                 </%block>
                 <%block name="cart">
-                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">0</span></a>
+                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">${request.shopping_cart.get_item_count()}</span></a>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -90,6 +91,7 @@
                         <li><a href="/account/index">Account Summary</a></li>
                         <li><a href="/account/edit">Edit Account Info</a></li>
                         <li><a href="/account/change_password">Change Password</a></li>
+                        <li role="presentation" class="divider"></li>
                         <li><a href="/manager/index">Admin</a></li>
                         <li role="presentation" class="divider"></li>
                         <li><a href='/account/logout/'>Logout</a></li>
@@ -107,7 +109,6 @@
     </header>
 
     <!-- Body Content -->
-    <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG"></div> -->
     <%block name="parallax_start">
       <div class="parallax-window" data-parallax="scroll" data-image-src="${ STATIC_URL }homepage/media/pics/CHFcanon.JPG">
     </%block>
@@ -122,7 +123,7 @@
                   <hr/>
                   <br/>
                   <%block name="top_content_text">
-                    <h3 class="text-center">Welcome to ColonialHeritage.org</h3>
+                    <h3 class="text-center">Welcome to chfsales.com</h3>
                   </%block>
                 </%block>
               <%block name="transbox_end">
@@ -137,27 +138,27 @@
 
 
     <%block name="column_layout">
-      <div class="column_layout">
+      <%block name="fluid">
         <div class="container">
-          <div class="row">
-            <div class="col-md-2">
-              <%block name="content_left">
-                Put Left Content Here!
-              </%block>
-            </div><!-- left -->
-            <div class="col-md-8">
-              <%block name="content">
-                Put Center Content Here!
-              </%block>
-            </div><!-- center -->
-            <div class="col-md-2">
-              <%block name="content_right">
-                Put Right Content Here!
-              </%block>
-            </div><!-- right -->
-          </div><!-- row -->
-        </div><!-- container -->
-      </div><!-- column_layout -->
+      </%block>
+        <div class="row">
+          <div class="col-md-2">
+            <%block name="content_left">
+              Put Left Content Here!
+            </%block>
+          </div><!-- left -->
+          <div class="col-md-8">
+            <%block name="content">
+              Put Center Content Here!
+            </%block>
+          </div><!-- center -->
+          <div class="col-md-2">
+            <%block name="content_right">
+              Put Right Content Here!
+            </%block>
+          </div><!-- right -->
+        </div><!-- row -->
+      </div><!-- container -->
     </%block>
 
     <!-- Footer Content-->

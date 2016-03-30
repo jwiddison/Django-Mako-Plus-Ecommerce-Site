@@ -7,22 +7,26 @@
 
 <%block name="top_content_area">
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
+
+</%block>
+
+<%block name="fluid">
+  ## Makes container for columns section fluid
+  <div class="container-fluid">
   <hr/>
   <br/>
 </%block>
 
 <%block name="content_left">
-  <a class="btn btn-primary" href="/catalog/index/">View All Products</a>
+  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>
   <br />
   <br />
   <h5>Search For a Product:</h5>
-  ## This needs to be a form! Use method="GET"
   <form method="GET" action="/catalog/search/">
-    <input type="text" name="q" class="form-control"/>
+    <input type="text" name="q" class="form-control" placeholder="Search"/>
     <br />
     <input type="submit" value="Search" class="btn btn-primary"/>
   </form>
-
   <br />
   <h5>Filter By Category:</h5>
   <a href="/catalog/index">View All</a>
@@ -36,16 +40,11 @@
 <%block name="content_right">
   <h5>Recently Viewed Products:</h5>
   <hr />
-  %for product in recent_products_list:
-    <a href="/catalog/detail/${product.id}">
+  %for p in request.shopping_cart.get_viewed_items():
+    <a href="/catalog/detail/${p.id}">
       <div class="recent">
-        %for image in images:
-          %if image.product == product:
-            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive center-block prod_img"/>
-            <% break %>
-          %endif
-        %endfor
-        <p>${product.name}</p>
+        <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive center-block prod_img"/>
+        <p>${ p.name }</p>
         <div class="clearfix"></div>
       </div><!-- recent -->
     </a>

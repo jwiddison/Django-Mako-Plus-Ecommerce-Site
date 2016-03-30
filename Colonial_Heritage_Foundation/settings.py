@@ -60,8 +60,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Colonial_Heritage_Foundation.shopping_cart.ShoppingCartMiddleware',
     'django_mako_plus.controller.router.RequestInitMiddleware',
-    # 'Colonial_Heritage_Foundation.shopping_cart.ShoppingCartMiddleware',
 ]
 
 ROOT_URLCONF = 'Colonial_Heritage_Foundation.urls'

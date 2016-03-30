@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django_mako_plus.controller import view_function
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
-from catalog.views import translate_product
+from . import initialize_template_vars
 from django import forms
 
 
@@ -13,30 +13,16 @@ def process_request(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/catalog/login')
 
-    #TODO: Fix this once shopping cart exists.
     # Make sure cart isn't empty
-    # if not request.shopping_cart:
-    #     return HttpResponseRedirect('/catalog/empty_cart')
+    if request.shopping_cart.cart == []:
+        return HttpResponseRedirect('/catalog/empty_cart')
 
+    # Initialize Template Vars
+    template_vars = initialize_template_vars(request)
 
-    # Get lists to send to template
-    products = cmod.Product.objects.all().not_instance_of(cmod.RentalProduct).order_by('name')
-    categories = cmod.Category.objects.all().order_by('name')
-    images = cmod.ProductImage.objects.all()
     form = CheckoutForm()
 
-
-    # Translate p.id list into list of objects (for last 5)
-    recent_products_list = translate_product(request)
-
-    template_vars = {
-      'products': products,
-      'categories': categories,
-      'images': images,
-      'recent_products_list': recent_products_list,
-      'form': form,
-
-    }
+    template_vars['form'] = form
     return dmp_render_to_response(request, 'checkout.html', template_vars)
 
 
@@ -46,3 +32,5 @@ class CheckoutForm(forms.Form):
     shipping_city = forms.CharField(label='Shipping City', required=True, widget=forms.TextInput(attrs={'placeholder': 'Shipping City', 'class': 'form-control'}))
     shipping_state = forms.CharField(label='Shipping State', required=True, widget=forms.TextInput(attrs={'placeholder': 'Shipping State', 'class': 'form-control'}))
     shipping_zip_code = forms.CharField(label='Shipping Zip Code', required=True, widget=forms.TextInput(attrs={'placeholder': 'Shippping Zip Code', 'class': 'form-control'}))
+
+    # need to add clean methods to make sure the quantity is available.

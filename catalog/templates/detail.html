@@ -2,35 +2,29 @@
 
 <%block name="content">
   <div class="detail">
-    %for image in images:
-      %if image.product == p:
-        ## <a href="/catalog/detail.carousel/${p.id}" id="load_carousel" data-pname="${p.name}">
-        ##   <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive"/>
-        ##   <div class="product_image_text">
-        ##     <p>Click for additional images</p>
-        ##   </div>
-        ## </a>
-        <img src="${ STATIC_URL }catalog/media/pics/${image.filename}" alt="${p.name}" class="img-responsive"/>
-        <a href="/catalog/detail.carousel/${p.id}" class="btn btn-primary launch_modal_button" data-pid="${p.id}" data-pname="${p.name}">
-          Additional Images
-        </a>
-        <% break %>
-      %endif
-    %endfor
+    <img src="${ STATIC_URL }catalog/media/pics/${p.get_image_filename()}" alt="${p.name}" class="img-responsive"/>
+    <a href="/catalog/detail.carousel/${p.id}" class="btn btn-primary launch_modal_button" data-pid="${p.id}" data-pname="${p.name}">
+      Additional Images
+    </a>
     <h3>${p.name}</h3>
-    <h4>${p.price}</h4>
+    <h4>$${p.price}</h4>
     <p>Product Type: ${p.__class__.className}</p>
     <p>${p.description}</p>
     %if p.__class__.className == 'Bulk Product':
       <h5>Only ${p.quantity} left!</h5>
     %endif
     <div class="clearfix"></div>
-    <form class="form-inline" action="">
-      <label for="quantity"><b>Quantity:</b></label>
-      <input name ="quantity" type="number" class="form-control" value="1"/>
+    <form class="form-inline" method="POST">
+      <div class="form-group">
+        <table>
+          ${ form.as_table() }
+        </table>
+      </div>
       <div class="clearfix"></div>
       <br />
-      <input type="submit" class="btn btn-primary" value="Purchase" />
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Add to Cart">
+      </div>
     </form>
   </div><!-- detail -->
 </%block>

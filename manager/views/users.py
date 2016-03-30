@@ -80,7 +80,7 @@ def create(request):
 
 class CreateForm(forms.Form):
     username = forms.CharField(label='Username', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
-    password = forms.CharField(label='Enter Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter Password', 'class': 'form-control'}))
+    password = forms.CharField(label='Password', required=True, widget=forms.TextInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
     first_name = forms.CharField(label='First Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class': 'form-control'}))
     last_name = forms.CharField(label='Last Name', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class': 'form-control'}))
     birth = forms.DateField(label='Birth Date', required=True, input_formats=['%Y-%m-%d'], widget=forms.TextInput(attrs={'placeholder': '1980-01-01', 'class': 'form-control'}))
@@ -127,6 +127,7 @@ def edit(request):
         if form.is_valid():
 
             # Store captured form data to user we're editing
+            user.username = form.cleaned_data.get('username')
             user.first_name = form.cleaned_data.get('first_name')
             user.last_name = form.cleaned_data.get('last_name')
             user.email = form.cleaned_data.get('email')
