@@ -1,6 +1,5 @@
 ## Author: Jordan Widdison
-## IS 411/413 - Sprint 5 - Colonial Heritage Foundation
-## Create management app with CRUD functionality for users, items, locations, and events
+## IS 413 - Sprint 5 - CHFSales.com
 
 ## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
 <%! from django_mako_plus.controller import static_files %>
@@ -54,23 +53,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/homepage/index">
+              <a class="navbar-brand" href="/">
                 <img src="${ STATIC_URL }homepage/media/pics/eagle.png" id="navbar_icon"/>
               </a>
               <%block name="navbar_title">
-                <a class="navbar-brand" href="/homepage/index">CHFSales</a>
+                <a class="navbar-brand" href="/">CHFSales</a>
               </%block>
             </div><!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <%block name="menu">
                   ## uses if statements to check if the active page = the menu item, and then sets the page we're on as "active"
-                  <li class="${ 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''}"><a href="/homepage/index">Home</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'about' else ''}"><a href="/homepage/about">About</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/homepage/terms">Terms</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/homepage/faq">FAQ</a></li>
-                  <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
-                  <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''}"><a href="/">Home</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'about' else ''}"><a href="/about">About</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'terms' else ''}"><a href="/terms">Terms</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'faq' else ''}"><a href="/faq">FAQ</a></li>
+                  <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/contact">Contact</a></li>
+                  <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog">Shop</a></li>
                 </%block>
                 ## Have the cart block in case you ever don't want it
                 <%block name="cart">
@@ -115,14 +114,14 @@
           <div class="row">
             <div class="col-md-12">
             <%block name="transbox_start">
-              <div class="transbox">
+              <div class="transbox animated slideInDown">
             </%block>
                 <%block name="top_content_area">
                   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="top_image"/>
                   <hr/>
                   <br/>
                   <%block name="top_content_text">
-                    <h3 class="text-center">Welcome to chfsales.com</h3>
+                    <h2 class="text-center">Welcome to CHFSales.com</h2>
                   </%block>
                 </%block>
               <%block name="transbox_end">

@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1458760629.34384
+_modified_time = 1459404573.68126
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/about.html'
 _template_uri = 'about.html'
@@ -56,7 +56,7 @@ def render_top_content_text(context,**pageargs):
         def top_content_text():
             return render_top_content_text(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h3 class="text-center">Learn a Little More About Us</h3>\n')
+        __M_writer('\n  <h2 class="text-center">Learn a Little More About Us</h2>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -77,6 +77,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/about.html", "line_map": {"65": 7, "59": 3, "53": 3, "71": 7, "72": 9, "42": 5, "47": 21, "28": 0, "78": 72, "37": 1}, "uri": "about.html"}
+{"uri": "about.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/about.html", "source_encoding": "utf-8", "line_map": {"65": 7, "59": 3, "53": 3, "71": 7, "72": 9, "42": 5, "47": 21, "28": 0, "78": 72, "37": 1}}
 __M_END_METADATA
 """

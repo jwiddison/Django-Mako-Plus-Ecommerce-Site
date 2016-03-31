@@ -26,8 +26,8 @@ i{
 }
 
 .transbox{
-  margin-top: 264px;
-  margin-bottom: 200px;
+  margin-top: 214px;
+  margin-bottom: 100px;
   /*margin-left:-40px;
   margin-right:-40px;*/
   padding:40px;
@@ -45,6 +45,7 @@ i{
 .parallax-window {
     background: transparent;
     margin-bottom:75px;
+    min-height:100%;
 }
 
 #loginbutton, #cartbutton{

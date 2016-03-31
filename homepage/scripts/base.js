@@ -8,7 +8,7 @@ $(function() {
     }); // LoadModal
   }); // Click
 
-  // windowHeight = $(window).height();
-  // $('.parallax-window').css('min-height', windowHeight).refresh();
+  var windowHeight = $(window).height();
+  $('.parallax-window').css('min-height', windowHeight);
 
 }); // Ready
