@@ -15,7 +15,7 @@
     </tr>
     %for p in request.shopping_cart.get_items():
     <tr>
-      <td>${p.name} <img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
+      <td><a href="/catalog/detail/${p.product_id}">${p.name}</a><img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
       <td>$${p.price}</td>
       <td>${p.quantity}</td>
       <td>$${p.calc_extended()}</td>
@@ -52,6 +52,6 @@
     </tr>
   </table>
   <a href="/catalog/checkout" class="btn btn-primary">Checkout</a>
-  <a href="/catalog/cart.clear" class="btn btn-warning">Empty Cart</a>
+  <a href="/catalog/cart.clear" class="btn btn-danger pull-right">Empty Cart</a>
   %endif
 </%block>

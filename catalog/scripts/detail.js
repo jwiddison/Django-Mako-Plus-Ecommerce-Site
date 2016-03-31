@@ -1,11 +1,14 @@
 $(function() {
 
+  // Hides the quantity field on the form if the product is an individual product.
+  if($('#Quantity_Form_Button').attr('data-ptype') === 'Individual Product')
+  {
+    $('#id_quantity').closest("table").hide();
+    $('#id_quantity').hide();
+  }
+
   $('.detail > a').click(function(event) {
     event.preventDefault();
-
-    // var detail_url = $(this).attr('href');
-    //console.log(detail_url); // Just to check and make sure we're pulling the right URL
-
     $.loadmodal({
       // url: detail_ul,
       url: '/catalog/detail.carousel/' + $(this).attr('data-pid'),

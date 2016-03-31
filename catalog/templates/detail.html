@@ -16,7 +16,7 @@
     <div class="clearfix"></div>
     <form class="form-inline" method="POST">
     ## %if isinstance(p, cmod.IndivdualProduct):
-    ##   
+    ##
     ## %endif
       <div class="form-group">
         <table>
@@ -26,7 +26,7 @@
       <div class="clearfix"></div>
       <br />
       <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Add to Cart">
+        <input type="submit" class="btn btn-primary" value="Add to Cart" data-ptype="${p.__class__.className}" id="Quantity_Form_Button">
       </div>
     </form>
   </div><!-- detail -->

@@ -17,7 +17,7 @@ def process_request(request):
     # Add to Last5 Viewed
     request.shopping_cart.item_viewed(p)
 
-    form = OrderForm()
+    form = OrderForm(initial={'quantity':1})
     form.product = p
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -46,7 +46,7 @@ def carousel(request):
 # Form for submitting quantity to cart
 class OrderForm(forms.Form):
     quantity = forms.IntegerField(label='Quantity', required=True, widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control', 'min': '1'}))
-
+    default_data = {'quantity': '1'}
     def clean(self):
         qty = self.cleaned_data.get('quantity')
         try:
