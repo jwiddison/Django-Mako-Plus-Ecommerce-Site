@@ -1,15 +1,10 @@
 <%inherit file="/homepage/templates/base.htm" />
 
-# Leave these blocks blank
-<%block name="maintainence_container"></%block>
-<%block name="maintainence_message"></%block>
-<%block name="alert"></%block>
-
 <%block name="top_content_area">
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
 </%block>
 
-<%block name="fluid">
+<%block name="column_container_type">
   ## Makes container for columns section fluid
   <div class="container-fluid">
   <hr/>
@@ -55,3 +50,7 @@
 <%block name="parallax_end"></%block>
 <%block name="transbox_start"></%block>
 <%block name="transbox_end"></%block>
+# Leave these blocks blank
+<%block name="maintainence_container"></%block>
+<%block name="maintainence_message"></%block>
+<%block name="alert"></%block>

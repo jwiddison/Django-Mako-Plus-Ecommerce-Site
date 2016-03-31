@@ -25,7 +25,6 @@ def process_request(request):
         form.product = p
         if form.is_valid():
             request.shopping_cart.add_item(p, form.cleaned_data.get('quantity'))
-            print(request.shopping_cart.cart)
             return HttpResponseRedirect('/catalog/cart/')
 
     template_vars['p'] = p

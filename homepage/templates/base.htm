@@ -55,9 +55,7 @@
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="/homepage/index">
-                <%block name="icon">
-                  <img src="${ STATIC_URL }homepage/media/pics/eagle.png" id="navbar_icon"/>
-                </%block>
+                <img src="${ STATIC_URL }homepage/media/pics/eagle.png" id="navbar_icon"/>
               </a>
               <%block name="navbar_title">
                 <a class="navbar-brand" href="/homepage/index">CHFSales</a>
@@ -74,6 +72,7 @@
                   <li class="${ 'active' if request.dmp_router_page == 'contact' else ''}"><a href="/homepage/contact">Contact</a></li>
                   <li class="${ 'active' if request.dmp_router_app == 'catalog' else ''}"><a href="/catalog/index">Shop</a></li>
                 </%block>
+                ## Have the cart block in case you ever don't want it
                 <%block name="cart">
                   <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span id="cart_quantity">${request.shopping_cart.get_item_count()}</span></a>
                 </%block>
@@ -89,8 +88,11 @@
                       <li><a href="/account/index">Account Summary</a></li>
                       <li><a href="/account/edit">Edit Account Info</a></li>
                       <li><a href="/account/change_password">Change Password</a></li>
-                      <li role="presentation" class="divider"></li>
-                      <li><a href="/manager/index">Admin</a></li>
+                      ## TODO:  Fix this later to make sure only people with admin privledges see the admin part of the menu.
+                      ## %if request.user.groups == 'Manager' or request.user.groups == "SalesRep":
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="/manager/index">Admin</a></li>
+                      ## %endif
                       <li role="presentation" class="divider"></li>
                       <li><a href='/account/logout/'>Logout</a></li>
                     </ul>
@@ -135,30 +137,27 @@
 
 
     <%block name="column_layout">
-      <%block name="fluid">
+      <%block name="column_container_type">
         <div class="container">
       </%block>
         <div class="row">
           <div class="col-md-2">
             <%block name="content_left">
-              Put Left Content Here!
             </%block>
           </div><!-- left -->
           <div class="col-md-8">
             <%block name="content">
-              Put Center Content Here!
             </%block>
           </div><!-- center -->
           <div class="col-md-2">
             <%block name="content_right">
-              Put Right Content Here!
             </%block>
           </div><!-- right -->
         </div><!-- row -->
       </div><!-- container -->
     </%block>
 
-    <!-- Footer Content-->
+    <!-- Footer -->
     <footer>
       <div class="container">
         <div class="row">
@@ -166,7 +165,6 @@
             <%block name="footer">
               ## Doing current year here to not have to declare the variable in every .py file on the site
               <%
-                 ## Python to get current year for footer
                  import datetime
                  current_year = datetime.date.today().year
               %>
@@ -185,7 +183,6 @@
     <script src="${ STATIC_URL }homepage/media/moment.js"></script>
     <script src="${ STATIC_URL }homepage/media/bootstrap-datetimepicker.min.js"></script>
     <script src="${ STATIC_URL }homepage/media/parallax.min.js"></script>
-    ## render the JS with the same name as this page
     ${ static_renderer.get_template_js(request, context)  }
   </body>
 </html>

@@ -1,35 +1,24 @@
 <%inherit file="/homepage/templates/base.htm" />
 
-# Leave these blocks blank
-<%block name="maintainence_container"></%block>
-<%block name="maintainence_message"></%block>
-<%block name="alert"></%block>
-
 # Menu is different in the account section of the website (only lists account information)
 <%block name="menu">
-  ## uses if statements to check if the active page = the menu item, and then sets the page we're on as "active"
   <li class="${ 'active' if request.dmp_router_page == 'index' else ''}"><a href="/account/index">Account Summary</a></li>
   <li class="${ 'active' if request.dmp_router_page == 'edit' else ''}"><a href="/account/edit">Edit Account Info</a></li>
   <li class="${ 'active' if request.dmp_router_page == 'change_password' else ''}"><a href="/account/change_password">Change Password</a></li>
-</%block>
-
-<%block name="top_content_area">
-  <h1>Colonial Heritage Foundation</h1>
-  <hr/>
-  <br/>
 </%block>
 
 <%block name="navbar_title">
   <a class="navbar-brand" href="/account/index">CHFSales - Account</a>
 </%block>
 
-# Leave left, center, and right blank
-<%block name="content_left"></%block>
-<%block name="content_right"></%block>
-<%block name="content"></%block>
-
-# Include to get rid of parallax window
+## Leave column areas blank
+<%block name="column_layout"></%block>
+## Include to get rid of parallax window
 <%block name="parallax_start"></%block>
 <%block name="parallax_end"></%block>
 <%block name="transbox_start"></%block>
 <%block name="transbox_end"></%block>
+## Leave these blocks blank
+<%block name="maintainence_container"></%block>
+<%block name="maintainence_message"></%block>
+<%block name="alert"></%block>

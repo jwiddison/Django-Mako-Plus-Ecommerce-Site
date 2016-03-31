@@ -59,12 +59,9 @@ def create(request):
 
             u.groups.clear()
             u.user_permissions.clear()
-            # print('Group name:', form.cleaned_data['groups'])
             for group in form.cleaned_data['groups']:
-                print(group)  # Prints to your console for debugging
                 u.groups.add(group)
             for permission in form.cleaned_data['user_permissions']:
-                print(permission)  # Prints to your console for debugging
                 u.user_permissions.add(permission)
             # This saves the groups and permissions
             u.save()
@@ -145,12 +142,9 @@ def edit(request):
             # Make changes to groups/permissions
             user.groups.clear()
             user.user_permissions.clear()
-            # print('Group name:', form.cleaned_data['groups'])
             for group in form.cleaned_data['groups']:
-                print(group)  # Prints to your console for debugging
                 user.groups.add(group)
             for permission in form.cleaned_data['user_permissions']:
-                print(permission)  # Prints to your console for debugging
                 user.user_permissions.add(permission)
             # This saves the groups and permissions
             user.save()

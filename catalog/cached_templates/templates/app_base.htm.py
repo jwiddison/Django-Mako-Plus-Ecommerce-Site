@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459290218.122363
+_modified_time = 1459401268.575715
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['alert', 'maintainence_message', 'parallax_end', 'transbox_end', 'fluid', 'transbox_start', 'maintainence_container', 'parallax_start', 'content_right', 'content_left', 'top_content_area']
+_exports = ['alert', 'parallax_end', 'transbox_end', 'maintainence_container', 'maintainence_message', 'column_container_type', 'content_right', 'content_left', 'top_content_area', 'transbox_start', 'parallax_start']
 
 
 def _mako_get_namespace(context, name):
@@ -29,55 +29,40 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        categories = context.get('categories', UNDEFINED)
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
-        def transbox_end():
-            return render_transbox_end(context._locals(__M_locals))
-        def fluid():
-            return render_fluid(context._locals(__M_locals))
-        def transbox_start():
-            return render_transbox_start(context._locals(__M_locals))
-        def parallax_start():
-            return render_parallax_start(context._locals(__M_locals))
         def parallax_end():
             return render_parallax_end(context._locals(__M_locals))
+        def parallax_start():
+            return render_parallax_start(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
+        def transbox_start():
+            return render_transbox_start(context._locals(__M_locals))
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        categories = context.get('categories', UNDEFINED)
+        def transbox_end():
+            return render_transbox_end(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
+        def column_container_type():
+            return render_column_container_type(context._locals(__M_locals))
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
         def maintainence_container():
             return render_maintainence_container(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
         __M_writer = context.writer()
-        __M_writer('\n\n# Leave these blocks blank\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
-            context['self'].maintainence_container(**pageargs)
-        
-
-        __M_writer('\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
-            context['self'].maintainence_message(**pageargs)
-        
-
-        __M_writer('\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'alert'):
-            context['self'].alert(**pageargs)
-        
-
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
             context['self'].top_content_area(**pageargs)
         
 
         __M_writer('\n\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'fluid'):
-            context['self'].fluid(**pageargs)
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_container_type'):
+            context['self'].column_container_type(**pageargs)
         
 
         __M_writer('\n\n')
@@ -110,6 +95,21 @@ def render_body(context,**pageargs):
             context['self'].transbox_end(**pageargs)
         
 
+        __M_writer('\n# Leave these blocks blank\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_container'):
+            context['self'].maintainence_container(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
+            context['self'].maintainence_message(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'alert'):
+            context['self'].alert(**pageargs)
+        
+
         __M_writer('\n')
         return ''
     finally:
@@ -121,17 +121,6 @@ def render_alert(context,**pageargs):
     try:
         def alert():
             return render_alert(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_message(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_message():
-            return render_maintainence_message(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -160,30 +149,6 @@ def render_transbox_end(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_fluid(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def fluid():
-            return render_fluid(context)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('  <div class="container-fluid">\n  <hr/>\n  <br/>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_transbox_start(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def transbox_start():
-            return render_transbox_start(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -195,12 +160,25 @@ def render_maintainence_container(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_parallax_start(context,**pageargs):
+def render_maintainence_message(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def parallax_start():
-            return render_parallax_start(context)
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_column_container_type(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def column_container_type():
+            return render_column_container_type(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('  <div class="container-fluid">\n  <hr/>\n  <br/>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -209,10 +187,10 @@ def render_parallax_start(context,**pageargs):
 def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def content_right():
             return render_content_right(context)
         request = context.get('request', UNDEFINED)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <h5>Recently Viewed Products:</h5>\n  <hr />\n')
         for p in request.shopping_cart.get_viewed_items():
@@ -260,7 +238,29 @@ def render_top_content_area(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\n  <img src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n\n')
+        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_transbox_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_start():
+            return render_transbox_start(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_parallax_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def parallax_start():
+            return render_parallax_start(context)
+        __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -268,6 +268,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"line_map": {"130": 5, "261": 8, "262": 9, "263": 9, "141": 56, "152": 58, "28": 0, "163": 13, "169": 13, "170": 15, "221": 44, "176": 57, "58": 1, "187": 4, "63": 4, "68": 5, "198": 55, "73": 6, "247": 35, "226": 46, "78": 11, "269": 263, "209": 40, "83": 18, "88": 38, "217": 40, "218": 43, "219": 44, "220": 44, "93": 52, "222": 46, "223": 46, "224": 46, "225": 46, "98": 55, "227": 46, "228": 47, "229": 47, "103": 56, "235": 20, "108": 57, "113": 58, "242": 20, "243": 34, "244": 35, "245": 35, "246": 35, "119": 6, "248": 35, "254": 8}, "uri": "app_base.htm", "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm"}
+{"uri": "app_base.htm", "line_map": {"130": 50, "226": 29, "141": 52, "269": 258, "152": 54, "196": 37, "28": 0, "163": 55, "241": 4, "174": 7, "221": 28, "180": 7, "181": 9, "201": 40, "58": 1, "187": 34, "63": 5, "195": 34, "68": 12, "197": 38, "198": 38, "199": 38, "200": 40, "73": 32, "202": 40, "203": 40, "204": 40, "205": 40, "78": 46, "207": 41, "83": 49, "206": 41, "88": 50, "220": 14, "93": 51, "222": 29, "223": 29, "224": 29, "225": 29, "98": 52, "103": 54, "232": 3, "108": 55, "239": 3, "240": 4, "113": 56, "258": 49, "119": 56, "247": 51, "213": 14}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "source_encoding": "utf-8"}
 __M_END_METADATA
 """
