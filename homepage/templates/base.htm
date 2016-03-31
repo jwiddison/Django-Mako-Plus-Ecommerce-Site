@@ -60,7 +60,7 @@
                 </%block>
               </a>
               <%block name="navbar_title">
-                <a class="navbar-brand" href="/homepage/index">CHF</a>
+                <a class="navbar-brand" href="/homepage/index">CHFSales</a>
               </%block>
             </div><!-- navbar-header -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,28 +79,25 @@
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <%block name="account_menu">
-                  <li><i class="fa fa-facebook fa-2x pull-right"></i></li>
-                  <li><i class="fa fa-instagram fa-2x pull-right"></i></li>
-                  <li><i class="fa fa-twitter fa-2x pull-right"></i></li>
-                  %if request.user.is_authenticated():
-                    <!-- Dropdown, logout, etc -->
-                    <li class = "dropdown">
-                      <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ${ request.user }! <b class = "caret"></b></a>
-                      <ul class = "dropdown-menu">
-                        <li><a href="/account/index">Account Summary</a></li>
-                        <li><a href="/account/edit">Edit Account Info</a></li>
-                        <li><a href="/account/change_password">Change Password</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li><a href="/manager/index">Admin</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li><a href='/account/logout/'>Logout</a></li>
-                      </ul>
-                    </li>
-                  %else:
-                    <button class="btn btn-danger" id="loginbutton">Login</button>
-                  %endif
-                </%block>
+                <li><i class="fa fa-facebook fa-2x pull-right"></i></li>
+                <li><i class="fa fa-instagram fa-2x pull-right"></i></li>
+                <li><i class="fa fa-twitter fa-2x pull-right"></i></li>
+                %if request.user.is_authenticated():
+                  <li class = "dropdown">
+                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ${ request.user }! <b class = "caret"></b></a>
+                    <ul class = "dropdown-menu">
+                      <li><a href="/account/index">Account Summary</a></li>
+                      <li><a href="/account/edit">Edit Account Info</a></li>
+                      <li><a href="/account/change_password">Change Password</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li><a href="/manager/index">Admin</a></li>
+                      <li role="presentation" class="divider"></li>
+                      <li><a href='/account/logout/'>Logout</a></li>
+                    </ul>
+                  </li>
+                %else:
+                  <button class="btn btn-danger" id="loginbutton">Login</button>
+                %endif
               </ul>
             </div><!-- collapse -->
           </div><!-- container -->
