@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459404338.391097
+_modified_time = 1459458271.441967
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/contact.html'
 _template_uri = 'contact.html'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['top_content_area', 'content_left', 'content', 'content_right']
+_exports = ['content', 'content_right', 'top_content_area', 'content_left']
 
 
 def _mako_get_namespace(context, name):
@@ -29,10 +29,10 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
         def content_left():
@@ -64,29 +64,6 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_top_content_area(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def top_content_area():
-            return render_top_content_area(context)
-        __M_writer = context.writer()
-        __M_writer('\n  <div class="text-center">\n    <h1>Contact</h1>\n    <hr/>\n    <br/>\n    <p class="lead">Get in touch with someone from the colonial heritage foundation using the form below</p>\n    <a><span class="glyphicon glyphicon-chevron-down animated infinite swing big_icon"></span></a>\n  </div>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_left():
-            return render_content_left(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -110,8 +87,31 @@ def render_content_right(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_top_content_area(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def top_content_area():
+            return render_top_content_area(context)
+        __M_writer = context.writer()
+        __M_writer('\n  <div class="text-center">\n    <h1>Contact</h1>\n    <hr/>\n    <br/>\n    <p class="lead">Get in touch with someone from the colonial heritage foundation using the form below</p>\n    <a><span class="glyphicon glyphicon-chevron-down animated infinite swing big_icon"></span></a>\n  </div>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 """
 __M_BEGIN_METADATA
-{"uri": "contact.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/contact.html", "source_encoding": "utf-8", "line_map": {"96": 13, "67": 3, "102": 56, "73": 3, "46": 11, "79": 55, "113": 102, "51": 53, "41": 1, "56": 55, "90": 13, "28": 0, "61": 56}}
+{"source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/contact.html", "uri": "contact.html", "line_map": {"96": 3, "67": 13, "102": 55, "73": 13, "46": 11, "79": 56, "113": 102, "51": 53, "41": 1, "56": 55, "90": 3, "28": 0, "61": 56}}
 __M_END_METADATA
 """

@@ -2,14 +2,21 @@
 
 <%block name="content">
   <h3 class="text-center">Checkout</h3>
-  <form class="form-horizontal" method="POST">
-    <div class="form-group">
-      <table>
-        ${ form.as_table() }
-      </table>
-    </div>
-    <div class="form-group">
-      <input type="submit" class="btn btn-primary" value="Purchase Now">
-    </div>
-  </form>
+  <h4 class="text-center">Your total is $${request.shopping_cart.calc_total()}</h4>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <form class="form-horizontal" method="POST" id="shipping_form">
+        <div class="form-group">
+          <table>
+            ${ form.as_table() }
+          </table>
+        </div>
+        <div class="form-group text-center">
+          <input type="submit" class="btn btn-primary" value="Verify Address">
+        </div>
+      </form>
+    </div><!-- col-md-6 -->
+    <div class="col-md-3"></div>
+  </div>
 </%block>

@@ -1,0 +1,16 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+  <h3 class="text-center">Payment</h3>
+  <div class="text-center">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="${ settings.STRIPE_PUBLIC_KEY }"
+      data-amount="${request.shopping_cart.calc_stripe_total()}"
+      data-name="Checkout - CHFSales.com"
+      data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
+      data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
+      data-locale="auto">
+    </script>
+  </div>
+</%block>

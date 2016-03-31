@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459402142.3345
+_modified_time = 1459437563.615526
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html'
 _template_uri = 'terms.html'
@@ -29,9 +29,9 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def column_layout():
             return render_column_layout(context._locals(__M_locals))
         __M_writer = context.writer()
@@ -54,9 +54,9 @@ def render_body(context,**pageargs):
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <img src="')
         __M_writer(str( STATIC_URL ))
@@ -79,6 +79,6 @@ def render_column_layout(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "terms.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html", "source_encoding": "utf-8", "line_map": {"48": 56, "80": 69, "38": 1, "54": 3, "69": 56, "43": 53, "28": 0, "61": 3, "62": 4, "63": 4}}
+{"source_encoding": "utf-8", "line_map": {"48": 56, "80": 69, "38": 1, "54": 3, "69": 56, "43": 53, "28": 0, "61": 3, "62": 4, "63": 4}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html", "uri": "terms.html"}
 __M_END_METADATA
 """

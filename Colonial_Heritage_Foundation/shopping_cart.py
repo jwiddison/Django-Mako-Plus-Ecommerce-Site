@@ -1,27 +1,9 @@
 from catalog import models as cmod
 import datetime, decimal, operator
 
-########################################################################
-###   Shopping Cart middleware that adds a shopping cart to the
-###   current request.
-###
-###   Installation:
-###      1. Since this code uses decimal.Decimal() objects, it cannot use the regular JSON serializer
-###         that sessions default to.  Switch to pickle-based sessions by adding this to settings.py:
-###
-###         SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-###
-###      2. Enable this middleware by adding the following to settings.py:
-###         (assuming you have this file in the /CHF/ directory, of course)
-###
-###         MIDDLEWARE_CLASSES = [
-###             ...
-###             'CHF.shopping_cart.ShoppingCartMiddleware',
-###             ...
-###         ]
-###
-###         The above line must come after SessionAuthenticationMiddleware in the list because it uses sessions.
-###
+#################################################################################
+###   Shopping Cart middleware that adds a shopping cart to the current request.
+#################################################################################
 
 # the key we use for the shopping cart list
 SHOPPING_CART_KEY = 'shopping_cart'
@@ -44,7 +26,6 @@ class ShoppingCartMiddleware:
         # attach a ShoppingCart instance to the request object
         request.shopping_cart = ShoppingCart(request.session)
 
-
     def process_response(self, request, response):
         '''Called when the response goes back to the browser.'''
         # save the shopping cart
@@ -66,13 +47,13 @@ class ShoppingCart(object):
         '''Constructor.  This is called from process_request() above.'''
         self.session = session
 
-        # load the cart from the session
+        # load the cart from the session, and check and make sure its a list.
         self.cart = self.session.get(SHOPPING_CART_KEY, [])
         if not isinstance(self.cart, list):
             self.cart = []
 
         # load the last 5 ids list from the session, into a list attribute of the shopping cart.
-        self.last_5_ids = session.get(LAST_VIEWED_ID_KEY, [])
+        self.last_5_ids = self.session.get(LAST_VIEWED_ID_KEY, [])
         if not isinstance(self.last_5_ids, list):
             self.last_5_ids = []
 
@@ -111,10 +92,6 @@ class ShoppingCart(object):
             quantity_available = product.quantity
         else:
             quantity_available = 1
-            # if product.status != 'current':
-            #     raise ValidationError('The current product is either sold or no longer for sale')
-                # is_available = True
-
 
         # decrease the available amount by any in our cart
         for cart_item in self.cart:
@@ -122,13 +99,8 @@ class ShoppingCart(object):
                 quantity_available -= cart_item.quantity
 
         # check the available amount and raise ValueError if not enough
-        # if isinstance(product, cmod.BulkProduct):
         if desired_quantity > quantity_available:
             raise ValueError
-        # elif isinstance(product, cmod.IndividualProduct):
-        #     if is_available != True:
-        #         raise ValueError('The current product is either sold or no longer for sale')
-
 
     def add_item(self, product, quantity=1):
         '''Adds the product to the current cart.  If the item already exists in the
@@ -145,18 +117,17 @@ class ShoppingCart(object):
             if product.id == p.product_id:
                 p.quantity += quantity
                 found = True
+
         if found == False:
             newItem = ShoppingItem(product)
-            # if isinstance(product, cmod.BulkProduct):
             newItem.quantity = quantity
             self.cart.append(newItem)
 
-
         # update the quantity or status
-        if isinstance(product, cmod.BulkProduct):
-            product.quantity -= quantity
-        if isinstance(product, cmod.IndividualProduct):
-            product.status = 'sold'
+        # if isinstance(product, cmod.BulkProduct):
+        #     product.quantity -= quantity
+        # if isinstance(product, cmod.IndividualProduct):
+        #     product.status = 'sold'
 
 
     def remove_item(self, product):
@@ -173,7 +144,11 @@ class ShoppingCart(object):
 
     def get_item_count(self):
         '''Returns the item count'''
-        return len(self.cart)
+        # return len(self.cart)
+        count = decimal.Decimal(0)
+        for p in self.cart:
+            count += p.quantity
+        return count
 
     ###   FINANCIAL METHODS
 
@@ -195,6 +170,10 @@ class ShoppingCart(object):
     def calc_total(self):
         '''Returns the total cost on the current cart'''
         return self.calc_subtotal() + self.calc_tax() + self.calc_shipping()
+
+    def calc_stripe_total(self):
+        '''Returns the total in a format that stripe is going to know how to use'''
+        return (self.calc_total() * 100).quantize(decimal.Decimal('.01'), rounding=decimal.ROUND_UP)
 
 
     ###   LAST VIEWED PRODUCT METHODS

@@ -8,50 +8,56 @@
   <table class="table table-striped">
     <tr>
       <th>Item</th>
+      <th>Image</th>
       <th>Price</th>
       <th>Quantity</th>
       <th>Extended</th>
-      <th>Remove</th>
+      <th>Action</th>
     </tr>
     %for p in request.shopping_cart.get_items():
     <tr>
-      <td><a href="/catalog/detail/${p.product_id}">${p.name}</a><img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
+      <td><a href="/catalog/detail/${p.product_id}">${p.name}</a></td>
+      <td><img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
       <td>$${p.price}</td>
       <td>${p.quantity}</td>
       <td>$${p.calc_extended()}</td>
-      <td><a href="/catalog/cart.remove/${p.product_id}">Remove</a></td>
+      <td><a href="/catalog/cart.remove/${p.product_id}">Remove Item</a></td>
     </tr>
     %endfor
     <tr> <!--Subtotal -->
-      <td><b>Subtotal</b></td>
+      <td><b>Subtotal:</b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td>$${request.shopping_cart.calc_subtotal()}</td>
       <td></td>
     </tr>
     <tr> <!-- Tax -->
-      <td><b>Tax</b></td>
+      <td><b>Tax:</b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td>$${request.shopping_cart.calc_tax()}</td>
       <td></td>
     </tr>
     <tr> <!-- Shipping -->
-      <td><b>Shipping</b></td>
+      <td><b>Shipping:</b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td>$${request.shopping_cart.calc_shipping()}</td>
       <td></td>
     </tr>
     <tr> <!-- Total Price -->
-      <td><b>Total</b></td>
+      <td><b>Total:</b></td>
       <td></td>
       <td></td>
-      <td>$${request.shopping_cart.calc_total()}</td>
+      <td></td>
+      <td><b>$${request.shopping_cart.calc_total()}</b></td>
       <td></td>
     </tr>
   </table>
   <a href="/catalog/checkout" class="btn btn-primary">Checkout</a>
-  <a href="/catalog/cart.clear" class="btn btn-danger pull-right">Empty Cart</a>
+  <a href="/catalog/cart.clear" class="btn btn-danger">Empty Cart</a>
   %endif
 </%block>

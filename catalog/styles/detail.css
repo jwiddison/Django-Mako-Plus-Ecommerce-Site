@@ -24,6 +24,10 @@
   margin-left:260px;
 }
 
+.errorlist > li{
+  min-width:200px;
+}
+
 label{
   font-weight:bold;
   margin-right:10px;
