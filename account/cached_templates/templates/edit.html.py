@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1456436688.340953
+_modified_time = 1459396789.975005
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/edit.html'
 _template_uri = 'edit.html'
@@ -57,7 +57,7 @@ def render_top_content_area(context,**pageargs):
         __M_writer(str(request.user.username))
         __M_writer('</td>\n    </tr>\n      ')
         __M_writer(str( form.as_table() ))
-        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Submit">\n  </form>\n')
+        __M_writer('\n    </table>\n    <br />\n    <input type="submit" class="btn btn-primary" value="Save Changes">\n  </form>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -65,6 +65,6 @@ def render_top_content_area(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/edit.html", "source_encoding": "utf-8", "uri": "edit.html", "line_map": {"48": 3, "66": 60, "37": 1, "56": 3, "57": 11, "42": 18, "59": 13, "28": 0, "58": 11, "60": 13}}
+{"line_map": {"48": 3, "66": 60, "37": 1, "56": 3, "57": 11, "42": 18, "59": 13, "28": 0, "58": 11, "60": 13}, "uri": "edit.html", "source_encoding": "utf-8", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/account/templates/edit.html"}
 __M_END_METADATA
 """

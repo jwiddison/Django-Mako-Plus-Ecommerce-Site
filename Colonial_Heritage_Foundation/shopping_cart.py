@@ -140,13 +140,11 @@ class ShoppingCart(object):
         # Create a boolean for whether the product is found
         found = False
 
-        print('>>>>>>>>>>>>>>> Getting to here' + str(found))
-
         # ensure it is in our cart
-        for cart_item in self.cart:
-            if product.id == cart_item.product_id:
-                cart_item.quantity += quantity
-                found == True
+        for p in self.cart:
+            if product.id == p.product_id:
+                p.quantity += quantity
+                found = True
         if found == False:
             newItem = ShoppingItem(product)
             # if isinstance(product, cmod.BulkProduct):
