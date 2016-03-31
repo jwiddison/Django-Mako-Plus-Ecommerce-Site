@@ -1,16 +1,74 @@
 <%inherit file="app_base.htm" />
 
 <%block name="content">
-  <h3 class="text-center">Payment</h3>
-  <div class="text-center">
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="${ settings.STRIPE_PUBLIC_KEY }"
-      data-amount="${request.shopping_cart.calc_stripe_total()}"
-      data-name="Checkout - CHFSales.com"
-      data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
-      data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
-      data-locale="auto">
-    </script>
+  <h3 class="text-center">Order Summary</h3>
+  <hr />
+  <br />
+  <h5>Items from Cart:</h5>
+  <table class="table table-condensed table-striped">
+    <tr>
+      <th>Item</th>
+      ## <th>Image</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Item Total</th>
+    </tr>
+    %for p in request.shopping_cart.get_items():
+    <tr>
+      <td>${p.name}</td>
+      ## <td><img src="${STATIC_URL}catalog/media/pics/${p.filename}" class="img img-responsive cart_images" alt="${p.name}"</td>
+      <td>$${p.price}</td>
+      <td>${p.quantity}</td>
+      <td>$${p.calc_extended()}</td>
+    </tr>
+    %endfor
+    <tr> <!--Subtotal -->
+      <td><b>Subtotal:</b></td>
+      <td></td>
+      <td></td>
+      <td>$${request.shopping_cart.calc_subtotal()}</td>
+    </tr>
+    <tr> <!-- Tax -->
+      <td><b>Tax:</b></td>
+      <td></td>
+      <td></td>
+      <td>$${request.shopping_cart.calc_tax()}</td>
+    </tr>
+    <tr> <!-- Shipping -->
+      <td><b>Shipping:</b></td>
+      <td></td>
+      <td></td>
+      <td>$${request.shopping_cart.calc_shipping()}</td>
+    </tr>
+    <tr> <!-- Total Price -->
+      <td><b>Total:</b></td>
+      <td></td>
+      <td></td>
+      <td><b>$${request.shopping_cart.calc_total()}</b></td>
+    </tr>
+  </table>
+  <br />
+  <h4>Shipping Information</h4>
+  <ul>
+    <li>Shipping Name: Jordan Widdison</li>
+    <li>Shipping Address: 13661 Bridle Trail Rd</li>
+    <li>Shipping City: Draper</li>
+    <li>Shipping State: UT</li>
+    <li>Shipping Zip Code: 84020</li>
+  </ul>
+  <hr />
+  <div class="checkbox" id="verify_checkbox">
+    <label>
+      <input type="checkbox">I have verified that the above information is correct</input>
+    </label>
   </div>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="${ settings.STRIPE_PUBLIC_KEY }"
+    data-amount="${request.shopping_cart.calc_stripe_total()}"
+    data-name="Checkout - CHFSales.com"
+    data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
+    data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
+    data-locale="auto">
+  </script>
 </%block>

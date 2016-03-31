@@ -4,6 +4,7 @@ from django_mako_plus.controller import view_function
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from . import initialize_template_vars
+from django.contrib.auth.decorators import login_required
 from django import forms
 import googlemaps
 
@@ -51,6 +52,7 @@ class ShippingForm(forms.Form):
     # need to add clean methods to make sure the quantity is available.
 
 @view_function
+@login_required(login_url='/catalog/login/')
 def payment(request):
     template_vars = initialize_template_vars(request)
     return dmp_render_to_response(request, 'checkout.payment.html', template_vars)
