@@ -8,8 +8,6 @@ $(function() {
     %endfor
   ]
 
-  console.log(filenames);
-
   $('#previous_button').click(function() {
     index -= 1;
     if (index < 0){

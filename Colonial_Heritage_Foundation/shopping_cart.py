@@ -113,28 +113,17 @@ class ShoppingCart(object):
         # check the availability
         self.check_availability(product, quantity)
 
-        # Create a boolean for whether the product is found
-        # found = False
-
         # see if it is in our cart
         for p in self.cart:
             if product.id == p.product_id:
                 p.quantity += quantity
-                # found = True
                 break
         else:
-        # if found == False:
             newItem = ShoppingItem(product)
             if isinstance(product, cmod.IndividualProduct):
                 quantity = 1
             newItem.quantity = quantity
             self.cart.append(newItem)
-
-        # update the quantity or status
-        # if isinstance(product, cmod.BulkProduct):
-        #     product.quantity -= quantity
-        # if isinstance(product, cmod.IndividualProduct):
-        #     product.status = 'sold'
 
 
     def remove_item(self, product):

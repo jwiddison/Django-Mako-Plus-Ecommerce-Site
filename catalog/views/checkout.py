@@ -110,6 +110,22 @@ def payment(request):
     if request.method == 'POST':
         form = PaymentForm(request.POST)
         if form.is_valid():
+
+            stripe.api_key = "sk_test_kw7mgQceM2YnfMC4Zrsur8sb"
+            token = request.POST['stripeToken']
+
+            try:
+                charge = stripe.Charge.create(
+                    amount=request.shopping_cart.get_stripe_total(), # amount in cents, again
+                    currency="usd",
+                    source=token,
+                    description="Example charge"
+                )
+            except stripe.error.CardError, e:
+                # The card has been declined
+                pass
+
+
             cmod.record_sale()
 
             return HttpResponseRedirect('/catalog/summary/')
@@ -123,5 +139,17 @@ def payment(request):
 class PaymentForm(forms.Form):
     payment = forms.CharField(label='', required=False, widget=forms.HiddenInput())
 
-    def clean_stripe(self):
-        stripe
+    # def clean_stripe(self):
+    #     stripe.api_key = settings.STRIPE_SECRET_KEY
+    #
+    #     # Create the charge on Stripe's servers - this will charge the user's card
+    #     try:
+    #         charge = stripe.Charge.create(
+    #             amount=1000, # amount in cents, again
+    #             currency="usd",
+    #             source=token,
+    #             description="Example charge"
+    #         )
+    #     except stripe.error.CardError, e:
+    #         # The card has been declined
+    #         raise forms.ValidationError()

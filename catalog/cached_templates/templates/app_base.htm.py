@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459401268.575715
+_modified_time = 1459546612.235369
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['alert', 'parallax_end', 'transbox_end', 'maintainence_container', 'maintainence_message', 'column_container_type', 'content_right', 'content_left', 'top_content_area', 'transbox_start', 'parallax_start']
+_exports = ['content_right', 'column_container_type', 'alert', 'maintainence_container', 'top_content_area', 'parallax_start', 'maintainence_message', 'content_left', 'transbox_end', 'parallax_end', 'transbox_start']
 
 
 def _mako_get_namespace(context, name):
@@ -29,31 +29,31 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def parallax_end():
-            return render_parallax_end(context._locals(__M_locals))
-        def parallax_start():
-            return render_parallax_start(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
-        def transbox_start():
-            return render_transbox_start(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
-        categories = context.get('categories', UNDEFINED)
-        def transbox_end():
-            return render_transbox_end(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        def column_container_type():
-            return render_column_container_type(context._locals(__M_locals))
         def content_right():
             return render_content_right(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
         def maintainence_container():
             return render_maintainence_container(context._locals(__M_locals))
+        def parallax_start():
+            return render_parallax_start(context._locals(__M_locals))
+        def transbox_end():
+            return render_transbox_end(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
+        def parallax_end():
+            return render_parallax_end(context._locals(__M_locals))
+        categories = context.get('categories', UNDEFINED)
+        def transbox_start():
+            return render_transbox_start(context._locals(__M_locals))
+        def column_container_type():
+            return render_column_container_type(context._locals(__M_locals))
+        request = context.get('request', UNDEFINED)
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -116,56 +116,27 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def alert():
-            return render_alert(context)
+        def content_right():
+            return render_content_right(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_parallax_end(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def parallax_end():
-            return render_parallax_end(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_transbox_end(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def transbox_end():
-            return render_transbox_end(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_message(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
+        __M_writer('\n  <h5>Recently Viewed Products:</h5>\n  <hr />\n')
+        for p in request.shopping_cart.get_viewed_items():
+            __M_writer('    <a href="/catalog/detail/')
+            __M_writer(str(p.id))
+            __M_writer('">\n      <div class="recent">\n        <img src="')
+            __M_writer(str( STATIC_URL ))
+            __M_writer('catalog/media/pics/')
+            __M_writer(str( p.get_image_filename() ))
+            __M_writer('" alt="')
+            __M_writer(str(p.name))
+            __M_writer('" class="img-responsive img-circle center-block prod_img"/>\n        <p>')
+            __M_writer(str( p.name ))
+            __M_writer('</p>\n        <div class="clearfix"></div>\n      </div><!-- recent -->\n    </a>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -184,46 +155,23 @@ def render_column_container_type(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_alert(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def content_right():
-            return render_content_right(context)
-        request = context.get('request', UNDEFINED)
+        def alert():
+            return render_alert(context)
         __M_writer = context.writer()
-        __M_writer('\n  <h5>Recently Viewed Products:</h5>\n  <hr />\n')
-        for p in request.shopping_cart.get_viewed_items():
-            __M_writer('    <a href="/catalog/detail/')
-            __M_writer(str(p.id))
-            __M_writer('">\n      <div class="recent">\n        <img src="')
-            __M_writer(str( STATIC_URL ))
-            __M_writer('catalog/media/pics/')
-            __M_writer(str( p.get_image_filename() ))
-            __M_writer('" alt="')
-            __M_writer(str(p.name))
-            __M_writer('" class="img-responsive center-block prod_img"/>\n        <p>')
-            __M_writer(str( p.name ))
-            __M_writer('</p>\n        <div class="clearfix"></div>\n      </div><!-- recent -->\n    </a>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_content_left(context,**pageargs):
+def render_maintainence_container(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        categories = context.get('categories', UNDEFINED)
-        def content_left():
-            return render_content_left(context)
+        def maintainence_container():
+            return render_maintainence_container(context)
         __M_writer = context.writer()
-        __M_writer('\n  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <br />\n  <h5>Search For a Product:</h5>\n  <form method="GET" action="/catalog/search/">\n    <input type="text" name="q" class="form-control" placeholder="Search"/>\n    <br />\n    <input type="submit" value="Search" class="btn btn-primary"/>\n  </form>\n  <br />\n  <h5>Filter By Category:</h5>\n  <a href="/catalog/index">View All</a>\n  <br />\n')
-        for category in categories:
-            __M_writer('    <a href="/catalog/index/')
-            __M_writer(str(category.id))
-            __M_writer('">')
-            __M_writer(str(category.name))
-            __M_writer('</a></li>\n    <br />\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -244,17 +192,6 @@ def render_top_content_area(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_transbox_start(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def transbox_start():
-            return render_transbox_start(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_parallax_start(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -266,8 +203,71 @@ def render_parallax_start(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_maintainence_message(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        categories = context.get('categories', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>\n  <br />\n  <br />\n  <h5>Search For a Product:</h5>\n  <form method="GET" action="/catalog/search/">\n    <input type="text" name="q" class="form-control" placeholder="Search"/>\n    <br />\n    <input type="submit" value="Search" class="btn btn-primary"/>\n  </form>\n  <br />\n  <h5>Filter By Category:</h5>\n  <a href="/catalog/index">View All</a>\n  <br />\n')
+        for category in categories:
+            __M_writer('    <a href="/catalog/index/')
+            __M_writer(str(category.id))
+            __M_writer('">')
+            __M_writer(str(category.name))
+            __M_writer('</a></li>\n    <br />\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_transbox_end(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_end():
+            return render_transbox_end(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_parallax_end(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def parallax_end():
+            return render_parallax_end(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_transbox_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_start():
+            return render_transbox_start(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 """
 __M_BEGIN_METADATA
-{"uri": "app_base.htm", "line_map": {"130": 50, "226": 29, "141": 52, "269": 258, "152": 54, "196": 37, "28": 0, "163": 55, "241": 4, "174": 7, "221": 28, "180": 7, "181": 9, "201": 40, "58": 1, "187": 34, "63": 5, "195": 34, "68": 12, "197": 38, "198": 38, "199": 38, "200": 40, "73": 32, "202": 40, "203": 40, "204": 40, "205": 40, "78": 46, "207": 41, "83": 49, "206": 41, "88": 50, "220": 14, "93": 51, "222": 29, "223": 29, "224": 29, "225": 29, "98": 52, "103": 54, "232": 3, "108": 55, "239": 3, "240": 4, "113": 56, "258": 49, "119": 56, "247": 51, "213": 14}, "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "source_encoding": "utf-8"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/catalog/templates/app_base.htm", "uri": "app_base.htm", "line_map": {"128": 37, "129": 38, "130": 38, "131": 38, "132": 40, "133": 40, "134": 40, "135": 40, "136": 40, "137": 40, "138": 41, "139": 41, "258": 51, "145": 7, "151": 7, "152": 9, "28": 0, "158": 56, "169": 54, "180": 3, "236": 52, "58": 1, "187": 3, "188": 4, "189": 4, "63": 5, "195": 49, "68": 12, "73": 32, "247": 50, "98": 52, "78": 46, "269": 258, "83": 49, "206": 55, "88": 50, "217": 14, "93": 51, "224": 14, "225": 28, "226": 29, "227": 29, "228": 29, "229": 29, "230": 29, "103": 54, "108": 55, "113": 56, "119": 34, "127": 34}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """

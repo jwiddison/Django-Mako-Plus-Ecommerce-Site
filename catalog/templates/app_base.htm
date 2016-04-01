@@ -37,7 +37,7 @@
   %for p in request.shopping_cart.get_viewed_items():
     <a href="/catalog/detail/${p.id}">
       <div class="recent">
-        <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive center-block prod_img"/>
+        <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive img-circle center-block prod_img"/>
         <p>${ p.name }</p>
         <div class="clearfix"></div>
       </div><!-- recent -->
