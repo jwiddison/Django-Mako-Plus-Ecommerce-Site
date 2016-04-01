@@ -1,0 +1,63 @@
+<%inherit file="app_base.htm" />
+
+<%block name="content">
+  <h3 class="text-center">Please Verify Your Shipping Address:</h3>
+  <hr />
+  <br />
+  <row>
+    <div class="col-md-4">
+      <h5>Address As You Entered It:</h5>
+      <table class="table table-condensed table-bordered">
+        <tr>
+          <td>Shipping Name:</td>
+          <td>${request.session['user_input_address'][0]}</td>
+        </tr>
+        <tr>
+          <td>Shipping Address:</td>
+          <td>${request.session['user_input_address'][1]}</td>
+        </tr>
+        <tr>
+          <td>Shipping City:</td>
+          <td>${request.session['user_input_address'][2]}</td>
+        </tr>
+        <tr>
+          <td>Shipping State:</td>
+          <td>${request.session['user_input_address'][3]}</td>
+        </tr>
+        <tr>
+          <td>Shipping Zip Code:</td>
+          <td>${request.session['user_input_address'][4]}</td>
+        </tr>
+      </table>
+      <a class="btn btn-primary" href="/catalog/checkout.payment/0">Use Your Address</a>
+    </div><!-- col-md-4 -->
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <h5>Address Verified by Google:</h5>
+      <table class="table table-condensed table-bordered">
+        <tr>
+          <td>Shipping Name:</td>
+          <td>${request.session['google_address_response'][0]}</td>
+        </tr>
+        <tr>
+          <td>Shipping Address:</td>
+          <td>${request.session['google_address_response'][1]}</td>
+        </tr>
+        <tr>
+          <td>Shipping City:</td>
+          <td>${request.session['google_address_response'][2]}</td>
+        </tr>
+        <tr>
+          <td>Shipping State:</td>
+          <td>${request.session['google_address_response'][3]}</td>
+        </tr>
+        <tr>
+          <td>Shipping Zip Code:</td>
+          <td>${request.session['google_address_response'][4]}</td>
+        </tr>
+      </table>
+      <a class="btn btn-primary" href="/catalog/checkout.payment/1">Use Google's Address</a>
+    </div><!-- col-md-4 -->
+    <div class="col-md-2"></div>
+  </row><!--row-->
+</%block>
