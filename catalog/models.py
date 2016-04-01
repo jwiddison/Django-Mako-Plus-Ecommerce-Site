@@ -9,25 +9,78 @@ from polymorphic.models import PolymorphicModel
 #######   Sale             ##############################################################################
 #########################################################################################################
 class Sale(models.Model):
-    name = models.TextField(null=True, blank=True)
+    OrderDate = models.DateField(null=True, blank=True, auto_now_add=True)
+    ShipDate = models.DateField(null=True, blank=True, auto_now_add=True)
+    TrackingNumber = models.TextField(null=True, blank=True)
+    TotalPrice = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
+    ShipName = models.TextField(null=True, blank=True)
+    ShipAddress = models.TextField(null=True, blank=True)
+    ShipCity = models.TextField(null=True, blank=True)
+    ShipState = models.TextField(null=True, blank=True)
+    ShipZipCode = models.TextField(null=True, blank=True)
+    Buyer = models.ForeignKey('account.User')
+
 
 #########################################################################################################
 #######   SaleItem         ##############################################################################
 #########################################################################################################
 class SaleItem(PolymorphicModel):
-    name = models.TextField(null=True, blank=True)
-    sale = models.ForeignKey('catalog.Sale', related_name='images')
+    Description = models.TextField(null=True, blank=True)
+    Price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
+    Quantity = models.TextField(null=True, blank=True)
+    Extended = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
+    sale = models.ForeignKey('catalog.Sale')
+
+    # def __init__(self, ShoppingItem):
+    #     '''Constructor'''
+    #     self.product_id = ShoppingItem.product_id
+    #     self.filename = ShoppingItem.filename
+    #     self.name = ShoppingItem.name
+    #     self.price = ShoppingItem.price
+    #     self.quantity = ShoppingItem.quantity
 
 
 #########################################################################################################
 #######   Payment          ##############################################################################
 #########################################################################################################
 class Payment(models.Model):
-    name = models.TextField(null=True, blank=True)
+    PaymentDate = models.DateField(null=True, blank=True, auto_now_add=True)
+    Amount = models.TextField(null=True, blank=True)
+    ValidationCode = models.TextField(null=True, blank=True)
+    Payer = models.ForeignKey('account.User')
+    sale = models.ForeignKey('catalog.Sale')
+
 
 ## Record Sale method
-def record_sale():
-    pass
+def record_sale(user, address_list, cart):
+    # Create a sale object
+    sale = Sale()
+    sale.save()
+
+    # Create saleitem objects for each item in the cart
+    for item in cart:
+        si = SaleItem(item)
+        si.sale = sale
+        si.save()
+
+    # create saleitem objects for the tax and for the shipping amounts
+    tax = cart.calc_tax()
+    tax_si = SaleItem()
+    tax_si.sale = sale
+    tax_si.save()
+
+    shipping = cart.calc_shipping()
+    shipping_si = saleItem()
+    shipping_si.sale = sale
+    shipping_si.save()
+
+    # Create a payment object
+    payment = Payment()
+
+    # update quantity of bulk products, set individual product status to sold.
+
+    return sale
+
 
 ## Sprint 4 Stuff:
 #########################################################################################################

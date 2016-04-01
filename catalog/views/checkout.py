@@ -111,7 +111,7 @@ def payment(request):
         form = PaymentForm(request.POST)
         if form.is_valid():
 
-            stripe.api_key = "sk_test_kw7mgQceM2YnfMC4Zrsur8sb"
+            stripe.api_key = settings.STRIPE_SECRET_KEY
             token = request.POST['stripeToken']
 
             try:
@@ -125,10 +125,19 @@ def payment(request):
                 # The card has been declined
                 pass
 
+            if useGoogle == True:
+                address = request.session['google_address_response']
+            else:
+                address = request.session['user_address_list']
 
-            cmod.record_sale()
+            cmod.record_sale(request.shopping_cart.get_items(), address)
 
-            return HttpResponseRedirect('/catalog/summary/')
+            sale = cmod.record_sale(request.user, address, request.shopping_cart)
+
+            # clear the shopping cart
+            # request.shopping_cart.clear_items()
+            # Redirect to the receipt page
+            return HttpResponseRedirect('/catalog/receipt/')
 
 
 
