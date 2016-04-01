@@ -32,9 +32,9 @@ def process_request(request):
             # Get full, concatenated Address
             full_address = form.cleaned_data.get('shipping_address') + ', ' + form.cleaned_data.get('shipping_city') + ', ' + form.cleaned_data.get('shipping_state')
             geocode_result = gmaps.geocode(full_address)
+            data = geocode_result.json()
 
-            print(full_address)
-            print(geocode_result)
+            print(data)
 
             return HttpResponseRedirect('/catalog/checkout.payment')
 

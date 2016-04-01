@@ -54,12 +54,12 @@ i{
 }
 
 #cartbutton{
-  border-radius:10px;
+  border-radius:15px;
   margin-left:15px;
   box-shadow:none;
 }
 
-#cart_quantity{
+.cart_quantity{
   margin-left:5px;
 }
 

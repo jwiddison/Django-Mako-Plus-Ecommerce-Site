@@ -15,6 +15,10 @@
   margin-left:260px;
 }
 
+#add_form_placeholder{
+  margin-left:260px;
+}
+
 .product_image_text, .detail > p{
   font-size:14px;
 }

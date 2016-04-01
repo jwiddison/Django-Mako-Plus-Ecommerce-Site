@@ -1,8 +1,7 @@
-<%! from catalog import models as cmod %>
-
-<%inherit file="/homepage/tempaltes/base_ajax.htm" />
+<%inherit file="homepage/templates/base_ajax.htm" />
 
 <%block name="content">
+  <%! from catalog import models as cmod %>
   <div class="add_form">
     ${form.non_field_errors()}
     <form action="/catalog/cart.add/${p.id}/" method="POST">

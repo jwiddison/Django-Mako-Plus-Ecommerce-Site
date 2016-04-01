@@ -60,22 +60,18 @@ class ShoppingCart(object):
 
     def save(self, session):
         '''Saves the current shopping cart to the session.
-           This is called from the middleware above.
-        '''
+           This is called from the middleware above.'''
         # sort the cart by name
         self.cart.sort(key=operator.attrgetter('name'))
 
-        # set the cart in the session (this saves it to disk so we can access it again next request)
+        # set the cart, and list of IDs into session
         self.session[SHOPPING_CART_KEY] = self.cart
-
-        # set the shopping_last_viewed in the session
         self.session[LAST_VIEWED_ID_KEY] = self.last_5_ids
 
     ###  SHOPPING CART
 
     def get_items(self):
-        '''Returns the items in the shopping cart
-        '''
+        '''Returns the items in the shopping cart'''
         return self.cart
 
     def get_full_cart(self):
@@ -87,6 +83,7 @@ class ShoppingCart(object):
 
     def check_availability(self, product, desired_quantity=1):
         '''Checks that the product is available at the given quantity.  Raises a ValueError if we don't have enough.'''
+        # Get quantity from Database
         if hasattr(product, 'quantity'):
             quantity_available = product.quantity
         else:
@@ -105,10 +102,10 @@ class ShoppingCart(object):
         if desired_quantity > quantity_available:
             raise ValueError("Not enough available.  Please select %s or less" % quantity_available)
 
+
+
     def add_item(self, product, quantity=1):
-        '''Adds the product to the current cart.  If the item already exists in the
-           cart, it adds to the quantity of the item.
-        '''
+        '''Adds the product to the current cart.  If the item already exists in the cart, it adds to the quantity of the item.'''
         # check the availability
         self.check_availability(product, quantity)
 

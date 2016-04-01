@@ -1,3 +1,4 @@
+<%! from catalog import models as cmod %>
 <%inherit file="app_base.htm" />
 
 <%block name="content">
@@ -10,25 +11,22 @@
     <h4>$${p.price}</h4>
     <p>Product Type: ${p.__class__.className}</p>
     <p>${p.description}</p>
-    %if p.__class__.className == 'Bulk Product':
-      <h5>Only ${p.quantity} left in stock</h5>
+    %if isinstance(p, cmod.BulkProduct):
+      <h5>${p.quantity} left in stock</h5>
     %endif
-    ## ## Can use later, if desired
-    ## %if p.__class__.className == 'Individual Product':
-    ##   <h5>Product Status: ${p.status}</h5>
-    ## %endif
     <div class="clearfix"></div>
-    <form class="form-inline" method="POST">
-      <div class="form-group">
-        <table>
-          ${ form.as_table() }
-        </table>
-      </div>
-      <div class="clearfix"></div>
-      <br />
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Add to Cart" data-ptype="${p.__class__.className}" id="Quantity_Form_Button">
-      </div>
-    </form>
+    <div id="add_form_placeholder"></div>
+    ## <form class="form-inline" method="POST">
+    ##   <div class="form-group">
+    ##     <table>
+    ##       ${ form.as_table() }
+    ##     </table>
+    ##   </div>
+    ##   <div class="clearfix"></div>
+    ##   <br />
+    ##   <div class="form-group">
+    ##     <input type="submit" class="btn btn-primary" value="Add to Cart" data-ptype="${p.__class__.className}" id="Quantity_Form_Button">
+    ##   </div>
+    ## </form>
   </div><!-- detail -->
 </%block>
