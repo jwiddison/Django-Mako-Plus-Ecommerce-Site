@@ -14,19 +14,6 @@
     %if isinstance(p, cmod.BulkProduct):
       <h5>${p.quantity} left in stock</h5>
     %endif
-    <div class="clearfix"></div>
     <div id="add_form_placeholder"></div>
-    ## <form class="form-inline" method="POST">
-    ##   <div class="form-group">
-    ##     <table>
-    ##       ${ form.as_table() }
-    ##     </table>
-    ##   </div>
-    ##   <div class="clearfix"></div>
-    ##   <br />
-    ##   <div class="form-group">
-    ##     <input type="submit" class="btn btn-primary" value="Add to Cart" data-ptype="${p.__class__.className}" id="Quantity_Form_Button">
-    ##   </div>
-    ## </form>
   </div><!-- detail -->
 </%block>

@@ -84,7 +84,7 @@ class ShoppingCart(object):
     def check_availability(self, product, desired_quantity=1):
         '''Checks that the product is available at the given quantity.  Raises a ValueError if we don't have enough.'''
         # Get quantity from Database
-        if hasattr(product, 'quantity'):
+        if isinstance(product, cmod.BulkProduct):
             quantity_available = product.quantity
         else:
             quantity_available = 1
@@ -112,7 +112,7 @@ class ShoppingCart(object):
         # Create a boolean for whether the product is found
         # found = False
 
-        # ensure it is in our cart
+        # see if it is in our cart
         for p in self.cart:
             if product.id == p.product_id:
                 p.quantity += quantity

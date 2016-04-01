@@ -52,7 +52,7 @@ def add(request):
 # Form for submitting quantity to cart
 class AddForm(CustomForm):
     quantity = forms.IntegerField(label='', required=False, min_value=1, max_value=100, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-
+    # default_data = {'quantity': '1'}
     def clean_quantity(self):
         ''' Ensures we have enough of this product '''
         try:

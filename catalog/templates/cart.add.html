@@ -9,12 +9,12 @@
         ${form['quantity'].errors}
         ${form['quantity']}
       %endif
-      <input type="submit" class="btn btn-primary" value="Add to Cart" name="submit" />
+      <input type="submit" class="btn btn-primary" value="Add to Cart" name="submit" id="AddButton"/>
     </form>
 
     ## did we just submit the form?
     %if form.is_valid():
-      <div class="text-center">
+      <div>
         Added! <a href="/catalog/cart/">View Cart</a>
       </div>
     %endif

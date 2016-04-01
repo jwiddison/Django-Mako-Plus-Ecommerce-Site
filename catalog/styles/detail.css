@@ -19,6 +19,18 @@
   margin-left:260px;
 }
 
+#id_quantity{
+  max-width:80px;
+  display:inline;
+  margin-right:10px;
+}
+
+#AddButton{
+  display:inline;
+}
+
+
+
 .product_image_text, .detail > p{
   font-size:14px;
 }

@@ -19,33 +19,9 @@ def process_request(request):
 
     # Add to Last5 Viewed
     request.shopping_cart.item_viewed(p)
-    #
-    # form = OrderForm(initial={'quantity':1})
-    # form.product = p
-    # if request.method == 'POST':
-    #     form = OrderForm(request.POST)
-    #     form.request = request
-    #     form.product = p
-    #     if form.is_valid():
-    #         request.shopping_cart.add_item(p, form.cleaned_data.get('quantity'))
-    #         return HttpResponseRedirect('/catalog/cart/')
 
     template_vars['p'] = p
-    # template_vars['form'] = form
     return dmp_render_to_response(request, 'detail.html', template_vars)
-
-
-# Form for submitting quantity to cart
-# class OrderForm(forms.Form):
-#     quantity = forms.IntegerField(label='Quantity', required=True, min_value=1, max_value=100, widget=forms.NumberInput(attrs={'class': 'form-control', 'id': 'add_form'}))
-#     default_data = {'quantity': '1'}
-#     def clean_quantity(self):
-#         qty = self.cleaned_data.get('quantity')
-#         try:
-#             self.request.shopping_cart.check_availability(self.product, qty)
-#         except ValueError:
-#             raise forms.ValidationError('Desired quantity not available.  Please decrease the quantity requested')
-#         return self.cleaned_data['quantity']
 
 ### Carousel Method
 @view_function
