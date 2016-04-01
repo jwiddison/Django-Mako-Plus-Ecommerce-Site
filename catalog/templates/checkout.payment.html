@@ -4,7 +4,7 @@
   <h3 class="text-center">Order Summary</h3>
   <hr />
   <br />
-  <h5>Items from Cart:</h5>
+  <h4>Order:</h4>
   <table class="table table-condensed table-striped">
     <tr>
       <th>Item</th>
@@ -47,28 +47,45 @@
       <td><b>$${request.shopping_cart.calc_total()}</b></td>
     </tr>
   </table>
-  <br />
   <h4>Shipping Information</h4>
-  <ul>
-    <li>Shipping Name: Jordan Widdison</li>
-    <li>Shipping Address: 13661 Bridle Trail Rd</li>
-    <li>Shipping City: Draper</li>
-    <li>Shipping State: UT</li>
-    <li>Shipping Zip Code: 84020</li>
-  </ul>
+  <table class="table table-condensed">
+    <tr>
+      <td>Shipping Name:</td>
+      <td>Jordan Widdison</td>
+    </tr>
+    <tr>
+      <td>Shipping Address:</td>
+      <td>13661 Bridle Trail Rd</td>
+    </tr>
+    <tr>
+      <td>Shipping City:</td>
+      <td>Draper</td>
+    </tr>
+    <tr>
+      <td>Shipping State:</td>
+      <td>UT</td>
+    </tr>
+    <tr>
+      <td>Shipping Zip Code:</td>
+      <td>84020</td>
+    </tr>
+  </table>
   <hr />
-  <div class="checkbox" id="verify_checkbox">
+  <div class="checkbox">
     <label>
-      <input type="checkbox">I have verified that the above information is correct</input>
+      <input type="checkbox" id="verify_checkbox">I have verified that the above information is correct and agree to pay the amount shown.</input>
     </label>
   </div>
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="${ settings.STRIPE_PUBLIC_KEY }"
-    data-amount="${request.shopping_cart.calc_stripe_total()}"
-    data-name="Checkout - CHFSales.com"
-    data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
-    data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
-    data-locale="auto">
-  </script>
+  <br />
+  <div id="pay_button">
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="${ settings.STRIPE_PUBLIC_KEY }"
+      data-amount="${request.shopping_cart.calc_stripe_total()}"
+      data-name="Checkout - CHFSales.com"
+      data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
+      data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
+      data-locale="auto">
+    </script>
+  </div>
 </%block>

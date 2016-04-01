@@ -26,7 +26,6 @@ def remove(request):
     return HttpResponseRedirect('/catalog/cart/')
 
 ## FOR AJAX SHOPPING CART
-
 @view_function
 def add(request):
     try:
@@ -52,11 +51,10 @@ def add(request):
 # Form for submitting quantity to cart
 class AddForm(CustomForm):
     quantity = forms.IntegerField(label='', required=False, min_value=1, max_value=100, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    # default_data = {'quantity': '1'}
     def clean_quantity(self):
         ''' Ensures we have enough of this product '''
         try:
-            self.request.shopping_cart.check_availability(self.extra['product'], self.cleaned_data['quantity'])
+            self.request.shopping_cart.check_availability(self.extra['product'], self.cleaned_data.get('quantity'))
         except ValueError as e:
             raise forms.ValidationError(str(e))
         return self.cleaned_data['quantity']

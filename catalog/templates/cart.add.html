@@ -9,7 +9,10 @@
         ${form['quantity'].errors}
         ${form['quantity']}
       %endif
-      <input type="submit" class="btn btn-primary" value="Add to Cart" name="submit" id="AddButton"/>
+      %if isinstance(p, cmod.IndividualProduct):
+        ${form['quantity'].errors}
+      %endif
+      <input type="submit" class="btn btn-primary" value="Add to Cart" id="AddButton"/>
     </form>
 
     ## did we just submit the form?

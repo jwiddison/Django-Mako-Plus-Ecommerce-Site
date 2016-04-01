@@ -7,6 +7,7 @@ from . import initialize_template_vars
 from django.contrib.auth.decorators import login_required
 from django import forms
 import googlemaps
+import requests
 
 
 @view_function

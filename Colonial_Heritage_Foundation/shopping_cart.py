@@ -87,19 +87,26 @@ class ShoppingCart(object):
         if isinstance(product, cmod.BulkProduct):
             quantity_available = product.quantity
         else:
+            desired_quantity = 1
             quantity_available = 1
+
+        print(desired_quantity)
+        print(quantity_available)
 
         # decrease the available amount by any in our cart
         for cart_item in self.cart:
             if cart_item.product_id == product.id:
-                quantity_available -= cart_item.quantity
-                break
+                if isinstance(product, cmod.IndividualProduct):
+                    raise ValueError('This product is already in your cart!')
+                else:
+                    quantity_available -= cart_item.quantity
+                    break
 
         # Just in case, make sure it didn't go negative
         quantity_available = max(quantity_available, 0)
 
         # check the available amount and raise ValueError if not enough
-        if desired_quantity > quantity_available:
+        if quantity_available < desired_quantity:
             raise ValueError("Not enough available.  Please select %s or less" % quantity_available)
 
 
@@ -121,6 +128,8 @@ class ShoppingCart(object):
         else:
         # if found == False:
             newItem = ShoppingItem(product)
+            if isinstance(product, cmod.IndividualProduct):
+                quantity = 1
             newItem.quantity = quantity
             self.cart.append(newItem)
 
