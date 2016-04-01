@@ -99,4 +99,11 @@ def shipping(request):
 @login_required(login_url='/catalog/login/')
 def payment(request):
     template_vars = initialize_template_vars(request)
+
+    if request.urlparams[0] == '1':
+        useGoogle = True
+    else:
+        useGoogle = False
+
+    template_vars['useGoogle'] = useGoogle
     return dmp_render_to_response(request, 'checkout.payment.html', template_vars)

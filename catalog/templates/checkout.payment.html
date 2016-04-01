@@ -48,30 +48,7 @@
     </tr>
   </table>
   <h4>Shipping Information</h4>
-  %if request.url_params[0] == 0:
-    <table class="table table-condensed">
-      <tr>
-        <td>Shipping Name:</td>
-        <td>${request.session['user_input_address'][0]}</td>
-      </tr>
-      <tr>
-        <td>Shipping Address:</td>
-        <td>${request.session['user_input_address'][1]}</td>
-      </tr>
-      <tr>
-        <td>Shipping City:</td>
-        <td>${request.session['user_input_address'][2]}</td>
-      </tr>
-      <tr>
-        <td>Shipping State:</td>
-        <td>${request.session['user_input_address'][3]}</td>
-      </tr>
-      <tr>
-        <td>Shipping Zip Code:</td>
-        <td>${request.session['user_input_address'][4]}</td>
-      </tr>
-    </table>
-  %else if request.url_params[0] == 1:
+  %if useGoogle == True:
     <table class="table table-condensed">
       <tr>
         <td>Shipping Name:</td>
@@ -92,6 +69,29 @@
       <tr>
         <td>Shipping Zip Code:</td>
         <td>${request.session['google_address_response'][4]}</td>
+      </tr>
+    </table>
+  %else:
+    <table class="table table-condensed">
+      <tr>
+        <td>Shipping Name:</td>
+        <td>${request.session['user_input_address'][0]}</td>
+      </tr>
+      <tr>
+        <td>Shipping Address:</td>
+        <td>${request.session['user_input_address'][1]}</td>
+      </tr>
+      <tr>
+        <td>Shipping City:</td>
+        <td>${request.session['user_input_address'][2]}</td>
+      </tr>
+      <tr>
+        <td>Shipping State:</td>
+        <td>${request.session['user_input_address'][3]}</td>
+      </tr>
+      <tr>
+        <td>Shipping Zip Code:</td>
+        <td>${request.session['user_input_address'][4]}</td>
       </tr>
     </table>
   %endif
