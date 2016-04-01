@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 import googlemaps
 import requests
+import stripe
 
 
 @view_function
@@ -87,8 +88,6 @@ class ShippingForm(forms.Form):
     shipping_state = forms.CharField(label='Shipping State', required=True, widget=forms.TextInput(attrs={'placeholder': 'Shipping State', 'class': 'form-control'}))
     shipping_zip_code = forms.CharField(label='Shipping Zip Code', required=True, widget=forms.TextInput(attrs={'placeholder': 'Shipping Zip Code', 'class': 'form-control'}))
 
-    # need to add clean methods to make sure the quantity is available.
-
 @view_function
 def shipping(request):
     template_vars = initialize_template_vars(request)
@@ -98,12 +97,31 @@ def shipping(request):
 @view_function
 @login_required(login_url='/catalog/login/')
 def payment(request):
+    # Initialize Template Vars
     template_vars = initialize_template_vars(request)
 
+    # See if the user wants to use Google's address by pulling it off the URL
     if request.urlparams[0] == '1':
         useGoogle = True
     else:
         useGoogle = False
 
+    form = PaymentForm()
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            cmod.record_sale()
+
+            return HttpResponseRedirect('/catalog/summary/')
+
+
+
     template_vars['useGoogle'] = useGoogle
+    template_vars['form'] = form
     return dmp_render_to_response(request, 'checkout.payment.html', template_vars)
+
+class PaymentForm(forms.Form):
+    payment = forms.CharField(label='', required=False, widget=forms.HiddenInput())
+
+    def clean_stripe(self):
+        stripe

@@ -90,9 +90,6 @@ class ShoppingCart(object):
             desired_quantity = 1
             quantity_available = 1
 
-        print(desired_quantity)
-        print(quantity_available)
-
         # decrease the available amount by any in our cart
         for cart_item in self.cart:
             if cart_item.product_id == product.id:
