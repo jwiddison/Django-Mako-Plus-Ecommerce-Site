@@ -1,11 +1,11 @@
 $(function() {
 
   // Hides the quantity field on the form if the product is an individual product.
-  if($('#Quantity_Form_Button').attr('data-ptype') === 'Individual Product')
-  {
-    $('#id_quantity').closest("tr").hide();
-    $('#id_quantity').hide();
-  }
+  // if($('#Quantity_Form_Button').attr('data-ptype') === 'Individual Product')
+  // {
+  //   $('#id_quantity').closest("tr").hide();
+  //   $('#id_quantity').hide();
+  // }
 
   //Load the add form using AJAX
   // TODO: Ajaxify the form!!

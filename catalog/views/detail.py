@@ -31,6 +31,19 @@ def process_request(request):
     template_vars['form'] = form
     return dmp_render_to_response(request, 'detail.html', template_vars)
 
+
+# Form for submitting quantity to cart
+class OrderForm(forms.Form):
+    quantity = forms.IntegerField(label='Quantity', required=True, min_value=1, max_value=100, widget=forms.NumberInput(attrs={'class': 'form-control', 'id': 'add_form'}))
+    default_data = {'quantity': '1'}
+    def clean_quantity(self):
+        qty = self.cleaned_data.get('quantity')
+        try:
+            self.request.shopping_cart.check_availability(self.product, qty)
+        except ValueError:
+            raise forms.ValidationError('Desired quantity not available.  Please decrease the quantity requested')
+        return self.cleaned_data['quantity']
+
 ### Carousel Method
 @view_function
 def carousel(request):
@@ -41,15 +54,3 @@ def carousel(request):
         'p_images': cmod.ProductImage.objects.all().filter(product=p),
     }
     return dmp_render_to_response(request, 'detail.carousel.html', template_vars)
-
-# Form for submitting quantity to cart
-class OrderForm(forms.Form):
-    quantity = forms.IntegerField(label='Quantity', required=True, widget=forms.NumberInput(attrs={'placeholder': '1', 'class': 'form-control', 'min': '1'}))
-    default_data = {'quantity': '1'}
-    def clean(self):
-        qty = self.cleaned_data.get('quantity')
-        try:
-            self.request.shopping_cart.check_availability(self.product, qty)
-        except ValueError:
-            raise forms.ValidationError('Desired quantity not available.  Please decrease the quantity requested')
-        return self.cleaned_data

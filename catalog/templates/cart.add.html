@@ -1,0 +1,23 @@
+<%! from catalog import models as cmod %>
+
+<%inherit file="/homepage/tempaltes/base_ajax.htm" />
+
+<%block name="content">
+  <div class="add_form">
+    ${form.non_field_errors()}
+    <form action="/catalog/cart.add/${p.id}/" method="POST">
+      %if isinstance(p, cmod.BulkProduct):
+        ${form['quantity'].errors}
+        ${form['quantity']}
+      %endif
+      <input type="submit" class="btn btn-primary" value="Add to Cart" name="submit" />
+    </form>
+
+    ## did we just submit the form?
+    %if form.is_valid():
+      <div class="text-center">
+        Added! <a href="/catalog/cart/">View Cart</a>
+      </div>
+    %endif
+  </div><!-- add_form -->
+</%block>
