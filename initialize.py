@@ -271,7 +271,7 @@ for i in range (1,10):
     s.TrackingNumber = random.randint(0,1000)
     s.TotalPrice = random.uniform(1, 1000)
     u = random.choice(users)
-    s.ShipName = u.name
+    s.ShipName = u.first_name + ' ' + u.last_name
     s.ShipAddress = u.address1
     s.ShipCity = u.city
     s.ShipState = u.state
@@ -295,6 +295,6 @@ for i in range (1,10):
     p.Amount = random.uniform(1,1000)
     p.ValidationCode = random.randint(0,1000)
     p.Payer = u
-    p.Sale = s
+    p.sale = s
     p.save()
     print(p)

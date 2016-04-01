@@ -119,20 +119,19 @@ def payment(request):
                     amount=request.shopping_cart.get_stripe_total(), # amount in cents, again
                     currency="usd",
                     source=token,
-                    description="Example charge"
                 )
-            except stripe.error.CardError, e:
-                # The card has been declined
-                pass
+            except stripe.error.CardError:
+                raise ValueError
 
             if useGoogle == True:
                 address = request.session['google_address_response']
             else:
                 address = request.session['user_address_list']
 
-            cmod.record_sale(request.shopping_cart.get_items(), address)
+            # cmod.record_sale(request.shopping_cart.get_items(), address, charge.get('id'))
 
-            sale = cmod.record_sale(request.user, address, request.shopping_cart)
+            sale = cmod.record_sale(request.user, address, request.shopping_cart, charge.get('id'))
+            print(sale)
 
             # clear the shopping cart
             # request.shopping_cart.clear_items()
@@ -147,18 +146,3 @@ def payment(request):
 
 class PaymentForm(forms.Form):
     payment = forms.CharField(label='', required=False, widget=forms.HiddenInput())
-
-    # def clean_stripe(self):
-    #     stripe.api_key = settings.STRIPE_SECRET_KEY
-    #
-    #     # Create the charge on Stripe's servers - this will charge the user's card
-    #     try:
-    #         charge = stripe.Charge.create(
-    #             amount=1000, # amount in cents, again
-    #             currency="usd",
-    #             source=token,
-    #             description="Example charge"
-    #         )
-    #     except stripe.error.CardError, e:
-    #         # The card has been declined
-    #         raise forms.ValidationError()

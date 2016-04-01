@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from polymorphic.models import PolymorphicModel
+import datetime
 
 
 ## Sprint 5 Stuff:
@@ -20,6 +21,12 @@ class Sale(models.Model):
     ShipZipCode = models.TextField(null=True, blank=True)
     Buyer = models.ForeignKey('account.User')
 
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Sale -> Price: %s, Buyer: %s' % (self.TotalPrice, self.Buyer)
+
+admin.site.register(Sale)
+
 
 #########################################################################################################
 #######   SaleItem         ##############################################################################
@@ -31,14 +38,11 @@ class SaleItem(PolymorphicModel):
     Extended = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     sale = models.ForeignKey('catalog.Sale')
 
-    # def __init__(self, ShoppingItem):
-    #     '''Constructor'''
-    #     self.product_id = ShoppingItem.product_id
-    #     self.filename = ShoppingItem.filename
-    #     self.name = ShoppingItem.name
-    #     self.price = ShoppingItem.price
-    #     self.quantity = ShoppingItem.quantity
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'SaleItem -> Description: %s' % (self.Description)
 
+admin.site.register(SaleItem)
 
 #########################################################################################################
 #######   Payment          ##############################################################################
@@ -50,34 +54,79 @@ class Payment(models.Model):
     Payer = models.ForeignKey('account.User')
     sale = models.ForeignKey('catalog.Sale')
 
+    def __str__(self):
+        '''Prints for debugging purposes'''
+        return 'Payment -> Amount: %s, Payer: %s' % (self.Amount, self.Payer)
+
+admin.site.register(Payment)
+
 
 ## Record Sale method
-def record_sale(user, address_list, cart):
+def record_sale(user, address_list, cart, stripe_id):
     # Create a sale object
-    sale = Sale()
-    sale.save()
+    s = Sale(
+        OrderDate = datetime.datetime.now(),
+        ShipDate = datetime.datetime.now(),
+        TrackingNumber = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N)),
+        TotalPrice = cart.calc_total(),
+        ShipName = addresslist[0],
+        ShipAddress = addresslist[1],
+        ShipCity = addresslist[2],
+        ShipState = addresslist[3],
+        ShipZipCode = addresslist[4],
+        Buyer = user,
+    )
+    s.save()
+    print(s)
 
     # Create saleitem objects for each item in the cart
     for item in cart:
-        si = SaleItem(item)
-        si.sale = sale
+        si = SaleItem(
+            Description = item.name,
+            Price = item.price,
+            Quantity = item.quantity,
+            Extended = item.calc_extended(),
+            sale = s,
+        )
         si.save()
 
+        print(si)
+
+        p = Product.objects.get(id = item.product_id)
+        if isinstance(p, BulkProduct):
+            p.quantity -= item.quantity
+            p.save()
+        elif isinstance(p, IndividualProduct):
+            p.status = 'sold'
+            p.save()
+
     # create saleitem objects for the tax and for the shipping amounts
-    tax = cart.calc_tax()
-    tax_si = SaleItem()
-    tax_si.sale = sale
+    tax_si = SaleItem(
+        Desctription = 'Tax',
+        Price = cart.calc_tax(),
+        Quantity = '1',
+        Extended = cart.calc_tax(),
+        sale = s,
+    )
     tax_si.save()
 
-    shipping = cart.calc_shipping()
-    shipping_si = saleItem()
-    shipping_si.sale = sale
+    shipping_si = saleItem(
+        Description = 'Shipping',
+        Price = cart.calc_shipping(),
+        Quantity = '1',
+        Extended = cart.calc_shipping(),
+        sale = s,
+    )
     shipping_si.save()
 
     # Create a payment object
-    payment = Payment()
-
-    # update quantity of bulk products, set individual product status to sold.
+    payment = Payment(
+        PaymentDate = datetime.datetime.now(),
+        Amount = cart.calc_total(),
+        ValidationCode = stripe_id,
+        Payer = users,
+        sale = s,
+    )
 
     return sale
 
