@@ -25,6 +25,10 @@ class Sale(models.Model):
         '''Prints for debugging purposes'''
         return 'Sale -> Price: %s, Buyer: %s' % (self.TotalPrice, self.Buyer)
 
+    def get_saleitems(self):
+        return SaleItem.objects.all().filter(id=self.id)
+
+
 admin.site.register(Sale)
 
 
@@ -36,7 +40,7 @@ class SaleItem(PolymorphicModel):
     Price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     Quantity = models.TextField(null=True, blank=True)
     Extended = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
-    sale = models.ForeignKey('catalog.Sale')
+    sale = models.ForeignKey('catalog.Sale', related_name='saleitems')
 
     def __str__(self):
         '''Prints for debugging purposes'''
@@ -52,7 +56,7 @@ class Payment(models.Model):
     Amount = models.TextField(null=True, blank=True)
     ValidationCode = models.TextField(null=True, blank=True)
     Payer = models.ForeignKey('account.User')
-    sale = models.ForeignKey('catalog.Sale')
+    sale = models.ForeignKey('catalog.Sale', related_name='payments')
 
     def __str__(self):
         '''Prints for debugging purposes'''
@@ -127,6 +131,7 @@ def record_sale(user, address_list, cart, stripe_id):
         Payer = user,
         sale = s,
     )
+    payment.save()
 
     return s
 

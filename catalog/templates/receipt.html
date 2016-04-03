@@ -1,8 +1,50 @@
 <%inherit file="app_base.htm" />
 
 
-<%block name="content">
-
+<%block name="top_content_area">
+  <h3>Receipt</h3>
+  <hr />
+  <br />
+  <p>Thank you for your purchase!  Please keep a copy of this recipt for your records.</p>
+  <h4>Order:</h4>
+  <table class="table table-condensed table-striped">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Item Total</th>
+    </tr>
+    %for si in saleitems:
+    <tr>
+      <td>${si.Description}</td>
+      <td>$${si.Price}</td>
+      <td>${si.Quantity}</td>
+      <td>$${si.Extended}</td>
+    </tr>
+      %if si.Description == 'Tax':
+        <tr>
+          <td><b>Tax:</b></td>
+          <td></td>
+          <td></td>
+          <td>${si.Extended}</td>
+        </tr>
+      %endif
+      %if si.Description == 'Shipping':
+        <tr>
+          <td><b>Shipping:</b></td>
+          <td></td>
+          <td></td>
+          <td>${si.Extended}</td>
+        </tr>
+      %endif
+    %endfor
+    <tr> <!-- Total Price -->
+      <td><b>Total:</b></td>
+      <td></td>
+      <td></td>
+      <td><b>$${sale.TotalPrice}</b></td>
+    </tr>
+  </table>
 </%block>
 
 

@@ -127,19 +127,18 @@ def payment(request):
             # print(stripeToken)
 
             if useGoogle == True:
-                address = request.session['google_address_response']
+                address = request.session.get('google_address_response', [])
             else:
-                address = request.session['user_address_list']
+                address = request.session.get('user_address_list', [])
 
             # Create the sale, and store it here to redirect to recipt page
             sale = cmod.record_sale(request.user, address, request.shopping_cart, charge.get('id'))
 
             # clear the shopping cart
-            # request.shopping_cart.clear_items()
+            request.shopping_cart.clear_items()
+
             # Redirect to the receipt page
             return HttpResponseRedirect('/catalog/receipt/%s' % (sale.id))
-
-
 
     template_vars['useGoogle'] = useGoogle
     template_vars['form'] = form

@@ -14,7 +14,7 @@ from catalog import models as cmod
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 # other useful imports
-import datetime, random, sys, itertools, glob
+import datetime, random, sys, itertools, glob, string
 
 
 
@@ -147,7 +147,7 @@ for i in range(1, 25):
     p = cmod.RentalProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = random.uniform(1, 1000)
+    p.price = random.uniform(1, 150)
     p.description = 'This is a rental product named %s. %s' % (item[0], lorem_ipsum)
     p.category = random.choice(categories)
     p.status = cmod.RENTAL_STATUS_CHOICES[0][0]
@@ -173,7 +173,7 @@ for i in range(1, 25):
     p = cmod.IndividualProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = random.uniform(1, 1000)
+    p.price = random.uniform(1, 150)
     p.description = 'This is an individual product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'indprod%i.png' % i
     p.category = random.choice(categories)
@@ -201,7 +201,7 @@ for i in range(1, 25):
     p = cmod.BulkProduct()
     item = next(item_iterator)
     p.name = item[0]
-    p.price = random.uniform(1, 1000)
+    p.price = random.uniform(1, 150)
     p.description = 'This is a bulk product named %s. %s' % (item[0], lorem_ipsum)
     p.image = 'bulkprod%i.png' % i
     p.category = random.choice(categories)
@@ -268,8 +268,8 @@ for i in range (1,10):
     s = cmod.Sale()
     s.OrderDate = datetime.datetime.now()
     s.ShipDate = datetime.datetime.now()
-    s.TrackingNumber = random.randint(0,1000)
-    s.TotalPrice = random.uniform(1, 1000)
+    s.TrackingNumber = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(0,9))
+    s.TotalPrice = random.uniform(1, 500)
     u = random.choice(users)
     s.ShipName = u.first_name + ' ' + u.last_name
     s.ShipAddress = u.address1
@@ -283,7 +283,7 @@ for i in range (1,10):
     for j in range(1, 5):
         si = cmod.SaleItem()
         si.Description = lorem_ipsum
-        si.Price = random.uniform(1,1000)
+        si.Price = random.uniform(1,150)
         si.Quantity = random.randint(0,6)
         si.Extended = random.uniform(1,1000)
         si.sale = s
@@ -292,8 +292,8 @@ for i in range (1,10):
     # Create payment for the sale
     p = cmod.Payment()
     p.PaymentDate = datetime.datetime.now()
-    p.Amount = random.uniform(1,1000)
-    p.ValidationCode = random.randint(0,1000)
+    p.Amount = random.uniform(1,500)
+    p.ValidationCode = 'tok_' + ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(0,13))
     p.Payer = u
     p.sale = s
     p.save()

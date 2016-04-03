@@ -28,6 +28,11 @@ STRIPE_PUBLIC_KEY = 'pk_test_MHyCTSEPuZxOaIsMh4RIFcbB'
 GOOGLE_SERVER_KEY = 'AIzaSyBPic4S2IEKGVinGhN61E5Fy42s8nu3DEA'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 EMAIL_HOST = 'gateway.byu.edu'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'jordan.widdison@gmail.com'
+# EMAIL_HOST_PASSWORD
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
 
 # Application definition
 
