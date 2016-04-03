@@ -102,7 +102,7 @@
     </label>
   </div>
   <br />
-  <form>
+  <form method='POST'>
     ${form}
     <div id="pay_button">
       <script
@@ -111,7 +111,7 @@
         data-amount="${request.shopping_cart.calc_stripe_total()}"
         data-name="Checkout - CHFSales.com"
         data-description="Purchase ${request.shopping_cart.get_item_count()} items in cart"
-        data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
+        ## data-image="${ STATIC_URL }homepage/media/pics/eagle.png"
         data-locale="auto">
       </script>
     </div>

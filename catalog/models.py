@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from polymorphic.models import PolymorphicModel
-import datetime
+import datetime, random, string
 
 
 ## Sprint 5 Stuff:
@@ -67,20 +67,20 @@ def record_sale(user, address_list, cart, stripe_id):
     s = Sale(
         OrderDate = datetime.datetime.now(),
         ShipDate = datetime.datetime.now(),
-        TrackingNumber = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N)),
+        TrackingNumber = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(0,9)),
         TotalPrice = cart.calc_total(),
-        ShipName = addresslist[0],
-        ShipAddress = addresslist[1],
-        ShipCity = addresslist[2],
-        ShipState = addresslist[3],
-        ShipZipCode = addresslist[4],
+        ShipName = address_list[0],
+        ShipAddress = address_list[1],
+        ShipCity = address_list[2],
+        ShipState = address_list[3],
+        ShipZipCode = address_list[4],
         Buyer = user,
     )
     s.save()
     print(s)
 
     # Create saleitem objects for each item in the cart
-    for item in cart:
+    for item in cart.get_items():
         si = SaleItem(
             Description = item.name,
             Price = item.price,
@@ -102,7 +102,7 @@ def record_sale(user, address_list, cart, stripe_id):
 
     # create saleitem objects for the tax and for the shipping amounts
     tax_si = SaleItem(
-        Desctription = 'Tax',
+        Description = 'Tax',
         Price = cart.calc_tax(),
         Quantity = '1',
         Extended = cart.calc_tax(),
@@ -110,7 +110,7 @@ def record_sale(user, address_list, cart, stripe_id):
     )
     tax_si.save()
 
-    shipping_si = saleItem(
+    shipping_si = SaleItem(
         Description = 'Shipping',
         Price = cart.calc_shipping(),
         Quantity = '1',
@@ -124,11 +124,11 @@ def record_sale(user, address_list, cart, stripe_id):
         PaymentDate = datetime.datetime.now(),
         Amount = cart.calc_total(),
         ValidationCode = stripe_id,
-        Payer = users,
+        Payer = user,
         sale = s,
     )
 
-    return sale
+    return s
 
 
 ## Sprint 4 Stuff:

@@ -116,27 +116,28 @@ def payment(request):
 
             try:
                 charge = stripe.Charge.create(
-                    amount=request.shopping_cart.get_stripe_total(), # amount in cents, again
+                    amount=request.shopping_cart.calc_stripe_total(), # amount in cents, again
                     currency="usd",
                     source=token,
                 )
             except stripe.error.CardError:
                 raise ValueError
 
+            # stripeToken=form.cleaned_data.get('stripeToken')
+            # print(stripeToken)
+
             if useGoogle == True:
                 address = request.session['google_address_response']
             else:
                 address = request.session['user_address_list']
 
-            # cmod.record_sale(request.shopping_cart.get_items(), address, charge.get('id'))
-
+            # Create the sale, and store it here to redirect to recipt page
             sale = cmod.record_sale(request.user, address, request.shopping_cart, charge.get('id'))
-            print(sale)
 
             # clear the shopping cart
             # request.shopping_cart.clear_items()
             # Redirect to the receipt page
-            return HttpResponseRedirect('/catalog/receipt/')
+            return HttpResponseRedirect('/catalog/receipt/%s' % (sale.id))
 
 
 

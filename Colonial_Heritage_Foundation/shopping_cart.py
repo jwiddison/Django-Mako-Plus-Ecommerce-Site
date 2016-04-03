@@ -169,7 +169,7 @@ class ShoppingCart(object):
 
     def calc_stripe_total(self):
         '''Returns the total in a format that stripe is going to know how to use'''
-        return (self.calc_total() * 100).quantize(decimal.Decimal('.01'), rounding=decimal.ROUND_UP)
+        return (self.calc_total() * 100).quantize(decimal.Decimal('1'), rounding=decimal.ROUND_UP)
 
 
     ###   LAST VIEWED PRODUCT METHODS
