@@ -1,3 +1,15 @@
 .big_icon{
   font-size:2em;
 }
+
+#id_name,
+#id_email,
+#id_phone,
+#id_message{
+  margin-left:20px;
+  min-width:400px;
+}
+
+#send_button, #clear_button{
+  margin-top:20px;
+}
