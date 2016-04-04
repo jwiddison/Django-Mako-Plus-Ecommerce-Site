@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459401926.003923
+_modified_time = 1459792862.211289
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm'
 _template_uri = 'app_base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['top_content_area', 'parallax_start', 'column_layout', 'navbar_title', 'transbox_start', 'alert', 'transbox_end', 'menu', 'cart', 'parallax_end', 'maintainence_message', 'maintainence_container']
+_exports = ['alert', 'cart', 'menu', 'column_layout', 'transbox_start', 'maintainence_container', 'parallax_start', 'navbar_title', 'parallax_end', 'top_content_area', 'maintainence_message', 'transbox_end']
 
 
 def _mako_get_namespace(context, name):
@@ -29,32 +29,32 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def top_content_area():
-            return render_top_content_area(context._locals(__M_locals))
-        request = context.get('request', UNDEFINED)
-        def parallax_start():
-            return render_parallax_start(context._locals(__M_locals))
         def alert():
             return render_alert(context._locals(__M_locals))
-        def column_layout():
-            return render_column_layout(context._locals(__M_locals))
-        def navbar_title():
-            return render_navbar_title(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def transbox_start():
-            return render_transbox_start(context._locals(__M_locals))
-        def transbox_end():
-            return render_transbox_end(context._locals(__M_locals))
         def cart():
             return render_cart(context._locals(__M_locals))
         def menu():
             return render_menu(context._locals(__M_locals))
-        def parallax_end():
-            return render_parallax_end(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
+        def transbox_end():
+            return render_transbox_end(context._locals(__M_locals))
+        def column_layout():
+            return render_column_layout(context._locals(__M_locals))
+        def parallax_start():
+            return render_parallax_start(context._locals(__M_locals))
         def maintainence_container():
             return render_maintainence_container(context._locals(__M_locals))
+        def navbar_title():
+            return render_navbar_title(context._locals(__M_locals))
+        def parallax_end():
+            return render_parallax_end(context._locals(__M_locals))
+        def transbox_start():
+            return render_transbox_start(context._locals(__M_locals))
+        def top_content_area():
+            return render_top_content_area(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -122,27 +122,49 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_top_content_area(context,**pageargs):
+def render_alert(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def top_content_area():
-            return render_top_content_area(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def alert():
+            return render_alert(context)
         __M_writer = context.writer()
-        __M_writer('\n  <img src="')
-        __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_parallax_start(context,**pageargs):
+def render_cart(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def parallax_start():
-            return render_parallax_start(context)
+        def cart():
+            return render_cart(context)
         __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def menu():
+            return render_menu(context)
+        request = context.get('request', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'users' else ''))
+        __M_writer('"><a href="/manager/users">Users</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'products' else ''))
+        __M_writer('"><a href="/manager/products">Products</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'categories' else ''))
+        __M_writer('"><a href="/manager/categories">Categories</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'sales' else ''))
+        __M_writer('"><a href="/manager/sales">Sales</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'venues' else ''))
+        __M_writer('"><a href="/manager/venues">Venues</a></li>\n  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'events' else ''))
+        __M_writer('"><a href="/manager/events">Events</a></li>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -153,6 +175,39 @@ def render_column_layout(context,**pageargs):
     try:
         def column_layout():
             return render_column_layout(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_transbox_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_start():
+            return render_transbox_start(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_parallax_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def parallax_start():
+            return render_parallax_start(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -171,22 +226,37 @@ def render_navbar_title(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_transbox_start(context,**pageargs):
+def render_parallax_end(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def transbox_start():
-            return render_transbox_start(context)
+        def parallax_end():
+            return render_parallax_end(context)
         __M_writer = context.writer()
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
+def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def alert():
-            return render_alert(context)
+        def top_content_area():
+            return render_top_content_area(context)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        __M_writer = context.writer()
+        __M_writer('\n  <img src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_message(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -204,74 +274,8 @@ def render_transbox_end(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_menu(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        request = context.get('request', UNDEFINED)
-        def menu():
-            return render_menu(context)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'users' else ''))
-        __M_writer('"><a href="/manager/users">Users</a></li>\n  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'products' else ''))
-        __M_writer('"><a href="/manager/products">Products</a></li>\n  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'venues' else ''))
-        __M_writer('"><a href="/manager/venues">Venues</a></li>\n  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'events' else ''))
-        __M_writer('"><a href="/manager/events">Events</a></li>\n')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_cart(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def cart():
-            return render_cart(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_parallax_end(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def parallax_end():
-            return render_parallax_end(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_message(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        __M_writer = context.writer()
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 """
 __M_BEGIN_METADATA
-{"uri": "app_base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "source_encoding": "utf-8", "line_map": {"64": 7, "262": 27, "132": 3, "69": 11, "134": 4, "251": 28, "74": 19, "215": 15, "140": 22, "79": 22, "273": 262, "84": 23, "196": 25, "214": 13, "151": 30, "216": 15, "89": 24, "218": 16, "207": 13, "28": 0, "221": 17, "94": 25, "133": 4, "162": 9, "99": 27, "229": 31, "223": 18, "104": 28, "220": 17, "109": 29, "174": 24, "240": 23, "168": 9, "114": 30, "222": 18, "219": 16, "119": 31, "185": 29, "217": 15, "59": 1, "125": 3}}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/manager/templates/app_base.htm", "line_map": {"136": 33, "266": 27, "147": 13, "277": 266, "89": 26, "154": 13, "155": 15, "156": 15, "157": 15, "158": 16, "159": 16, "160": 17, "161": 17, "162": 18, "163": 18, "164": 19, "165": 19, "166": 20, "167": 20, "28": 0, "173": 32, "184": 26, "59": 1, "64": 7, "195": 29, "69": 11, "74": 21, "119": 33, "206": 24, "79": 24, "84": 25, "217": 9, "94": 27, "223": 9, "99": 29, "229": 25, "104": 30, "109": 31, "240": 3, "114": 32, "247": 3, "248": 4, "249": 4, "125": 31, "255": 30}, "source_encoding": "utf-8", "uri": "app_base.htm"}
 __M_END_METADATA
 """

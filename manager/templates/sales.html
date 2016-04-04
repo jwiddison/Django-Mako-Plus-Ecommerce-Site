@@ -1,0 +1,103 @@
+<%inherit file="app_base.htm" />
+
+<%block name="top_content_area">
+  <h3>Product Catalog:</h3>
+  <hr />
+  <br />
+  <a href="/manager/products.create/" class="btn btn-primary">Create A New Product</a>
+  <br />
+  <br />
+  <table class="table table-striped">
+    <tr>
+      <th>Product Name</th>
+      <th>Product Type</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Date Added</th>
+      <th>Status</th>
+      <th>Purchase Date</th>
+      <th>Creation Date</th>
+      <th>Creator</th>
+      <th>Quantity</th>
+      <th>Edit | Delete</th>
+    </tr>
+    %for product in products:
+      <tr>
+        <td>${product.name}</td>
+        <td>${product.__class__.className}</td>
+        <td>${product.price}</td>
+        <td>${product.description}</td>
+        <td>
+        %for image in images:
+          %if image.product == product:
+            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive"/>
+            <% break %>
+          %endif
+        %endfor
+        </td>
+        <td>${product.add_date}</td>
+        <td>
+          %if product.__class__.className == "Rental Product":
+            ${product.status}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Rental Product":
+            ${product.purchase_date}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Individual Product":
+            ${product.create_date}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Individual Product":
+            ${product.creator}
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          %if product.__class__.className == "Bulk Product":
+            <span class="quantity">10</span>
+            |
+            <a href="/manager/products.get_quantity/${product.id}" data-id="${product.id}" class="glyphicon glyphicon-refresh"></a>
+          %else:
+            -
+          %endif
+        </td>
+        <td>
+          <a href="/manager/products.edit/${ product.id }/">Edit</a>
+           |
+          <a href="/manager/products.delete/${ product.id }/" class="delete_product_button">Delete</a>
+        </td>
+      </tr>
+    %endfor
+  </table>
+  <!-- Modal -->
+  <div class="modal fade" id="delete_product_modal" tabindex="-1" role="dialog" >
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>
+       </div><!-- modal-header -->
+       <div class="modal-body">
+         Delete this Product?
+       </div><!-- modal-body -->
+       <div class="modal-footer">
+         <a id="confirm_delete_product_button" href="" class="btn btn-danger">Delete</a>
+         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       </div><!-- modal-footer -->
+     </div><!-- modal-content -->
+   </div><!-- modal-dialog -->
+ </div><!-- modal -->
+</%block>
