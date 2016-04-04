@@ -31,16 +31,17 @@ def process_request(request):
 @view_function
 @permission_required('catalog.add_category', login_url='/homepage/index')
 def create(request):
-    '''Create a New category'''
-    # process the form
-    form = CreatecategoryForm()
+    '''Create a New Category'''
+    form = CreateCategoryForm()
     if request.method == 'POST':
-        form = CreatecategoryForm(request.POST)
+        form = CreateCategoryForm(request.POST)
         if form.is_valid():
 
-            p.name = form.cleaned_data.get('name')
-            p.description = form.cleaned_data.get('description')
-            p.save()
+            c = cmod.Category()
+
+            c.name = form.cleaned_data.get('name')
+            c.description = form.cleaned_data.get('description')
+            c.save()
 
             return HttpResponseRedirect('/manager/categories/')
 
@@ -50,12 +51,12 @@ def create(request):
     return dmp_render_to_response(request, 'categories.create.html', template_vars)
 
 class CreateCategoryForm(forms.Form):
-    name = forms.CharField(label='category Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'category Name'}))
+    name = forms.CharField(label='Category Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Category Name'}))
     description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
 
 
 ################################################
-################# Edit a category ###############
+################# Edit a Category ##############
 ################################################
 @view_function
 @permission_required('catalog.change_category', login_url='/homepage/index/')
@@ -71,14 +72,10 @@ def edit(request):
         form = EditCategoryForm(request.POST)
         if form.is_valid():
 
-            # Store captured form data to category we're editing
-            category.name = form.cleaned_data.get('name')
-            category.description = form.cleaned_data.get('description')
+            c.name = form.cleaned_data.get('name')
+            c.description = form.cleaned_data.get('description')
+            c.save()
 
-            # Save changes
-            category.save()
-
-            # Redirect to users
             return HttpResponseRedirect('/manager/categories/')
 
     template_vars = {
