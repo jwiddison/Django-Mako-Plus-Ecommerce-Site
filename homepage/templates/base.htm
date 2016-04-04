@@ -158,22 +158,24 @@
     </%block>
 
     <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <%block name="footer">
-              ## Doing current year here to not have to declare the variable in every .py file on the site
-              <%
-                 import datetime
-                 current_year = datetime.date.today().year
-              %>
-              <p>Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
-            </%block>
-          </div><!-- col-md-12 -->
-        </div><!-- row -->
-      </div><!-- container -->
-    </footer>
+    <%block name="footer_outer">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <%block name="footer">
+                ## Doing current year here to not have to declare the variable in every .py file on the site
+                <%
+                   import datetime
+                   current_year = datetime.date.today().year
+                %>
+                <p>Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
+              </%block>
+            </div><!-- col-md-12 -->
+          </div><!-- row -->
+        </div><!-- container -->
+      </footer>
+    </%block>
 
     <!-- Javascript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

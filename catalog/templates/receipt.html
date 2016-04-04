@@ -2,10 +2,20 @@
 
 
 <%block name="top_content_area">
-  <h3>Receipt</h3>
+  <h3 style="margin-top:75px;">Receipt</h3>
   <hr />
   <br />
   <p>Thank you for your purchase!  Please keep a copy of this recipt for your records.</p>
+  <h4>Ship To:</h4>
+  <ul style="list-style:none">
+    <li>${sale.ShipName}</li>
+    <li>${sale.ShipAddress}</li>
+    <li>${sale.ShipCity}</li>
+    <li>${sale.ShipState}</li>
+    <li>${sale.ShipZipCode}</li>
+  </ul>
+  <h4>Tracking Number:</h4>
+  <p>${sale.TrackingNumber}</p>
   <h4>Order:</h4>
   <table class="table table-condensed table-striped">
     <tr>
@@ -15,40 +25,42 @@
       <th>Item Total</th>
     </tr>
     %for si in saleitems:
-    <tr>
-      <td>${si.Description}</td>
-      <td>$${si.Price}</td>
-      <td>${si.Quantity}</td>
-      <td>$${si.Extended}</td>
-    </tr>
       %if si.Description == 'Tax':
         <tr>
+          <td></td>
+          <td></td>
           <td><b>Tax:</b></td>
-          <td></td>
-          <td></td>
-          <td>${si.Extended}</td>
+          <td>$${si.Extended}</td>
         </tr>
-      %endif
-      %if si.Description == 'Shipping':
+      %elif si.Description == 'Shipping':
         <tr>
+          <td></td>
+          <td></td>
           <td><b>Shipping:</b></td>
-          <td></td>
-          <td></td>
-          <td>${si.Extended}</td>
+          <td>$${si.Extended}</td>
+        </tr>
+      %else:
+        <tr>
+          <td><b>${si.Description}</b></td>
+          <td>$${si.Price}</td>
+          <td>${si.Quantity}</td>
+          <td>$${si.Extended}</td>
         </tr>
       %endif
     %endfor
     <tr> <!-- Total Price -->
+      <td></td>
+      <td></td>
       <td><b>Total:</b></td>
-      <td></td>
-      <td></td>
       <td><b>$${sale.TotalPrice}</b></td>
     </tr>
   </table>
+  <h4>Thank you for your order!</h4>
+  <a href="/catalog/index/">Continue Shopping</a>
 </%block>
 
 
 ## Blocks to leave blank here
 <%block name = "base_header"></%block>
-<%block name = "footer"></%block>
+<%block name = "footer_outer"></%block>
 <%block name = "column_layout"></%block>

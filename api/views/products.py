@@ -7,25 +7,40 @@ from catalog import models as cmod
 
 def process_request(request):
 
+    # Not sure which of these I'm going to use, so I have both in here for now.
     name = request.urlparams[0]
     minprice = request.urlparams[1]
     maxprice = request.urlparams[2]
     category = request.urlparams[3]
 
+    name = request.GET.get('name', '')
+    minprice = request.GET.get('minprice', '')
+    maxprice = request.GET.get('maxprice', '')
+    category = request.GET.get('category', '')
+
+    # Get all the products
+    products = cmod.Product.objects.all()
+
     # Product Name (partial, case-insensitve)
     if request.GET.get('name'):
-        products = cmod.Product.objects.all().filter(name__icontains = name)
+        products = products.filter(name__icontains = name)
 
     # Min Price
     if request.GET.get('minprice'):
-        products = cmod.Product.objects.all().filter(price >= minprice)
+        products = products.filter(price >= minprice)
 
     # Max Price
     if request.GET.get('maxprice'):
-        products = cmod.Product.objects.all().filter(price <= maxprice)
+        products = products.filter(price <= maxprice)
 
     # Category Name (partial, case-insensitve)
     if request.GET.get('category'):
-        products = cmod.Product.objects.all().filter(category__icontains = category)
+        products = products.filter(category__icontains = category)
 
     return products
+
+class APIForm(forms.Form):
+    name = forms.CharField(required=False)
+    minprice = forms.DecimalField(required=False)
+    maxprice = forms.DecimalField(required=False)
+    category = forms.CharField(required=False)

@@ -17,13 +17,13 @@ def process_request(request):
     except cmod.Product.DoesNotExist:
         return HttpResponseRedirect('/catalog/index/')
 
-    send_mail(
-        'CHFSales.com Order Confirmation', # Subject
-        'Testing the Message', # Message
-        'orders@chfsales.com', # From address
-        ['jordan.widdison@gmail.com'], # To address
-        fail_silenty=False
-    )
+    # send_mail(
+    #     'CHFSales.com Order Confirmation', # Subject
+    #     'Testing the Message', # Message
+    #     'orders@chfsales.com', # From address
+    #     ['jordan.widdison@gmail.com'], # To address
+    #     # fail_silenty=True
+    # )
 
     saleitems = sale.get_saleitems()
     print(saleitems)

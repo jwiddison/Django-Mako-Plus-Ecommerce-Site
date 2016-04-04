@@ -26,7 +26,7 @@ class Sale(models.Model):
         return 'Sale -> Price: %s, Buyer: %s' % (self.TotalPrice, self.Buyer)
 
     def get_saleitems(self):
-        return SaleItem.objects.all().filter(id=self.id)
+        return SaleItem.objects.all().filter(sale=self.id)
 
 
 admin.site.register(Sale)
