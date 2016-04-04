@@ -56,7 +56,9 @@ def create(request):
             p.name = form.cleaned_data.get('name')
             p.price = form.cleaned_data.get('price')
             p.description = form.cleaned_data.get('description')
-            p.image = form.cleaned_data.get('image')
+            p.category = form.cleaned_data.get('category')
+            # Removed for Sprint 4
+            # p.image = form.cleaned_data.get('image')
 
             # Update database with user object
             p.save()
@@ -80,7 +82,9 @@ class CreateProductForm(forms.Form):
     name = forms.CharField(label='Product Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Product Name'}))
     price = forms.CharField(label='Price', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price'}))
     description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    image = forms.CharField(label='Image', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Image'}))
+    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all())
+    # Removed from Sprint 4
+    # image = forms.CharField(label='Image', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Image'}))
     # Create form fields depending on which type of product you're working with
     purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01'}))
     status = forms.CharField(label='Status', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Availability Status'}))
@@ -112,7 +116,8 @@ def edit(request):
             product.name = form.cleaned_data.get('name')
             product.price = form.cleaned_data.get('price')
             product.description = form.cleaned_data.get('description')
-            product.image = form.cleaned_data.get('image')
+            product.category = form.cleaned_data.get('category')
+            # product.image = form.cleaned_data.get('image')
             if product.__class__.className == 'Rental Product':
                 product.purchase_date = form.cleaned_data.get('purchase_date')
                 product.status = form.cleaned_data.get('status')
@@ -140,7 +145,8 @@ class EditProductForm(forms.Form):
     name = forms.CharField(label='Name', max_length=100, required=True)
     price = forms.CharField(label='Price', max_length=100, required=False)
     description = forms.CharField(label='Description', max_length=100, required=False)
-    image = forms.CharField(label='Image', max_length=100, required=False)
+    # image = forms.CharField(label='Image', max_length=100, required=False)
+    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all())
     # Create form fields depending on which type of product you're working with
     purchase_date = forms.DateField(label='Purchase_date', required=False)
     status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES)
