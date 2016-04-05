@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459878308.60596
+_modified_time = 1459881063.001629
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -74,7 +74,7 @@ def render_body(context,**pageargs):
         
         __M_locals_builtin_stored = __M_locals_builtin()
         __M_locals.update(__M_dict_builtin([(__M_key, __M_locals_builtin_stored[__M_key]) for __M_key in ['static_renderer'] if __M_key in __M_locals_builtin_stored]))
-        __M_writer('\n\n<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8">\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta name="viewport" content="width=device-width, initial-scale=1">\n    <title>')
+        __M_writer('\n\n<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">\n    <meta name="HandheldFriendly" content="True">\n    <meta name="MobileOptimized" content="320">\n    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0">\n    <meta name="apple-mobile-web-app-capable" content="yes">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'title'):
             context['self'].title(**pageargs)
         
@@ -329,7 +329,8 @@ def render_base_header(context,**pageargs):
             __M_writer('                  <li class = "dropdown">\n                    <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">Hello ')
             __M_writer(str( request.user ))
             __M_writer('! <b class = "caret"></b></a>\n                    <ul class = "dropdown-menu">\n                      <li><a href="/account/index">Account Summary</a></li>\n                      <li><a href="/account/edit">Edit Account Info</a></li>\n                      <li><a href="/account/change_password">Change Password</a></li>\n')
-            __M_writer('                        <li role="presentation" class="divider"></li>\n                        <li><a href="/manager/index">Admin</a></li>\n')
+            if request.user.groups.all().filter(name='Manager'):
+                __M_writer('                        <li role="presentation" class="divider"></li>\n                        <li><a href="/manager/index">Admin</a></li>\n')
             __M_writer('                      <li role="presentation" class="divider"></li>\n                      <li><a href=\'/account/logout/\'>Logout</a></li>\n                    </ul>\n                  </li>\n')
         else:
             __M_writer('                  <button class="btn btn-danger" id="loginbutton">Login</button>\n')
@@ -553,6 +554,6 @@ def render_navbar_title(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "/homepage/templates/base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"512": 157, "257": 158, "342": 165, "518": 153, "263": 130, "524": 153, "269": 130, "17": 5, "530": 147, "275": 150, "350": 165, "536": 147, "281": 150, "542": 62, "287": 43, "548": 62, "390": 113, "554": 548, "303": 43, "304": 45, "309": 47, "310": 60, "311": 60, "316": 64, "481": 172, "321": 76, "322": 78, "71": 3, "328": 86, "329": 87, "330": 88, "331": 88, "332": 95, "77": 6, "334": 102, "335": 103, "336": 105, "82": 14, "83": 15, "84": 15, "85": 17, "86": 17, "87": 18, "88": 18, "89": 20, "90": 20, "91": 22, "92": 22, "93": 22, "94": 27, "99": 40, "104": 109, "361": 122, "109": 115, "488": 176, "114": 121, "19": 0, "372": 123, "119": 129, "377": 128, "449": 126, "124": 132, "383": 113, "129": 138, "406": 79, "134": 162, "391": 114, "392": 114, "139": 182, "140": 186, "141": 186, "142": 187, "143": 187, "144": 188, "145": 188, "146": 189, "147": 189, "148": 190, "149": 190, "150": 191, "151": 191, "152": 192, "153": 192, "413": 142, "355": 177, "159": 27, "419": 142, "167": 27, "405": 78, "327": 80, "172": 34, "370": 122, "431": 136, "72": 5, "178": 68, "371": 123, "437": 14, "398": 78, "73": 6, "185": 68, "186": 70, "187": 70, "188": 70, "189": 71, "190": 71, "191": 72, "192": 72, "193": 73, "194": 73, "195": 74, "196": 74, "197": 75, "198": 75, "455": 126, "204": 119, "461": 33, "333": 98, "210": 119, "467": 33, "407": 79, "216": 141, "473": 170, "479": 170, "480": 172, "425": 136, "486": 175, "487": 176, "232": 141, "237": 144, "494": 46, "242": 148, "500": 46, "247": 152, "506": 157, "252": 154, "443": 14}}
+{"uri": "/homepage/templates/base.htm", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"257": 163, "555": 549, "537": 152, "263": 135, "343": 170, "269": 135, "17": 5, "275": 155, "281": 155, "287": 47, "549": 66, "519": 158, "303": 47, "304": 49, "513": 162, "309": 51, "310": 64, "311": 64, "316": 68, "321": 80, "322": 82, "71": 3, "328": 90, "329": 91, "330": 92, "331": 92, "332": 99, "77": 6, "334": 103, "335": 107, "336": 108, "337": 110, "82": 18, "83": 19, "84": 19, "85": 21, "86": 21, "87": 22, "88": 22, "89": 24, "90": 24, "91": 26, "92": 26, "93": 26, "94": 31, "351": 170, "99": 44, "356": 182, "104": 114, "444": 18, "362": 127, "109": 120, "488": 181, "114": 126, "19": 0, "372": 128, "373": 128, "119": 134, "378": 133, "124": 137, "384": 118, "129": 143, "406": 82, "134": 167, "391": 118, "392": 119, "393": 119, "139": 187, "140": 191, "141": 191, "142": 192, "143": 192, "144": 193, "145": 193, "146": 194, "147": 194, "148": 195, "149": 195, "150": 196, "151": 196, "152": 197, "153": 197, "525": 158, "414": 147, "159": 31, "420": 147, "167": 31, "426": 141, "327": 84, "172": 38, "432": 141, "72": 5, "178": 72, "371": 127, "438": 18, "73": 6, "543": 66, "185": 72, "186": 74, "187": 74, "188": 74, "189": 75, "190": 75, "191": 76, "192": 76, "193": 77, "194": 77, "195": 78, "196": 78, "197": 79, "198": 79, "456": 131, "204": 124, "462": 37, "333": 100, "450": 131, "210": 124, "399": 82, "407": 83, "482": 177, "216": 146, "474": 175, "480": 175, "481": 177, "408": 83, "487": 180, "232": 146, "489": 181, "531": 152, "237": 149, "495": 50, "242": 153, "501": 50, "247": 157, "468": 37, "507": 162, "252": 159}}
 __M_END_METADATA
 """

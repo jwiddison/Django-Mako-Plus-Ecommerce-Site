@@ -8,18 +8,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- <meta charset="UTF-8"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <title><%block name="title">Colonial Heritage Foundation</%block></title>
     <link rel="icon" type="img/ico" href="${ STATIC_URL }homepage/media/pics/flagicon.gif">
     <!-- Bootstrap minified CSS, and custom global CSS -->
@@ -99,11 +94,10 @@
                       <li><a href="/account/index">Account Summary</a></li>
                       <li><a href="/account/edit">Edit Account Info</a></li>
                       <li><a href="/account/change_password">Change Password</a></li>
-                      ## TODO:  Fix this later to make sure only people with admin privledges see the admin part of the menu.
-                      ## %if request.user.groups == 'Manager' or request.user.groups == "SalesRep":
+                      %if request.user.groups.all().filter(name='Manager') or request.user.groups.all().filter(name='SalesRep'):
                         <li role="presentation" class="divider"></li>
                         <li><a href="/manager/index">Admin</a></li>
-                      ## %endif
+                      %endif
                       <li role="presentation" class="divider"></li>
                       <li><a href='/account/logout/'>Logout</a></li>
                     </ul>
