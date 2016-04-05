@@ -27,12 +27,12 @@ STRIPE_SECRET_KEY = 'sk_test_kw7mgQceM2YnfMC4Zrsur8sb'
 STRIPE_PUBLIC_KEY = 'pk_test_MHyCTSEPuZxOaIsMh4RIFcbB'
 GOOGLE_SERVER_KEY = 'AIzaSyBPic4S2IEKGVinGhN61E5Fy42s8nu3DEA'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
-# EMAIL_HOST = 'gateway.byu.edu'
-EMAIL_HOST = 'mail.chfsales.com'
-EMAIL_HOST_USER = 'orders@chfsales.com'
-EMAIL_HOST_PASSWORD = 'Group12ia!'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 25
+EMAIL_HOST = 'gateway.byu.edu'
+# EMAIL_HOST = 'mail.chfsales.com'
+# EMAIL_HOST_USER = 'orders@chfsales.com'
+# EMAIL_HOST_PASSWORD = 'Group12ia!'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 25
 
 # Application definition
 

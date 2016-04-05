@@ -14,16 +14,13 @@ def process_request(request):
     # Get the sale off the url
     try:
         sale = cmod.Sale.objects.get(id=request.urlparams[0])
-    except cmod.Product.DoesNotExist:
+    except cmod.Sale.DoesNotExist:
         return HttpResponseRedirect('/catalog/index/')
 
-    # send_mail(
-    #     'CHFSales.com Order Confirmation', # Subject
-    #     'Testing the Message', # Message
-    #     'orders@chfsales.com', # From address
-    #     ['jordan.widdison@gmail.com'], # To address
-    #     # fail_silenty=True
-    # )
+    message = 'test email'
+    # message = dmp_render(request, '/catalog/receipt/%s/' % (sale.id))
+
+    send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
 
     saleitems = sale.get_saleitems()
     print(saleitems)
