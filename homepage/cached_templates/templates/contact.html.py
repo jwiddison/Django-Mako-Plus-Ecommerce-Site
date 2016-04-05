@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459830718.066951
+_modified_time = 1459831963.822187
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/contact.html'
 _template_uri = 'contact.html'
@@ -87,7 +87,7 @@ def render_top_content_area(context,**pageargs):
         __M_writer = context.writer()
         __M_writer('\n  <div class="text-center">\n    <img src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n    <hr/>\n    <br/>\n    <h2>Contact</h2>\n    <a><span class="glyphicon glyphicon-chevron-down animated infinite swing big_icon"></span></a>\n  </div>\n')
+        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n    <hr/>\n    <br/>\n    <h2>Contact Us</h2>\n    <a><span class="glyphicon glyphicon-chevron-down animated infinite swing big_icon"></span></a>\n  </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
