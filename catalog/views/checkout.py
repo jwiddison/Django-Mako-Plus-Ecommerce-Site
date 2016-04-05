@@ -136,7 +136,7 @@ def payment(request):
 
             # clear the shopping cart
             #TODO uncomment out this line
-            #request.shopping_cart.clear_items()
+            request.shopping_cart.clear_items()
 
             # Redirect to the receipt page
             return HttpResponseRedirect('/catalog/receipt/%s' % (sale.id))

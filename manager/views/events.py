@@ -59,7 +59,7 @@ def create(request):
 
 class CreateEventForm(forms.Form):
     name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
-    description = forms.CharField(label='Desctiption', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
+    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
     start_date = forms.DateField(label='Start Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
     end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
     venue = forms.ModelChoiceField(label='Venue', required=True, queryset=cmod.Venue.objects.all())
