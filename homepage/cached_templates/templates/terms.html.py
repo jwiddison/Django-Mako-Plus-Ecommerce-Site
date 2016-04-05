@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459831896.779111
+_modified_time = 1459878310.680327
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html'
 _template_uri = 'terms.html'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['content_left', 'top_content_area', 'content', 'content_right']
+_exports = ['content_right', 'top_content_area', 'content', 'content_left']
 
 
 def _mako_get_namespace(context, name):
@@ -34,10 +34,10 @@ def render_body(context,**pageargs):
             return render_top_content_area(context._locals(__M_locals))
         def content():
             return render_content(context._locals(__M_locals))
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
         def content_left():
             return render_content_left(context._locals(__M_locals))
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -65,11 +65,11 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_left(context,**pageargs):
+def render_content_right(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_left():
-            return render_content_left(context)
+        def content_right():
+            return render_content_right(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -103,11 +103,11 @@ def render_content(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_right(context,**pageargs):
+def render_content_left(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def content_right():
-            return render_content_right(context)
+        def content_left():
+            return render_content_left(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -116,6 +116,6 @@ def render_content_right(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"source_encoding": "utf-8", "line_map": {"100": 13, "68": 61, "42": 1, "79": 3, "52": 58, "94": 13, "86": 3, "87": 4, "88": 4, "57": 61, "47": 11, "28": 0, "106": 62, "62": 62, "117": 106}, "uri": "terms.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html"}
+{"uri": "terms.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/terms.html", "source_encoding": "utf-8", "line_map": {"100": 13, "68": 62, "42": 1, "79": 3, "52": 58, "94": 13, "86": 3, "87": 4, "88": 4, "57": 61, "47": 11, "28": 0, "106": 61, "62": 62, "117": 106}}
 __M_END_METADATA
 """
