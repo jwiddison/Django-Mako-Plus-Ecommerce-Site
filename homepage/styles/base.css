@@ -79,5 +79,8 @@ a > i{
 
 /* Set colors for headings -- Same colors as Info, Warning, and Primary */
 h1 {color: #0F0657}
-h2 {color: #211C5A}
+h2 {
+  color: #211C5A;
+  font-size: 2.5em;
+}
 h3 {color: #A30622}
