@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459402150.146174
+_modified_time = 1459830552.166524
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/faq.html'
 _template_uri = 'faq.html'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['top_content_area', 'column_layout']
+_exports = ['top_content_area', 'content', 'column_right', 'column_left']
 
 
 def _mako_get_namespace(context, name):
@@ -29,11 +29,15 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def column_layout():
-            return render_column_layout(context._locals(__M_locals))
+        def content():
+            return render_content(context._locals(__M_locals))
+        def column_right():
+            return render_column_right(context._locals(__M_locals))
+        def column_left():
+            return render_column_left(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n\n')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'top_content_area'):
@@ -41,8 +45,18 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\n\n')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_layout'):
-            context['self'].column_layout(**pageargs)
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
+            context['self'].content(**pageargs)
+        
+
+        __M_writer('\n\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_left'):
+            context['self'].column_left(**pageargs)
+        
+
+        __M_writer('\n')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_right'):
+            context['self'].column_right(**pageargs)
         
 
         __M_writer('\n\n')
@@ -55,23 +69,47 @@ def render_body(context,**pageargs):
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         def top_content_area():
             return render_top_content_area(context)
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n  <img src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n  <h1>Frequently Asked Questions</h1>\n  <hr/>\n  <br/>\n  <h3>Question:</h3>\n  <p><b>What is the Colonial Heritage Foundation?</b></p>\n  <h3>Answer:</h3>\n  <p>The Colonial Heritage Foundation (the Foundation) is a 501(c)(3) corporation dedicated to the preservation of the values, culture, skills and history of America\'s founding. To accomplish this mission, the Foundation engages in a broad array of activities. Among these are the development and presentation of educational exhibits, the coordination of reading and discussion groups to encourage the study of America\'s historical writings, the presentation of lectures and seminars regarding America\'s founding era, the coordination of historical reenactments and skill demonstrations, and the coordination of internships and apprenticeships that teach the occupational skills of early America.</p>\n  <hr/>\n  <h3>Question:</h3>\n  <p><b>Why "colonial heritage"?</b></p>\n  <h3>Answer:</h3>\n  <p>At the Colonial Heritage Foundation, we believe that the core virtues present at our Nation\'s founding that make the United States of America the great nation that it is have slowly began to erode over time.  The purpose of the foundation is to help American find their "colonial heritage" and learn about those virtues that used to define what it meant to be an American.</p>\n  <hr/>\n  <h3>Question:</h3>\n  <p><b>Why would I want to be involved with the Colonial Heritage Foundation?</b></p>\n  <h3>Answer:</h3>\n  <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe that knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>\n')
+        __M_writer('homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>\n  <hr/>\n  <br/>\n  <div class="text-center">\n    <h2>Frequently Asked Questions</h2>\n    <span class="glyphicon glyphicon-chevron-down big_icon"></span>\n  </div>\n')
         return ''
     finally:
         context.caller_stack._pop_frame()
 
 
-def render_column_layout(context,**pageargs):
+def render_content(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def column_layout():
-            return render_column_layout(context)
+        def content():
+            return render_content(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('  <h3>Question:</h3>\n  <p><b>What is the Colonial Heritage Foundation?</b></p>\n  <h3>Answer:</h3>\n  <p>The Colonial Heritage Foundation (the Foundation) is a 501(c)(3) corporation dedicated to the preservation of the values, culture, skills and history of America\'s founding. To accomplish this mission, the Foundation engages in a broad array of activities. Among these are the development and presentation of educational exhibits, the coordination of reading and discussion groups to encourage the study of America\'s historical writings, the presentation of lectures and seminars regarding America\'s founding era, the coordination of historical reenactments and skill demonstrations, and the coordination of internships and apprenticeships that teach the occupational skills of early America.</p>\n  <hr/>\n  <h3>Question:</h3>\n  <p><b>Why "colonial heritage"?</b></p>\n  <h3>Answer:</h3>\n  <p>At the Colonial Heritage Foundation, we believe that the core virtues present at our Nation\'s founding that make the United States of America the great nation that it is have slowly began to erode over time.  The purpose of the foundation is to help American find their "colonial heritage" and learn about those virtues that used to define what it meant to be an American.</p>\n  <hr/>\n  <h3>Question:</h3>\n  <p><b>Why would I want to be involved with the Colonial Heritage Foundation?</b></p>\n  <h3>Answer:</h3>\n  <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe that knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>\n')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_column_right(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def column_right():
+            return render_column_right(context)
+        __M_writer = context.writer()
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_column_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def column_left():
+            return render_column_left(context)
         __M_writer = context.writer()
         return ''
     finally:
@@ -80,6 +118,6 @@ def render_column_layout(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "faq.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/faq.html", "source_encoding": "utf-8", "line_map": {"48": 26, "49": 39, "70": 26, "38": 1, "55": 3, "64": 4, "43": 24, "28": 0, "81": 70, "62": 3, "63": 4}}
+{"source_encoding": "utf-8", "line_map": {"84": 13, "97": 33, "69": 3, "108": 32, "42": 1, "76": 3, "77": 4, "78": 4, "47": 11, "52": 30, "119": 108, "57": 32, "90": 13, "91": 16, "28": 0, "62": 33, "63": 46}, "uri": "faq.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/faq.html"}
 __M_END_METADATA
 """

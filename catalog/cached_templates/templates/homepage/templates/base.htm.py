@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459821282.855833
+_modified_time = 1459830291.557716
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = '/homepage/templates/base.htm'
@@ -486,7 +486,7 @@ def render_transbox_start(context,**pageargs):
         def transbox_start():
             return render_transbox_start(context)
         __M_writer = context.writer()
-        __M_writer('\n              <div class="transbox animated slideInDown">\n            ')
+        __M_writer('\n              <div class="transbox">\n            ')
         return ''
     finally:
         context.caller_stack._pop_frame()

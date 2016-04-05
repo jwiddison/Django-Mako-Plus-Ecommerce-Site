@@ -4,9 +4,15 @@
   <img src="${ STATIC_URL }homepage/media/pics/CHFLogo.png" class="img-responsive center-block" id="main_logo"/>
   <hr/>
   <br/>
-  <h1>Frequently Asked Questions</h1>
-  <hr/>
-  <br/>
+  <div class="text-center">
+    <h2>Frequently Asked Questions</h2>
+    <span class="glyphicon glyphicon-chevron-down big_icon"></span>
+  </div>
+</%block>
+
+<%block name="content">
+  ## <hr/>
+  ## <br/>
   <h3>Question:</h3>
   <p><b>What is the Colonial Heritage Foundation?</b></p>
   <h3>Answer:</h3>
@@ -23,7 +29,8 @@
   <p>We believe that all American people, whether born here, or from abroad can benefit from an education in what it means to be an American.  We believe that knowing and embracing our colonial heritage will benefit every person who endevours to learn about it.</p>
 </%block>
 
-<%block name="column_layout"></%block>
+<%block name="column_left"></%block>
+<%block name="column_right"></%block>
 
 ## <%block name="content_left">
 ##   <div id="big_left">

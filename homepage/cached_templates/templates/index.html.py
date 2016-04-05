@@ -5,7 +5,7 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1459404405.360762
+_modified_time = 1459830564.199797
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/index.html'
 _template_uri = 'index.html'
@@ -57,6 +57,6 @@ def render_content(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/index.html", "source_encoding": "utf-8", "line_map": {"35": 1, "52": 3, "40": 8, "58": 52, "28": 0, "46": 3}}
+{"source_encoding": "utf-8", "line_map": {"35": 1, "52": 3, "40": 8, "58": 52, "28": 0, "46": 3}, "uri": "index.html", "filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/index.html"}
 __M_END_METADATA
 """
