@@ -80,7 +80,10 @@
                 </%block>
                 ## Have the cart block in case you ever don't want it
                 <%block name="cart">
-                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton"><span class="glyphicon glyphicon-shopping-cart"></span><span class="cart_quantity">${request.shopping_cart.get_item_count()}</span></a>
+                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="cart_quantity">${request.shopping_cart.get_item_count()}</span>
+                  </a>
                 </%block>
               </ul>
               <ul class="nav navbar-nav navbar-right">

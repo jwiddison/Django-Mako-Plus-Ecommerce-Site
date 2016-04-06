@@ -20,7 +20,7 @@ def process_request(request):
     message = 'test email'
     # message = dmp_render(request, '/catalog/receipt/%s/' % (sale.id))
 
-    send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
+    # send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
 
     saleitems = sale.get_saleitems()
     print(saleitems)

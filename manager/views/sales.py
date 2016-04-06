@@ -9,9 +9,9 @@ from catalog import models as cmod
 from account import models as amod
 import datetime
 
-################################################
-############### Products Homepage ##############
-################################################
+################################################################################################
+############### Products Homepage ##############################################################
+################################################################################################
 @view_function
 @permission_required('catalog.change_sale', login_url='/homepage/index/')
 def process_request(request):

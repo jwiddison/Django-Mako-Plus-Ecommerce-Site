@@ -8,14 +8,13 @@
       %if isinstance(p, cmod.BulkProduct):
         ${form['quantity'].errors}
         ${form['quantity']}
-      %endif
-      %if isinstance(p, cmod.IndividualProduct):
+      %elif isinstance(p, cmod.IndividualProduct):
         ${form['quantity'].errors}
       %endif
       <input type="submit" class="btn btn-primary" value="Add to Cart" id="AddButton"/>
     </form>
 
-    ## did we just submit the form?
+    ## Display message when form submits.
     %if form.is_valid():
       <div>
         Added! <a href="/catalog/cart/">View Cart</a>
