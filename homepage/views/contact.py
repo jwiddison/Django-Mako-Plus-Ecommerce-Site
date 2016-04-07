@@ -23,20 +23,20 @@ def process_request(request):
             phone = form.cleaned_data.get('phone')
             message = form.cleaned_data.get('message')
 
-            print(name)
-            print(email)
-            print(phone)
-            print(message)
+            # print(name)
+            # print(email)
+            # print(phone)
+            # print(message)
 
 
-            # try:
-            send_mail(
-                'Email from CHFSales.com from %s' % (name),
-                'Here is your email:/nName: %s/nPhone: %s/nMessage: %s' % (name, phone, message),
-                'email',
-                ['jordan.widdison@gmail.com'],
-                fail_silently=True,
-            )
+            try:
+                send_mail(
+                    'Email from CHFSales.com from %s' % (name),
+                    'Here is your email:/nName: %s/nPhone: %s/nMessage: %s' % (name, phone, message),
+                    'email',
+                    ['jordan.widdison@gmail.com'],
+                    fail_silently=True,
+                )
 
             # subject = 'CHFSales.com Order Confirmation Receipt'
             # from_email = email
@@ -46,9 +46,9 @@ def process_request(request):
             # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
             # # msg.attach_alternative(html_content, "text/html")
             # msg.send()
-            #     sentmessage = 'Thank you for your email.  Someone from CHFSales will be in touch with you soon.'
-            # except:
-            #     sentmessage = 'There was a problem with your email.  Please try again later.'
+                sentmessage = 'Thank you for your email.  Someone from CHFSales will be in touch with you soon.'
+            except:
+                sentmessage = 'There was a problem with your email.  Please try again later.'
 
             # return HttpResponseRedirect('/homepage/contact')
 
