@@ -68,6 +68,9 @@ admin.site.register(Payment)
 ## Record Sale method
 def record_sale(user, address_list, cart, stripe_id):
     # Create a sale object
+
+    print(address_list)
+
     s = Sale(
         OrderDate = datetime.datetime.now(),
         ShipDate = datetime.datetime.now(),

@@ -129,13 +129,13 @@ def payment(request):
             if useGoogle == True:
                 address = request.session.get('google_address_response', [])
             else:
-                address = request.session.get('user_address_list', [])
+                address = request.session.get('user_input_address', [])
 
             # Create the sale, and store it here to redirect to recipt page
             sale = cmod.record_sale(request.user, address, request.shopping_cart, charge.get('id'))
 
             # clear the shopping cart
-            request.shopping_cart.clear_items()
+            # request.shopping_cart.clear_items()
 
             # Redirect to the receipt page
             return HttpResponseRedirect('/catalog/receipt/%s' % (sale.id))

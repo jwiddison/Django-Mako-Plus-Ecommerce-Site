@@ -4,7 +4,7 @@ from django_mako_plus.controller import view_function
 from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 from . import initialize_template_vars
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 
 
 @view_function
@@ -17,13 +17,20 @@ def process_request(request):
     except cmod.Sale.DoesNotExist:
         return HttpResponseRedirect('/catalog/index/')
 
-    message = 'test email'
-    # message = dmp_render(request, '/catalog/receipt/%s/' % (sale.id))
 
+    #message = 'test email'
+    # subject = 'CHFSales.com Order Confirmation Receipt'
+    # from_email = 'orders@chfsales.com'
+    # to = 'jordan.widdison@gmail.com'
+    # text_content = 'Email Confirmation of CHFSales.com Order'
+    # html_content = dmp_render(request, '/catalog/receipt/%s/' % (sale.id))
+    # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    # msg.attach_alternative(html_content, "text/html")
+    # msg.send()
     # send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
 
     saleitems = sale.get_saleitems()
-    print(saleitems)
+    # print(saleitems)
 
     # Send Sale to the template
     template_vars['sale'] = sale

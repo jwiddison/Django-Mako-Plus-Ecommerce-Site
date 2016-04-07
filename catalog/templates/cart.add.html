@@ -5,11 +5,15 @@
   <div class="add_form">
     ${form.non_field_errors()}
     <form action="/catalog/cart.add/${p.id}/" method="POST">
+      ## %if isinstance(p, cmod.BulkProduct):
+      ##   ${form['quantity'].errors}
+      ##   ${form['quantity']}
+      ## %elif isinstance(p, cmod.IndividualProduct):
+      ##   ${form['quantity'].errors}
+      ## %endif
+      ${form['quantity'].errors}
       %if isinstance(p, cmod.BulkProduct):
-        ${form['quantity'].errors}
         ${form['quantity']}
-      %elif isinstance(p, cmod.IndividualProduct):
-        ${form['quantity'].errors}
       %endif
       <input type="submit" class="btn btn-primary" value="Add to Cart" id="AddButton"/>
     </form>
