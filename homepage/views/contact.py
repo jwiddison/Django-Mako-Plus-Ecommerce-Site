@@ -23,19 +23,13 @@ def process_request(request):
             phone = form.cleaned_data.get('phone')
             message = form.cleaned_data.get('message')
 
-            # print(name)
-            # print(email)
-            # print(phone)
-            # print(message)
-
-
             try:
                 send_mail(
                     'Email from CHFSales.com from %s' % (name),
                     'Here is your email:/nName: %s/nPhone: %s/nMessage: %s' % (name, phone, message),
                     'email',
-                    ['jordan.widdison@gmail.com'],
-                    fail_silently=True,
+                    ['jordan@chfsales.com'],
+                    fail_silently=False,
                 )
 
             # subject = 'CHFSales.com Order Confirmation Receipt'
