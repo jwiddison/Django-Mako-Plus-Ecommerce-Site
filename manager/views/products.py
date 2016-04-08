@@ -23,7 +23,31 @@ def process_request(request):
     }
     return dmp_render_to_response(request, 'products.html', template_vars)
 
+################################################
+############### Add an Image ###################
+################################################
+@view_function
+@permission_required('catalog.add_product', login_url='/homepage/index')
+def addimage(request):
+    form = AddImageForm()
+    if request.method == 'POST':
+        form = AddImageForm(request.POST)
+        if form.is_valid():
+            pi = cmod.ProductImage()
+            pi.filename = form.cleaned_data.get('filename')
+            pi.product = form.cleaned_data.get('product')
+            pi.save()
+            return HttpResponseRedirect('/manager/products/')
 
+    # parameters from the email back to the browser just in case we need them later.
+    template_vars = {
+        'form': form
+    }
+    return dmp_render_to_response(request, 'products.addimage.html', template_vars)
+
+class AddImageForm(forms.Form):
+    filename = forms.CharField(label='Image Filename', required=True, widget=forms.TextInput(attrs={'placeholder': 'ex: ProductName.jpg', 'class': 'form-control'}))
+    product = forms.ModelChoiceField(label='Product Pictured', required=True, queryset=cmod.Product.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
 ################################################
 ############### Create a Product ###############
 ################################################
