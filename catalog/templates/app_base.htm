@@ -12,7 +12,7 @@
 </%block>
 
 <%block name="content_left">
-  <div style="position: fixed; margin-top:-100px" id="fixed_left">
+  <div style="position: fixed; margin-top:-150px" id="fixed_left">
     <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>
     <br />
     <br />
@@ -34,7 +34,7 @@
 </%block>
 
 <%block name="content_right">
-  <div style="position: fixed; margin-top:-100px" id="fixed_right">
+  <div style="position: fixed; margin-top:-150px" id="fixed_right">
     <h5>Recently Viewed Products:</h5>
     <hr />
     %for p in request.shopping_cart.get_viewed_items():

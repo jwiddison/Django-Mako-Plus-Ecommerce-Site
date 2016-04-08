@@ -19,14 +19,14 @@ def process_request(request):
 
 
     #message = 'test email'
-    subject = 'CHFSales.com Order Confirmation Receipt'
-    from_email = 'orders@chfsales.com'
-    to = 'jordan.widdison@gmail.com'
-    text_content = 'Email Confirmation of CHFSales.com Order'
-    html_content = dmp_render(request, '/catalog/receipt/%s/' % (str(sale.id)))
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
+    # subject = 'CHFSales.com Order Confirmation Receipt'
+    # from_email = 'orders@chfsales.com'
+    # to = 'jordan.widdison@gmail.com'
+    # text_content = 'Email Confirmation of CHFSales.com Order'
+    # html_content = dmp_render(request, '/catalog/receipt/%s/' % (str(sale.id)))
+    # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    # msg.attach_alternative(html_content, "text/html")
+    # msg.send()
     # send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
 
     saleitems = sale.get_saleitems()

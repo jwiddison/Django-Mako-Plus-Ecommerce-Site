@@ -173,6 +173,7 @@
 
     <!-- Footer -->
     <%block name="footer_outer">
+      ## <footer class="navbar-fixed-bottom">
       <footer>
         <div class="container">
           <div class="row">
@@ -183,7 +184,20 @@
                    import datetime
                    current_year = datetime.date.today().year
                 %>
-                <p>Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
+                <hr style="color:#E6272E"/>
+                <p id="footer_copy">Copyright &copy; ${ current_year } Colonial Heritage Foundation</p>
+                <ul class="list-inline pull-right">
+                  <li>
+                    <a href="https://www.facebook.com/ColonialHeritageFoundation"><i class="fa fa-facebook-square fa-2x pull-right footer_buttons"></i></a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/colonial_heritage_foundation"><i class="fa fa-instagram fa-2x pull-right footer_buttons"></i></a>
+                  </li>
+                  <li>
+                    <a href="http://www.colonialheritage.org/"><i class="fa fa-rss-square fa-2x pull-right footer_buttons"></i></a>
+                  </li>
+                </ul>
+                <hr style="color:#E6272E"/>
               </%block>
             </div><!-- col-md-12 -->
           </div><!-- row -->

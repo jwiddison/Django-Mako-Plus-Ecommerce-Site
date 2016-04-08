@@ -76,19 +76,19 @@ class CreateProductForm(forms.Form):
 		('IndividualProduct', 'Individual Product'),
 		('BulkProduct', 'Bulk Product'),
     )
-    product_type = forms.ChoiceField(label="Product Type", required=False, choices=PRODUCT_CHOICE_LIST)
-    name = forms.CharField(label='Product Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Product Name'}))
-    price = forms.CharField(label='Price', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price'}))
-    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all())
+    product_type = forms.ChoiceField(label="Product Type", required=False, choices=PRODUCT_CHOICE_LIST, widget=forms.Select(attrs={'class': 'form-control'}))
+    name = forms.CharField(label='Product Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Product Name', 'class': 'form-control'}))
+    price = forms.CharField(label='Price', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price', 'class': 'form-control'}))
+    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description', 'class': 'form-control'}))
+    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
     # Removed from Sprint 4
     # image = forms.CharField(label='Image', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Image'}))
     # Create form fields depending on which type of product you're working with
-    purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01'}))
-    status = forms.CharField(label='Status', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Availability Status'}))
-    create_date = forms.DateField(label='Creation Date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01'}))
-    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
-    quantity = forms.IntegerField(label='Quantity', required=False, widget=forms.TextInput(attrs={'placeholder': 0}))
+    purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01', 'class': 'form-control'}))
+    status = forms.CharField(label='Status', max_length=100, required=False, widget=forms.TextInput(attrs={'placeholder': 'Availability Status', 'class': 'form-control'}))
+    create_date = forms.DateField(label='Creation Date', required=False, widget=forms.TextInput(attrs={'placeholder': '2000-01-01', 'class': 'form-control'}))
+    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
+    quantity = forms.IntegerField(label='Quantity', required=False, widget=forms.TextInput(attrs={'placeholder': 0, 'class': 'form-control'}))
 
 
 ################################################
@@ -140,17 +140,17 @@ def edit(request):
 
 
 class EditProductForm(forms.Form):
-    name = forms.CharField(label='Name', max_length=100, required=True)
-    price = forms.CharField(label='Price', max_length=100, required=False)
-    description = forms.CharField(label='Description', max_length=100, required=False)
+    name = forms.CharField(label='Name', max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    price = forms.CharField(label='Price', max_length=100, required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    description = forms.CharField(label='Description', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
     # image = forms.CharField(label='Image', max_length=100, required=False)
-    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all())
+    category = forms.ModelChoiceField(label='Category',required=True, queryset=cmod.Category.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
     # Create form fields depending on which type of product you're working with
-    purchase_date = forms.DateField(label='Purchase_date', required=False)
-    status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES)
-    create_date = forms.DateField(label='Creation Date', required=False)
-    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all())
-    quantity = forms.IntegerField(label='Quantity', required=False)
+    purchase_date = forms.DateField(label='Purchase_date', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    status = forms.ChoiceField(label='Status', required=False, choices=cmod.RENTAL_STATUS_CHOICES, widget=forms.Select(attrs={'class':'form-control'}))
+    create_date = forms.DateField(label='Creation Date', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    creator = forms.ModelChoiceField(label='Creator', required=False, queryset=amod.User.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
+    quantity = forms.IntegerField(label='Quantity', required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
 
 

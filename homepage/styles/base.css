@@ -12,21 +12,31 @@ img{
 }
 
 footer{
-  margin-top:80px;
-  background-color:#E6272E;
+  margin-top:75px;
+  /*background-color:white;*/
   padding-top:19px;
-  padding-bottom: 0px;
-  color:white;
+  /*padding-bottom: 0px;*/
+  /*color:#E6272E;*/
+  /*position: relative;
+  bottom:0;
+  left:0;
+  right:0;*/
 }
 
-a > i{
+#footer_copy{
+  display: inline;
+}
+
+li > a > i{
   color:white;
-  /*margin-top:19px;*/
-  /*margin-right:15px;*/
-  /*margin-left:-10px;*/
-  display:inline-block;
-  margin-left:-10px;
+  display:block;
+  margin-left:-30px;
   margin-right:-10px;
+}
+
+.footer_buttons{
+  color:#E6272E;
+  margin-left:0px;
 }
 
 .row{

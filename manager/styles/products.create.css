@@ -1,0 +1,12 @@
+#id_poduct_type,
+#id_name,
+#id_price,
+#id_description,
+#id_category,
+#id_purchase_date,
+#id_status,
+#id_create_date,
+#id_creator,
+#id_quantity{
+  min-width: 400px;
+}

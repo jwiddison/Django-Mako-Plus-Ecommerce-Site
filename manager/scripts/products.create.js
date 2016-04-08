@@ -32,4 +32,12 @@ $(document).ready(function(){
   $('#id_create_date').parent().parent().hide();
   $('#id_creator').parent().parent().hide();
   $('#id_quantity').parent().parent().hide();
+
+  $('#id_create_date').datetimepicker({
+      format: 'YYYY-MM-DD'
+  });
+  $('#id_purchase_date').datetimepicker({
+      format: 'YYYY-MM-DD'
+  });
+
 }); //Document Ready
