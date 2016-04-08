@@ -30,14 +30,15 @@
         <td>${product.price}</td>
         <td>${product.description}</td>
         <td>${product.category}</td>
-        <td>
-        %for image in images:
-          %if image.product == product:
-            <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive"/>
-            <% break %>
-          %endif
-        %endfor
-        </td>
+        <td><img src="${ STATIC_URL }catalog/media/pics/${product.get_image_filename()}" alt="${product.name}" class="img-responsive img-circle"/></td>
+        ## <td>
+        ## %for image in images:
+        ##   %if image.product == product:
+        ##     <img src="${ STATIC_URL }catalog/media/pics/${ image.filename }" alt="${product.name}" class="img-responsive"/>
+        ##     <% break %>
+        ##   %endif
+        ## %endfor
+        ## </td>
         <td>${product.add_date}</td>
         <td>
           %if product.__class__.className == "Rental Product":

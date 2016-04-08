@@ -58,11 +58,11 @@ def create(request):
     return dmp_render_to_response(request, 'events.create.html', template_vars)
 
 class CreateEventForm(forms.Form):
-    name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name'}))
-    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description'}))
-    start_date = forms.DateField(label='Start Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date'}))
-    end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date'}))
-    venue = forms.ModelChoiceField(label='Venue', required=True, queryset=cmod.Venue.objects.all())
+    name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name', 'class': 'form-control'}))
+    description = forms.CharField(label='Description', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Description', 'class': 'form-control'}))
+    start_date = forms.DateField(label='Start Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'Start Date', 'class': 'form-control'}))
+    end_date = forms.DateField(label='End Date', required=False, widget=forms.TextInput(attrs={'placeholder': 'End Date', 'class': 'form-control'}))
+    venue = forms.ModelChoiceField(label='Venue', required=True, queryset=cmod.Venue.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
 
 ################################################################################################
 ################# Edit a event #################################################################

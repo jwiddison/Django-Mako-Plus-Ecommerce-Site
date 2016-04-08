@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1460061728.007952
+_modified_time = 1460091308.816259
 _enable_loop = True
 _template_filename = '/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['center_content_class', 'parallax_end', 'maintainence_message', 'top_content_area', 'base_header', 'alert', 'navbar_title', 'content_right', 'transbox_start', 'content_left', 'title', 'footer', 'parallax_start', 'content', 'column_layout', 'transbox_end', 'column_container_type', 'menu', 'cart', 'top_content_text', 'maintainence_container', 'footer_outer']
+_exports = ['title', 'column_container_type', 'parallax_start', 'menu', 'center_content_class', 'top_content_text', 'maintainence_container', 'transbox_end', 'navbar_title', 'column_layout', 'content', 'parallax_end', 'maintainence_message', 'content_left', 'footer', 'top_content_area', 'transbox_start', 'content_right', 'alert', 'base_header', 'cart', 'footer_outer']
 
 
 from django_mako_plus.controller import static_files 
@@ -20,53 +20,53 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
+        def title():
+            return render_title(context._locals(__M_locals))
+        def column_container_type():
+            return render_column_container_type(context._locals(__M_locals))
+        def menu():
+            return render_menu(context._locals(__M_locals))
         def center_content_class():
             return render_center_content_class(context._locals(__M_locals))
-        def parallax_end():
-            return render_parallax_end(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def alert():
+            return render_alert(context._locals(__M_locals))
+        def top_content_text():
+            return render_top_content_text(context._locals(__M_locals))
         def top_content_area():
             return render_top_content_area(context._locals(__M_locals))
         def footer():
             return render_footer(context._locals(__M_locals))
-        def base_header():
-            return render_base_header(context._locals(__M_locals))
-        def alert():
-            return render_alert(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def parallax_start():
+            return render_parallax_start(context._locals(__M_locals))
+        def transbox_end():
+            return render_transbox_end(context._locals(__M_locals))
         def navbar_title():
             return render_navbar_title(context._locals(__M_locals))
-        def content_right():
-            return render_content_right(context._locals(__M_locals))
+        def maintainence_container():
+            return render_maintainence_container(context._locals(__M_locals))
+        def column_layout():
+            return render_column_layout(context._locals(__M_locals))
+        self = context.get('self', UNDEFINED)
+        def content():
+            return render_content(context._locals(__M_locals))
+        def parallax_end():
+            return render_parallax_end(context._locals(__M_locals))
+        def maintainence_message():
+            return render_maintainence_message(context._locals(__M_locals))
+        def footer_outer():
+            return render_footer_outer(context._locals(__M_locals))
+        def content_left():
+            return render_content_left(context._locals(__M_locals))
         def transbox_start():
             return render_transbox_start(context._locals(__M_locals))
         request = context.get('request', UNDEFINED)
-        def title():
-            return render_title(context._locals(__M_locals))
-        def content_left():
-            return render_content_left(context._locals(__M_locals))
-        def footer_outer():
-            return render_footer_outer(context._locals(__M_locals))
-        def parallax_start():
-            return render_parallax_start(context._locals(__M_locals))
-        def content():
-            return render_content(context._locals(__M_locals))
-        def column_layout():
-            return render_column_layout(context._locals(__M_locals))
-        def transbox_end():
-            return render_transbox_end(context._locals(__M_locals))
-        def column_container_type():
-            return render_column_container_type(context._locals(__M_locals))
-        def maintainence_message():
-            return render_maintainence_message(context._locals(__M_locals))
-        def menu():
-            return render_menu(context._locals(__M_locals))
+        def content_right():
+            return render_content_right(context._locals(__M_locals))
+        def base_header():
+            return render_base_header(context._locals(__M_locals))
         def cart():
             return render_cart(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        def top_content_text():
-            return render_top_content_text(context._locals(__M_locals))
-        def maintainence_container():
-            return render_maintainence_container(context._locals(__M_locals))
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('\n')
@@ -156,6 +156,73 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('Colonial Heritage Foundation')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_column_container_type(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def column_container_type():
+            return render_column_container_type(context)
+        __M_writer = context.writer()
+        __M_writer('\n        <div class="container">\n      ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_parallax_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        def parallax_start():
+            return render_parallax_start(context)
+        __M_writer = context.writer()
+        __M_writer('\n      <div class="parallax-window" data-parallax="scroll" data-image-src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/pics/CHFcanon.JPG">\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_menu(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        request = context.get('request', UNDEFINED)
+        def menu():
+            return render_menu(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''))
+        __M_writer('"><a href="/">Home</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
+        __M_writer('"><a href="/about">About</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
+        __M_writer('"><a href="/terms">Terms</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
+        __M_writer('"><a href="/faq">FAQ</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'upcomingevents' else ''))
+        __M_writer('"><a href="/upcomingevents">Upcoming Events</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
+        __M_writer('"><a href="/contact">Contact</a></li>\n                  <li class="')
+        __M_writer(str( 'active' if request.dmp_router_app == 'catalog' else ''))
+        __M_writer('"><a href="/catalog">Shop</a></li>\n                ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_center_content_class(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -163,6 +230,120 @@ def render_center_content_class(context,**pageargs):
             return render_center_content_class(context)
         __M_writer = context.writer()
         __M_writer('\n          <div class="col-md-8">\n          ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_top_content_text(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def top_content_text():
+            return render_top_content_text(context)
+        __M_writer = context.writer()
+        __M_writer('\n                    <div class="text-center">\n                      <h2>Welcome to CHFSales.com</h2>\n                      <a><span class="glyphicon glyphicon-chevron-down big_icon"></span></a>\n                    </div>\n                  ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_maintainence_container(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def maintainence_message():
+            return render_maintainence_message(context)
+        def maintainence_container():
+            return render_maintainence_container(context)
+        __M_writer = context.writer()
+        __M_writer('\n      <div class="jumbotron">\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              <div id="maintainence_message">\n                ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
+            context['self'].maintainence_message(**pageargs)
+        
+
+        __M_writer('\n              </div><!-- maintainence_message -->\n            </div><!-- col-md-12 -->\n          </div><!-- row -->\n        </div><!-- container -->\n      </div><!-- jumbotron -->\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_transbox_end(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_end():
+            return render_transbox_end(context)
+        __M_writer = context.writer()
+        __M_writer('\n                </div><!-- transbox -->\n              ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_navbar_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def navbar_title():
+            return render_navbar_title(context)
+        __M_writer = context.writer()
+        __M_writer('\n                <a class="navbar-brand" href="/">CHFSales</a>\n              ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_column_layout(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def column_container_type():
+            return render_column_container_type(context)
+        def content_left():
+            return render_content_left(context)
+        def center_content_class():
+            return render_center_content_class(context)
+        def column_layout():
+            return render_column_layout(context)
+        def content():
+            return render_content(context)
+        def content_right():
+            return render_content_right(context)
+        __M_writer = context.writer()
+        __M_writer('\n      ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_container_type'):
+            context['self'].column_container_type(**pageargs)
+        
+
+        __M_writer('\n        <div class="row">\n          <div class="col-md-2">\n            ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_left'):
+            context['self'].content_left(**pageargs)
+        
+
+        __M_writer('\n          </div><!-- left -->\n          ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'center_content_class'):
+            context['self'].center_content_class(**pageargs)
+        
+
+        __M_writer('\n            ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
+            context['self'].content(**pageargs)
+        
+
+        __M_writer('\n          </div><!-- center -->\n          <div class="col-md-2">\n            ')
+        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_right'):
+            context['self'].content_right(**pageargs)
+        
+
+        __M_writer('\n          </div><!-- right -->\n        </div><!-- row -->\n      </div><!-- container -->\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content():
+            return render_content(context)
+        __M_writer = context.writer()
+        __M_writer('\n            ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -192,14 +373,47 @@ def render_maintainence_message(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_content_left(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_left():
+            return render_content_left(context)
+        __M_writer = context.writer()
+        __M_writer('\n            ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_footer(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def footer():
+            return render_footer(context)
+        __M_writer = context.writer()
+        __M_writer('\n')
+        __M_writer('                ')
+
+        import datetime
+        current_year = datetime.date.today().year
+                        
+        
+        __M_writer('\n                <p>Copyright &copy; ')
+        __M_writer(str( current_year ))
+        __M_writer(' Colonial Heritage Foundation</p>\n              ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_top_content_area(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
+        def top_content_area():
+            return render_top_content_area(context)
         def top_content_text():
             return render_top_content_text(context)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def top_content_area():
-            return render_top_content_area(context)
         __M_writer = context.writer()
         __M_writer('\n                  <img src="')
         __M_writer(str( STATIC_URL ))
@@ -214,21 +428,57 @@ def render_top_content_area(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_transbox_start(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def transbox_start():
+            return render_transbox_start(context)
+        __M_writer = context.writer()
+        __M_writer('\n              <div class="transbox">\n            ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_content_right(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_right():
+            return render_content_right(context)
+        __M_writer = context.writer()
+        __M_writer('\n            ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_alert(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def alert():
+            return render_alert(context)
+        __M_writer = context.writer()
+        __M_writer('\n          ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_base_header(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def base_header():
-            return render_base_header(context)
         STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def alert():
-            return render_alert(context)
         def navbar_title():
             return render_navbar_title(context)
-        request = context.get('request', UNDEFINED)
         def menu():
             return render_menu(context)
         def cart():
             return render_cart(context)
+        def base_header():
+            return render_base_header(context)
+        request = context.get('request', UNDEFINED)
+        def alert():
+            return render_alert(context)
         __M_writer = context.writer()
         __M_writer('\n')
         __M_writer('        <div id="alert">\n          ')
@@ -270,229 +520,12 @@ def render_base_header(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_alert(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def alert():
-            return render_alert(context)
-        __M_writer = context.writer()
-        __M_writer('\n          ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_navbar_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def navbar_title():
-            return render_navbar_title(context)
-        __M_writer = context.writer()
-        __M_writer('\n                <a class="navbar-brand" href="/">CHFSales</a>\n              ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_right(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_right():
-            return render_content_right(context)
-        __M_writer = context.writer()
-        __M_writer('\n            ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_transbox_start(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def transbox_start():
-            return render_transbox_start(context)
-        __M_writer = context.writer()
-        __M_writer('\n              <div class="transbox">\n            ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content_left(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_left():
-            return render_content_left(context)
-        __M_writer = context.writer()
-        __M_writer('\n            ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def title():
-            return render_title(context)
-        __M_writer = context.writer()
-        __M_writer('Colonial Heritage Foundation')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_footer(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def footer():
-            return render_footer(context)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('                ')
-
-        import datetime
-        current_year = datetime.date.today().year
-                        
-        
-        __M_writer('\n                <p>Copyright &copy; ')
-        __M_writer(str( current_year ))
-        __M_writer(' Colonial Heritage Foundation</p>\n              ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_parallax_start(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
-        def parallax_start():
-            return render_parallax_start(context)
-        __M_writer = context.writer()
-        __M_writer('\n      <div class="parallax-window" data-parallax="scroll" data-image-src="')
-        __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/pics/CHFcanon.JPG">\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_content(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content():
-            return render_content(context)
-        __M_writer = context.writer()
-        __M_writer('\n            ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_column_layout(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content():
-            return render_content(context)
-        def column_layout():
-            return render_column_layout(context)
-        def center_content_class():
-            return render_center_content_class(context)
-        def content_right():
-            return render_content_right(context)
-        def content_left():
-            return render_content_left(context)
-        def column_container_type():
-            return render_column_container_type(context)
-        __M_writer = context.writer()
-        __M_writer('\n      ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'column_container_type'):
-            context['self'].column_container_type(**pageargs)
-        
-
-        __M_writer('\n        <div class="row">\n          <div class="col-md-2">\n            ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_left'):
-            context['self'].content_left(**pageargs)
-        
-
-        __M_writer('\n          </div><!-- left -->\n          ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'center_content_class'):
-            context['self'].center_content_class(**pageargs)
-        
-
-        __M_writer('\n            ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content'):
-            context['self'].content(**pageargs)
-        
-
-        __M_writer('\n          </div><!-- center -->\n          <div class="col-md-2">\n            ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_right'):
-            context['self'].content_right(**pageargs)
-        
-
-        __M_writer('\n          </div><!-- right -->\n        </div><!-- row -->\n      </div><!-- container -->\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_transbox_end(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def transbox_end():
-            return render_transbox_end(context)
-        __M_writer = context.writer()
-        __M_writer('\n                </div><!-- transbox -->\n              ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_column_container_type(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def column_container_type():
-            return render_column_container_type(context)
-        __M_writer = context.writer()
-        __M_writer('\n        <div class="container">\n      ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_menu(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        request = context.get('request', UNDEFINED)
-        def menu():
-            return render_menu(context)
-        __M_writer = context.writer()
-        __M_writer('\n')
-        __M_writer('                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'index' and request.dmp_router_app == 'homepage' else ''))
-        __M_writer('"><a href="/">Home</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'about' else ''))
-        __M_writer('"><a href="/about">About</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'terms' else ''))
-        __M_writer('"><a href="/terms">Terms</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'faq' else ''))
-        __M_writer('"><a href="/faq">FAQ</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_page == 'contact' else ''))
-        __M_writer('"><a href="/contact">Contact</a></li>\n                  <li class="')
-        __M_writer(str( 'active' if request.dmp_router_app == 'catalog' else ''))
-        __M_writer('"><a href="/catalog">Shop</a></li>\n                ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_cart(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        request = context.get('request', UNDEFINED)
         def cart():
             return render_cart(context)
+        request = context.get('request', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\n                  <a href="/catalog/cart/" class="btn btn-default" id="cartbutton">\n                    <span class="glyphicon glyphicon-shopping-cart"></span>\n                    <span class="cart_quantity">')
         __M_writer(str(request.shopping_cart.get_item_count()))
@@ -502,44 +535,13 @@ def render_cart(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_top_content_text(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def top_content_text():
-            return render_top_content_text(context)
-        __M_writer = context.writer()
-        __M_writer('\n                    <div class="text-center">\n                      <h2>Welcome to CHFSales.com</h2>\n                      <a><span class="glyphicon glyphicon-chevron-down big_icon"></span></a>\n                    </div>\n                  ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_maintainence_container(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def maintainence_container():
-            return render_maintainence_container(context)
-        def maintainence_message():
-            return render_maintainence_message(context)
-        __M_writer = context.writer()
-        __M_writer('\n      <div class="jumbotron">\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              <div id="maintainence_message">\n                ')
-        if 'parent' not in context._data or not hasattr(context._data['parent'], 'maintainence_message'):
-            context['self'].maintainence_message(**pageargs)
-        
-
-        __M_writer('\n              </div><!-- maintainence_message -->\n            </div><!-- col-md-12 -->\n          </div><!-- row -->\n        </div><!-- container -->\n      </div><!-- jumbotron -->\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_footer_outer(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
-        def footer_outer():
-            return render_footer_outer(context)
         def footer():
             return render_footer(context)
+        def footer_outer():
+            return render_footer_outer(context)
         __M_writer = context.writer()
         __M_writer('\n      <footer>\n        <div class="container">\n          <div class="row">\n            <div class="col-md-12">\n              ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'footer'):
@@ -554,6 +556,6 @@ def render_footer_outer(context,**pageargs):
 
 """
 __M_BEGIN_METADATA
-{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "source_encoding": "utf-8", "line_map": {"409": 150, "257": 87, "258": 93, "259": 94, "260": 95, "261": 95, "262": 100, "263": 101, "264": 104, "265": 108, "266": 109, "267": 111, "525": 31, "17": 5, "530": 38, "19": 0, "279": 50, "536": 174, "490": 82, "285": 66, "517": 31, "544": 174, "291": 66, "549": 186, "297": 166, "555": 549, "303": 166, "309": 125, "315": 125, "321": 156, "71": 3, "72": 5, "73": 6, "333": 18, "82": 18, "339": 18, "84": 19, "85": 21, "86": 21, "87": 22, "88": 22, "89": 24, "90": 24, "91": 26, "92": 26, "93": 26, "94": 31, "351": 179, "352": 181, "353": 181, "327": 156, "99": 44, "358": 184, "273": 50, "104": 115, "359": 185, "109": 121, "366": 119, "360": 185, "114": 127, "373": 119, "374": 120, "119": 138, "124": 141, "381": 162, "345": 179, "129": 147, "473": 74, "387": 162, "134": 171, "393": 150, "139": 191, "140": 195, "141": 195, "142": 196, "143": 196, "144": 197, "145": 197, "146": 198, "147": 198, "148": 199, "149": 199, "150": 200, "151": 200, "152": 201, "153": 201, "414": 153, "159": 159, "419": 157, "165": 159, "497": 82, "424": 161, "171": 145, "429": 163, "177": 145, "434": 167, "499": 85, "183": 37, "440": 139, "189": 37, "446": 139, "195": 128, "452": 151, "458": 151, "375": 120, "204": 128, "205": 129, "206": 129, "77": 6, "464": 72, "211": 137, "471": 72, "472": 74, "217": 47, "474": 74, "475": 75, "476": 75, "477": 76, "478": 76, "479": 77, "480": 77, "481": 78, "482": 78, "483": 79, "484": 79, "233": 47, "234": 49, "239": 51, "240": 64, "241": 64, "498": 85, "83": 19, "246": 68, "505": 132, "251": 80, "252": 82, "511": 132}, "uri": "base.htm"}
+{"filename": "/Users/Jordan/Documents/BYU/0 - Senior Year/0 - Winter 2016/0 - 413/Colonial_Heritage_Foundation/homepage/templates/base.htm", "line_map": {"409": 129, "512": 101, "258": 31, "515": 109, "516": 110, "517": 112, "263": 38, "523": 83, "269": 140, "17": 5, "530": 83, "275": 140, "532": 86, "281": 66, "461": 50, "346": 163, "287": 66, "546": 175, "293": 151, "551": 187, "557": 551, "402": 186, "513": 102, "309": 151, "314": 154, "319": 158, "395": 182, "324": 162, "71": 3, "72": 5, "329": 164, "403": 186, "77": 6, "334": 168, "531": 86, "82": 18, "83": 19, "84": 19, "85": 21, "86": 21, "87": 22, "88": 22, "89": 24, "90": 24, "91": 26, "92": 26, "93": 26, "94": 31, "352": 146, "99": 44, "358": 146, "401": 185, "104": 116, "364": 37, "109": 122, "114": 128, "19": 0, "119": 139, "376": 157, "396": 182, "124": 142, "382": 157, "129": 148, "388": 180, "134": 172, "394": 180, "139": 192, "140": 196, "141": 196, "142": 197, "143": 197, "144": 198, "145": 198, "146": 199, "147": 199, "148": 200, "149": 200, "150": 201, "151": 201, "152": 202, "153": 202, "514": 105, "538": 175, "159": 18, "418": 129, "419": 130, "420": 130, "165": 18, "425": 138, "171": 152, "370": 37, "431": 126, "177": 152, "437": 126, "183": 120, "443": 167, "190": 120, "191": 121, "192": 121, "449": 167, "198": 72, "455": 50, "205": 72, "206": 74, "207": 74, "208": 74, "209": 75, "210": 75, "211": 76, "212": 76, "213": 77, "214": 77, "215": 78, "216": 78, "217": 79, "218": 79, "219": 80, "220": 80, "226": 160, "483": 47, "484": 49, "232": 160, "489": 51, "490": 64, "491": 64, "238": 133, "73": 6, "496": 68, "467": 47, "244": 133, "501": 81, "502": 83, "340": 163, "250": 31, "507": 88, "508": 94, "509": 95, "510": 96, "511": 96}, "uri": "base.htm", "source_encoding": "utf-8"}
 __M_END_METADATA
 """

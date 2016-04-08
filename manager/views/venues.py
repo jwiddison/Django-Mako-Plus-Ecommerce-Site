@@ -60,11 +60,11 @@ def create(request):
     return dmp_render_to_response(request, 'venues.create.html', template_vars)
 
 class CreateVenueForm(forms.Form):
-    name = forms.CharField(label='Venue Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Venue Name'}))
-    address = forms.CharField(label='Address Line 1', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address'}))
-    city = forms.CharField(label='City', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'City'}))
-    state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State'}))
-    zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code'}))
+    name = forms.CharField(label='Venue Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Venue Name', 'class': 'form-control'}))
+    address = forms.CharField(label='Address', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Address', 'class': 'form-control'}))
+    city = forms.CharField(label='City', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'City', 'class': 'form-control'}))
+    state = forms.CharField(label='State', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'State', 'class': 'form-control'}))
+    zip_code = forms.CharField(label='Zip Code', required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Zip Code', 'class': 'form-control'}))
 
     # Make sure that the name for the venue they're signing up with is unique.
     # def clean_name(self):

@@ -7,42 +7,46 @@
 <%block name="column_container_type">
   ## Makes container for columns section fluid
   <div class="container-fluid">
-  <hr/>
+  ## <hr/>
   <br/>
 </%block>
 
 <%block name="content_left">
-  <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>
-  <br />
-  <br />
-  <h5>Search For a Product:</h5>
-  <form method="GET" action="/catalog/search/">
-    <input type="text" name="q" class="form-control" placeholder="Search"/>
+  <div style="position: fixed; margin-top:-100px" id="fixed_left">
+    <a id="all_products_button" class="btn btn-primary" href="/catalog/index/">View All Products</a>
     <br />
-    <input type="submit" value="Search" class="btn btn-primary"/>
-  </form>
-  <br />
-  <h5>Filter By Category:</h5>
-  <a href="/catalog/index">View All</a>
-  <br />
-  %for category in categories:
-    <a href="/catalog/index/${category.id}">${category.name}</a></li>
     <br />
-  %endfor
+    <h5>Search For a Product:</h5>
+    <form method="GET" action="/catalog/search/">
+      <input type="text" name="q" class="form-control" placeholder="Search"/>
+      <br />
+      <input type="submit" value="Search" class="btn btn-primary"/>
+    </form>
+    <br />
+    <h5>Filter By Category:</h5>
+    <a href="/catalog/index">View All</a>
+    <br />
+    %for category in categories:
+      <a href="/catalog/index/${category.id}">${category.name}</a></li>
+      <br />
+    %endfor
+  </div>
 </%block>
 
 <%block name="content_right">
-  <h5>Recently Viewed Products:</h5>
-  <hr />
-  %for p in request.shopping_cart.get_viewed_items():
-    <a href="/catalog/detail/${p.id}">
-      <div class="recent">
-        <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive img-circle center-block prod_img"/>
-        <p>${ p.name }</p>
-        <div class="clearfix"></div>
-      </div><!-- recent -->
-    </a>
-  %endfor
+  <div style="position: fixed; margin-top:-100px" id="fixed_right">
+    <h5>Recently Viewed Products:</h5>
+    <hr />
+    %for p in request.shopping_cart.get_viewed_items():
+      <a href="/catalog/detail/${p.id}">
+        <div class="recent">
+          <img src="${ STATIC_URL }catalog/media/pics/${ p.get_image_filename() }" alt="${p.name}" class="img-responsive img-circle center-block prod_img"/>
+          <p>${ p.name }</p>
+          <div class="clearfix"></div>
+        </div><!-- recent -->
+      </a>
+    %endfor
+  </div>
 </%block>
 
 ## Add this to disable the parallax window

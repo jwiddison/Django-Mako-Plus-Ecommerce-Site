@@ -12,9 +12,10 @@ img{
 }
 
 footer{
-  margin-top:100px;
+  margin-top:80px;
   background-color:#E6272E;
-  padding-top:18px;
+  padding-top:19px;
+  padding-bottom: 0px;
   color:white;
 }
 
@@ -29,7 +30,8 @@ a > i{
 }
 
 .row{
-  padding:15px;
+  padding-left:15px;
+  padding-right:15px;
 }
 
 .transbox{

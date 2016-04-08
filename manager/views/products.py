@@ -17,11 +17,9 @@ import datetime
 def process_request(request):
     '''List the users in a table on the screen '''
     products = cmod.Product.objects.all().order_by('name')
-    images = cmod.ProductImage.objects.all()
 
     template_vars = {
       'products': products,
-      'images': images,
     }
     return dmp_render_to_response(request, 'products.html', template_vars)
 

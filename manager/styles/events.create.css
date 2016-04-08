@@ -1,0 +1,11 @@
+#id_name,
+#id_description,
+#id_start_date,
+#id_end_date,
+#id_venue{
+  min-width: 300px;
+}
+
+#create_user_button{
+  margin-top:20px;
+}
