@@ -1,18 +1,10 @@
+from django.http import JsonResponse
 from django.conf import settings
-# from django_mako_plus.controller import view_function
-# from django import forms
-# from django.http import HttpResponseRedirect
-# from .. import dmp_render, dmp_render_to_response
 from catalog import models as cmod
 
 def process_request(request):
 
-    # Not sure which of these I'm going to use, so I have both in here for now.
-    name = request.urlparams[0]
-    minprice = request.urlparams[1]
-    maxprice = request.urlparams[2]
-    category = request.urlparams[3]
-
+    # Get variables off of request
     name = request.GET.get('name', '')
     minprice = request.GET.get('minprice', '')
     maxprice = request.GET.get('maxprice', '')
@@ -37,10 +29,22 @@ def process_request(request):
     if request.GET.get('category'):
         products = products.filter(category__icontains = category)
 
-    return products
+    resultslist = []
 
-class APIForm(forms.Form):
-    name = forms.CharField(required=False)
-    minprice = forms.DecimalField(required=False)
-    maxprice = forms.DecimalField(required=False)
-    category = forms.CharField(required=False)
+    for p in products:
+        prod_info = {}
+        prod_info['name'] = p.name
+        prod_info['type'] = p.__class__.ClassName
+        prod_info['description'] = p.description
+        prod_info['price'] = p.price
+        prod_info['add_date'] = p.add_date
+        prod_info['category'] = p.category
+        resultslist.append(prod_info)
+
+    return JsonResponse(resultslist)
+
+# class APIForm(forms.Form):
+#     name = forms.CharField(required=False)
+#     minprice = forms.DecimalField(required=False)
+#     maxprice = forms.DecimalField(required=False)
+#     category = forms.CharField(required=False)

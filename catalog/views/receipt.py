@@ -20,10 +20,33 @@ def process_request(request):
 
     # Send the receipt as an email
     subject = 'CHFSales.com Order Confirmation Receipt'
-    from_email = 'orders@chfsales.com'
+    from_email = settings.EMAIL_HOST_USER
     to = 'jordan.widdison@gmail.com'
     text_content = 'Email Confirmation of CHFSales.com Order'
-    html_content = dmp_render(request, '/catalog/receipt/%s' % (str(sale.id)))
+    # html_content = dmp_render(request, '/catalog/receipt/%s' % (str(sale.id)))
+    html_content = '''
+        <html>
+            <body>
+                <h3>CHFSales.com Order Receipt</h3>
+                <hr />
+                <br />
+                <p>Thank you for your purchase!  Please keep a copy of this recipt for your records.</p>
+                <h4>Ship To:</h4>
+                <ul style="list-style:none">
+                <li>''' + sale.ShipName + '''</li>
+                <li>''' + sale.ShipAddress + '''</li>
+                <li>''' + sale.ShipCity + '''</li>
+                <li>''' + sale.ShipState + '''</li>
+                <li>''' + sale.ShipZipCode + '''</li>
+                </ul>
+                <h4>Tracking Number:</h4>
+                <p>''' + sale.TrackingNumber + '''</p>
+                <h4>Order Total:</h4>
+                <p>$''' + str(sale.TotalPrice) + '''</p>
+                <h4>Thank you for your order!</h4>
+            </body>
+        </html>
+        '''
     msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
