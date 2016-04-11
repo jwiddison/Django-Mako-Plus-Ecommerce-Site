@@ -18,21 +18,18 @@ def process_request(request):
         return HttpResponseRedirect('/catalog/index/')
 
 
-    #message = 'test email'
-    # subject = 'CHFSales.com Order Confirmation Receipt'
-    # from_email = 'orders@chfsales.com'
-    # to = 'jordan.widdison@gmail.com'
-    # text_content = 'Email Confirmation of CHFSales.com Order'
-    # html_content = dmp_render(request, '/catalog/receipt/%s/' % (str(sale.id)))
-    # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-    # msg.attach_alternative(html_content, "text/html")
-    # msg.send()
-    # send_mail('CHFSales.com Order Confirmation Receipt', message, 'orders@chfsales.com', ['jordan.widdison@gmail.com'])
+    # Send the receipt as an email
+    subject = 'CHFSales.com Order Confirmation Receipt'
+    from_email = 'orders@chfsales.com'
+    to = 'jordan.widdison@gmail.com'
+    text_content = 'Email Confirmation of CHFSales.com Order'
+    html_content = dmp_render(request, '/catalog/receipt/%s' % (str(sale.id)))
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
 
-    saleitems = sale.get_saleitems()
-    # print(saleitems)
 
     # Send Sale to the template
     template_vars['sale'] = sale
-    template_vars['saleitems'] = saleitems
+    template_vars['saleitems'] = sale.get_saleitems()
     return dmp_render_to_response(request, 'receipt.html', template_vars)

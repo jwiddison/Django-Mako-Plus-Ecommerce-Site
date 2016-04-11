@@ -39,9 +39,12 @@ EMAIL_HOST = 'gateway.byu.edu'
 # EMAIL_PORT = 25
 
 # Gmail way?
-# EMAIL_HOST = 'mail.google.com'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_HOST_USER = 'jordan.widdison@gmail.com'
 # EMAIL_HOST_PASSWORD = 'Ilikemygrandpastomatoes135'
+# EMAIL_PORT = 587
+
 
 # Application definition
 
