@@ -114,6 +114,13 @@ def payment(request):
             stripe.api_key = settings.STRIPE_SECRET_KEY
             token = request.POST['stripeToken']
 
+            # Get email from session
+            email = request.session.get('receipt_email', [])
+            # Get email from stripe
+            email = request.POST['stripeEmail']
+            # Save email into session
+            request.session['receipt_email'] = email
+
             try:
                 charge = stripe.Charge.create(
                     amount=request.shopping_cart.calc_stripe_total(), # amount in cents, again

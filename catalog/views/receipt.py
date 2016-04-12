@@ -21,7 +21,7 @@ def process_request(request):
     # Send the receipt as an email
     subject = 'CHFSales.com Order Confirmation Receipt'
     from_email = settings.EMAIL_HOST_USER
-    to = 'jordan.widdison@gmail.com'
+    to = request.session.get('receipt_email', 'jordan.widdison@gmail.com')
     text_content = 'Email Confirmation of CHFSales.com Order'
     # html_content = dmp_render(request, '/catalog/receipt/%s' % (str(sale.id)))
     html_content = '''
