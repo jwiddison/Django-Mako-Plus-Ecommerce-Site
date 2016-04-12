@@ -193,16 +193,8 @@ class ShoppingCart(object):
 
     def get_viewed_items(self):
         '''Returns a Django query object of the last items viewed'''
-        # Store list of IDs in a local list
         last5 = self.last_5_ids
-
-        # Create a new local list of products by iterating through list of ids
         last5products = [cmod.Product.objects.get(id=pid) for pid in last5]
-
-        # This is how Dr. Albrecht did it.  I don't like it as much.
-        # last5products = list(cmod.Product.objects.filter(id__in=self.last_5_ids))
-        # last5products.sort(key=lambda p: self.last_5_ids.index(p.id))
-
         return last5products
 
     def get_last5_ids(self):

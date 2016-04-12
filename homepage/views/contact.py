@@ -32,15 +32,6 @@ def process_request(request):
                     fail_silently=False,
                 )
 
-
-            # subject = 'CHFSales.com Order Confirmation Receipt'
-            # from_email = email
-            # to = 'jordan.widdison@gmail.com'
-            # text_content = phone + '/n' + message
-            # # html_content = dmp_render(request, '/catalog/receipt/%s/' % (sale.id))
-            # msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
-            # # msg.attach_alternative(html_content, "text/html")
-            # msg.send()
                 sentmessage = 'Thank you for your email.  Someone from CHFSales will be in touch with you soon.'
             except:
                 sentmessage = 'There was a problem with your email.  Please try again later.'

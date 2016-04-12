@@ -147,9 +147,9 @@ class Category(models.Model):
     name = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
 
-    def __str__(self):
-        '''Prints for debugging purposes'''
-        return 'Category: %s' % (self.name)
+    # def __str__(self):
+    #     '''Prints for debugging purposes'''
+    #     return 'Category: %s' % (self.name)
 
 admin.site.register(Category)
 
