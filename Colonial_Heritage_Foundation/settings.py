@@ -28,17 +28,8 @@ STRIPE_PUBLIC_KEY = 'pk_test_MHyCTSEPuZxOaIsMh4RIFcbB'
 GOOGLE_SERVER_KEY = 'AIzaSyBPic4S2IEKGVinGhN61E5Fy42s8nu3DEA'
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
-# Easy way?
-# EMAIL_HOST = 'gateway.byu.edu'
 
-# Chfsales.com way?
-# EMAIL_HOST = 'mail.chfsales.com'
-# EMAIL_HOST_USER = 'orders@chfsales.com'
-# EMAIL_HOST_PASSWORD = 'Group12ia!'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 25
-
-# Gmail way?
+# Gmail Mail Settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'chfnoreply@gmail.com'

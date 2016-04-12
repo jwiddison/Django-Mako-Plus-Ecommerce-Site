@@ -130,9 +130,6 @@ def payment(request):
             except stripe.error.CardError:
                 raise ValueError
 
-            # stripeToken=form.cleaned_data.get('stripeToken')
-            # print(stripeToken)
-
             if useGoogle == True:
                 address = request.session.get('google_address_response', [])
             else:

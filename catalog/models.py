@@ -67,10 +67,8 @@ admin.site.register(Payment)
 
 ## Record Sale method
 def record_sale(user, address_list, cart, stripe_id):
+
     # Create a sale object
-
-    print(address_list)
-
     s = Sale(
         OrderDate = datetime.datetime.now(),
         ShipDate = datetime.datetime.now(),
@@ -84,7 +82,6 @@ def record_sale(user, address_list, cart, stripe_id):
         Buyer = user,
     )
     s.save()
-    print(s)
 
     # Create saleitem objects for each item in the cart
     for item in cart.get_items():
@@ -97,7 +94,6 @@ def record_sale(user, address_list, cart, stripe_id):
         )
         si.save()
 
-        print(si)
 
         p = Product.objects.get(id = item.product_id)
         if isinstance(p, BulkProduct):

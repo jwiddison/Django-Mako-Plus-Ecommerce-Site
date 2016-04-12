@@ -9,8 +9,6 @@ import json
 
 @view_function
 def process_request(request):
-
-    # Get all the products
     products = cmod.Product.objects.all()
 
     # Product Name (partial, case-insensitve)
@@ -45,8 +43,5 @@ def process_request(request):
         prod_info['category'] = p.category.name
         resultslist.append(prod_info)
 
-    # print(resultslist)
-
     data = json.dumps(resultslist)
-
     return HttpResponse(data, content_type='application/json')
