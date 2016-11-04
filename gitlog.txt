@@ -1,4 +1,9 @@
-Jordan@JKW-MBA Colonial_Heritage_Foundation (master) $ git --no-pager log --graph
+* commit 6645347dbe1a5acd4622cdea3fc628a1abb54ff0
+| Author: Jordan Widdison <jordan.widdison@gmail.com>
+| Date:   Tue Apr 12 12:59:41 2016 -0600
+|
+|     ACTUALLY finished Sprint 5.  Verified that you don't need a form in the API .py file.  Did some cleaning and refactoring.  Deleted all the print statements I had used for debugging.
+|
 * commit fc41f19badca9a295554316540e85e1cda4e2a18
 | Author: Jordan Widdison <jordan.widdison@gmail.com>
 | Date:   Tue Apr 12 12:16:17 2016 -0600
