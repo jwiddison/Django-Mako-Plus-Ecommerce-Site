@@ -2,8 +2,8 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
-from .. import dmp_render, dmp_render_to_response
+from django_mako_plus import view_function
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from . import initialize_template_vars
 
@@ -21,7 +21,7 @@ def process_request(request):
     request.shopping_cart.item_viewed(p)
 
     template_vars['p'] = p
-    return dmp_render_to_response(request, 'detail.html', template_vars)
+    return dmp_render(request, 'detail.html', template_vars)
 
 ### Carousel Method
 @view_function
@@ -32,4 +32,4 @@ def carousel(request):
         'p': p,
         'p_images': cmod.ProductImage.objects.all().filter(product=p),
     }
-    return dmp_render_to_response(request, 'detail.carousel.html', template_vars)
+    return dmp_render(request, 'detail.carousel.html', template_vars)

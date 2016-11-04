@@ -2,9 +2,9 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from account import models as amod
 import datetime
@@ -21,7 +21,7 @@ def process_request(request):
     template_vars = {
       'categories': categories,
     }
-    return dmp_render_to_response(request, 'categories.html', template_vars)
+    return dmp_render(request, 'categories.html', template_vars)
 
 
 
@@ -48,7 +48,7 @@ def create(request):
     template_vars = {
       'form': form,
     }
-    return dmp_render_to_response(request, 'categories.create.html', template_vars)
+    return dmp_render(request, 'categories.create.html', template_vars)
 
 class CreateCategoryForm(forms.Form):
     name = forms.CharField(label='Category Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Category Name'}))
@@ -81,7 +81,7 @@ def edit(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'categories.edit.html', template_vars)
+    return dmp_render(request, 'categories.edit.html', template_vars)
 
 
 class EditCategoryForm(forms.Form):

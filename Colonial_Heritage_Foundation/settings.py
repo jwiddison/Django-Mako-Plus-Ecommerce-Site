@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_mako_plus.controller',
+    'django_mako_plus',
     'account',
     'api',
     'catalog',
@@ -67,26 +67,12 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'Colonial_Heritage_Foundation.shopping_cart.ShoppingCartMiddleware',
-    'django_mako_plus.controller.router.RequestInitMiddleware',
+    'django_mako_plus.RequestInitMiddleware',
 ]
 
 ROOT_URLCONF = 'Colonial_Heritage_Foundation.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+
 
 WSGI_APPLICATION = 'Colonial_Heritage_Foundation.wsgi.application'
 
@@ -94,15 +80,15 @@ WSGI_APPLICATION = 'Colonial_Heritage_Foundation.wsgi.application'
 AUTH_USER_MODEL = 'account.User'
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Colonial_Heritage_Foundation',
-        'USER': 'postgres',
-        'PASSWORD': 'DbAdminLocal',
-        'HOST': 'localhost',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Colonial_Heritage_Foundation',
+#         'USER': 'postgres',
+#         'PASSWORD': 'DbAdminLocal',
+#         'HOST': 'localhost',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -167,39 +153,112 @@ LOGGING = {
  },
 }
 
-###############################################################
-###   Specific settings for the Django-Mako-Plus app
-DJANGO_MAKO_PLUS = {
- # identifies where the Mako template cache will be stored, relative to each app
- 'TEMPLATES_CACHE_DIR': 'cached_templates',
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
 
- # the default app and page to render in Mako when the url is too short
- 'DEFAULT_PAGE': 'index',
- 'DEFAULT_APP': 'homepage',
+TEMPLATES = [
+   {
+       'BACKEND': 'django_mako_plus.MakoTemplates',
+       'OPTIONS': {
+           # functions to automatically add variables to the params/context before templates are rendered
+           'CONTEXT_PROCESSORS': [
+               'django.template.context_processors.static',            # adds "STATIC_URL" from settings.py
+               'django.template.context_processors.request',           # adds "request" object
+               'django.contrib.auth.context_processors.auth',          # adds "user" and "perms" objects
+               'django_mako_plus.context_processors.settings',         # adds "settings" dictionary
+           ],
 
- # the default encoding of template files
- 'DEFAULT_TEMPLATE_ENCODING': 'utf-8',
+           # identifies where the Mako template cache will be stored, relative to each template directory
+           'TEMPLATES_CACHE_DIR': '.cached_templates',
 
- # these are included in every template by default - if you put your most-used libraries here, you won't have to import them exlicitly in templates
- 'DEFAULT_TEMPLATE_IMPORTS': [
-   'import os, os.path, re, json',
- ],
+           # the default app and page to render in Mako when the url is too short
+           'DEFAULT_PAGE': 'index',
+           'DEFAULT_APP': 'homepage',
 
- # see the DMP online tutorial for information about this setting
- 'URL_START_INDEX': 0,
+           # the default encoding of template files
+           'DEFAULT_TEMPLATE_ENCODING': 'utf-8',
 
- # whether to send the custom DMP signals -- set to False for a slight speed-up in router processing
- # determines whether DMP will send its custom signals during the process
- 'SIGNALS': True,
+           # these are included in every template by default - if you put your most-used libraries here, you won't have to import them exlicitly in templates
+           'DEFAULT_TEMPLATE_IMPORTS': [
+             'import os, os.path, re, json',
+           ],
 
- # whether to minify using rjsmin, rcssmin during 1) collection of static files, and 2) on the fly as .jsm and .cssm files are rendered
- # rjsmin and rcssmin are fast enough that doing it on the fly can be done without slowing requests down
- 'MINIFY_JS_CSS': True,
+           # see the DMP online tutorial for information about this setting
+           'URL_START_INDEX': 0,
 
- # see the DMP online tutorial for information about this setting
- 'TEMPLATES_DIRS': [
-   # '/var/somewhere/templates/',
- ],
-}
+           # whether to send the custom DMP signals -- set to False for a slight speed-up in router processing
+           # determines whether DMP will send its custom signals during the process
+           'SIGNALS': True,
+
+           # whether to minify using rjsmin, rcssmin during 1) collection of static files, and 2) on the fly as .jsm and .cssm files are rendered
+           # rjsmin and rcssmin are fast enough that doing it on the fly can be done without slowing requests down
+           'MINIFY_JS_CSS': True,
+
+           # the name of the SASS binary to run if a .scss file is newer than the resulting .css file
+           # happens when the corresponding template.html is accessed the first time after server startup
+           # if DEBUG=False, this only happens once per file after server startup, not for every request
+           # specify the binary in a list below -- even if just one item (see subprocess.Popen)
+           #'SCSS_BINARY': [ '/usr/bin/env', 'scss', '--unix-newlines' ],
+           'SCSS_BINARY': None,
+
+           # see the DMP online tutorial for information about this setting
+           # it can normally be empty
+           'TEMPLATES_DIRS': [
+               # '/var/somewhere/templates/',
+           ],
+       },
+   },
+
+   # you'll likely already have the DjangoTemplates settings here
+ ]
+
+
+# ###############################################################
+# ###   Specific settings for the Django-Mako-Plus app
+# DJANGO_MAKO_PLUS = {
+#  # identifies where the Mako template cache will be stored, relative to each app
+#  'TEMPLATES_CACHE_DIR': 'cached_templates',
+#
+#  # the default app and page to render in Mako when the url is too short
+#  'DEFAULT_PAGE': 'index',
+#  'DEFAULT_APP': 'homepage',
+#
+#  # the default encoding of template files
+#  'DEFAULT_TEMPLATE_ENCODING': 'utf-8',
+#
+#  # these are included in every template by default - if you put your most-used libraries here, you won't have to import them exlicitly in templates
+#  'DEFAULT_TEMPLATE_IMPORTS': [
+#    'import os, os.path, re, json',
+#  ],
+#
+#  # see the DMP online tutorial for information about this setting
+#  'URL_START_INDEX': 0,
+#
+#  # whether to send the custom DMP signals -- set to False for a slight speed-up in router processing
+#  # determines whether DMP will send its custom signals during the process
+#  'SIGNALS': True,
+#
+#  # whether to minify using rjsmin, rcssmin during 1) collection of static files, and 2) on the fly as .jsm and .cssm files are rendered
+#  # rjsmin and rcssmin are fast enough that doing it on the fly can be done without slowing requests down
+#  'MINIFY_JS_CSS': True,
+#
+#  # see the DMP online tutorial for information about this setting
+#  'TEMPLATES_DIRS': [
+#    # '/var/somewhere/templates/',
+#  ],
+# }
 ###  End of settings for the Django-Mako-Plus
 ################################################################

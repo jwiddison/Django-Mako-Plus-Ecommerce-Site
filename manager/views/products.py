@@ -2,9 +2,9 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from account import models as amod
 import datetime
@@ -21,7 +21,7 @@ def process_request(request):
     template_vars = {
       'products': products,
     }
-    return dmp_render_to_response(request, 'products.html', template_vars)
+    return dmp_render(request, 'products.html', template_vars)
 
 ################################################
 ############### Add an Image ###################
@@ -43,7 +43,7 @@ def addimage(request):
     template_vars = {
         'form': form
     }
-    return dmp_render_to_response(request, 'products.addimage.html', template_vars)
+    return dmp_render(request, 'products.addimage.html', template_vars)
 
 class AddImageForm(forms.Form):
     filename = forms.CharField(label='Image Filename', required=True, widget=forms.TextInput(attrs={'placeholder': 'ex: ProductName.jpg', 'class': 'form-control'}))
@@ -92,7 +92,7 @@ def create(request):
     template_vars = {
       'form': form,
     }
-    return dmp_render_to_response(request, 'products.create.html', template_vars)
+    return dmp_render(request, 'products.create.html', template_vars)
 
 class CreateProductForm(forms.Form):
     PRODUCT_CHOICE_LIST =(
@@ -160,7 +160,7 @@ def edit(request):
         'product_type': product.__class__.className
 
     }
-    return dmp_render_to_response(request, 'products.edit.html', template_vars)
+    return dmp_render(request, 'products.edit.html', template_vars)
 
 
 class EditProductForm(forms.Form):

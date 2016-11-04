@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
-from .. import dmp_render, dmp_render_to_response
+from django_mako_plus import view_function
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from . import initialize_template_vars
 from django.contrib.auth.decorators import login_required
@@ -78,7 +78,7 @@ def process_request(request):
             return HttpResponseRedirect('/catalog/checkout.shipping')
 
     template_vars['form'] = form
-    return dmp_render_to_response(request, 'checkout.html', template_vars)
+    return dmp_render(request, 'checkout.html', template_vars)
 
 
 class ShippingForm(forms.Form):
@@ -91,7 +91,7 @@ class ShippingForm(forms.Form):
 @view_function
 def shipping(request):
     template_vars = initialize_template_vars(request)
-    return dmp_render_to_response(request, 'checkout.shipping.html', template_vars)
+    return dmp_render(request, 'checkout.shipping.html', template_vars)
 
 
 @view_function
@@ -146,7 +146,7 @@ def payment(request):
 
     template_vars['useGoogle'] = useGoogle
     template_vars['form'] = form
-    return dmp_render_to_response(request, 'checkout.payment.html', template_vars)
+    return dmp_render(request, 'checkout.payment.html', template_vars)
 
 class PaymentForm(forms.Form):
     payment = forms.CharField(label='', required=False, widget=forms.HiddenInput())

@@ -2,9 +2,9 @@ from django import forms
 from django.conf import settings
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 import datetime
 
@@ -39,7 +39,7 @@ def create(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'areas.create.html', template_vars)
+    return dmp_render(request, 'areas.create.html', template_vars)
 
 class CreateAreaForm(forms.Form):
     name = forms.CharField(label='area Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'area Name'}))
@@ -77,7 +77,7 @@ def edit(request):
         'form': form,
         'event': event,
     }
-    return dmp_render_to_response(request, 'areas.edit.html', template_vars)
+    return dmp_render(request, 'areas.edit.html', template_vars)
 
 class EditAreaForm(forms.Form):
     name = forms.CharField(label='Name', required=True, max_length=100)

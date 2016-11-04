@@ -2,9 +2,9 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from account import models as amod
 import datetime
@@ -23,4 +23,4 @@ def process_request(request):
       'products': products,
       'images': images,
     }
-    return dmp_render_to_response(request, 'products.html', template_vars)
+    return dmp_render(request, 'products.html', template_vars)

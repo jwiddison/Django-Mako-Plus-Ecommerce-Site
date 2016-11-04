@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
-from .. import dmp_render, dmp_render_to_response
+from django_mako_plus import view_function
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 from . import initialize_template_vars
 from django.core.mail import send_mail, EmailMultiAlternatives
@@ -23,7 +23,7 @@ def process_request(request):
     from_email = settings.EMAIL_HOST_USER
     to = request.session.get('receipt_email', 'jordan.widdison@gmail.com')
     text_content = 'Email Confirmation of CHFSales.com Order'
-    # html_content = dmp_render(request, '/catalog/receipt/%s' % (str(sale.id)))
+    # html_content = dmp_render_to_string(request, '/catalog/receipt/%s' % (str(sale.id)))
     html_content = '''
         <html>
             <body>
@@ -55,4 +55,4 @@ def process_request(request):
     # Send Sale to the template
     template_vars['sale'] = sale
     template_vars['saleitems'] = sale.get_saleitems()
-    return dmp_render_to_response(request, 'receipt.html', template_vars)
+    return dmp_render(request, 'receipt.html', template_vars)

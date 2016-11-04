@@ -1,8 +1,8 @@
 from django.conf import settings
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django import forms
 from django.http import HttpResponseRedirect
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from account.models import User
 
 
@@ -54,7 +54,7 @@ def process_request(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'edit.html', template_vars)
+    return dmp_render(request, 'edit.html', template_vars)
 
 # DON'T LET THE USER CHANGE USERNAME OR PASSWORD #
 

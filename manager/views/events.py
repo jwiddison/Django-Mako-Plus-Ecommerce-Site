@@ -2,9 +2,9 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from catalog import models as cmod
 import datetime
 
@@ -20,7 +20,7 @@ def process_request(request):
     template_vars = {
       'events': events,
     }
-    return dmp_render_to_response(request, 'events.html', template_vars)
+    return dmp_render(request, 'events.html', template_vars)
 
 ################################################################################################
 ########### Create a New event #################################################################
@@ -55,7 +55,7 @@ def create(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'events.create.html', template_vars)
+    return dmp_render(request, 'events.create.html', template_vars)
 
 class CreateEventForm(forms.Form):
     name = forms.CharField(label='Event Name', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Event Name', 'class': 'form-control'}))
@@ -108,7 +108,7 @@ def edit(request):
         'event_id': event.id,
         # 'event': event,
     }
-    return dmp_render_to_response(request, 'events.edit.html', template_vars)
+    return dmp_render(request, 'events.edit.html', template_vars)
 
 
 class EditEventForm(forms.Form):

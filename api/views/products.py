@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.http import JsonResponse
 from django.core import serializers
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.http import HttpResponse
 from catalog import models as cmod
 import json

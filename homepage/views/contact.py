@@ -1,6 +1,6 @@
 from django.conf import settings
-from django_mako_plus.controller import view_function
-from .. import dmp_render, dmp_render_to_response
+from django_mako_plus import view_function
+from .. import dmp_render_to_string, dmp_render
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django import forms
 from django.contrib import messages
@@ -43,7 +43,7 @@ def process_request(request):
         'form': form,
         'sentmessage': sentmessage,
     }
-    return dmp_render_to_response(request, 'contact.html', template_vars)
+    return dmp_render(request, 'contact.html', template_vars)
 
 class EmailForm(forms.Form):
     name = forms.CharField(label='Name', required=True, widget=forms.TextInput(attrs={'placeholder': 'Name', 'class': 'form-control'}))

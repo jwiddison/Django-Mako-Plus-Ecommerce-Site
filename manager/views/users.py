@@ -2,10 +2,10 @@ from django.conf import settings
 from django import forms
 from django.forms.models import model_to_dict
 from django.http import HttpResponse, HttpResponseRedirect
-from django_mako_plus.controller import view_function
+from django_mako_plus import view_function
 from django.contrib.auth.models import Permission, Group
 from django.contrib.auth.decorators import permission_required
-from .. import dmp_render, dmp_render_to_response
+from .. import dmp_render_to_string, dmp_render
 from account import models as amod
 import datetime
 
@@ -22,7 +22,7 @@ def process_request(request):
     template_vars = {
       'users': users,
     }
-    return dmp_render_to_response(request, 'users.html', template_vars)
+    return dmp_render(request, 'users.html', template_vars)
 
 ################################################################################################
 ########### Create a New User ##################################################################
@@ -73,7 +73,7 @@ def create(request):
     template_vars = {
       'form': form,
     }
-    return dmp_render_to_response(request, 'users.create.html', template_vars)
+    return dmp_render(request, 'users.create.html', template_vars)
 
 class CreateForm(forms.Form):
     username = forms.CharField(label='Username', required=True, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}))
@@ -155,7 +155,7 @@ def edit(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'users.edit.html', template_vars)
+    return dmp_render(request, 'users.edit.html', template_vars)
 
 
 class EditForm(forms.Form):
@@ -229,7 +229,7 @@ def password(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'users.password.html', template_vars)
+    return dmp_render(request, 'users.password.html', template_vars)
 
 
 class PasswordForm(forms.Form):

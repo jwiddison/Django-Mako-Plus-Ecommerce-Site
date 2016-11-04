@@ -2,8 +2,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
-from django_mako_plus.controller import view_function
-from .. import dmp_render, dmp_render_to_response
+from django_mako_plus import view_function
+from .. import dmp_render_to_string, dmp_render
 from account.models import User
 
 @view_function
@@ -29,7 +29,7 @@ def process_request(request):
     template_vars = {
         'form': form,
     }
-    return dmp_render_to_response(request, 'login.html', template_vars)
+    return dmp_render(request, 'login.html', template_vars)
 
 
 # Create the form using Django's Form Class
