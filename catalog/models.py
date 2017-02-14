@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib import admin
-from polymorphic.models import PolymorphicModel
+# from polymorphic.models import PolymorphicModel
 import datetime, random, string
 
 
@@ -35,7 +35,7 @@ admin.site.register(Sale)
 #########################################################################################################
 #######   SaleItem         ##############################################################################
 #########################################################################################################
-class SaleItem(PolymorphicModel):
+class SaleItem(models.Model):
     Description = models.TextField(null=True, blank=True)
     Price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
     Quantity = models.TextField(null=True, blank=True)
@@ -168,7 +168,7 @@ admin.site.register(ProductImage)
 #########################################################################################################
 ####### Base Product Class ##############################################################################
 #########################################################################################################
-class Product(PolymorphicModel):
+class Product(models.Model):
     '''Superclass for all other product types '''
     name = models.TextField(null=True, blank=True)
     price = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=2)
